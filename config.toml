@@ -11,7 +11,7 @@ paginate = 5
 [languages]
   [languages.en]
     title = "archgaelix"
-    description = "A simple theme for Hugo"
+    description = "seshalja.in's devblog"
     keywords = ""
     author = "Seshal Jain"
     menuMore = "Show more"
