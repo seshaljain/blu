@@ -61,7 +61,7 @@
         <h2>Table of Contents</h2>
         <aside class="table-of-contents">{{ .TableOfContents }}</aside>
       {{ end }}
-      {{ .Content }}
+      {{ .Content | emojify }}
     </div>
     {{ if eq .Type $.Site.Params.contentTypeName }}
       {{ if or .NextInSection .PrevInSection }}

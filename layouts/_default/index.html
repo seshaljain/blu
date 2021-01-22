@@ -58,10 +58,10 @@
 
       <div class="post-content">
         {{ with .Description }}
-          {{ . | markdownify }}
+          {{ . | markdownify | emojify }}
         {{ else }}
           {{ if .Truncated }}
-            {{ .Summary }}
+            {{ .Summary | emojify }}
           {{ end }}
         {{ end }}
       </div>
