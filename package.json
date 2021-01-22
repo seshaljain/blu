@@ -1,0 +1,32 @@
+{
+  "name": "hello-friend",
+  "version": "2.1.0",
+  "main": "index.js",
+  "author": "Radosław Kozieł <@panr> <radoslaw.koziel@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "hugo server",
+    "build": "hugo"
+  },
+  "browserslist": [
+    "last 2 versions",
+    ">1%",
+    "not dead"
+  ],
+  "devDependencies": {
+    "browserslist": "^4.0.1",
+    "cssnano": "^4.1.8",
+    "postcss": "^7.0.0",
+    "postcss-browser-reporter": "^0.6.0",
+    "postcss-cli": "^7.1.2",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-mixins": "^6.2.1",
+    "postcss-nested": "^4.2.3",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-reporter": "^6.0.1",
+    "postcss-url": "^8.0.0",
+    "prettier": "^2.1.1",
+    "prettier-plugin-go-template": "^0.0.9"
+  }
+}
