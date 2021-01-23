@@ -1,7 +1,11 @@
 baseurl = "/"
 languageCode = "en-us"
 paginate = 5
-googleAnalytics = "G-96DH6FPYHM"
+googleAnalytics = "G-RQCB5BGBD3"
+
+[privacy]
+  [privacy.googleAnalytics]
+    useSessionStorage = true
 
 [params]
   contentTypeName = "post"
