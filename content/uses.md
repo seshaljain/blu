@@ -5,7 +5,7 @@ title: "Uses"
 These are the tools I use regularly. Check out other cool setups at <https://uses.tech/> :computer:
 
 I'm mostly active on my 12.5" Dell Latitude E7250 Ultrabook. Although slightly aged, it is super-lightweight (1200g) and I enjoy typing on the chiclet keyboard.  
-Ubuntu 20.04 with the GNOME is my primary OS I'm testing out Manjaro on a VM (exploring ArchLinux atm).  
+Ubuntu 20.04 with GNOME is my primary OS; I'm testing out Manjaro i3 on a VM (exploring ArchLinux atm).  
 I'm looking forward to switching to the [Programmer Dvorak](https://www.kaufmann.no/roland/dvorak/) keyboard layout ASAP; currently I keep dual layouts and practice on [MonkeyType](https://monkeytype.com/) whenever I get a chance.
 
 [Emacs 27.1](https://www.gnu.org/software/emacs/) is my go-to program for almost anything related to text, with [VS Code](https://code.visualstudio.com/) coming in when in a pinch, especially for web-related projects.  
