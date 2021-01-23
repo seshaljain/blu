@@ -11,4 +11,8 @@
 </footer>
 
 <!-- Scripts -->
-<script src="{{ "js/main.min.js" | absURL }}"></script>
+{{- $menu := resources.Get "js/menu.js" }}
+{{- $theme := resources.Get "js/theme.js" }}
+{{- $prism := resources.Get "js/prism.js" }}
+{{- $scripts := slice $menu $theme $prism | resources.Concat "js/main.js" | resources.Minify -}}
+<script src="{{ $scripts.Permalink }}"></script>
