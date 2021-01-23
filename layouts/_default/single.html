@@ -19,6 +19,8 @@
 
       {{ with .Params.Author }}
         <span class="post-author">— {{ . }}</span>
+        {{ else }}
+        <span class="post-author">— {{ .Site.Params.Author }}</span>
       {{ end }}
 
       {{ if $.Site.Params.ShowReadingTime }}
