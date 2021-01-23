@@ -43,3 +43,8 @@ paginate = 5
         name = "Archive"
         url = "/archive"
         weight = 3
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
