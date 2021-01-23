@@ -1,6 +1,7 @@
 baseurl = "/"
 languageCode = "en-us"
 paginate = 5
+googleAnalytics = "G-96DH6FPYHM"
 
 [params]
   contentTypeName = "post"
