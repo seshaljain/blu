@@ -15,12 +15,12 @@
             {{ partial "lastmod.html" . }}
           {{ end }}
         {{ end }}
-      {{ end }}
 
-      {{ with .Params.Author }}
-        <span class="post-author">— {{ . }}</span>
-        {{ else }}
-        <span class="post-author">— {{ .Site.Params.Author }}</span>
+        {{ with .Params.Author }}
+          <span class="post-author">— {{ . }}</span>
+          {{ else }}
+          <span class="post-author">— {{ .Site.Params.Author }}</span>
+        {{ end }}
       {{ end }}
 
       {{ if $.Site.Params.ShowReadingTime }}
