@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "https://archgaelix.vercel.app"
 languageCode = "en-us"
 paginate = 5
 
