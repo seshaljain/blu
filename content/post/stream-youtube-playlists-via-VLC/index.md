@@ -19,7 +19,7 @@ It is _distracting_.
 I'll admit that damned sidebar of recommendations has lead me astray on several occasions, I found myself looking at [questionable videos](https://www.youtube.com/watch?v=dQw4w9WgXcQ) at odd times instead of pending Watch Later videos I have piled up.
 
 Sure, browser extensions exist for this purpose, but I wanted to play with VLC addon scripts.  
-I'm very happy with the results :star_struck:
+I'm very happy with the results 🤩
 
 ### Script
 
