@@ -1,7 +1,7 @@
 ---
 title: "Stream Youtube Playlists via VLC"
 date: 2021-02-24T12:00:00+05:30
-tags: [scripts]
+tags: [scripting]
 ---
 
 I came across [this](https://gist.github.com/p3g4asus/597050997e01f8fd1fcf473fe6545a4f) Lua script which parses Youtube playlist links and adds them to a VLC playlist. It seems to work only on Windows though so I made a few tweaks to make it run on Linux.
