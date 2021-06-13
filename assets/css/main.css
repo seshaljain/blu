@@ -267,3 +267,7 @@ blockquote.twitter-tweet {
   line-height: inherit;
   border-radius: 8px;
 }
+
+.done {
+  color: var(--accent);
+}

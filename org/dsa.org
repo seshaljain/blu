@@ -1,0 +1,2088 @@
+#+title: DSA Mastersheet
+
+* [52/416]
+** DSA Mastersheet
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index
+:END:
+** DONE Reverse an array :done:array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: reverse-an-array
+:END:
+https://www.geeksforgeeks.org/write-a-program-to-reverse-an-array-or-string/
+** TODO Find the maximum and minimum element in an array :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-maximum-and-minimum-element-in-an-array
+:END:
+https://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
+** TODO Find the Kth max and min element in an array :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-kth-max-and-min-element-in-an-array
+:END:
+https://practice.geeksforgeeks.org/problems/kth-smallest-element/0
+** DONE Sort an array of 0s, 1s and 2s :done:array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: sort-an-array-of-0s-1s-and-2s
+:END:
+https://practice.geeksforgeeks.org/problems/sort-an-array-of-0s-1s-and-2s/0
+** DONE Move all the negative elements to one side of the array :done:array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: move-all-the-negative-elements-to-one-side-of-the-array
+:END:
+https://www.geeksforgeeks.org/move-negative-numbers-beginning-positive-end-constant-extra-space/
+** TODO Find the union and intersection of the two sorted arrays :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-union-and-intersection-of-the-two-sorted-arrays
+:END:
+https://practice.geeksforgeeks.org/problems/union-of-two-arrays/0
+** DONE Cyclically rotate an array by one :done:array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: cyclically-rotate-an-array-by-one
+:END:
+https://practice.geeksforgeeks.org/problems/cyclically-rotate-an-array-by-one/0
+** DONE [#A] Minimise the maximum difference between heights :done:array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimise-the-maximum-difference-between-heights
+:END:
+https://practice.geeksforgeeks.org/problems/minimize-the-heights3351/1
+** DONE Minimum number of jumps to reach end of an array :done:array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-number-of-jumps-to-reach-end-of-an-array
+:END:
+https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps/0
+** DONE Find the duplicate in an array of N+1 integers :done:array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-duplicate-in-an-array-of-n-plus-1-integers
+:END:
+https://leetcode.com/problems/find-the-duplicate-number/
+** DONE [#A] Kadane's algorithm :done:array:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: kadane-s-algorithm
+:END:
+https://practice.geeksforgeeks.org/problems/kadanes-algorithm/0
+** TODO Merge intervals :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: merge-intervals
+:END:
+https://leetcode.com/problems/merge-intervals/
+** TODO Next permutation :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: next-permutation
+:END:
+https://leetcode.com/problems/next-permutation/
+** TODO Count inversion :array:search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-inversion
+:END:
+https://practice.geeksforgeeks.org/problems/inversion-of-array/0
+** DONE Best time to buy and sell stock :done:array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: best-time-to-buy-and-sell-stock
+:END:
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+** TODO Find all pairs on integer array whose sum is equal to K :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-all-pairs-on-integer-array-whose-sum-is-equal-to-k
+:END:
+https://practice.geeksforgeeks.org/problems/count-pairs-with-given-sum5022/1
+** TODO Find common elements in 3 sorted arrays :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-common-elements-in-3-sorted-arrays
+:END:
+https://practice.geeksforgeeks.org/problems/common-elements1132/1
+** TODO Rearrange the array in alternating positive and negative items with O(1) extra space :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rearrange-the-array-in-alternating-positive-and-negative-items-with-o--1--extra-space
+:END:
+https://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-O(1)-extra-space/
+** DONE Find if there is any subarray with sum equal to 0 :done:array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-if-there-is-any-subarray-with-sum-equal-to-0
+:END:
+https://practice.geeksforgeeks.org/problems/subarray-with-0-sum/0
+** TODO Find factorial of a large number :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-factorial-of-a-large-number
+:END:
+https://practice.geeksforgeeks.org/problems/factorials-of-large-numbers/0
+** TODO Find maximum product subarray :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-maximum-product-subarray
+:END:
+https://practice.geeksforgeeks.org/problems/maximum-product-subarray3604/1
+** TODO Find longest consecutive subsequence :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-longest-consecutive-subsequence
+:END:
+https://practice.geeksforgeeks.org/problems/longest-consecutive-subsequence/0
+** TODO Given an array of size N and a number K, find all elements that appear more than N/K times :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: given-an-array-of-size-n-and-a-number-k-find-all-elements-that-appear-more-than-n-k-times
+:END:
+https://www.geeksforgeeks.org/given-an-array-of-of-size-n-finds-all-the-elements-that-appear-more-than-nk-times/
+** TODO Find whether an array is a subset of another array :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-whether-an-array-is-a-subset-of-another-array
+:END:
+https://practice.geeksforgeeks.org/problems/array-subset-of-another-array/0
+** TODO Find the triplet that sum to a given value :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-triplet-that-sum-to-a-given-value
+:END:
+https://practice.geeksforgeeks.org/problems/triplet-sum-in-array/0
+** DONE Trapping rain water :done:array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: trapping-rain-water
+:END:
+https://practice.geeksforgeeks.org/problems/trapping-rain-water/0
+** DONE Chocolate distribution :done:array:greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: chocolate-distribution
+:END:
+https://practice.geeksforgeeks.org/problems/chocolate-distribution-problem/0
+** TODO Smallest subarray with sum greater than a given value :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: smallest-subarray-with-sum-greater-than-a-given-value
+:END:
+https://practice.geeksforgeeks.org/problems/smallest-subarray-with-sum-greater-than-x/0
+** TODO Three way partitioning of an array around a given value :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: three-way-partitioning-of-an-array-around-a-given-value
+:END:
+https://practice.geeksforgeeks.org/problems/three-way-partitioning/1
+** TODO Minimum swaps required to bring elements <= K together :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-swaps-required-to-bring-elements-k-together
+:END:
+https://practice.geeksforgeeks.org/problems/minimum-swaps-required-to-bring-all-elements-less-than-or-equal-to-k-together/0
+** TODO Minimum number of operations required to make an array palindrome :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-number-of-operations-required-to-make-an-array-palindrome
+:END:
+https://practice.geeksforgeeks.org/problems/palindromic-array/0
+** TODO Median of 2 sorted arrays of equal size :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: median-of-2-sorted-arrays-of-equal-size
+:END:
+https://practice.geeksforgeeks.org/problems/find-the-median0527/1
+** TODO Median of 2 sorted arrays of different size :array:
+:PROPERTIES:
+:EXPORT_FILE_NAME: median-of-2-sorted-arrays-of-different-size
+:END:
+https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/
+** TODO Spiral traversal on a matrix :matrix:
+:PROPERTIES:
+:EXPORT_FILE_NAME: spiral-traversal-on-a-matrix
+:END:
+https://practice.geeksforgeeks.org/problems/spirally-traversing-a-matrix/0
+** DONE Search an element in a matrix :done:matrix:
+:PROPERTIES:
+:EXPORT_FILE_NAME: search-an-element-in-a-matrix
+:END:
+https://leetcode.com/problems/search-a-2d-matrix/
+** TODO Find median in a row wise sorted matrix :matrix:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-median-in-a-row-wise-sorted-matrix
+:END:
+https://practice.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1
+** TODO Find row with maximum number of 1s :matrix:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-row-with-maximum-number-of-1s
+:END:
+https://practice.geeksforgeeks.org/problems/row-with-max-1s0023/1
+** TODO Print elements in sorted order using row-column wise sorted matrix :matrix:
+:PROPERTIES:
+:EXPORT_FILE_NAME: print-elements-in-sorted-order-using-row-column-wise-sorted-matrix
+:END:
+https://practice.geeksforgeeks.org/problems/sorted-matrix/0
+** TODO Maximum size rectangle :matrix:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-size-rectangle
+:END:
+https://practice.geeksforgeeks.org/problems/max-rectangle/1
+** TODO Find a specific pair in matrix :matrix:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-a-specific-pair-in-matrix
+:END:
+https://www.geeksforgeeks.org/find-a-specific-pair-in-matrix/
+** TODO Rotate matrix by 90 degrees :matrix:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rotate-matrix-by-90-degrees
+:END:
+https://www.geeksforgeeks.org/rotate-a-matrix-by-90-degree-in-clockwise-direction-without-using-any-extra-space/
+** TODO Kth smallest element in a row-column wise sorted matrix :matrix:
+:PROPERTIES:
+:EXPORT_FILE_NAME: kth-smallest-element-in-a-row-column-wise-sorted-matrix
+:END:
+https://practice.geeksforgeeks.org/problems/kth-element-in-matrix/1
+** TODO Common elements in all rows of a given matrix :matrix:
+:PROPERTIES:
+:EXPORT_FILE_NAME: common-elements-in-all-rows-of-a-given-matrix
+:END:
+https://www.geeksforgeeks.org/common-elements-in-all-rows-of-a-given-matrix/
+** DONE Reverse a string :done:string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: reverse-a-string
+:END:
+https://leetcode.com/problems/reverse-string/
+** DONE Check whether a string is palindrome :done:string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-whether-a-string-is-palindrome
+:END:
+https://practice.geeksforgeeks.org/problems/palindrome-string0817/1
+** TODO Find duplicate characters in a string :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-duplicate-characters-in-a-string
+:END:
+https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/
+** DONE Why are strings immutable in Java? :done:string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: why-are-strings-immutable-in-java
+:END:
+** DONE Check whether one string is a rotation of another :done:string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-whether-one-string-is-a-rotation-of-another
+:END:
+https://www.geeksforgeeks.org/a-program-to-check-if-strings-are-rotations-of-each-other/
+** DONE Check whether a string is a valid shuffle of two strings :done:string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-whether-a-string-is-a-valid-shuffle-of-two-strings
+:END:
+https://www.programiz.com/java-programming/examples/check-valid-shuffle-of-strings
+** DONE Count and say :done:string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-and-say
+:END:
+https://leetcode.com/problems/count-and-say/
+** TODO Find the longest palindrome in a string :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-longest-palindrome-in-a-string
+:END:
+https://practice.geeksforgeeks.org/problems/longest-palindrome-in-a-string/0
+** TODO Print all subsequences of a string :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: print-all-subsequences-of-a-string
+:END:
+https://www.geeksforgeeks.org/print-subsequences-string/
+** TODO Split the binary string into two substring with equal 0s and 1s :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: split-the-binary-string-into-two-substring-with-equal-0s-and-1s
+:END:
+https://www.geeksforgeeks.org/split-the-binary-string-into-substrings-with-equal-number-of-0s-and-1s/
+** TODO [#A] Word wrap :string:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: word-wrap
+:END:
+https://practice.geeksforgeeks.org/problems/word-wrap/0
+** TODO [#A] Edit distance :string:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: edit-distance
+:END:
+https://practice.geeksforgeeks.org/problems/edit-distance3702/1
+** TODO [#A] Find next greater number with same set of digits :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-next-greater-number-with-same-set-of-digits
+:END:
+https://practice.geeksforgeeks.org/problems/next-permutation/0
+** DONE [#A] Balanced parenthesis :done:string:st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: balanced-parenthesis
+:END:
+https://practice.geeksforgeeks.org/problems/parenthesis-checker/0
+** TODO [#A] Word break :string:trie:backtracking:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: word-break
+:END:
+https://practice.geeksforgeeks.org/problems/word-break/0
+** TODO Rabin Karp algorithm :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rabin-karp-algorithm
+:END:
+https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/
+** TODO KMP algorithm :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: kmp-algorithm
+:END:
+https://practice.geeksforgeeks.org/problems/longest-prefix-suffix2527/1
+** TODO Convert a sentence into its equivalent mobile numeric keypad sequence :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: convert-a-sentence-into-its-equivalent-mobile-numeric-keypad-sequence
+:END:
+https://www.geeksforgeeks.org/convert-sentence-equivalent-mobile-numeric-keypad-sequence/
+** DONE Minimum number of bracket reversals needed to make an expression balanced :done:string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-number-of-bracket-reversals-needed-to-make-an-expression-balanced
+:END:
+https://practice.geeksforgeeks.org/problems/count-the-reversals/0
+** TODO Count all palindromic subsequence in a given string :string:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-all-palindromic-subsequence-in-a-given-string
+:END:
+https://practice.geeksforgeeks.org/problems/count-palindromic-subsequences/1
+** TODO Count of number of given string in 2D character array :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-of-number-of-given-string-in-2d-character-array
+:END:
+https://www.geeksforgeeks.org/find-count-number-given-string-present-2d-character-array/
+** TODO Search a word in a 2D grid of characters :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: search-a-word-in-a-2d-grid-of-characters
+:END:
+https://practice.geeksforgeeks.org/problems/find-the-string-in-grid/0
+** TODO Boyer Moore algorithm for pattern searching :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: boyer-moore-algorithm-for-pattern-searching
+:END:
+https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/
+** TODO Converting roman numerals to decimal :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: converting-roman-numerals-to-decimal
+:END:
+https://practice.geeksforgeeks.org/problems/roman-number-to-integer/0
+** TODO Longest common prefix :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: longest-common-prefix
+:END:
+https://leetcode.com/problems/longest-common-prefix/
+** DONE Number of flips to make binary string alternate :done:string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: number-of-flips-to-make-binary-string-alternate
+:END:
+https://practice.geeksforgeeks.org/problems/min-number-of-flips/0
+** DONE Find the second most repeated word in string :done:string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-second-most-repeated-word-in-string
+:END:
+https://practice.geeksforgeeks.org/problems/second-most-repeated-string-in-a-sequence/0
+** TODO Minimum number of swaps for bracket balancing :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-number-of-swaps-for-bracket-balancing
+:END:
+https://practice.geeksforgeeks.org/problems/minimum-swaps-for-bracket-balancing/0
+** TODO Program to generate all possible valid IP addresses from given string :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: program-to-generate-all-possible-valid-ip-addresses-from-given-string
+:END:
+https://www.geeksforgeeks.org/program-generate-possible-valid-ip-addresses-given-string/
+** TODO Find the smallest window that contains all characters of string itself :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-smallest-window-that-contains-all-characters-of-string-itself
+:END:
+https://practice.geeksforgeeks.org/problems/smallest-distant-window/0
+** TODO Rearrange characters in a string such that no two adjacent are same :string:heap:greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rearrange-characters-in-a-string-such-that-no-two-adjacent-are-same
+:END:
+https://practice.geeksforgeeks.org/problems/rearrange-characters/0
+** TODO Minimum characters to be added at front to make string palindrome :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-characters-to-be-added-at-front-to-make-string-palindrome
+:END:
+https://www.geeksforgeeks.org/minimum-characters-added-front-make-string-palindrome/
+** TODO Given a sequence of words, print all anagrams together :string:trie:greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: given-a-sequence-of-words-print-all-anagrams-together
+:END:
+https://practice.geeksforgeeks.org/problems/k-anagrams-1/0
+** TODO Find the smallest window in a string containing all characters of another string :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-smallest-window-in-a-string-containing-all-characters-of-another-string
+:END:
+https://practice.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string/0
+** DONE Recursively remove all adjacent duplicates :done:string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: recursively-remove-all-adjacent-duplicates
+:END:
+https://practice.geeksforgeeks.org/problems/consecutive-elements/0
+** TODO String matching where one string contains wildcard characters :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: string-matching-where-one-string-contains-wildcard-characters
+:END:
+https://practice.geeksforgeeks.org/problems/wildcard-string-matching/0
+** TODO Function to find number of customers who could not get a computer :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: function-to-find-number-of-customers-who-could-not-get-a-computer
+:END:
+https://www.geeksforgeeks.org/function-to-find-number-of-customers-who-could-not-get-a-computer/
+** TODO Transform one string to another using minimum number of given operation :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: transform-one-string-to-another-using-minimum-number-of-given-operation
+:END:
+https://www.geeksforgeeks.org/transform-one-string-to-another-using-minimum-number-of-given-operation/
+** TODO Check if two given strings are isomorphic to each other :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-two-given-strings-are-isomorphic-to-each-other
+:END:
+https://practice.geeksforgeeks.org/problems/isomorphic-strings/0
+** TODO Recursively print all sentences that can be formed from list of word lists :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: recursively-print-all-sentences-that-can-be-formed-from-list-of-word-lists
+:END:
+https://www.geeksforgeeks.org/recursively-print-all-sentences-that-can-be-formed-from-list-of-word-lists/
+** DONE Find first and last positions of an element in a sorted array :done:search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-first-and-last-positions-of-an-element-in-a-sorted-array
+:END:
+https://practice.geeksforgeeks.org/problems/first-and-last-occurrences-of-x/0
+** TODO Find a fixed point (value equal to index) in a given array :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-a-fixed-point--value-equal-to-index--in-a-given-array
+:END:
+https://practice.geeksforgeeks.org/problems/value-equal-to-index-value1330/1
+** TODO Search in a rotated sorted array :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: search-in-a-rotated-sorted-array
+:END:
+https://leetcode.com/problems/search-in-rotated-sorted-array/
+** TODO Square root of an integer :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: square-root-of-an-integer
+:END:
+https://practice.geeksforgeeks.org/problems/count-squares3649/1
+** TODO Maximum and minimum of an array using minimum number of comparisons :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-and-minimum-of-an-array-using-minimum-number-of-comparisons
+:END:
+https://practice.geeksforgeeks.org/problems/middle-of-three2926/1
+** TODO Optimum location of point to minimize total distance :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: optimum-location-of-point-to-minimize-total-distance
+:END:
+https://www.geeksforgeeks.org/optimum-location-point-minimize-total-distance/
+** DONE Find the repeating and the missing :done:search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-repeating-and-the-missing
+:END:
+https://practice.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
+** DONE Find majority element :done:search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-majority-element
+:END:
+https://practice.geeksforgeeks.org/problems/majority-element/0
+** DONE Searching in an array where adjacent differ by at most K :done:search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: searching-in-an-array-where-adjacent-differ-by-at-most-k
+:END:
+https://www.geeksforgeeks.org/searching-array-adjacent-differ-k/
+** TODO Find a pair with a given difference :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-a-pair-with-a-given-difference
+:END:
+https://practice.geeksforgeeks.org/problems/find-pair-given-difference/0
+** TODO Find four elements that sum to a given value :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-four-elements-that-sum-to-a-given-value
+:END:
+https://practice.geeksforgeeks.org/problems/find-all-four-sum-numbers/0
+** TODO Maximum sum such that no 2 elements are adjacent :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-sum-such-that-no-2-elements-are-adjacent
+:END:
+https://practice.geeksforgeeks.org/problems/stickler-theif/0
+** TODO Count triplet with sum smaller than a given value :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-triplet-with-sum-smaller-than-a-given-value
+:END:
+https://practice.geeksforgeeks.org/problems/count-triplets-with-sum-smaller-than-x5549/1
+** DONE Merge 2 sorted arrays :done:array:search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: merge-2-sorted-arrays
+:END:
+https://practice.geeksforgeeks.org/problems/merge-two-sorted-arrays5135/1
+** TODO Print all subarrays with 0 sum :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: print-all-subarrays-with-0-sum
+:END:
+https://practice.geeksforgeeks.org/problems/zero-sum-subarrays/0
+** TODO Product array puzzle :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: product-array-puzzle
+:END:
+https://practice.geeksforgeeks.org/problems/product-array-puzzle/0
+** DONE Sort array according to count of set bits :done:search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: sort-array-according-to-count-of-set-bits
+:END:
+https://practice.geeksforgeeks.org/problems/sort-by-set-bit-count/0
+** TODO Minimum number of swaps required to sort the array :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-number-of-swaps-required-to-sort-the-array
+:END:
+https://practice.geeksforgeeks.org/problems/minimum-swaps/1
+** TODO Bishu and soldiers :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: bishu-and-soldiers
+:END:
+https://www.hackerearth.com/practice/algorithms/searching/binary-search/practice-problems/algorithm/bishu-and-soldiers/
+** TODO Rasta and Kheshtak :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rasta-and-kheshtak
+:END:
+https://www.hackerearth.com/practice/algorithms/searching/binary-search/practice-problems/algorithm/rasta-and-kheshtak/
+** DONE Kth smallest number again :done:search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: kth-smallest-number-again
+:END:
+https://www.hackerearth.com/practice/algorithms/searching/binary-search/practice-problems/algorithm/kth-smallest-number-again-2/
+** TODO Find pivot element in a sorted array :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-pivot-element-in-a-sorted-array
+:END:
+http://theoryofprogramming.com/2017/12/16/find-pivot-element-sorted-rotated-array/
+** TODO Kth element of two sorted arrays :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: kth-element-of-two-sorted-arrays
+:END:
+https://practice.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array/0
+** TODO Aggressive cows :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: aggressive-cows
+:END:
+https://www.spoj.com/problems/AGGRCOW/
+** DONE Book allocation aka Painter's Partition :done:search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: book-allocation-aka-painter-s-partition
+:END:
+https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages/0
+** TODO Ekospoj :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: ekospoj
+:END:
+https://www.spoj.com/problems/EKO/
+** TODO Job scheduling algorithm :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: job-scheduling-algorithm
+:END:
+https://www.geeksforgeeks.org/weighted-job-scheduling-log-n-time/
+** TODO Missing number in AP :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: missing-number-in-ap
+:END:
+https://practice.geeksforgeeks.org/problems/arithmetic-number/0
+** TODO Smallest number with atleast N trailing zeroes in factorial :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: smallest-number-with-atleast-n-trailing-zeroes-in-factorial
+:END:
+https://practice.geeksforgeeks.org/problems/smallest-factorial-number5929/1
+** TODO Roti Prata :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: roti-prata
+:END:
+https://www.spoj.com/problems/PRATA/
+** TODO Doublehelix :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: doublehelix
+:END:
+https://www.spoj.com/problems/ANARC05B/
+** TODO Subset sums :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: subset-sums
+:END:
+https://www.spoj.com/problems/SUBSUMS/
+** TODO Implement merge-sort in-place :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-merge-sort-in-place
+:END:
+https://www.geeksforgeeks.org/in-place-merge-sort/
+** TODO Partitioning and sorting arrays with many repeated entries :search_sort:
+:PROPERTIES:
+:EXPORT_FILE_NAME: partitioning-and-sorting-arrays-with-many-repeated-entries
+:END:
+https://www.baeldung.com/java-sorting-arrays-with-repeated-entries
+** DONE Reverse a linked list :done:ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: reverse-a-linked-list
+:END:
+https://www.geeksforgeeks.org/reverse-a-linked-list/
+** TODO [#A] Reverse a linked list in group of given size :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: reverse-a-linked-list-in-group-of-given-size
+:END:
+https://practice.geeksforgeeks.org/problems/reverse-a-linked-list-in-groups-of-given-size/1
+** TODO Detect loop in a linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: detect-loop-in-a-linked-list
+:END:
+https://practice.geeksforgeeks.org/problems/detect-loop-in-linked-list/1
+** TODO Delete loop in a linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: delete-loop-in-a-linked-list
+:END:
+https://practice.geeksforgeeks.org/problems/remove-loop-in-linked-list/1
+** TODO Find the starting point of the loop :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-starting-point-of-the-loop
+:END:
+https://www.geeksforgeeks.org/find-first-node-of-loop-in-a-linked-list/
+** TODO Remove duplicates in a sorted linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: remove-duplicates-in-a-sorted-linked-list
+:END:
+https://practice.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/1
+** TODO Remove duplicates in a unsorted linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: remove-duplicates-in-a-unsorted-linked-list
+:END:
+https://practice.geeksforgeeks.org/problems/remove-duplicates-from-an-unsorted-linked-list/1
+** TODO Move the last element to front in a linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: move-the-last-element-to-front-in-a-linked-list
+:END:
+https://www.geeksforgeeks.org/move-last-element-to-front-of-a-given-linked-list/
+** TODO Add 1 to a number represented as a linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: add-1-to-a-number-represented-as-a-linked-list
+:END:
+https://practice.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-linked-list/1
+** TODO Add two numbers represented by linked lists :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: add-two-numbers-represented-by-linked-lists
+:END:
+https://practice.geeksforgeeks.org/problems/add-two-numbers-represented-by-linked-lists/1
+** TODO Intersection of two sorted linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: intersection-of-two-sorted-linked-list
+:END:
+https://practice.geeksforgeeks.org/problems/intersection-of-two-sorted-linked-lists/1
+** TODO Intersection point of two linked lists :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: intersection-point-of-two-linked-lists
+:END:
+https://practice.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/1
+** TODO [#A] Merge sort for linked lists :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: merge-sort-for-linked-lists
+:END:
+https://practice.geeksforgeeks.org/problems/sort-a-linked-list/1
+** TODO [#A] Quicksort for linked lists :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: quicksort-for-linked-lists
+:END:
+https://practice.geeksforgeeks.org/problems/quick-sort-on-linked-list/1
+** TODO Find the middle element of a linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-middle-element-of-a-linked-list
+:END:
+https://leetcode.com/problems/middle-of-the-linked-list/
+** TODO Check if a linked list is a circular linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-a-linked-list-is-a-circular-linked-list
+:END:
+https://practice.geeksforgeeks.org/problems/circular-linked-list/1
+** TODO Split a circular linked list into two halves :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: split-a-circular-linked-list-into-two-halves
+:END:
+https://practice.geeksforgeeks.org/problems/split-a-circular-linked-list-into-two-halves/1
+** TODO Check whether the singly linked list is a palindrome :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-whether-the-singly-linked-list-is-a-palindrome
+:END:
+https://practice.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1
+** TODO Deletion from a circular linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: deletion-from-a-circular-linked-list
+:END:
+https://www.geeksforgeeks.org/deletion-circular-linked-list/
+** TODO Reverse a doubly linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: reverse-a-doubly-linked-list
+:END:
+https://practice.geeksforgeeks.org/problems/reverse-a-doubly-linked-list/1
+** TODO Find pairs with a given sum in a DLL :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-pairs-with-a-given-sum-in-a-dll
+:END:
+https://www.geeksforgeeks.org/find-pairs-given-sum-doubly-linked-list/
+** TODO Count triplets in a sorted DLL whose sum is equal to given value X :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-triplets-in-a-sorted-dll-whose-sum-is-equal-to-given-value-x
+:END:
+https://www.geeksforgeeks.org/count-triplets-sorted-doubly-linked-list-whose-sum-equal-given-value-x/
+** TODO [#A] Sort a K sorted doubly linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: sort-a-k-sorted-doubly-linked-list
+:END:
+https://www.geeksforgeeks.org/sort-k-sorted-doubly-linked-list/
+** TODO Rotate DLL by N nodes :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rotate-dll-by-n-nodes
+:END:
+https://www.geeksforgeeks.org/rotate-doubly-linked-list-n-nodes/
+** TODO [#A] Rotate a doubly linked list in group of given size :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rotate-a-doubly-linked-list-in-group-of-given-size
+:END:
+https://www.geeksforgeeks.org/reverse-doubly-linked-list-groups-given-size/
+** TODO Can we reverse a linked list in less than O(n)? :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: can-we-reverse-a-linked-list-in-less-than-o--n
+:END:
+** TODO Why is quicksort preferred for arrays while merge sort for linked lists? :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: why-is-quicksort-preferred-for-arrays-while-merge-sort-for-linked-lists
+:END:
+** TODO Flatten a linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: flatten-a-linked-list
+:END:
+https://practice.geeksforgeeks.org/problems/flattening-a-linked-list/1
+** TODO Sort a ll of 0s, 1s and 2s :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: sort-a-ll-of-0s-1s-and-2s
+:END:
+https://practice.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1
+** TODO Clone a linked list with next and random pointer :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: clone-a-linked-list-with-next-and-random-pointer
+:END:
+https://practice.geeksforgeeks.org/problems/clone-a-linked-list-with-next-and-random-pointer/1
+** TODO Multiply 2 numbers represented by ll :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: multiply-2-numbers-represented-by-ll
+:END:
+https://practice.geeksforgeeks.org/problems/multiply-two-linked-lists/1
+** TODO Delete nodes which have a greater value on right side :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: delete-nodes-which-have-a-greater-value-on-right-side
+:END:
+https://practice.geeksforgeeks.org/problems/delete-nodes-having-greater-value-on-right/1
+** TODO Segregate even and odd nodes in a linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: segregate-even-and-odd-nodes-in-a-linked-list
+:END:
+https://practice.geeksforgeeks.org/problems/segregate-even-and-odd-nodes-in-a-linked-list/0
+** TODO Program for Nth node from the end of a linked list :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: program-for-nth-node-from-the-end-of-a-linked-list
+:END:
+https://practice.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/1
+** TODO Find the first non-repeating character from a stream of characters :ll:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-first-non-repeating-character-from-a-stream-of-characters
+:END:
+https://practice.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream/0
+** DONE Level order traversal :done:bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: level-order-traversal
+:END:
+https://practice.geeksforgeeks.org/problems/level-order-traversal/1
+** TODO Reverse level order traversal :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: reverse-level-order-traversal
+:END:
+https://practice.geeksforgeeks.org/problems/reverse-level-order-traversal/1
+** DONE Height of a tree :done:bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: height-of-a-tree
+:END:
+https://practice.geeksforgeeks.org/problems/height-of-binary-tree/1
+** DONE Diameter of a tree :done:bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: diameter-of-a-tree
+:END:
+https://practice.geeksforgeeks.org/problems/diameter-of-binary-tree/1
+** TODO Mirror of a tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: mirror-of-a-tree
+:END:
+https://www.geeksforgeeks.org/create-a-mirror-tree-from-the-given-binary-tree/
+** DONE Inorder traversal of a tree :done:bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: inorder-traversal-of-a-tree
+:END:
+https://www.techiedelight.com/inorder-tree-traversal-iterative-recursive/
+** DONE Preorder traversal of a tree :done:bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: preorder-traversal-of-a-tree
+:END:
+https://www.techiedelight.com/preorder-tree-traversal-iterative-recursive/
+** DONE Postorder traversal of a tree :done:bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: postorder-traversal-of-a-tree
+:END:
+https://www.techiedelight.com/postorder-tree-traversal-iterative-recursive/
+** TODO Left view of a tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: left-view-of-a-tree
+:END:
+https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1
+** TODO Right view of tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: right-view-of-tree
+:END:
+https://practice.geeksforgeeks.org/problems/right-view-of-binary-tree/1
+** TODO Top view of a tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: top-view-of-a-tree
+:END:
+https://practice.geeksforgeeks.org/problems/top-view-of-binary-tree/1
+** TODO Bottom view of a tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: bottom-view-of-a-tree
+:END:
+https://practice.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1
+** TODO Zig-zag traversal of a binary tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: zig-zag-traversal-of-a-binary-tree
+:END:
+https://practice.geeksforgeeks.org/problems/zigzag-tree-traversal/1
+** TODO Check if a tree is balanced :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-a-tree-is-balanced
+:END:
+https://practice.geeksforgeeks.org/problems/check-for-balanced-tree/1
+** TODO Diagonal traversal of a binary tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: diagonal-traversal-of-a-binary-tree
+:END:
+https://www.geeksforgeeks.org/diagonal-traversal-of-binary-tree/
+** TODO Boundary traversal of a binary tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: boundary-traversal-of-a-binary-tree
+:END:
+https://practice.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1
+** TODO Construct binary tree from string with bracket representation :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: construct-binary-tree-from-string-with-bracket-representation
+:END:
+https://www.geeksforgeeks.org/construct-binary-tree-string-bracket-representation/
+** TODO Convert binary tree into doubly linked list :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: convert-binary-tree-into-doubly-linked-list
+:END:
+https://practice.geeksforgeeks.org/problems/binary-tree-to-dll/1
+** TODO Convert binary tree into sum tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: convert-binary-tree-into-sum-tree
+:END:
+https://practice.geeksforgeeks.org/problems/transform-to-sum-tree/1
+** TODO Construct binary tree from inorder and preorder traversal :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: construct-binary-tree-from-inorder-and-preorder-traversal
+:END:
+https://practice.geeksforgeeks.org/problems/construct-tree-1/1
+** TODO Find minimum swaps required to convert a binary tree into BST :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-minimum-swaps-required-to-convert-a-binary-tree-into-bst
+:END:
+https://www.geeksforgeeks.org/minimum-swap-required-convert-binary-tree-binary-search-tree/
+** TODO Check if binary tree is sum tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-binary-tree-is-sum-tree
+:END:
+https://practice.geeksforgeeks.org/problems/sum-tree/1
+** TODO Check if all leaf nodes are at same level :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-all-leaf-nodes-are-at-same-level
+:END:
+https://practice.geeksforgeeks.org/problems/leaf-at-same-level/1
+** TODO [#A] Check if a binary tree contains duplicate subtrees of size 2 or more :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-a-binary-tree-contains-duplicate-subtrees-of-size-2-or-more
+:END:
+https://practice.geeksforgeeks.org/problems/duplicate-subtree-in-binary-tree/1
+** TODO Check if 2 trees are mirror :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-2-trees-are-mirror
+:END:
+https://practice.geeksforgeeks.org/problems/check-mirror-in-n-ary-tree/0
+** TODO Sum of nodes on the longest path from root to leaf node :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: sum-of-nodes-on-the-longest-path-from-root-to-leaf-node
+:END:
+https://practice.geeksforgeeks.org/problems/sum-of-the-longest-bloodline-of-a-tree/1
+** TODO [#A] Check if given graph is tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-given-graph-is-tree
+:END:
+https://www.geeksforgeeks.org/check-given-graph-tree/
+** TODO Find largest subtree sum in a tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-largest-subtree-sum-in-a-tree
+:END:
+https://www.geeksforgeeks.org/find-largest-subtree-sum-tree/
+** TODO Maximum sum of nodes in binary tree such that no two are adjacent :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-sum-of-nodes-in-binary-tree-such-that-no-two-are-adjacent
+:END:
+https://www.geeksforgeeks.org/maximum-sum-nodes-binary-tree-no-two-adjacent/
+** TODO Print all K sum paths in a binary tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: print-all-k-sum-paths-in-a-binary-tree
+:END:
+https://www.geeksforgeeks.org/print-k-sum-paths-binary-tree/
+** TODO Find LCA in a binary tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-lca-in-a-binary-tree
+:END:
+https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-binary-tree/1
+** TODO Find distance between 2 nodes in a binary tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-distance-between-2-nodes-in-a-binary-tree
+:END:
+https://practice.geeksforgeeks.org/problems/min-distance-between-two-given-nodes-of-a-binary-tree/1
+** TODO Kth ancestor of node in a binary tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: kth-ancestor-of-node-in-a-binary-tree
+:END:
+https://www.geeksforgeeks.org/kth-ancestor-node-binary-tree-set-2/
+** TODO [#A] Find all duplicate subtrees in a binary tree :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-all-duplicate-subtrees-in-a-binary-tree
+:END:
+https://practice.geeksforgeeks.org/problems/duplicate-subtrees/1
+** TODO Tree isomorphism :bt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: tree-isomorphism
+:END:
+https://practice.geeksforgeeks.org/problems/check-if-tree-is-isomorphic/1
+** TODO Find a value in a BST :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-a-value-in-a-bst
+:END:
+https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+** TODO Deletion of a node in a BST :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: deletion-of-a-node-in-a-bst
+:END:
+https://leetcode.com/problems/delete-node-in-a-bst/
+** TODO Find min and max value in a BST :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-min-and-max-value-in-a-bst
+:END:
+https://practice.geeksforgeeks.org/problems/minimum-element-in-bst/1
+** TODO Find inorder successor and inorder predecessor in a BST :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-inorder-successor-and-inorder-predecessor-in-a-bst
+:END:
+https://practice.geeksforgeeks.org/problems/predecessor-and-successor/1
+** TODO Check if a tree is a BST :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-a-tree-is-a-bst
+:END:
+https://practice.geeksforgeeks.org/problems/check-for-bst/1
+** TODO Populate inorder successor of all nodes :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: populate-inorder-successor-of-all-nodes
+:END:
+https://practice.geeksforgeeks.org/problems/populate-inorder-successor-for-all-nodes/1
+** TODO Find lca of 2 nodes in a BST :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-lca-of-2-nodes-in-a-bst
+:END:
+https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1
+** TODO Construct BST from preorder traversal :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: construct-bst-from-preorder-traversal
+:END:
+https://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/
+** TODO Convert binary tree into BST :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: convert-binary-tree-into-bst
+:END:
+https://practice.geeksforgeeks.org/problems/binary-tree-to-bst/1
+** TODO Convert a normal BST into a balanced BST :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: convert-a-normal-bst-into-a-balanced-bst
+:END:
+https://www.geeksforgeeks.org/convert-normal-bst-balanced-bst/
+** TODO [#A] Merge two BST :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: merge-two-bst
+:END:
+https://www.geeksforgeeks.org/merge-two-balanced-binary-search-trees/
+** TODO Find Kth largest element in a BST :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-kth-largest-element-in-a-bst
+:END:
+https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/1
+** TODO Find Kth smallest element in a BST :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-kth-smallest-element-in-a-bst
+:END:
+https://practice.geeksforgeeks.org/problems/find-k-th-smallest-element-in-bst/1
+** TODO Count pairs from 2 BST whose sum is equal to given value X :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-pairs-from-2-bst-whose-sum-is-equal-to-given-value-x
+:END:
+https://practice.geeksforgeeks.org/problems/brothers-from-different-root/1
+** TODO Find the median of BST in O(n) time and O(1) space :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-median-of-bst-in-o--n--time-and-o--1--space
+:END:
+https://www.geeksforgeeks.org/find-median-bst-time-O(1)-space/
+** TODO Count BST nodes that lie in a given range :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-bst-nodes-that-lie-in-a-given-range
+:END:
+https://practice.geeksforgeeks.org/problems/count-bst-nodes-that-lie-in-a-given-range/1
+** TODO Replace every element with the least greater element on its right :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: replace-every-element-with-the-least-greater-element-on-its-right
+:END:
+https://www.geeksforgeeks.org/replace-every-element-with-the-least-greater-element-on-its-right/
+** TODO Given N appointments, find the conflicting appointments :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: given-n-appointments-find-the-conflicting-appointments
+:END:
+https://www.geeksforgeeks.org/given-n-appointments-find-conflicting-appointments/
+** TODO Check preorder is valid :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-preorder-is-valid
+:END:
+https://practice.geeksforgeeks.org/problems/preorder-to-postorder/0
+** TODO Check whether BST contains dead end :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-whether-bst-contains-dead-end
+:END:
+https://practice.geeksforgeeks.org/problems/check-whether-bst-contains-dead-end/1
+** TODO [#A] Largest BST in a binary tree :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: largest-bst-in-a-binary-tree
+:END:
+https://practice.geeksforgeeks.org/problems/largest-bst/1
+** TODO Flatten BST to sorted list :bst:
+:PROPERTIES:
+:EXPORT_FILE_NAME: flatten-bst-to-sorted-list
+:END:
+https://www.geeksforgeeks.org/flatten-bst-to-sorted-list-increasing-order/
+** TODO Activity selection :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: activity-selection
+:END:
+https://practice.geeksforgeeks.org/problems/n-meetings-in-one-room/0
+** TODO Job sequencing :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: job-sequencing
+:END:
+https://practice.geeksforgeeks.org/problems/job-sequencing-problem/0
+** TODO Huffman coding :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: huffman-coding
+:END:
+https://practice.geeksforgeeks.org/problems/huffman-encoding/0
+** TODO Water connection :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: water-connection
+:END:
+https://practice.geeksforgeeks.org/problems/water-connection-problem/0
+** DONE Fractional knapsack :done:greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: fractional-knapsack
+:END:
+https://practice.geeksforgeeks.org/problems/fractional-knapsack/0
+** TODO Find minimum number of coins :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-minimum-number-of-coins
+:END:
+https://practice.geeksforgeeks.org/problems/coin-piles/0
+** TODO Maximum trains for which stoppage can be provided :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-trains-for-which-stoppage-can-be-provided
+:END:
+https://www.geeksforgeeks.org/maximum-trains-stoppage-can-provided/
+** TODO Minimum platforms :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-platforms
+:END:
+https://practice.geeksforgeeks.org/problems/minimum-platforms/0
+** TODO Buy maximum stocks if I stocks can be bought on Ith day :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: buy-maximum-stocks-if-i-stocks-can-be-bought-on-ith-day
+:END:
+https://www.geeksforgeeks.org/buy-maximum-stocks-stocks-can-bought-th-day/
+** TODO Find the minimum and maximum amount to buy all N candies :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-minimum-and-maximum-amount-to-buy-all-n-candies
+:END:
+https://practice.geeksforgeeks.org/problems/shop-in-candy-store/0
+** TODO Minimum cost to cut a board into squares :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-cost-to-cut-a-board-into-squares
+:END:
+https://www.geeksforgeeks.org/minimum-cost-cut-board-squares/
+** TODO Check if it is possible to survive on island :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-it-is-possible-to-survive-on-island
+:END:
+https://www.geeksforgeeks.org/survival/
+** TODO Find maximum meetings in one room :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-maximum-meetings-in-one-room
+:END:
+https://www.geeksforgeeks.org/find-maximum-meetings-in-one-room/
+** TODO Maximum product subset of an array :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-product-subset-of-an-array
+:END:
+https://www.geeksforgeeks.org/maximum-product-subset-array/
+** TODO Maximize array sum after K negations :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximize-array-sum-after-k-negations
+:END:
+https://practice.geeksforgeeks.org/problems/maximize-sum-after-k-negations/0
+** TODO Maximize the sum of arr[i]*i :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximize-the-sum-of-arr-i-i
+:END:
+https://practice.geeksforgeeks.org/problems/maximize-arrii-of-an-array/0
+** TODO Maximum sum of absolute difference of an array :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-sum-of-absolute-difference-of-an-array
+:END:
+https://www.geeksforgeeks.org/maximum-sum-absolute-difference-array/
+** TODO Maximize sum of consecutive differences in a circular array :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximize-sum-of-consecutive-differences-in-a-circular-array
+:END:
+https://practice.geeksforgeeks.org/problems/swap-and-maximize/0
+** TODO Minimum sum of absolute difference of pairs of two arrays :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-sum-of-absolute-difference-of-pairs-of-two-arrays
+:END:
+https://www.geeksforgeeks.org/minimum-sum-absolute-difference-pairs-two-arrays/
+** TODO Shortest Job First (SJF) CPU scheduling :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: shortest-job-first--sjf--cpu-scheduling
+:END:
+https://www.geeksforgeeks.org/program-for-shortest-job-first-or-sjf-cpu-scheduling-set-1-non-preemptive/
+** TODO Least Recently Used (LRU) page replacement algorithm :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: least-recently-used--lru--page-replacement-algorithm
+:END:
+https://practice.geeksforgeeks.org/problems/page-faults-in-lru/0
+** TODO Smallest subset with sum greater than all other elements :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: smallest-subset-with-sum-greater-than-all-other-elements
+:END:
+https://www.geeksforgeeks.org/smallest-subset-sum-greater-elements/
+** TODO Defense of a kingdom :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: defense-of-a-kingdom
+:END:
+https://www.spoj.com/problems/DEFKIN/
+** TODO Die hard :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: die-hard
+:END:
+https://www.spoj.com/problems/DIEHARD/
+** TODO Wine trading in Gergovia :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: wine-trading-in-gergovia
+:END:
+https://www.spoj.com/problems/GERGOVIA/
+** TODO Picking up chicks :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: picking-up-chicks
+:END:
+https://www.spoj.com/problems/GCJ101BB/
+** TODO Chocolate :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: chocolate
+:END:
+https://www.spoj.com/problems/CHOCOLA/
+** TODO Arranging amplifiers :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: arranging-amplifiers
+:END:
+https://www.spoj.com/problems/ARRANGE/
+** TODO K centers :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: k-centers
+:END:
+https://www.geeksforgeeks.org/k-centers-problem-set-1-greedy-approximate-algorithm/
+** TODO Find smallest number with given number of digits and sum of digits :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-smallest-number-with-given-number-of-digits-and-sum-of-digits
+:END:
+https://practice.geeksforgeeks.org/problems/smallest-number5829/1
+** TODO Find maximum sum possible equal sum of three stacks :greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-maximum-sum-possible-equal-sum-of-three-stacks
+:END:
+https://www.geeksforgeeks.org/find-maximum-sum-possible-equal-sum-three-stacks/
+** TODO Rat in a maze :graph:backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rat-in-a-maze
+:END:
+https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1
+** TODO Printing all solutions to N-queens :backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: printing-all-solutions-to-n-queens
+:END:
+https://www.geeksforgeeks.org/printing-solutions-n-queen-problem/
+** TODO Remove invalid parentheses :backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: remove-invalid-parentheses
+:END:
+https://leetcode.com/problems/remove-invalid-parentheses/
+** TODO Sudoku solver :backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: sudoku-solver
+:END:
+https://practice.geeksforgeeks.org/problems/solve-the-sudoku/0
+** TODO M coloring :graph:backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: m-coloring
+:END:
+https://practice.geeksforgeeks.org/problems/m-coloring-problem/0
+** TODO Print all palindromic partitions of a string :backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: print-all-palindromic-partitions-of-a-string
+:END:
+https://www.geeksforgeeks.org/given-a-string-print-all-possible-palindromic-partition/
+** TODO Knight's tour :backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: knight-s-tour
+:END:
+https://www.geeksforgeeks.org/the-knights-tour-problem-backtracking-1/
+** TODO Tug of war :backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: tug-of-war
+:END:
+https://www.geeksforgeeks.org/tug-of-war/
+** TODO Find shortest safe route in a path with landmines :backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-shortest-safe-route-in-a-path-with-landmines
+:END:
+https://www.geeksforgeeks.org/find-shortest-safe-route-in-a-path-with-landmines/
+** TODO Combination sum :backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: combination-sum
+:END:
+https://practice.geeksforgeeks.org/problems/combination-sum/0
+** TODO Find maximum number possible by doing atmost K swaps :backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-maximum-number-possible-by-doing-atmost-k-swaps
+:END:
+https://practice.geeksforgeeks.org/problems/largest-number-in-k-swaps/0
+** TODO Print all permutations of a string :string:backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: print-all-permutations-of-a-string
+:END:
+https://practice.geeksforgeeks.org/problems/permutations-of-a-given-string/0
+** TODO Longest possible route in a matrix with hurdles :backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: longest-possible-route-in-a-matrix-with-hurdles
+:END:
+https://www.geeksforgeeks.org/longest-possible-route-in-a-matrix-with-hurdles/
+** TODO Print all possible paths from top left to bottom right of a MxN matrix :backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: print-all-possible-paths-from-top-left-to-bottom-right-of-a-mxn-matrix
+:END:
+https://www.geeksforgeeks.org/print-all-possible-paths-from-top-left-to-bottom-right-of-a-mxn-matrix/
+** TODO Partition a set into K subsets with equal sum :backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: partition-a-set-into-k-subsets-with-equal-sum
+:END:
+https://practice.geeksforgeeks.org/problems/partition-array-to-k-subsets/1
+** TODO Find the Kth permutation sequence of first N natural numbers :backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-kth-permutation-sequence-of-first-n-natural-numbers
+:END:
+https://www.geeksforgeeks.org/find-the-k-th-permutation-sequence-of-first-n-natural-numbers/
+** DONE Implement stack from scratch :done:st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-stack-from-scratch
+:END:
+https://www.tutorialspoint.com/javaexamples/data_stack.htm
+** DONE Implement queue from scratch :done:st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-queue-from-scratch
+:END:
+https://www.geeksforgeeks.org/queue-set-1introduction-and-array-implementation/
+** DONE Implement 2 stack in an array :done:st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-2-stack-in-an-array
+:END:
+https://practice.geeksforgeeks.org/problems/implement-two-stacks-in-an-array/1
+** TODO Find the middle element of a stack :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-middle-element-of-a-stack
+:END:
+https://www.geeksforgeeks.org/design-a-stack-with-find-middle-operation/
+** TODO Implement N stacks in an array :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-n-stacks-in-an-array
+:END:
+https://www.geeksforgeeks.org/efficiently-implement-k-stacks-single-array/
+** TODO Reverse a string using stack :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: reverse-a-string-using-stack
+:END:
+https://practice.geeksforgeeks.org/problems/reverse-a-string-using-stack/1
+** TODO Design a stack that supports getmin() in O(1) time and O(1) extra space :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: design-a-stack-that-supports-getmin-in-o--1--time-and-o--1--extra-space
+:END:
+https://practice.geeksforgeeks.org/problems/special-stack/1
+** TODO Find the next greater element :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-next-greater-element
+:END:
+https://practice.geeksforgeeks.org/problems/next-larger-element/0
+** TODO Celebrity :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: celebrity
+:END:
+https://practice.geeksforgeeks.org/problems/the-celebrity-problem/1
+** TODO Arithmetic expression evaluation :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: arithmetic-expression-evaluation
+:END:
+https://www.geeksforgeeks.org/arithmetic-expression-evalution/
+** TODO Evaluation of postfix expression :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: evaluation-of-postfix-expression
+:END:
+https://practice.geeksforgeeks.org/problems/evaluation-of-postfix-expression/0
+** TODO Implement a method to insert an element at its bottom without using any other data structure :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-a-method-to-insert-an-element-at-its-bottom-without-using-any-other-data-structure
+:END:
+https://stackoverflow.com/questions/45130465/inserting-at-the-end-of-stack
+** TODO Reverse a stack using recursion :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: reverse-a-stack-using-recursion
+:END:
+https://www.geeksforgeeks.org/reverse-a-stack-using-recursion/
+** TODO Sort a stack using recursion :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: sort-a-stack-using-recursion
+:END:
+https://practice.geeksforgeeks.org/problems/sort-a-stack/1
+** TODO Merge overlapping intervals :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: merge-overlapping-intervals
+:END:
+https://practice.geeksforgeeks.org/problems/overlapping-intervals/0
+** TODO Largest rectangular area in histogram :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: largest-rectangular-area-in-histogram
+:END:
+https://practice.geeksforgeeks.org/problems/maximum-rectangular-area-in-a-histogram/0
+** TODO Length of the longest valid substring :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: length-of-the-longest-valid-substring
+:END:
+https://practice.geeksforgeeks.org/problems/valid-substring0624/1
+** TODO Expression contains redundant bracket :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: expression-contains-redundant-bracket
+:END:
+https://www.geeksforgeeks.org/expression-contains-redundant-bracket-not/
+** TODO Implement stack using queue :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-stack-using-queue
+:END:
+https://practice.geeksforgeeks.org/problems/stack-using-two-queues/1
+** TODO Implement stack using deque :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-stack-using-deque
+:END:
+https://www.geeksforgeeks.org/implement-stack-queue-using-deque/
+** TODO Stack permutations :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: stack-permutations
+:END:
+https://www.geeksforgeeks.org/stack-permutations-check-if-an-array-is-stack-permutation-of-other/
+** TODO Implement queue using stack :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-queue-using-stack
+:END:
+https://practice.geeksforgeeks.org/problems/queue-using-two-stacks/1
+** TODO Implement N queue in an array :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-n-queue-in-an-array
+:END:
+https://www.geeksforgeeks.org/efficiently-implement-k-queues-single-array/
+** TODO Implement a circular queue :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-a-circular-queue
+:END:
+https://www.geeksforgeeks.org/circular-queue-set-1-introduction-array-implementation/
+** TODO LRU cache implementation :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: lru-cache-implementation
+:END:
+https://practice.geeksforgeeks.org/problems/lru-cache/1
+** TODO Reverse a queue using recursion :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: reverse-a-queue-using-recursion
+:END:
+https://practice.geeksforgeeks.org/problems/queue-reversal/1
+** TODO Reverse the first K elements of a queue :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: reverse-the-first-k-elements-of-a-queue
+:END:
+https://practice.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1
+** TODO Interleave the first half of the queue with second half :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: interleave-the-first-half-of-the-queue-with-second-half
+:END:
+https://www.geeksforgeeks.org/interleave-first-half-queue-second-half/
+** TODO Find the first circular tour that visits all petrol pumps :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-first-circular-tour-that-visits-all-petrol-pumps
+:END:
+https://practice.geeksforgeeks.org/problems/circular-tour/1
+** TODO Minimum time required to rot all oranges :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-time-required-to-rot-all-oranges
+:END:
+https://practice.geeksforgeeks.org/problems/rotten-oranges/0
+** TODO Distance of nearest cell having 1 in a binary matrix :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: distance-of-nearest-cell-having-1-in-a-binary-matrix
+:END:
+https://practice.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1/0
+** TODO First negative integer in every window of size K :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: first-negative-integer-in-every-window-of-size-k
+:END:
+https://practice.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k/0
+** TODO Check if all levels of two trees are anagrams :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-all-levels-of-two-trees-are-anagrams
+:END:
+https://www.geeksforgeeks.org/check-if-all-levels-of-two-trees-are-anagrams-or-not/
+** TODO Sum of minimum and maximum elements of all subarrays of size K :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: sum-of-minimum-and-maximum-elements-of-all-subarrays-of-size-k
+:END:
+https://www.geeksforgeeks.org/sum-minimum-maximum-elements-subarrays-size-k/
+** TODO Minimum sum of squares of character counts in a given string after removing K characters :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-sum-of-squares-of-character-counts-in-a-given-string-after-removing-k-characters
+:END:
+https://practice.geeksforgeeks.org/problems/game-with-string/0
+** TODO Next smaller element :st_q:
+:PROPERTIES:
+:EXPORT_FILE_NAME: next-smaller-element
+:END:
+https://www.geeksforgeeks.org/next-smaller-element/
+** TODO Implement a maxheap/minheap using arrays and recursion :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-a-maxheap-minheap-using-arrays-and-recursion
+:END:
+https://www.geeksforgeeks.org/building-heap-from-array/
+** TODO Heap sort :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: heap-sort
+:END:
+https://www.geeksforgeeks.org/heap-sort/
+** TODO Maximum of all subarrays of size K :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-of-all-subarrays-of-size-k
+:END:
+https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/
+** TODO Kth largest element in an array :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: kth-largest-element-in-an-array
+:END:
+https://practice.geeksforgeeks.org/problems/k-largest-elements4206/1
+** TODO Kth smallest and largest element in an unsorted array :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: kth-smallest-and-largest-element-in-an-unsorted-array
+:END:
+https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array/
+** TODO [#A] Merge K sorted arrays :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: merge-k-sorted-arrays
+:END:
+https://practice.geeksforgeeks.org/problems/merge-k-sorted-arrays/1
+** TODO Merge 2 binary max heaps :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: merge-2-binary-max-heaps
+:END:
+https://practice.geeksforgeeks.org/problems/merge-two-binary-max-heap/0
+** TODO Kth largest sum continuous subarrays :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: kth-largest-sum-continuous-subarrays
+:END:
+https://www.geeksforgeeks.org/k-th-largest-sum-contiguous-subarray/
+** TODO Reorganize strings :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: reorganize-strings
+:END:
+https://leetcode.com/problems/reorganize-string/
+** TODO [#A] Merge K sorted linked lists :ll:heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: merge-k-sorted-linked-lists
+:END:
+https://practice.geeksforgeeks.org/problems/merge-k-sorted-linked-lists/1
+** TODO Smallest range in K lists :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: smallest-range-in-k-lists
+:END:
+https://practice.geeksforgeeks.org/problems/find-smallest-range-containing-elements-from-k-lists/1
+** TODO Median in a stream of integers :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: median-in-a-stream-of-integers
+:END:
+https://practice.geeksforgeeks.org/problems/find-median-in-a-stream/0
+** TODO Check if a binary tree is heap :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-a-binary-tree-is-heap
+:END:
+https://practice.geeksforgeeks.org/problems/is-binary-tree-heap/1
+** TODO Connect N ropes with minimum cost :heap:greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: connect-n-ropes-with-minimum-cost
+:END:
+https://practice.geeksforgeeks.org/problems/minimum-cost-of-ropes/0
+** TODO Convert BST to min heap :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: convert-bst-to-min-heap
+:END:
+https://www.geeksforgeeks.org/convert-bst-min-heap/
+** TODO Convert min heap to max heap :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: convert-min-heap-to-max-heap
+:END:
+https://www.geeksforgeeks.org/convert-min-heap-to-max-heap/
+** TODO Minimum sum of two numbers formed from digits of an array :heap:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-sum-of-two-numbers-formed-from-digits-of-an-array
+:END:
+https://practice.geeksforgeeks.org/problems/minimum-sum4058/1
+** TODO Create and print a graph :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: create-and-print-a-graph
+:END:
+https://1drv.ms/t/s!AqTOHFO77CqEiRua06v1PATyiFg5
+** TODO Implement BFS :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-bfs
+:END:
+https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1
+** TODO Implement DFS :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-dfs
+:END:
+https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
+** TODO Detect cycle in directed graph using BFS/DFS :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: detect-cycle-in-directed-graph-using-bfs-dfs
+:END:
+https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+** TODO Detect cycle in undirected graph using BFS/DFS :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: detect-cycle-in-undirected-graph-using-bfs-dfs
+:END:
+https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
+** TODO Minimum step by knight :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-step-by-knight
+:END:
+https://practice.geeksforgeeks.org/problems/steps-by-knight/0
+** TODO Flood fill algo :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: flood-fill-algo
+:END:
+https://leetcode.com/problems/flood-fill/
+** TODO Clone a graph :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: clone-a-graph
+:END:
+https://leetcode.com/problems/clone-graph/
+** TODO Making wired connections :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: making-wired-connections
+:END:
+https://leetcode.com/problems/number-of-operations-to-make-network-connected/
+** TODO Word ladder :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: word-ladder
+:END:
+https://leetcode.com/problems/word-ladder/
+** TODO Dijkstra algo :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: dijkstra-algo
+:END:
+https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
+** TODO Implement topological sort :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-topological-sort
+:END:
+https://practice.geeksforgeeks.org/problems/topological-sort/1
+** TODO Minimum time taken by each job to be completed given by a directed acyclic graph :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-time-taken-by-each-job-to-be-completed-given-by-a-directed-acyclic-graph
+:END:
+https://www.geeksforgeeks.org/minimum-time-taken-by-each-job-to-be-completed-given-by-a-directed-acyclic-graph/
+** TODO Find whether it is possible to finish all tasks from given dependencies :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-whether-it-is-possible-to-finish-all-tasks-from-given-dependencies
+:END:
+https://www.geeksforgeeks.org/find-whether-it-is-possible-to-finish-all-tasks-or-not-from-given-dependencies/
+** TODO Find the number of islands :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-number-of-islands
+:END:
+https://practice.geeksforgeeks.org/problems/find-the-number-of-islands/1
+** TODO Given a sorted dictionary of an alien language, find order of characters :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: given-a-sorted-dictionary-of-an-alien-language-find-order-of-characters
+:END:
+https://practice.geeksforgeeks.org/problems/alien-dictionary/1
+** TODO Implement Kruksal's algorithm :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-kruksal-s-algorithm
+:END:
+https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/
+** TODO Implement Prim's algorithm :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-prim-s-algorithm
+:END:
+https://www.geeksforgeeks.org/prims-minimum-spanning-tree-mst-greedy-algo-5/
+** TODO Total number of spanning tree in a graph :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: total-number-of-spanning-tree-in-a-graph
+:END:
+https://www.geeksforgeeks.org/total-number-spanning-trees-graph/
+** TODO Implement Bellman Ford algorithm :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-bellman-ford-algorithm
+:END:
+https://practice.geeksforgeeks.org/problems/negative-weight-cycle/0
+** TODO Implement Floyd Warshall algorithm :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-floyd-warshall-algorithm
+:END:
+https://practice.geeksforgeeks.org/problems/implementing-floyd-warshall/0
+** TODO Travelling salesman :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: travelling-salesman
+:END:
+https://www.geeksforgeeks.org/travelling-salesman-problem-set-1/
+** TODO Graph colouring :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: graph-colouring
+:END:
+https://www.geeksforgeeks.org/graph-coloring-applications/
+** TODO Snake and ladders :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: snake-and-ladders
+:END:
+https://leetcode.com/problems/snakes-and-ladders/
+** TODO Find bridge in a graph :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-bridge-in-a-graph
+:END:
+https://www.geeksforgeeks.org/bridge-in-a-graph/
+** TODO Count strongly connected components (Kosaraju algorithm) :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-strongly-connected-components--kosaraju-algorithm
+:END:
+https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
+** TODO Check if graph is bipartite :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-graph-is-bipartite
+:END:
+https://www.geeksforgeeks.org/bipartite-graph/
+** TODO Detect negative cycle in a graph :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: detect-negative-cycle-in-a-graph
+:END:
+https://www.geeksforgeeks.org/detect-negative-cycle-graph-bellman-ford/
+** TODO Longest path in a directed acyclic graph :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: longest-path-in-a-directed-acyclic-graph
+:END:
+https://www.geeksforgeeks.org/find-longest-path-directed-acyclic-graph/
+** TODO Journey to the moon :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: journey-to-the-moon
+:END:
+https://www.hackerrank.com/challenges/journey-to-the-moon/problem
+** TODO Cheapest flights within K stops :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: cheapest-flights-within-k-stops
+:END:
+https://leetcode.com/problems/cheapest-flights-within-k-stops/description/
+** TODO Oliver and the game :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: oliver-and-the-game
+:END:
+https://www.hackerearth.com/practice/algorithms/graphs/topological-sort/practice-problems/algorithm/oliver-and-the-game-3/
+** TODO Water jug using BFS :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: water-jug-using-bfs
+:END:
+https://www.geeksforgeeks.org/water-jug-problem-using-bfs/
+** TODO Minimum edges to reverse o make path from source to destination :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-edges-to-reverse-o-make-path-from-source-to-destination
+:END:
+https://www.geeksforgeeks.org/minimum-edges-reverse-make-path-source-destination/
+** TODO Paths to travel each nodes using each edge :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: paths-to-travel-each-nodes-using-each-edge
+:END:
+https://www.geeksforgeeks.org/paths-travel-nodes-using-edgeseven-bridges-konigsberg/
+** TODO Vertex cover :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: vertex-cover
+:END:
+https://www.geeksforgeeks.org/vertex-cover-problem-set-1-introduction-approximate-algorithm-2/
+** TODO Chinese postman or route inspection :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: chinese-postman-or-route-inspection
+:END:
+https://www.geeksforgeeks.org/chinese-postman-route-inspection-set-1-introduction/
+** TODO Number of triangles in a directed and undirected graph :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: number-of-triangles-in-a-directed-and-undirected-graph
+:END:
+https://www.geeksforgeeks.org/number-of-triangles-in-directed-and-undirected-graphs/
+** TODO Minimise the cashflow in a set of friends :graph:greedy:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimise-the-cashflow-in-a-set-of-friends
+:END:
+https://www.geeksforgeeks.org/minimize-cash-flow-among-given-set-friends-borrowed-money/
+** TODO Two clique :graph:
+:PROPERTIES:
+:EXPORT_FILE_NAME: two-clique
+:END:
+https://www.geeksforgeeks.org/two-clique-problem-check-graph-can-divided-two-cliques/
+** TODO Construct a trie from scratch :trie:
+:PROPERTIES:
+:EXPORT_FILE_NAME: construct-a-trie-from-scratch
+:END:
+https://www.geeksforgeeks.org/trie-insert-and-search/
+** TODO Find shortest unique prefix for every word in a given list :trie:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-shortest-unique-prefix-for-every-word-in-a-given-list
+:END:
+https://www.geeksforgeeks.org/find-all-shortest-unique-prefixes-to-represent-each-word-in-a-given-list/
+** TODO Implement a phone directory :trie:
+:PROPERTIES:
+:EXPORT_FILE_NAME: implement-a-phone-directory
+:END:
+https://practice.geeksforgeeks.org/problems/phone-directory/0
+** TODO Print unique rows in a given boolean matrix :trie:
+:PROPERTIES:
+:EXPORT_FILE_NAME: print-unique-rows-in-a-given-boolean-matrix
+:END:
+https://practice.geeksforgeeks.org/problems/unique-rows-in-boolean-matrix/1
+** DONE Coin change :done:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: coin-change
+:END:
+https://practice.geeksforgeeks.org/problems/coin-change2448/1
+** DONE Knapsack :done:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: knapsack
+:END:
+https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem/0
+** TODO Binomial coefficient :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: binomial-coefficient
+:END:
+https://practice.geeksforgeeks.org/problems/ncr1019/1
+** TODO Permutation coefficient :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: permutation-coefficient
+:END:
+https://www.geeksforgeeks.org/permutation-coefficient/
+** TODO Nth catalan number :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: nth-catalan-number
+:END:
+https://www.geeksforgeeks.org/program-nth-catalan-number/
+** TODO Matrix chain multiplication :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: matrix-chain-multiplication
+:END:
+https://www.geeksforgeeks.org/matrix-chain-multiplication-dp-8/
+** TODO Subset sum aka Partitions :dp:backtracking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: subset-sum-aka-partitions
+:END:
+https://practice.geeksforgeeks.org/problems/subset-sum-problem2014/1
+** TODO Friends pairing :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: friends-pairing
+:END:
+https://practice.geeksforgeeks.org/problems/friends-pairing-problem5425/1
+** TODO Gold mine :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: gold-mine
+:END:
+https://www.geeksforgeeks.org/gold-mine-problem/
+** TODO Assembly line scheduling :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: assembly-line-scheduling
+:END:
+https://www.geeksforgeeks.org/assembly-line-scheduling-dp-34/
+** TODO Painting the fence :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: painting-the-fence
+:END:
+https://practice.geeksforgeeks.org/problems/painting-the-fence3727/1
+** DONE Maximize the cut segments :done:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximize-the-cut-segments
+:END:
+https://practice.geeksforgeeks.org/problems/cutted-segments/0
+** DONE Longest common subsequence :done:string:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: longest-common-subsequence
+:END:
+https://practice.geeksforgeeks.org/problems/longest-common-subsequence/0
+** DONE Longest repeated subsequence :done:string:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: longest-repeated-subsequence
+:END:
+https://practice.geeksforgeeks.org/problems/longest-repeating-subsequence/0
+** TODO Longest increasing subsequence :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: longest-increasing-subsequence
+:END:
+https://practice.geeksforgeeks.org/problems/longest-increasing-subsequence/0
+** TODO Space optimized solution of LCS :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: space-optimized-solution-of-lcs
+:END:
+https://www.geeksforgeeks.org/space-optimized-solution-lcs/
+** TODO LCS of three strings :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: lcs-of-three-strings
+:END:
+https://practice.geeksforgeeks.org/problems/lcs-of-three-strings/0
+** TODO Maximum sum increasing subsequence :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-sum-increasing-subsequence
+:END:
+https://practice.geeksforgeeks.org/problems/maximum-sum-increasing-subsequence4749/1
+** TODO Count all subsequences having product less than K :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-all-subsequences-having-product-less-than-k
+:END:
+https://www.geeksforgeeks.org/count-subsequences-product-less-k/
+** TODO Longest subsequence such that difference between adjacent is one :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: longest-subsequence-such-that-difference-between-adjacent-is-one
+:END:
+https://practice.geeksforgeeks.org/problems/longest-subsequence-such-that-difference-between-adjacents-is-one4724/1
+** TODO Maximum subsequence sum such that no three are consecutive :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-subsequence-sum-such-that-no-three-are-consecutive
+:END:
+https://www.geeksforgeeks.org/maximum-subsequence-sum-such-that-no-three-are-consecutive/
+** TODO Egg dropping :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: egg-dropping
+:END:
+https://practice.geeksforgeeks.org/problems/egg-dropping-puzzle/0
+** TODO Maximum length chain of pairs :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-length-chain-of-pairs
+:END:
+https://practice.geeksforgeeks.org/problems/max-length-chain/1
+** TODO Maximum size square sub-matrix with all 1s :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-size-square-sub-matrix-with-all-1s
+:END:
+https://practice.geeksforgeeks.org/problems/largest-square-formed-in-a-matrix/0
+** TODO Maximum sum of pairs with specific difference :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-sum-of-pairs-with-specific-difference
+:END:
+https://practice.geeksforgeeks.org/problems/pairs-with-specific-difference/0
+** TODO Min cost path :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: min-cost-path
+:END:
+https://practice.geeksforgeeks.org/problems/path-in-matrix3805/1
+** TODO Maximum difference of zeros and ones in binary string :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-difference-of-zeros-and-ones-in-binary-string
+:END:
+https://practice.geeksforgeeks.org/problems/maximum-difference-of-zeros-and-ones-in-binary-string4111/1
+** TODO Minimum cost to fill given weight in a bag :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-cost-to-fill-given-weight-in-a-bag
+:END:
+https://practice.geeksforgeeks.org/problems/minimum-cost-to-fill-given-weight-in-a-bag1956/1
+** TODO Minimum removals from array to make max - min <= K :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: minimum-removals-from-array-to-make-max-min-k
+:END:
+https://www.geeksforgeeks.org/minimum-removals-array-make-max-min-k/
+** DONE Longest common substring :done:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: longest-common-substring
+:END:
+https://practice.geeksforgeeks.org/problems/longest-common-substring/0
+** TODO Count number of ways to reach a given score in a game :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-number-of-ways-to-reach-a-given-score-in-a-game
+:END:
+https://practice.geeksforgeeks.org/problems/reach-a-given-score/0
+** TODO Count balanced binary trees of height h :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-balanced-binary-trees-of-height-h
+:END:
+https://practice.geeksforgeeks.org/problems/bbt-counter/0
+** TODO Smallest sum contiguous subarray :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: smallest-sum-contiguous-subarray
+:END:
+https://www.geeksforgeeks.org/smallest-sum-contiguous-subarray/
+** DONE Unbounded knapsack :done:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: unbounded-knapsack
+:END:
+https://practice.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1
+** TODO Largest independent set :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: largest-independent-set
+:END:
+https://www.geeksforgeeks.org/largest-independent-set-problem-dp-26/
+** DONE Longest palindromic subsequence :done:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: longest-palindromic-subsequence
+:END:
+https://leetcode.com/problems/longest-palindromic-subsequence/
+** TODO Longest palindromic substring :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: longest-palindromic-substring
+:END:
+https://leetcode.com/problems/longest-palindromic-substring/
+** TODO Longest alternating subsequence :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: longest-alternating-subsequence
+:END:
+https://practice.geeksforgeeks.org/problems/longest-alternating-subsequence/0
+** TODO Weighted job scheduling :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: weighted-job-scheduling
+:END:
+https://www.geeksforgeeks.org/weighted-job-scheduling/
+** TODO Coin game winner where every player has three choices :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: coin-game-winner-where-every-player-has-three-choices
+:END:
+https://www.geeksforgeeks.org/coin-game-winner-every-player-three-choices/
+** TODO [#A] Count derangements :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-derangements
+:END:
+https://www.geeksforgeeks.org/count-derangements-permutation-such-that-no-element-appears-in-its-original-position/
+** TODO [#A] Maximum profit by buying and selling a share at most twice :array:dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-profit-by-buying-and-selling-a-share-at-most-twice
+:END:
+https://www.geeksforgeeks.org/maximum-profit-by-buying-and-selling-a-share-at-most-twice/
+** TODO Optimal strategy for a game :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: optimal-strategy-for-a-game
+:END:
+https://practice.geeksforgeeks.org/problems/optimal-strategy-for-a-game/0
+** TODO Optimal binary search tree :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: optimal-binary-search-tree
+:END:
+https://www.geeksforgeeks.org/optimal-binary-search-tree-dp-24/
+** TODO Palindrome partitioning :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: palindrome-partitioning
+:END:
+https://practice.geeksforgeeks.org/problems/palindromic-patitioning4845/1
+** TODO [#A] Mobile numeric keypad :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: mobile-numeric-keypad
+:END:
+https://practice.geeksforgeeks.org/problems/mobile-numeric-keypad5456/1
+** TODO Boolean parenthesization :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: boolean-parenthesization
+:END:
+https://practice.geeksforgeeks.org/problems/boolean-parenthesization/0
+** TODO Largest rectangular sub-matrix whose sum is 0 :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: largest-rectangular-sub-matrix-whose-sum-is-0
+:END:
+https://www.geeksforgeeks.org/largest-rectangular-sub-matrix-whose-sum-0/
+** TODO [#A] Largest area rectangular sub-matrix with equal number of 1s and 0s :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: largest-area-rectangular-sub-matrix-with-equal-number-of-1s-and-0s
+:END:
+https://www.geeksforgeeks.org/largest-area-rectangular-sub-matrix-equal-number-1s-0s/
+** TODO Maximum sum rectangle in a 2D matrix :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-sum-rectangle-in-a-2d-matrix
+:END:
+https://practice.geeksforgeeks.org/problems/maximum-sum-rectangle/0
+** TODO Maximum profit by buying and selling a share at most K times :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-profit-by-buying-and-selling-a-share-at-most-k-times
+:END:
+https://practice.geeksforgeeks.org/problems/maximum-profit4657/1
+** TODO Find if a string is interleaved of two other strings :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-if-a-string-is-interleaved-of-two-other-strings
+:END:
+https://practice.geeksforgeeks.org/problems/interleaved-strings/1
+** TODO Maximum length of pair chain :dp:
+:PROPERTIES:
+:EXPORT_FILE_NAME: maximum-length-of-pair-chain
+:END:
+https://leetcode.com/problems/maximum-length-of-pair-chain/
+** DONE Count set bits in an integer :done:bit:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-set-bits-in-an-integer
+:END:
+https://practice.geeksforgeeks.org/problems/set-bits0143/1
+** TODO Find the two non-repeating elements in an array of repeating elements :bit:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-the-two-non-repeating-elements-in-an-array-of-repeating-elements
+:END:
+https://practice.geeksforgeeks.org/problems/finding-the-numbers0215/1
+** TODO Count number of bits to be flipped to convert A to B :bit:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-number-of-bits-to-be-flipped-to-convert-a-to-b
+:END:
+https://practice.geeksforgeeks.org/problems/bit-difference/0
+** TODO Count total set bits in all numbers from 1 to N :bit:
+:PROPERTIES:
+:EXPORT_FILE_NAME: count-total-set-bits-in-all-numbers-from-1-to-n
+:END:
+https://practice.geeksforgeeks.org/problems/count-total-set-bits/0
+** TODO Check if a number is a power of 2 :bit:
+:PROPERTIES:
+:EXPORT_FILE_NAME: check-if-a-number-is-a-power-of-2
+:END:
+https://practice.geeksforgeeks.org/problems/power-of-2/0
+** TODO Find position of the only set bit :bit:
+:PROPERTIES:
+:EXPORT_FILE_NAME: find-position-of-the-only-set-bit
+:END:
+https://practice.geeksforgeeks.org/problems/find-position-of-set-bit3706/1
+** TODO Copy set bits in a range :bit:
+:PROPERTIES:
+:EXPORT_FILE_NAME: copy-set-bits-in-a-range
+:END:
+https://www.geeksforgeeks.org/copy-set-bits-in-a-range/
+** TODO Divide two integers without using multiplication, division or mod operator :bit:
+:PROPERTIES:
+:EXPORT_FILE_NAME: divide-two-integers-without-using-multiplication-division-or-mod-operator
+:END:
+https://www.geeksforgeeks.org/divide-two-integers-without-using-multiplication-division-mod-operator/
+** TODO Calculate square of a number without using *, / and pow() :bit:
+:PROPERTIES:
+:EXPORT_FILE_NAME: calculate-square-of-a-number-without-using-and-pow
+:END:
+https://www.geeksforgeeks.org/calculate-square-of-a-number-without-using-and-pow/
+** TODO Power set :bit:
+:PROPERTIES:
+:EXPORT_FILE_NAME: power-set
+:END:
+https://practice.geeksforgeeks.org/problems/power-set4302/1
+
+# Local Variables:
+# org-hugo-section: "dsa"
+# End:

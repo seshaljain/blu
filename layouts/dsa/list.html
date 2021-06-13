@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <div class="posts">
+    {{ range .Pages }}
+      <div class="post on-list {{if in .Params.Tags "done" }}done{{ end }}">
+        <h1 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h1>
+        {{ if .Params.tags }}
+          <span class="post-tags">
+            {{ range .Params.tags }}
+              {{ if (ne . "done") }}
+              <a href="{{ (urlize (printf "tags/%s" . )) | absURL }}/">#{{ . }}</a>&nbsp;
+              {{ end }}
+            {{ end }}
+          </span>
+        {{ end }}
+      </div>
+    {{ end }}
+    {{ partial "pagination.html" . }}
+  </div>
+{{ end }}
