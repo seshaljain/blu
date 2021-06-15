@@ -1,6 +1,6 @@
 #+title: DSA Mastersheet
 
-* [52/416]
+* [53/416]
 ** DSA Mastersheet
 :PROPERTIES:
 :EXPORT_FILE_NAME: _index
@@ -2541,16 +2541,50 @@ https://practice.geeksforgeeks.org/problems/minimum-sum4058/1
 :EXPORT_FILE_NAME: create-and-print-a-graph
 :END:
 https://1drv.ms/t/s!AqTOHFO77CqEiRua06v1PATyiFg5
-** TODO Implement BFS :graph:
+** DONE Implement BFS :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-bfs
 :END:
 https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1
+
+GfG has incorrect testcases. Always check for multiple components, which
+requires the commented outer =visited= loop.
+#+begin_src cpp
+vector<int> bfsOfGraph(int V, vector<int> adj[]) {
+  vector<bool> visited(V, false);
+  vector<int> v;
+  deque<int> q;
+
+  // for (int i = 0; i < V; i++) {
+  // if (!visited[i]) {
+  int i = 0;
+  visited[i] = true;
+  q.push_back(i);
+
+  vector<int>::iterator it;
+
+  while (!q.empty()) {
+    int node = q.front();
+    q.pop_front();
+    v.push_back(node);
+
+    for (it = (adj[node]).begin(); it != (adj[node]).end(); ++it)
+      if (!visited[*it]) {
+        visited[*it] = true;
+        q.push_back(*it);
+      }
+  }
+  // }
+  // }
+  return v;
+}
+#+end_src
+
 ** TODO Implement DFS :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-dfs
 :END:
-https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
+https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1
 ** TODO Detect cycle in directed graph using BFS/DFS :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: detect-cycle-in-directed-graph-using-bfs-dfs
