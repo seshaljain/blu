@@ -24,18 +24,83 @@ void rvereseArray(int arr[], int start, int end) {
   }
 }
 #+end_src
-** TODO Find the maximum and minimum element in an array :array:
+** DONE Find the maximum and minimum element in an array :array:done:
+CLOSED: [2021-06-16 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-maximum-and-minimum-element-in-an-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
-** TODO Find the Kth max and min element in an array :array:
+
+Divide and conquer
+#+begin_src cpp
+struct Pair {
+  int min;
+  int max;
+};
+
+struct Pair getMinMax(int arr[], int low, int high) {
+  struct Pair minmax, mml, mmr;
+  int mid;
+
+  if (low == high) {
+    minmax.max = arr[low];
+    minmax.min = arr[low];
+    return minmax;
+  }
+
+  if (high - low == 1) {
+    if (arr[low] > arr[high]) {
+      minmax.max = arr[low];
+      minmax.min = arr[high];
+    } else {
+      minmax.max = arr[high];
+      minmax.min = arr[low];
+    }
+    return minmax;
+  }
+
+  mid = low + (high - low) / 2;
+  mml = getMinMax(arr, low, mid);
+  mmr = getMinMax(arr, mid + 1, high);
+
+  minmax.min = min(mml.min, mmr.min);
+  minmax.max = max(mml.max, mmr.max);
+
+  return minmax;
+}
+
+// struct Pair minmax = getMinMax(arr, 0, N - 1);
+#+end_src
+
+** DONE Find the Kth max and min element in an array :array:done:
+CLOSED: [2021-06-16 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-kth-max-and-min-element-in-an-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/kth-smallest-element/0
+
+1. Make priority queue of size =k=, insert first =k= elements from the array
+2. For the remaining elements, pop and insert into pq if element is smaller than top
+
+#+begin_src cpp
+int kthSmallest(int arr[], int l, int r, int k) {
+  priority_queue<int, vector<int>> pq(arr, arr + k);
+
+  int n = r - l + 1;
+
+  for (int i = k; i < n; i++) {
+    if (arr[i] < pq.top()) {
+      pq.pop();
+      pq.push(arr[i]);
+    }
+  }
+
+  return pq.top();
+}
+#+end_src
+
 ** DONE Sort an array of 0s, 1s and 2s :done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: sort-an-array-of-0s-1s-and-2s
@@ -307,18 +372,64 @@ bool subArrayExists(int arr[], int n) {
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/factorials-of-large-numbers/0
-** TODO Find maximum product subarray :array:
+** DONE Find maximum product subarray :array:
+CLOSED: [2021-06-16 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-maximum-product-subarray
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/maximum-product-subarray3604/1
-** TODO Find longest consecutive subsequence :array:
+
+#+begin_src cpp
+int maxProduct(vector<int> &nums) {
+  int n = nums.size();
+  int maxP = nums[0], currMaxP = nums[0], currMinP = nums[0],
+      prevMinP = nums[0], prevMaxP = nums[0];
+
+  for (int i = 1; i < n; i++) {
+    currMinP = min({prevMinP * nums[i], prevMaxP * nums[i], nums[i]});
+    currMaxP = max({prevMinP * nums[i], prevMaxP * nums[i], nums[i]});
+    maxP = max(maxP, currMaxP);
+    prevMinP = currMinP;
+    prevMaxP = currMaxP;
+  }
+
+  return maxP;
+}
+#+end_src
+
+** DONE Find longest consecutive subsequence :array:done:
+CLOSED: [2021-06-16 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-longest-consecutive-subsequence
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-https://practice.geeksforgeeks.org/problems/longest-consecutive-subsequence/0
+https://leetcode.com/problems/longest-consecutive-sequence/submissions/
+
+#+begin_src cpp
+class Solution {
+public:
+  int longestConsecutive(vector<int> &nums) {
+    set<int> st(nums.begin(), nums.end());
+    int maxLength = 0;
+
+    for (auto it : st) {
+      if (st.find(it - 1) == st.end()) {
+        int currentNum = it;
+        int currLength = 1;
+        while (st.find(currentNum + 1) != st.end()) {
+          currentNum += 1;
+          currLength += 1;
+        }
+
+        maxLength = max(maxLength, currLength);
+      }
+    }
+    return maxLength;
+  }
+};
+#+end_src
+
 ** TODO Given an array of size N and a number K, find all elements that appear more than N/K times :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: given-an-array-of-size-n-and-a-number-k-find-all-elements-that-appear-more-than-n-k-times
@@ -930,24 +1041,30 @@ int minFlips(string S) {
 https://practice.geeksforgeeks.org/problems/second-most-repeated-string-in-a-sequence/0
 
 #+begin_src cpp
-int minFlips(string S) {
-  int zeroFlipCount = 0, oneFlipCount = 0;
-  char expected = '0';
-  for (int i = 0; i < S.length(); i++) {
-    if (S[i] != expected)
-      zeroFlipCount++;
+string secFrequent(string arr[], int n) {
+  map<string, int> mp;
 
-    expected = (expected == '0') ? '1' : '0';
-  }
-  expected = '1';
-  for (int i = 0; i < S.length(); i++) {
-    if (S[i] != expected)
-      oneFlipCount++;
-
-    expected = (expected == '1') ? '0' : '1';
+  for (int i = 0; i < n; i++) {
+    mp[arr[i]]++;
   }
 
-  return min(zeroFlipCount, oneFlipCount);
+  int maxFreq = -1, notMaxFreq = -1;
+  string ans = "";
+
+  for (auto it : mp) {
+    if (it.second > maxFreq) {
+      notMaxFreq = maxFreq;
+      maxFreq = it.second;
+    } else if (it.second > notMaxFreq && it.second != maxFreq) {
+      notMaxFreq = it.second;
+    }
+  }
+
+  for (auto it : mp) {
+    if (it.second == notMaxFreq) {
+      return it.first;
+    }
+  }
 }
 #+end_src
 ** TODO Minimum number of swaps for bracket balancing :string:
@@ -1000,24 +1117,21 @@ https://practice.geeksforgeeks.org/problems/smallest-window-in-a-string-containi
 https://practice.geeksforgeeks.org/problems/consecutive-elements/0
 
 #+begin_src cpp
-int minFlips(string S) {
-  int zeroFlipCount = 0, oneFlipCount = 0;
-  char expected = '0';
-  for (int i = 0; i < S.length(); i++) {
-    if (S[i] != expected)
-      zeroFlipCount++;
+string removeConsecutiveCharacter(string S) {
+  int n = S.size();
+  string ans = "";
 
-    expected = (expected == '0') ? '1' : '0';
-  }
-  expected = '1';
-  for (int i = 0; i < S.length(); i++) {
-    if (S[i] != expected)
-      oneFlipCount++;
-
-    expected = (expected == '1') ? '0' : '1';
+  for (int i = 0; i < n - 1; i++) {
+    ans += S[i];
+    while (S[i] == S[i + 1]) {
+      i++;
+    }
   }
 
-  return min(zeroFlipCount, oneFlipCount);
+  if (S[n - 1] != S[n - 2])
+    ans += S[n - 1];
+
+  return ans;
 }
 #+end_src
 ** TODO String matching where one string contains wildcard characters :string:
@@ -1032,7 +1146,7 @@ https://practice.geeksforgeeks.org/problems/wildcard-string-matching/0
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/function-to-find-number-of-customers-who-could-not-get-a-computer/
-** TODO Transform one string to another using minimum number of given operation :string:
+** STRT Transform one string to another using minimum number of given operation :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: transform-one-string-to-another-using-minimum-number-of-given-operation
 :EXPORT_HUGO_WEIGHT: auto

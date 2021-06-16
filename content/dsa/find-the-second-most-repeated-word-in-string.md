@@ -9,23 +9,29 @@ weight = 2071
 <https://practice.geeksforgeeks.org/problems/second-most-repeated-string-in-a-sequence/0>
 
 ```cpp
-int minFlips(string S) {
-  int zeroFlipCount = 0, oneFlipCount = 0;
-  char expected = '0';
-  for (int i = 0; i < S.length(); i++) {
-    if (S[i] != expected)
-      zeroFlipCount++;
+string secFrequent(string arr[], int n) {
+  map<string, int> mp;
 
-    expected = (expected == '0') ? '1' : '0';
-  }
-  expected = '1';
-  for (int i = 0; i < S.length(); i++) {
-    if (S[i] != expected)
-      oneFlipCount++;
-
-    expected = (expected == '1') ? '0' : '1';
+  for (int i = 0; i < n; i++) {
+    mp[arr[i]]++;
   }
 
-  return min(zeroFlipCount, oneFlipCount);
+  int maxFreq = -1, notMaxFreq = -1;
+  string ans = "";
+
+  for (auto it : mp) {
+    if (it.second > maxFreq) {
+      notMaxFreq = maxFreq;
+      maxFreq = it.second;
+    } else if (it.second > notMaxFreq && it.second != maxFreq) {
+      notMaxFreq = it.second;
+    }
+  }
+
+  for (auto it : mp) {
+    if (it.second == notMaxFreq) {
+      return it.first;
+    }
+  }
 }
 ```
