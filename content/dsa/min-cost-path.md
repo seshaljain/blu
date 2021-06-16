@@ -2,7 +2,8 @@
 title = "Min cost path"
 author = ["Seshal Jain"]
 tags = ["dp"]
-draft = true
+draft = false
+weight = 2380
 +++
 
 <https://practice.geeksforgeeks.org/problems/path-in-matrix3805/1>

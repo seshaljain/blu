@@ -2,7 +2,8 @@
 title = "Find bridge in a graph"
 author = ["Seshal Jain"]
 tags = ["graph"]
-draft = true
+draft = false
+weight = 2335
 +++
 
 <https://www.geeksforgeeks.org/bridge-in-a-graph/>

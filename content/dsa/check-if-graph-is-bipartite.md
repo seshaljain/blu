@@ -2,7 +2,8 @@
 title = "Check if graph is bipartite"
 author = ["Seshal Jain"]
 tags = ["graph"]
-draft = true
+draft = false
+weight = 2337
 +++
 
 <https://www.geeksforgeeks.org/bipartite-graph/>

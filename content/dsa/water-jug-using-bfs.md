@@ -2,7 +2,8 @@
 title = "Water jug using BFS"
 author = ["Seshal Jain"]
 tags = ["graph"]
-draft = true
+draft = false
+weight = 2343
 +++
 
 <https://www.geeksforgeeks.org/water-jug-problem-using-bfs/>

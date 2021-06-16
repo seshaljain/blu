@@ -2,7 +2,8 @@
 title = "Graph colouring"
 author = ["Seshal Jain"]
 tags = ["graph"]
-draft = true
+draft = false
+weight = 2333
 +++
 
 <https://www.geeksforgeeks.org/graph-coloring-applications/>

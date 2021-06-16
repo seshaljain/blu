@@ -2,7 +2,8 @@
 title = "Travelling salesman"
 author = ["Seshal Jain"]
 tags = ["graph"]
-draft = true
+draft = false
+weight = 2332
 +++
 
 <https://www.geeksforgeeks.org/travelling-salesman-problem-set-1/>

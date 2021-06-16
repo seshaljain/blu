@@ -2,7 +2,8 @@
 title = "Wine trading in Gergovia"
 author = ["Seshal Jain"]
 tags = ["greedy"]
-draft = true
+draft = false
+weight = 2235
 +++
 
 <https://www.spoj.com/problems/GERGOVIA/>

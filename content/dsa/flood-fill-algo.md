@@ -2,7 +2,8 @@
 title = "Flood fill algo"
 author = ["Seshal Jain"]
 tags = ["graph"]
-draft = true
+draft = false
+weight = 2317
 +++
 
 <https://leetcode.com/problems/flood-fill/>

@@ -2,7 +2,8 @@
 title = "Egg dropping"
 author = ["Seshal Jain"]
 tags = ["dp"]
-draft = true
+draft = false
+weight = 2376
 +++
 
 <https://practice.geeksforgeeks.org/problems/egg-dropping-puzzle/0>

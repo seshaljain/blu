@@ -2,7 +2,8 @@
 title = "Aggressive cows"
 author = ["Seshal Jain"]
 tags = ["search-sort"]
-draft = true
+draft = false
+weight = 2108
 +++
 
 <https://www.spoj.com/problems/AGGRCOW/>

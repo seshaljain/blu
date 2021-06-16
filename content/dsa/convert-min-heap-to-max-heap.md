@@ -2,7 +2,8 @@
 title = "Convert min heap to max heap"
 author = ["Seshal Jain"]
 tags = ["heap"]
-draft = true
+draft = false
+weight = 2309
 +++
 
 <https://www.geeksforgeeks.org/convert-min-heap-to-max-heap/>

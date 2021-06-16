@@ -2,7 +2,8 @@
 title = "Merge 2 binary max heaps"
 author = ["Seshal Jain"]
 tags = ["heap"]
-draft = true
+draft = false
+weight = 2300
 +++
 
 <https://practice.geeksforgeeks.org/problems/merge-two-binary-max-heap/0>

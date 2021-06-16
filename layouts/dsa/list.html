@@ -1,8 +1,12 @@
 {{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ with $done := index .Site.Taxonomies.tags "done" }}
+<p>{{ $done.Count }} / {{ len $.Pages }}</p>
+{{ end }}
   <div class="posts">
-    {{ range .Pages }}
-      <div class="post on-list {{if in .Params.Tags "done" }}done{{ end }}">
-        <h1 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h1>
+    {{ range .Pages.ByWeight }}
+      <div class="post {{- if in .Params.tags "done" }} done{{ end }}">
+        <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
         {{ if .Params.tags }}
           <span class="post-tags">
             {{ range .Params.tags }}

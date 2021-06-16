@@ -2,7 +2,8 @@
 title = "Longest path in a directed acyclic graph"
 author = ["Seshal Jain"]
 tags = ["graph"]
-draft = true
+draft = false
+weight = 2339
 +++
 
 <https://www.geeksforgeeks.org/find-longest-path-directed-acyclic-graph/>

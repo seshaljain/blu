@@ -2,7 +2,8 @@
 title = "Defense of a kingdom"
 author = ["Seshal Jain"]
 tags = ["greedy"]
-draft = true
+draft = false
+weight = 2233
 +++
 
 <https://www.spoj.com/problems/DEFKIN/>

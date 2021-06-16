@@ -2,7 +2,8 @@
 title = "Dijkstra algo"
 author = ["Seshal Jain"]
 tags = ["graph"]
-draft = true
+draft = false
+weight = 2321
 +++
 
 <https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/>

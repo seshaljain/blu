@@ -2,7 +2,8 @@
 title = "Longest alternating subsequence"
 author = ["Seshal Jain"]
 tags = ["dp"]
-draft = true
+draft = false
+weight = 2392
 +++
 
 <https://practice.geeksforgeeks.org/problems/longest-alternating-subsequence/0>

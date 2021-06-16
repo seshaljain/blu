@@ -2,7 +2,8 @@
 title = "Gold mine"
 author = ["Seshal Jain"]
 tags = ["dp"]
-draft = true
+draft = false
+weight = 2363
 +++
 
 <https://www.geeksforgeeks.org/gold-mine-problem/>

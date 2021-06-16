@@ -2,7 +2,8 @@
 title = "Smallest range in K lists"
 author = ["Seshal Jain"]
 tags = ["heap"]
-draft = true
+draft = false
+weight = 2304
 +++
 
 <https://practice.geeksforgeeks.org/problems/find-smallest-range-containing-elements-from-k-lists/1>
