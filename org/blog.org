@@ -622,7 +622,7 @@ To add the clipboard functionality, we use
 =navigator.clipboard.writeText=
 
 #+BEGIN_SRC js
-  if (nav igator.clipboard) {
+  if (navigator.clipboard) {
     let text = "";
     if (window.getSelection) {
       text = window.getSelection().toString();

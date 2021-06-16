@@ -29,21 +29,21 @@ To add the clipboard functionality, we use
 `navigator.clipboard.writeText`
 
 ```js
-  if (nav igator.clipboard) {
-    let text = "";
-    if (window.getSelection) {
-      text = window.getSelection().toString();
-    } else if (document.selection && document.selection.type != "Control") {
-      text = document.selection.createRange().text;
-    }
-
-    spongebobText = text
-      .split("")
-      .map((c) => (Math.random() < 0.5 ? c.toUpperCase() : c.toLowerCase()))
-      .join("");
-
-    navigator.clipboard.writeText(spongebobText);
+if (navigator.clipboard) {
+  let text = "";
+  if (window.getSelection) {
+    text = window.getSelection().toString();
+  } else if (document.selection && document.selection.type != "Control") {
+    text = document.selection.createRange().text;
   }
+
+  spongebobText = text
+    .split("")
+    .map((c) => (Math.random() < 0.5 ? c.toUpperCase() : c.toLowerCase()))
+    .join("");
+
+  navigator.clipboard.writeText(spongebobText);
+}
 ```
 
 Go ahead and install <a
