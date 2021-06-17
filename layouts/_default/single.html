@@ -17,7 +17,9 @@
         {{ end }}
 
         {{ with .Params.Author }}
-          <span class="post-author">— {{ . }}</span>
+          {{ $author_type := (printf "%T" .) }}
+          {{ $author_is_slice := (eq "[]string" $author_type) }}
+          <span class="post-author">— {{ if $author_is_slice -}}{{ delimit . ", " }}{{ else }}{{ . }}{{ end }}</span>
           {{ else }}
           <span class="post-author">— {{ .Site.Params.Author }}</span>
         {{ end }}
