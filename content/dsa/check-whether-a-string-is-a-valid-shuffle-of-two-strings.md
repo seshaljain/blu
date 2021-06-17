@@ -1,7 +1,8 @@
 +++
 title = "Check whether a string is a valid shuffle of two strings"
 author = ["Seshal Jain"]
-tags = ["done", "string"]
+tags = ["string"]
+categories = ["done"]
 draft = false
 weight = 2050
 +++

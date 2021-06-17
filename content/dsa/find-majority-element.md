@@ -1,7 +1,8 @@
 +++
 title = "Find majority element"
 author = ["Seshal Jain"]
-tags = ["done", "search-sort"]
+tags = ["search-sort"]
+categories = ["done"]
 draft = false
 weight = 2092
 +++

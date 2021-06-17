@@ -6,7 +6,7 @@
 :PROPERTIES:
 :EXPORT_FILE_NAME: _index
 :END:
-** DONE Reverse an array :done:array:
+** DONE Reverse an array :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-an-array
 :EXPORT_HUGO_WEIGHT: auto
@@ -24,7 +24,7 @@ void rvereseArray(int arr[], int start, int end) {
   }
 }
 #+end_src
-** DONE Find the maximum and minimum element in an array :array:done:
+** DONE Find the maximum and minimum element in an array :array:@done:
 CLOSED: [2021-06-16 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-maximum-and-minimum-element-in-an-array
@@ -73,7 +73,7 @@ struct Pair getMinMax(int arr[], int low, int high) {
 // struct Pair minmax = getMinMax(arr, 0, N - 1);
 #+end_src
 
-** DONE Find the Kth max and min element in an array :array:done:
+** DONE Find the Kth max and min element in an array :array:@done:
 CLOSED: [2021-06-16 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-kth-max-and-min-element-in-an-array
@@ -101,7 +101,7 @@ int kthSmallest(int arr[], int l, int r, int k) {
 }
 #+end_src
 
-** DONE Sort an array of 0s, 1s and 2s :done:array:
+** DONE Sort an array of 0s, 1s and 2s :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: sort-an-array-of-0s-1s-and-2s
 :EXPORT_HUGO_WEIGHT: auto
@@ -124,7 +124,9 @@ void sort012(int arr[], int n) {
     }
   }
 }
-** DONE Move all the negative elements to one side of the array :done:array:
+#+end_src
+
+** DONE Move all the negative elements to one side of the array :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: move-all-the-negative-elements-to-one-side-of-the-array
 :EXPORT_HUGO_WEIGHT: auto
@@ -163,7 +165,7 @@ void shiftall(int arr[], int n) {
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/union-of-two-arrays/0
-** DONE Cyclically rotate an array by one :done:array:
+** DONE Cyclically rotate an array by one :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: cyclically-rotate-an-array-by-one
 :EXPORT_HUGO_WEIGHT: auto
@@ -184,7 +186,7 @@ void rotate(int arr[], int n) {
   reverseArr(arr, n);
 }
 #+end_src
-** DONE [#A] Minimise the maximum difference between heights :done:array:
+** DONE [#A] Minimise the maximum difference between heights :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimise-the-maximum-difference-between-heights
 :EXPORT_HUGO_WEIGHT: auto
@@ -209,7 +211,7 @@ public:
   }
 };
 #+end_src
-** DONE Minimum number of jumps to reach end of an array :done:array:
+** DONE Minimum number of jumps to reach end of an array :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-number-of-jumps-to-reach-end-of-an-array
 :EXPORT_HUGO_WEIGHT: auto
@@ -236,7 +238,7 @@ int minJumps(int arr[], int n) {
   }
 }
 #+end_src
-** DONE Find the duplicate in an array of N+1 integers :done:array:
+** DONE Find the duplicate in an array of N+1 integers :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-duplicate-in-an-array-of-n-plus-1-integers
 :EXPORT_HUGO_WEIGHT: auto
@@ -262,7 +264,7 @@ int findDuplicate(vector<int> &nums) {
   return fast;
 }
 #+end_src
-** DONE [#A] Kadane's algorithm :done:array:dp:
+** DONE [#A] Kadane's algorithm :@done:array:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: kadane-s-algorithm
 :EXPORT_HUGO_WEIGHT: auto
@@ -304,7 +306,7 @@ https://leetcode.com/problems/next-permutation/
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/inversion-of-array/0
-** DONE Best time to buy and sell stock :done:array:
+** DONE Best time to buy and sell stock :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: best-time-to-buy-and-sell-stock
 :EXPORT_HUGO_WEIGHT: auto
@@ -343,7 +345,7 @@ https://practice.geeksforgeeks.org/problems/common-elements1132/1
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-O(1)-extra-space/
-** DONE Find if there is any subarray with sum equal to 0 :done:array:
+** DONE Find if there is any subarray with sum equal to 0 :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-if-there-is-any-subarray-with-sum-equal-to-0
 :EXPORT_HUGO_WEIGHT: auto
@@ -398,7 +400,7 @@ int maxProduct(vector<int> &nums) {
 }
 #+end_src
 
-** DONE Find longest consecutive subsequence :array:done:
+** DONE Find longest consecutive subsequence :array:@done:
 CLOSED: [2021-06-16 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-longest-consecutive-subsequence
@@ -448,7 +450,7 @@ https://practice.geeksforgeeks.org/problems/array-subset-of-another-array/0
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/triplet-sum-in-array/0
-** DONE Trapping rain water :done:array:
+** DONE Trapping rain water :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: trapping-rain-water
 :EXPORT_HUGO_WEIGHT: auto
@@ -485,7 +487,7 @@ int trap(vector<int> &height) {
   return rain;
 }
 #+end_src
-** DONE Chocolate distribution :done:array:greedy:
+** DONE Chocolate distribution :@done:array:greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: chocolate-distribution
 :EXPORT_HUGO_WEIGHT: auto
@@ -553,7 +555,7 @@ https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/spirally-traversing-a-matrix/0
-** DONE Search an element in a matrix :done:matrix:
+** DONE Search an element in a matrix :@done:matrix:
 :PROPERTIES:
 :EXPORT_FILE_NAME: search-an-element-in-a-matrix
 :EXPORT_HUGO_WEIGHT: auto
@@ -631,7 +633,7 @@ https://practice.geeksforgeeks.org/problems/kth-element-in-matrix/1
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/common-elements-in-all-rows-of-a-given-matrix/
-** DONE Reverse a string :done:string:
+** DONE Reverse a string :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-a-string
 :EXPORT_HUGO_WEIGHT: auto
@@ -649,7 +651,7 @@ void reverseString(vector<char> &s) {
   }
 }
 #+end_src
-** DONE Check whether a string is palindrome :done:string:
+** DONE Check whether a string is palindrome :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-whether-a-string-is-palindrome
 :EXPORT_HUGO_WEIGHT: auto
@@ -668,20 +670,20 @@ int isPlaindrome(string S) {
   return true;
 }
 #+end_src
-** DONE Find duplicate characters in a string :string:done:
+** DONE Find duplicate characters in a string :string:@done:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-duplicate-characters-in-a-string
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/
-** DONE Why are strings immutable in Java? :done:string:
+** DONE Why are strings immutable in Java? :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: why-are-strings-immutable-in-java
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 
 Java uses string literals mostly for memory security. Better alter copies of strings than alter main references in memory.
-** DONE Check whether one string is a rotation of another :done:string:
+** DONE Check whether one string is a rotation of another :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-whether-one-string-is-a-rotation-of-another
 :EXPORT_HUGO_WEIGHT: auto
@@ -697,7 +699,7 @@ bool areRotations(string str1, string str2) {
   return (temp.find(str2) != string::npos);
 }
 #+end_src
-** DONE Check whether a string is a valid shuffle of two strings :done:string:
+** DONE Check whether a string is a valid shuffle of two strings :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-whether-a-string-is-a-valid-shuffle-of-two-strings
 :EXPORT_HUGO_WEIGHT: auto
@@ -731,7 +733,7 @@ bool shuffleCheck(string first, string second, string result) {
   return true;
 }
 #+end_src
-** DONE Count and say :done:string:
+** DONE Count and say :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-and-say
 :EXPORT_HUGO_WEIGHT: auto
@@ -760,7 +762,7 @@ string countAndSay(int n) {
   return cur;
 }
 #+end_src
-** DONE Find the longest palindrome in a string :string:done:
+** DONE Find the longest palindrome in a string :string:@done:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-longest-palindrome-in-a-string
 :EXPORT_HUGO_WEIGHT: auto
@@ -802,37 +804,120 @@ string longestPalindrome(string s) {
 }
 #+end_src
 
-** TODO Print all subsequences of a string :string:
+** DONE Print all subsequences of a string :string:
+CLOSED: [2021-06-17 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: print-all-subsequences-of-a-string
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/print-subsequences-string/
-** TODO Split the binary string into two substring with equal 0s and 1s :string:
+
+#+begin_src cpp
+void printSubsequence(string input, string output) {
+  if (input.empty()) {
+    cout << output << endl;
+    return;
+  }
+
+  printSubsequence(input.substr(1), output + input[0]);
+  printSubsequence(input.substr(1), output);
+}
+
+// printSubsequence(input, "");
+#+end_src
+
+** DONE Split the binary string into two substring with equal 0s and 1s :string:@done:
+CLOSED: [2021-06-17 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: split-the-binary-string-into-two-substring-with-equal-0s-and-1s
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/split-the-binary-string-into-substrings-with-equal-number-of-0s-and-1s/
+
+#+begin_src cpp
+int maxSubStr(string str) {
+  int n = str.length();
+  int count0 = 0, count1 = 0;
+
+  int cnt = 0;
+  for (int i = 0; i < n; i++) {
+    if (str[i] == '0') {
+      count0++;
+    } else if (str[i] == '1') {
+      count1++;
+    }
+
+    if (count0 == count1) {
+      cnt++;
+    }
+  }
+
+  if (cnt == 0) {
+    return -1;
+  }
+
+  return cnt;
+}
+#+end_src
+
 ** TODO [#A] Word wrap :string:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: word-wrap
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/word-wrap/0
-** TODO [#A] Edit distance :string:dp:
+** DONE [#A] Edit distance :string:dp:@done:
+CLOSED: [2021-06-17 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: edit-distance
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-https://practice.geeksforgeeks.org/problems/edit-distance3702/1
+https://leetcode.com/problems/edit-distance/
+
+#+begin_example
++---------+-----+
+| replace | del |
++---------+-----+
+| insert  | X   |
++---------+-----+
+#+end_example
+
+#+begin_src cpp
+class Solution {
+ int  dp[505][505];
+ public:
+  int minDistance(string word1, string word2) {
+    int m = word1.size();
+    int n = word2.size();
+
+    for (int i = 0; i <= m; i++) {
+      for (int j = 0; j <= n; j++) {
+        if (i == 0)
+          dp[i][j] = j;
+        else if (j == 0)
+          dp[i][j] = i;
+        else if (word1[i - 1] == word2[j - 1])
+          dp[i][j] = dp[i - 1][j - 1];
+        else {
+          int insert = dp[i][j - 1];
+          int del = dp[i - 1][j];
+          int replace = dp[i - 1][j - 1];
+          dp[i][j] = 1 + min({insert, del, replace});
+        }
+      }
+    }
+    return dp[m][n];
+  }
+};
+#+end_src
+
 ** TODO [#A] Find next greater number with same set of digits :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-next-greater-number-with-same-set-of-digits
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/next-permutation/0
-** DONE [#A] Balanced parenthesis :done:string:st_q:
+** DONE [#A] Balanced parenthesis :@done:string:st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: balanced-parenthesis
 :EXPORT_HUGO_WEIGHT: auto
@@ -884,13 +969,13 @@ https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/longest-prefix-suffix2527/1
-** DONE Convert a sentence into its equivalent mobile numeric keypad sequence :string:done:
+** DONE Convert a sentence into its equivalent mobile numeric keypad sequence :string:@done:
 :PROPERTIES:
 :EXPORT_FILE_NAME: convert-a-sentence-into-its-equivalent-mobile-numeric-keypad-sequence
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/convert-sentence-equivalent-mobile-numeric-keypad-sequence/
-** DONE Minimum number of bracket reversals needed to make an expression balanced :done:string:
+** DONE Minimum number of bracket reversals needed to make an expression balanced :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-number-of-bracket-reversals-needed-to-make-an-expression-balanced
 :EXPORT_HUGO_WEIGHT: auto
@@ -962,7 +1047,7 @@ https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/roman-number-to-integer/0
-** DONE Longest common prefix :string:done:
+** DONE Longest common prefix :string:@done:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-common-prefix
 :EXPORT_HUGO_WEIGHT: auto
@@ -1005,7 +1090,7 @@ public:
 };
 #+end_src
 
-** DONE Number of flips to make binary string alternate :done:string:
+** DONE Number of flips to make binary string alternate :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: number-of-flips-to-make-binary-string-alternate
 :EXPORT_HUGO_WEIGHT: auto
@@ -1033,7 +1118,7 @@ int minFlips(string S) {
   return min(zeroFlipCount, oneFlipCount);
 }
 #+end_src
-** DONE Find the second most repeated word in string :done:string:
+** DONE Find the second most repeated word in string :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-second-most-repeated-word-in-string
 :EXPORT_HUGO_WEIGHT: auto
@@ -1109,7 +1194,7 @@ https://practice.geeksforgeeks.org/problems/k-anagrams-1/0
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string/0
-** DONE Recursively remove all adjacent duplicates :done:string:
+** DONE Recursively remove all adjacent duplicates :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: recursively-remove-all-adjacent-duplicates
 :EXPORT_HUGO_WEIGHT: auto
@@ -1146,12 +1231,63 @@ https://practice.geeksforgeeks.org/problems/wildcard-string-matching/0
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/function-to-find-number-of-customers-who-could-not-get-a-computer/
-** STRT Transform one string to another using minimum number of given operation :string:
+** DONE Transform one string to another using minimum number of given operation :string:@done:
+CLOSED: [2021-06-17 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: transform-one-string-to-another-using-minimum-number-of-given-operation
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/transform-one-string-to-another-using-minimum-number-of-given-operation/
+
+1. Check relative character frequencies & length of strings
+2. Start from end, increase =res= till character found in B
+
+Doing this because insertion is only allowed in front of A
+#+begin_src cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int minOps(string A, string B) {
+  int n = A.length(), m = B.length();
+
+  if (n != m) return -1;
+
+  map<char, pair<int, int>> mp;
+
+  for (int i = 0; i < n; i++) {
+    mp[A[i]].first++;
+    mp[B[i]].second++;
+  }
+
+  for (auto it : mp) {
+    if (it.second.first != it.second.second) return -1;
+  }
+
+  int res = 0;
+  int i = m - 1, j = n - 1;
+  while (i >= 0) {
+    while (i >= 0 && A[i] != B[j]) {
+      i--;
+      res++;
+    }
+
+    if (i >= 0) {
+      i--;
+      j--;
+    }
+  }
+
+  return res;
+}
+
+int main() {
+  string a, b;
+  cin >> a >> b;
+  cout << minOps(a, b);
+  return 0;
+}
+#+end_src
+
 ** TODO Check if two given strings are isomorphic to each other :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-two-given-strings-are-isomorphic-to-each-other
@@ -1164,7 +1300,7 @@ https://practice.geeksforgeeks.org/problems/isomorphic-strings/0
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/recursively-print-all-sentences-that-can-be-formed-from-list-of-word-lists/
-** DONE Find first and last positions of an element in a sorted array :done:search_sort:
+** DONE Find first and last positions of an element in a sorted array :@done:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-first-and-last-positions-of-an-element-in-a-sorted-array
 :EXPORT_HUGO_WEIGHT: auto
@@ -1258,7 +1394,7 @@ https://practice.geeksforgeeks.org/problems/middle-of-three2926/1
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/optimum-location-point-minimize-total-distance/
-** DONE Find the repeating and the missing :done:search_sort:
+** DONE Find the repeating and the missing :@done:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-repeating-and-the-missing
 :EXPORT_HUGO_WEIGHT: auto
@@ -1286,7 +1422,7 @@ int *findTwoElement(int *arr, int n) {
   return ans;
 }
 #+end_src
-** DONE Find majority element :done:search_sort:
+** DONE Find majority element :@done:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-majority-element
 :EXPORT_HUGO_WEIGHT: auto
@@ -1312,7 +1448,7 @@ int majorityElement(vector<int> &nums) {
   return major;
 }
 #+end_src
-** DONE Searching in an array where adjacent differ by at most K :done:search_sort:
+** DONE Searching in an array where adjacent differ by at most K :@done:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: searching-in-an-array-where-adjacent-differ-by-at-most-k
 :EXPORT_HUGO_WEIGHT: auto
@@ -1357,7 +1493,7 @@ https://practice.geeksforgeeks.org/problems/stickler-theif/0
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/count-triplets-with-sum-smaller-than-x5549/1
-** DONE Merge 2 sorted arrays :done:array:search_sort:
+** DONE Merge 2 sorted arrays :@done:array:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: merge-2-sorted-arrays
 :EXPORT_HUGO_WEIGHT: auto
@@ -1395,7 +1531,7 @@ https://practice.geeksforgeeks.org/problems/zero-sum-subarrays/0
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/product-array-puzzle/0
-** DONE Sort array according to count of set bits :done:search_sort:
+** DONE Sort array according to count of set bits :@done:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: sort-array-according-to-count-of-set-bits
 :EXPORT_HUGO_WEIGHT: auto
@@ -1441,7 +1577,7 @@ https://www.hackerearth.com/practice/algorithms/searching/binary-search/practice
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.hackerearth.com/practice/algorithms/searching/binary-search/practice-problems/algorithm/rasta-and-kheshtak/
-** DONE Kth smallest number again :done:search_sort:
+** DONE Kth smallest number again :@done:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: kth-smallest-number-again
 :EXPORT_HUGO_WEIGHT: auto
@@ -1513,7 +1649,7 @@ https://practice.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array/0
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.spoj.com/problems/AGGRCOW/
-** DONE Book allocation aka Painter's Partition :done:search_sort:
+** DONE Book allocation aka Painter's Partition :@done:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: book-allocation-aka-painter-s-partition
 :EXPORT_HUGO_WEIGHT: auto
@@ -1610,7 +1746,7 @@ https://www.geeksforgeeks.org/in-place-merge-sort/
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.baeldung.com/java-sorting-arrays-with-repeated-entries
-** DONE Reverse a linked list :done:ll:
+** DONE Reverse a linked list :@done:ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
@@ -1855,7 +1991,7 @@ https://practice.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/1
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream/0
-** DONE Level order traversal :done:bt:
+** DONE Level order traversal :@done:bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: level-order-traversal
 :EXPORT_HUGO_WEIGHT: auto
@@ -1895,7 +2031,7 @@ public:
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/reverse-level-order-traversal/1
-** DONE Height of a tree :done:bt:
+** DONE Height of a tree :@done:bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: height-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
@@ -1910,7 +2046,7 @@ int maxDepth(TreeNode *root) {
   return 1 + max(maxDepth(root->left), maxDepth(root->right));
 }
 #+end_src
-** DONE Diameter of a tree :done:bt:
+** DONE Diameter of a tree :@done:bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: diameter-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
@@ -1944,7 +2080,7 @@ public:
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/create-a-mirror-tree-from-the-given-binary-tree/
-** DONE Inorder traversal of a tree :done:bt:
+** DONE Inorder traversal of a tree :@done:bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: inorder-traversal-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
@@ -1990,7 +2126,7 @@ void inorderIterative(Node *root) {
 }
 #+end_src
 
-** DONE Preorder traversal of a tree :done:bt:
+** DONE Preorder traversal of a tree :@done:bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: preorder-traversal-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
@@ -2039,7 +2175,7 @@ void preorderIterative(Node *root) {
   }
 }
 #+end_src
-** DONE Postorder traversal of a tree :done:bt:
+** DONE Postorder traversal of a tree :@done:bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: postorder-traversal-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
@@ -2410,7 +2546,7 @@ https://practice.geeksforgeeks.org/problems/huffman-encoding/0
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/water-connection-problem/0
-** DONE Fractional knapsack :done:greedy:
+** DONE Fractional knapsack :@done:greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: fractional-knapsack
 :EXPORT_HUGO_WEIGHT: auto
@@ -2690,19 +2826,19 @@ https://practice.geeksforgeeks.org/problems/partition-array-to-k-subsets/1
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-the-k-th-permutation-sequence-of-first-n-natural-numbers/
-** DONE Implement stack from scratch :done:st_q:
+** DONE Implement stack from scratch :@done:st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-stack-from-scratch
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.tutorialspoint.com/javaexamples/data_stack.htm
-** DONE Implement queue from scratch :done:st_q:
+** DONE Implement queue from scratch :@done:st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-queue-from-scratch
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/queue-set-1introduction-and-array-implementation/
-** DONE Implement 2 stack in an array :done:st_q:
+** DONE Implement 2 stack in an array :@done:st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-2-stack-in-an-array
 :EXPORT_HUGO_WEIGHT: auto
@@ -3040,7 +3176,7 @@ https://practice.geeksforgeeks.org/problems/minimum-sum4058/1
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://1drv.ms/t/s!AqTOHFO77CqEiRua06v1PATyiFg5
-** DONE Implement BFS :graph:done:
+** DONE Implement BFS :graph:@done:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-bfs
 :EXPORT_HUGO_WEIGHT: auto
@@ -3080,7 +3216,7 @@ vector<int> bfsOfGraph(int V, vector<int> adj[]) {
 }
 #+end_src
 
-** DONE Implement DFS :graph:done:
+** DONE Implement DFS :graph:@done:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-dfs
 :EXPORT_HUGO_WEIGHT: auto
@@ -3359,7 +3495,7 @@ https://practice.geeksforgeeks.org/problems/phone-directory/0
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/unique-rows-in-boolean-matrix/1
-** DONE Coin change :done:dp:
+** DONE Coin change :@done:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: coin-change
 :EXPORT_HUGO_WEIGHT: auto
@@ -3396,7 +3532,7 @@ public:
   }
 };
 #+end_src
-** DONE Knapsack :done:dp:
+** DONE Knapsack :@done:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: knapsack
 :EXPORT_HUGO_WEIGHT: auto
@@ -3479,7 +3615,7 @@ https://www.geeksforgeeks.org/assembly-line-scheduling-dp-34/
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/painting-the-fence3727/1
-** DONE Maximize the cut segments :done:dp:
+** DONE Maximize the cut segments :@done:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximize-the-cut-segments
 :EXPORT_HUGO_WEIGHT: auto
@@ -3511,7 +3647,7 @@ public:
   }
 };
 #+end_src
-** DONE Longest common subsequence :done:string:dp:
+** DONE Longest common subsequence :@done:string:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-common-subsequence
 :EXPORT_HUGO_WEIGHT: auto
@@ -3568,7 +3704,7 @@ public:
   }
 }
 #+end_src
-** DONE Longest repeated subsequence :done:string:dp:
+** DONE Longest repeated subsequence :@done:string:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-repeated-subsequence
 :EXPORT_HUGO_WEIGHT: auto
@@ -3689,7 +3825,7 @@ https://practice.geeksforgeeks.org/problems/minimum-cost-to-fill-given-weight-in
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/minimum-removals-array-make-max-min-k/
-** DONE Longest common substring :done:dp:
+** DONE Longest common substring :@done:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-common-substring
 :EXPORT_HUGO_WEIGHT: auto
@@ -3738,7 +3874,7 @@ https://practice.geeksforgeeks.org/problems/bbt-counter/0
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/smallest-sum-contiguous-subarray/
-** DONE Unbounded knapsack :done:dp:
+** DONE Unbounded knapsack :@done:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: unbounded-knapsack
 :EXPORT_HUGO_WEIGHT: auto
@@ -3775,7 +3911,7 @@ public:
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/largest-independent-set-problem-dp-26/
-** DONE Longest palindromic subsequence :done:dp:
+** DONE Longest palindromic subsequence :@done:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-palindromic-subsequence
 :EXPORT_HUGO_WEIGHT: auto
@@ -3909,7 +4045,7 @@ https://practice.geeksforgeeks.org/problems/interleaved-strings/1
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/maximum-length-of-pair-chain/
-** DONE Count set bits in an integer :done:bit:
+** DONE Count set bits in an integer :@done:bit:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-set-bits-in-an-integer
 :EXPORT_HUGO_WEIGHT: auto

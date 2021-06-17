@@ -1,7 +1,8 @@
 +++
 title = "Find the duplicate in an array of N+1 integers"
 author = ["Seshal Jain"]
-tags = ["done", "array"]
+tags = ["array"]
+categories = ["done"]
 draft = false
 weight = 2011
 +++

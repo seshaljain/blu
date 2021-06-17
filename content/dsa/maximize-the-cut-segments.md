@@ -1,7 +1,8 @@
 +++
 title = "Maximize the cut segments"
 author = ["Seshal Jain"]
-tags = ["done", "dp"]
+tags = ["dp"]
+categories = ["done"]
 draft = false
 weight = 2366
 +++

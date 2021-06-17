@@ -1,7 +1,8 @@
 +++
 title = "Implement 2 stack in an array"
 author = ["Seshal Jain"]
-tags = ["done", "st-q"]
+tags = ["st-q"]
+categories = ["done"]
 draft = false
 weight = 2260
 +++

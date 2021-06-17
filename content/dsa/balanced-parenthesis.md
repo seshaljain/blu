@@ -1,7 +1,8 @@
 +++
 title = "Balanced parenthesis"
 author = ["Seshal Jain"]
-tags = ["done", "string", "st-q"]
+tags = ["string", "st-q"]
+categories = ["done"]
 draft = false
 weight = 2058
 +++

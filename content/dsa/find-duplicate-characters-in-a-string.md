@@ -1,7 +1,8 @@
 +++
 title = "Find duplicate characters in a string"
 author = ["Seshal Jain"]
-tags = ["string", "done"]
+tags = ["string"]
+categories = ["done"]
 draft = false
 weight = 2047
 +++

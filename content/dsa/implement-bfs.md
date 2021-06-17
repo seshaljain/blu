@@ -1,7 +1,8 @@
 +++
 title = "Implement BFS"
 author = ["Seshal Jain"]
-tags = ["graph", "done"]
+tags = ["graph"]
+categories = ["done"]
 draft = false
 weight = 2312
 +++

@@ -1,7 +1,8 @@
 +++
 title = "Kadane's algorithm"
 author = ["Seshal Jain"]
-tags = ["done", "array", "dp"]
+tags = ["array", "dp"]
+categories = ["done"]
 draft = false
 weight = 2012
 +++

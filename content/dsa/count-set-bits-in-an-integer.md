@@ -1,7 +1,8 @@
 +++
 title = "Count set bits in an integer"
 author = ["Seshal Jain"]
-tags = ["done", "bit"]
+tags = ["bit"]
+categories = ["done"]
 draft = false
 weight = 2408
 +++

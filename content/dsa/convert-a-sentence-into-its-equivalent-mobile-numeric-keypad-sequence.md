@@ -1,7 +1,8 @@
 +++
 title = "Convert a sentence into its equivalent mobile numeric keypad sequence"
 author = ["Seshal Jain"]
-tags = ["string", "done"]
+tags = ["string"]
+categories = ["done"]
 draft = false
 weight = 2062
 +++

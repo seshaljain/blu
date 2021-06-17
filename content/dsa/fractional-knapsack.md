@@ -1,7 +1,8 @@
 +++
 title = "Fractional knapsack"
 author = ["Seshal Jain"]
-tags = ["done", "greedy"]
+tags = ["greedy"]
+categories = ["done"]
 draft = false
 weight = 2215
 +++

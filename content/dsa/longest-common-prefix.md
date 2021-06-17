@@ -1,7 +1,8 @@
 +++
 title = "Longest common prefix"
 author = ["Seshal Jain"]
-tags = ["string", "done"]
+tags = ["string"]
+categories = ["done"]
 draft = false
 weight = 2069
 +++

@@ -1,7 +1,8 @@
 +++
 title = "Count and say"
 author = ["Seshal Jain"]
-tags = ["done", "string"]
+tags = ["string"]
+categories = ["done"]
 draft = false
 weight = 2051
 +++

@@ -1,7 +1,8 @@
 +++
 title = "Move all the negative elements to one side of the array"
 author = ["Seshal Jain"]
-tags = ["done", "array"]
+tags = ["array"]
+categories = ["done"]
 draft = false
 weight = 2006
 +++

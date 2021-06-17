@@ -1,7 +1,8 @@
 +++
 title = "Reverse a linked list"
 author = ["Seshal Jain"]
-tags = ["done", "ll"]
+tags = ["ll"]
+categories = ["done"]
 draft = false
 weight = 2119
 +++

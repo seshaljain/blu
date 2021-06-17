@@ -1,7 +1,8 @@
 +++
 title = "Searching in an array where adjacent differ by at most K"
 author = ["Seshal Jain"]
-tags = ["done", "search-sort"]
+tags = ["search-sort"]
+categories = ["done"]
 draft = false
 weight = 2093
 +++

@@ -1,7 +1,8 @@
 +++
 title = "Recursively remove all adjacent duplicates"
 author = ["Seshal Jain"]
-tags = ["done", "string"]
+tags = ["string"]
+categories = ["done"]
 draft = false
 weight = 2079
 +++

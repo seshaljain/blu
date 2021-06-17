@@ -1,7 +1,8 @@
 +++
 title = "Kth smallest number again"
 author = ["Seshal Jain"]
-tags = ["done", "search-sort"]
+tags = ["search-sort"]
+categories = ["done"]
 draft = false
 weight = 2105
 +++

@@ -1,7 +1,8 @@
 +++
 title = "Merge 2 sorted arrays"
 author = ["Seshal Jain"]
-tags = ["done", "array", "search-sort"]
+tags = ["array", "search-sort"]
+categories = ["done"]
 draft = false
 weight = 2098
 +++

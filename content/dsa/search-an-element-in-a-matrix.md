@@ -1,7 +1,8 @@
 +++
 title = "Search an element in a matrix"
 author = ["Seshal Jain"]
-tags = ["done", "matrix"]
+tags = ["matrix"]
+categories = ["done"]
 draft = false
 weight = 2036
 +++

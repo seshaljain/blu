@@ -1,7 +1,8 @@
 +++
 title = "Reverse an array"
 author = ["Seshal Jain"]
-tags = ["done", "array"]
+tags = ["array"]
+categories = ["done"]
 draft = false
 weight = 2002
 +++

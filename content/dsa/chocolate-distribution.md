@@ -1,7 +1,8 @@
 +++
 title = "Chocolate distribution"
 author = ["Seshal Jain"]
-tags = ["done", "array", "greedy"]
+tags = ["array", "greedy"]
+categories = ["done"]
 draft = false
 weight = 2028
 +++

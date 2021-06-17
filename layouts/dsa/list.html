@@ -1,18 +1,22 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
-{{ with $done := index .Site.Taxonomies.tags "done" }}
-<p>{{ $done.Count }} / {{ len $.Pages }}</p>
+{{ with $done := index .Site.Taxonomies.categories "done" }}
+<p>
+    {{- with $donePage := $.Site.GetPage "/categories/done" }}
+    <a href="{{ $donePage.Permalink }}" style="text-decoration: none">
+        <span class="done">{{ $done.Count }}</span> / {{ len $.Pages }}
+    </a>
+    {{- end }}
+</p>
 {{ end }}
   <div class="posts">
     {{ range .Pages.ByWeight }}
-      <div class="post {{- if in .Params.tags "done" }} done{{ end }}">
+      <div class="post {{- if in .Params.categories "done" }} done{{ end }}">
         <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
         {{ if .Params.tags }}
           <span class="post-tags">
             {{ range .Params.tags }}
-              {{ if (ne . "done") }}
               <a href="{{ (urlize (printf "tags/%s" . )) | absURL }}/">#{{ . }}</a>&nbsp;
-              {{ end }}
             {{ end }}
           </span>
         {{ end }}

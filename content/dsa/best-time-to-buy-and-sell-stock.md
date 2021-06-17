@@ -1,7 +1,8 @@
 +++
 title = "Best time to buy and sell stock"
 author = ["Seshal Jain"]
-tags = ["done", "array"]
+tags = ["array"]
+categories = ["done"]
 draft = false
 weight = 2016
 +++

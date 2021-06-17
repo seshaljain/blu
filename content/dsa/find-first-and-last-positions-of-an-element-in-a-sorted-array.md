@@ -1,7 +1,8 @@
 +++
 title = "Find first and last positions of an element in a sorted array"
 author = ["Seshal Jain"]
-tags = ["done", "search-sort"]
+tags = ["search-sort"]
+categories = ["done"]
 draft = false
 weight = 2085
 +++

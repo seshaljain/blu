@@ -1,7 +1,8 @@
 +++
 title = "Implement queue from scratch"
 author = ["Seshal Jain"]
-tags = ["done", "st-q"]
+tags = ["st-q"]
+categories = ["done"]
 draft = false
 weight = 2259
 +++

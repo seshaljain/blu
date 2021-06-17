@@ -1,7 +1,8 @@
 +++
 title = "Number of flips to make binary string alternate"
 author = ["Seshal Jain"]
-tags = ["done", "string"]
+tags = ["string"]
+categories = ["done"]
 draft = false
 weight = 2070
 +++

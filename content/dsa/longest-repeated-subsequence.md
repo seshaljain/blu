@@ -1,7 +1,8 @@
 +++
 title = "Longest repeated subsequence"
 author = ["Seshal Jain"]
-tags = ["done", "string", "dp"]
+tags = ["string", "dp"]
+categories = ["done"]
 draft = false
 weight = 2368
 +++

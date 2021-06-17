@@ -1,7 +1,8 @@
 +++
 title = "Minimum number of bracket reversals needed to make an expression balanced"
 author = ["Seshal Jain"]
-tags = ["done", "string"]
+tags = ["string"]
+categories = ["done"]
 draft = false
 weight = 2063
 +++

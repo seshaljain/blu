@@ -2,7 +2,8 @@
 title = "Find the Kth max and min element in an array"
 author = ["Seshal Jain"]
 date = 2021-06-16T00:00:00+05:30
-tags = ["array", "done"]
+tags = ["array"]
+categories = ["done"]
 draft = false
 weight = 2004
 +++

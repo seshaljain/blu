@@ -1,7 +1,8 @@
 +++
 title = "Check whether a string is palindrome"
 author = ["Seshal Jain"]
-tags = ["done", "string"]
+tags = ["string"]
+categories = ["done"]
 draft = false
 weight = 2046
 +++

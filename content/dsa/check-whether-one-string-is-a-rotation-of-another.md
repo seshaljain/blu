@@ -1,7 +1,8 @@
 +++
 title = "Check whether one string is a rotation of another"
 author = ["Seshal Jain"]
-tags = ["done", "string"]
+tags = ["string"]
+categories = ["done"]
 draft = false
 weight = 2049
 +++

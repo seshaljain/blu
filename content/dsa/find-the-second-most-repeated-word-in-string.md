@@ -1,7 +1,8 @@
 +++
 title = "Find the second most repeated word in string"
 author = ["Seshal Jain"]
-tags = ["done", "string"]
+tags = ["string"]
+categories = ["done"]
 draft = false
 weight = 2071
 +++

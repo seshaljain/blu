@@ -1,7 +1,8 @@
 +++
 title = "Why are strings immutable in Java?"
 author = ["Seshal Jain"]
-tags = ["done", "string"]
+tags = ["string"]
+categories = ["done"]
 draft = false
 weight = 2048
 +++

@@ -1,7 +1,8 @@
 +++
 title = "Diameter of a tree"
 author = ["Seshal Jain"]
-tags = ["done", "bt"]
+tags = ["bt"]
+categories = ["done"]
 draft = false
 weight = 2157
 +++
