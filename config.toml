@@ -1,6 +1,7 @@
 baseurl = "https://archgaelix.vercel.app"
 languageCode = "en-us"
 paginate = 5
+GoogleAnalytics = "G-RQCB5BGBD3"
 
 [params]
   contentTypeName = "blog"
