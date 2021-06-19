@@ -4,7 +4,7 @@ author = ["Seshal Jain"]
 tags = ["graph"]
 categories = ["done"]
 draft = false
-weight = 2313
+weight = 2312
 +++
 
 <https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1>

@@ -3,7 +3,7 @@ title = "Palindrome partitioning"
 author = ["Seshal Jain"]
 tags = ["dp"]
 draft = false
-weight = 2399
+weight = 2398
 +++
 
 <https://practice.geeksforgeeks.org/problems/palindromic-patitioning4845/1>

@@ -4,7 +4,7 @@ author = ["Seshal Jain"]
 tags = ["dp"]
 categories = ["done"]
 draft = false
-weight = 2366
+weight = 2365
 +++
 
 <https://practice.geeksforgeeks.org/problems/cutted-segments/0>

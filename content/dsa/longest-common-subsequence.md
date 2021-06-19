@@ -4,7 +4,7 @@ author = ["Seshal Jain"]
 tags = ["string", "dp"]
 categories = ["done"]
 draft = false
-weight = 2367
+weight = 2366
 +++
 
 <https://practice.geeksforgeeks.org/problems/longest-common-subsequence/0>

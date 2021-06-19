@@ -4,7 +4,7 @@ author = ["Seshal Jain"]
 tags = ["dp"]
 categories = ["done"]
 draft = false
-weight = 2356
+weight = 2355
 +++
 
 <https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem/0>

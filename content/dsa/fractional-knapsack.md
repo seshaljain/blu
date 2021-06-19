@@ -10,9 +10,11 @@ weight = 2215
 <https://practice.geeksforgeeks.org/problems/fractional-knapsack/0>
 
 ```cpp
-double fractionalKnapsack(int W, Item arr[], int n) {
+class Solution {
+public:
+  double fractionalKnapsack(int W, Item arr[], int n) {
     sort(arr, arr + n, [](const Item &a, const Item &b) {
-      return ((double) a.value / a.weight) > (double) b.value / b.weight;
+      return ((double)a.value / a.weight) > (double)b.value / b.weight;
     });
 
     int currWeight = 0;
@@ -28,5 +30,6 @@ double fractionalKnapsack(int W, Item arr[], int n) {
       }
     }
     return cost;
-}
+  }
+};
 ```

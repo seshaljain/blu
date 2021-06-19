@@ -10,10 +10,13 @@ weight = 2156
 <https://practice.geeksforgeeks.org/problems/height-of-binary-tree/1>
 
 ```cpp
-int maxDepth(TreeNode *root) {
-  if (root == nullptr)
-    return 0;
+class Solution {
+public:
+  int maxDepth(TreeNode *root) {
+    if (root == nullptr)
+      return 0;
 
-  return 1 + max(maxDepth(root->left), maxDepth(root->right));
-}
+    return 1 + max(maxDepth(root->left), maxDepth(root->right));
+  }
+};
 ```

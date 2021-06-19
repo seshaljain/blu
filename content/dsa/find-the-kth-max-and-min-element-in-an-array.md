@@ -2,7 +2,7 @@
 title = "Find the Kth max and min element in an array"
 author = ["Seshal Jain"]
 date = 2021-06-16T00:00:00+05:30
-tags = ["array"]
+tags = ["array", "heap"]
 categories = ["done"]
 draft = false
 weight = 2004
@@ -16,18 +16,21 @@ weight = 2004
 <!--listend-->
 
 ```cpp
-int kthSmallest(int arr[], int l, int r, int k) {
-  priority_queue<int, vector<int>> pq(arr, arr + k);
+class Solution {
+public:
+  int kthSmallest(int arr[], int l, int r, int k) {
+    priority_queue<int, vector<int>> pq(arr, arr + k);
 
-  int n = r - l + 1;
+    int n = r - l + 1;
 
-  for (int i = k; i < n; i++) {
-    if (arr[i] < pq.top()) {
-      pq.pop();
-      pq.push(arr[i]);
+    for (int i = k; i < n; i++) {
+      if (arr[i] < pq.top()) {
+        pq.pop();
+        pq.push(arr[i]);
+      }
     }
-  }
 
-  return pq.top();
-}
+    return pq.top();
+  }
+};
 ```

@@ -4,7 +4,7 @@ author = ["Seshal Jain"]
 tags = ["dp"]
 categories = ["done"]
 draft = false
-weight = 2355
+weight = 2354
 +++
 
 <https://practice.geeksforgeeks.org/problems/coin-change2448/1>

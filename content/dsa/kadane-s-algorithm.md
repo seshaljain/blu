@@ -12,18 +12,21 @@ weight = 2012
 DP without array
 
 ```cpp
-int maxSubarraySum(int arr[], int n) {
+class Solution {
+public:
+  int maxSubarraySum(int arr[], int n) {
 
-  int sum = INT_MIN, currSum = 0, i = 0;
+    int sum = INT_MIN, currSum = 0, i = 0;
 
-  while (i < n) {
-    currSum += arr[i];
-    sum = max(sum, currSum);
+    while (i < n) {
+      currSum += arr[i];
+      sum = max(sum, currSum);
 
-    if (currSum < 0)
-      currSum = 0;
-    i++;
+      if (currSum < 0)
+        currSum = 0;
+      i++;
+    }
+    return sum;
   }
-  return sum;
-}
+};
 ```

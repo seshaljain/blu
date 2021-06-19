@@ -2,6 +2,7 @@
 title = "Delete loop in a linked list"
 author = ["Seshal Jain"]
 tags = ["ll"]
+categories = ["done"]
 draft = false
 weight = 2122
 +++

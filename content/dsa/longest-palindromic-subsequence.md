@@ -4,7 +4,7 @@ author = ["Seshal Jain"]
 tags = ["dp"]
 categories = ["done"]
 draft = false
-weight = 2390
+weight = 2389
 +++
 
 <https://leetcode.com/problems/longest-palindromic-subsequence/>

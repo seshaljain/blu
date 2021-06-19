@@ -11,7 +11,7 @@ weight = 2098
 
 ```cpp
 class Solution {
- public:
+public:
   void merge(int arr1[], int arr2[], int n, int m) {
     int i = 0, j = 0, k = n - 1;
 

@@ -4,7 +4,7 @@ author = ["Seshal Jain"]
 tags = ["string", "dp"]
 categories = ["done"]
 draft = false
-weight = 2368
+weight = 2367
 +++
 
 <https://practice.geeksforgeeks.org/problems/longest-repeating-subsequence/0>

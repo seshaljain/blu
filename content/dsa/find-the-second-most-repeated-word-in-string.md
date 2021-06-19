@@ -10,29 +10,32 @@ weight = 2071
 <https://practice.geeksforgeeks.org/problems/second-most-repeated-string-in-a-sequence/0>
 
 ```cpp
-string secFrequent(string arr[], int n) {
-  map<string, int> mp;
+class Solution {
+public:
+  string secFrequent(string arr[], int n) {
+    map<string, int> mp;
 
-  for (int i = 0; i < n; i++) {
-    mp[arr[i]]++;
-  }
+    for (int i = 0; i < n; i++) {
+      mp[arr[i]]++;
+    }
 
-  int maxFreq = -1, notMaxFreq = -1;
-  string ans = "";
+    int maxFreq = -1, notMaxFreq = -1;
+    string ans = "";
 
-  for (auto it : mp) {
-    if (it.second > maxFreq) {
-      notMaxFreq = maxFreq;
-      maxFreq = it.second;
-    } else if (it.second > notMaxFreq && it.second != maxFreq) {
-      notMaxFreq = it.second;
+    for (auto it : mp) {
+      if (it.second > maxFreq) {
+        notMaxFreq = maxFreq;
+        maxFreq = it.second;
+      } else if (it.second > notMaxFreq && it.second != maxFreq) {
+        notMaxFreq = it.second;
+      }
+    }
+
+    for (auto it : mp) {
+      if (it.second == notMaxFreq) {
+        return it.first;
+      }
     }
   }
-
-  for (auto it : mp) {
-    if (it.second == notMaxFreq) {
-      return it.first;
-    }
-  }
-}
+};
 ```

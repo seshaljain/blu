@@ -4,7 +4,7 @@ author = ["Seshal Jain"]
 tags = ["dp"]
 categories = ["done"]
 draft = false
-weight = 2384
+weight = 2383
 +++
 
 <https://practice.geeksforgeeks.org/problems/longest-common-substring/0>

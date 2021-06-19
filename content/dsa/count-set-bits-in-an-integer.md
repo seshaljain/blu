@@ -4,19 +4,22 @@ author = ["Seshal Jain"]
 tags = ["bit"]
 categories = ["done"]
 draft = false
-weight = 2408
+weight = 2407
 +++
 
 <https://practice.geeksforgeeks.org/problems/set-bits0143/1>
 
 ```cpp
-int setBits(int N) {
-  int bCount = 0;
-  while (N) {
-    N &= (N - 1);
-    bCount++;
-  }
+class Solution {
+public:
+  int setBits(int N) {
+    int bCount = 0;
+    while (N) {
+      N &= (N - 1);
+      bCount++;
+    }
 
-  return bCount;
-}
+    return bCount;
+  }
+};
 ```

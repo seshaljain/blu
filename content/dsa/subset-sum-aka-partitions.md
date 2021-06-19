@@ -3,7 +3,7 @@ title = "Subset sum aka Partitions"
 author = ["Seshal Jain"]
 tags = ["dp", "backtracking"]
 draft = false
-weight = 2361
+weight = 2360
 +++
 
 <https://practice.geeksforgeeks.org/problems/subset-sum-problem2014/1>

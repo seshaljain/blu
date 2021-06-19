@@ -4,7 +4,7 @@ author = ["Seshal Jain"]
 tags = ["dp"]
 categories = ["done"]
 draft = false
-weight = 2388
+weight = 2387
 +++
 
 <https://practice.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1>

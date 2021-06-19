@@ -12,20 +12,23 @@ weight = 2028
 Make window in sorted array, check for minimum
 
 ```cpp
-long long findMinDiff(vector<long long> a, long long n, long long m) {
-  if (m == 0 || n == 0)
-    return 0;
+class Solution {
+public:
+  long long findMinDiff(vector<long long> a, long long n, long long m) {
+    if (m == 0 || n == 0)
+      return 0;
 
-  if (n < m)
-    return -1;
+    if (n < m)
+      return -1;
 
-  sort(a.begin(), a.end());
-  long long ans = LLONG_MAX;
+    sort(a.begin(), a.end());
+    long long ans = LLONG_MAX;
 
-  for (long long i = 0; i + m - 1 < n; i++) {
-    ans = min(ans, a[i + m - 1] - a[i]);
+    for (long long i = 0; i + m - 1 < n; i++) {
+      ans = min(ans, a[i + m - 1] - a[i]);
+    }
+
+    return ans;
   }
-
-  return ans;
-}
+};
 ```

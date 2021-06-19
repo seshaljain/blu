@@ -12,15 +12,18 @@ weight = 2016
 One pass, just need to check the lowest valley/highest peak (and their difference)
 
 ```cpp
-int maxProfit(vector<int> &prices) {
-  int n = prices.size();
-  int minPrice = INT_MAX, maxProfit = 0;
+class Solution {
+public:
+  int maxProfit(vector<int> &prices) {
+    int n = prices.size();
+    int minPrice = INT_MAX, maxProfit = 0;
 
-  for (int i = 0; i < n; i++) {
-    minPrice = min(minPrice, prices[i]);
-    maxProfit = max(maxProfit, prices[i] - minPrice);
+    for (int i = 0; i < n; i++) {
+      minPrice = min(minPrice, prices[i]);
+      maxProfit = max(maxProfit, prices[i] - minPrice);
+    }
+
+    return maxProfit;
   }
-
-  return maxProfit;
-}
+};
 ```
