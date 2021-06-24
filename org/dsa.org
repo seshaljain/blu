@@ -24,6 +24,8 @@ void reverseArray(int arr[], int start, int end) {
     end--;
   }
 }
+
+// reverseArray(arr, 0, n - 1);
 #+end_src
 
 ** DONE Find the maximum and minimum element in an array :array:@done:
@@ -143,10 +145,10 @@ public:
 https://www.geeksforgeeks.org/move-negative-numbers-beginning-positive-end-constant-extra-space/
 
 Cases:
-1. negative negative: i+=1
-2. positive negative: swap, i++, j--
-3. negative positive: j--
-4. positive positive: i++, j--
+1. negative negative: i++
+2. positive positive: j--
+3. negative positive: i++, j--
+4. positive negative: swap, i++, j--
 
 #+begin_src cpp
 void shiftall(int arr[], int n) {
@@ -155,13 +157,13 @@ void shiftall(int arr[], int n) {
   while (i <= j) {
     if (arr[i] < 0 && arr[j] < 0) {
       i++;
-    } else if (arr[i] > 0 && arr[j] < 0) {
-      swap(arr[i], arr[j]);
+    } else if (arr[i] > 0 && arr[j] > 0) {
+      j--;
+    } else if (arr[i] < 0 && arr[j] > 0) {
       i++;
       j--;
-    } else if (arr[i] > 0 && arr[j] > 0)
-      j--;
-    else {
+    } else {
+      swap(arr[i], arr[j]);
       i++;
       j--;
     }
@@ -169,12 +171,100 @@ void shiftall(int arr[], int n) {
 }
 #+end_src
 
-** TODO Find the union and intersection of the two sorted arrays :array:
+** DONE Find the union and intersection of the two sorted arrays :array:@done:
+CLOSED: [2021-06-20 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-union-and-intersection-of-the-two-sorted-arrays
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/union-of-two-arrays/0
+*** Union
+Does not handle duplicates
+
+#+begin_src cpp
+class Solution {
+public:
+  int doUnion(int a[], int n, int b[], int m) {
+    int i = 0, j = 0;
+    sort(a, a + n);
+    sort(b, b + m);
+    vector<int> v;
+    while (i < n && j < m) {
+      if (a[i] < b[j]) {
+        v.push_back(a[i]);
+        i++;
+      } else if (a[i] > b[j]) {
+        v.push_back(b[j]);
+        j++;
+      } else {
+        v.push_back(a[i]);
+        // or
+        // v.push_back(b[j]);
+        i++;
+        j++;
+      }
+    }
+
+    while (i < n)
+      v.push_back(a[i++]);
+
+    while (j < m)
+      v.push_back(b[j++]);
+
+    return v.size();
+  }
+};
+#+end_src
+
+Handles duplicates
+
+#+begin_src cpp
+class Solution{
+    public:
+    int doUnion(int a[], int n, int b[], int m)  {
+        set<int> st;
+        for (int i = 0; i < n; i++) {
+            st.insert(a[i]);
+        }
+
+        for (int i = 0; i < m; i++) {
+            st.insert(b[i]);
+        }
+
+        return st.size();
+    }
+};
+#+end_src
+
+*** Intersection
+https://leetcode.com/problems/intersection-of-two-arrays/
+#+begin_src cpp
+class Solution {
+public:
+  vector<int> intersection(vector<int> &nums1, vector<int> &nums2) {
+    int i = 0, j = 0;
+    int n = nums1.size(), m = nums2.size();
+    sort(nums1.begin(), nums1.end());
+    sort(nums2.begin(), nums2.end());
+
+    set<int> st;
+    while (i < n && j < m) {
+      if (nums1[i] < nums2[j]) {
+        i++;
+      } else if (nums1[i] > nums2[j]) {
+        j++;
+      } else {
+        st.insert(nums1[i]);
+        // or
+        // v.push_back(b[j]);
+        i++;
+        j++;
+      }
+    }
+    return vector<int>(st.begin(), st.end());
+  }
+};
+#+end_src
 
 ** DONE Cyclically rotate an array by one :@done:array:
 :PROPERTIES:
@@ -316,12 +406,39 @@ public:
 };
 #+end_src
 
-** TODO Merge intervals :array:
+** DONE Merge intervals :array:@done:
+CLOSED: [2021-06-20 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: merge-intervals
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/merge-intervals/
+
+#+begin_src cpp
+class Solution {
+public:
+  vector<vector<int>> merge(vector<vector<int>> &intervals) {
+    vector<vector<int>> mergedIntervals;
+
+    if (intervals.empty())
+      return mergedIntervals;
+
+    vector<int> currInt = intervals[0];
+
+    for (auto it : intervals) {
+      if (it[0] <= currInt[1]) {
+        currInt[1] = max(it[1], currInt[1]);
+      } else {
+        mergedIntervals.push_back(currInt);
+        currInt = it;
+      }
+    }
+    mergedIntervals.push_back(currInt);
+
+    return mergedIntervals;
+  }
+};
+#+end_src
 
 ** DONE Next permutation :array:@done:
 CLOSED: [2021-06-19 Sat]
@@ -359,22 +476,84 @@ public:
 };
 #+end_src
 
-** TODO Count inversion :array:search_sort:
+** DONE Count inversion :array:search_sort:@done:
+CLOSED: [2021-06-24 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-inversion
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/inversion-of-array/0
 
-** DONE Best time to buy and sell stock :@done:array:
+Identical to merge sort, just need to add the number of inversions when =arr[i]
+> arr[j]= (adding =mid - i + 1= is enough, because after sorting all elements to
+the right will automatically be inversion pairs)
+#+begin_src cpp
+class Solution {
+  long long merge(long long arr[], long long temp[], long long left,
+                  long long right) {
+    long long mid = left + (right - left) / 2;
+    long long invCount = 0;
+
+    long long i = left, j = mid + 1, k = left;
+
+    while (i <= mid && j <= right) {
+      if (arr[i] <= arr[j]) {
+        temp[k++] = arr[i++];
+      } else {
+        temp[k++] = arr[j++];
+        invCount += mid - i + 1;
+      }
+    }
+
+    while (i <= mid) {
+      temp[k++] = arr[i++];
+    }
+    while (j <= right) {
+      temp[k++] = arr[j++];
+    }
+    for (i = left; i <= right; i++) {
+      arr[i] = temp[i];
+    }
+    return invCount;
+  }
+
+  long long _mergeSort(long long arr[], long long temp[], long long left,
+                       long long right) {
+    long long mid, invCount = 0;
+
+    if (left < right) {
+      mid = left + (right - left) / 2;
+
+      invCount += _mergeSort(arr, temp, left, mid);
+      invCount += _mergeSort(arr, temp, mid + 1, right);
+
+      invCount += merge(arr, temp, left, right);
+    }
+
+    return invCount;
+  }
+
+public:
+  long long inversionCount(long long arr[], long long N) {
+    long long temp[N];
+    long long invCount = _mergeSort(arr, temp, 0, N - 1);
+
+    return invCount;
+  }
+};
+#+end_src
+
+** DONE [#A] Best time to buy and sell stock :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: best-time-to-buy-and-sell-stock
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
+*** Only 1 transaction is allowed
 One pass, just need to check the lowest valley/highest peak (and their difference)
 
+This problem reduces to maximum difference between two elements
 #+begin_src cpp
 class Solution {
 public:
@@ -392,12 +571,64 @@ public:
 };
 #+end_src
 
-** TODO Find all pairs on integer array whose sum is equal to K :array:
+*** Any number of transactions are allowed
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
+#+begin_src cpp
+class Solution {
+  int dp[1005][1005];
+
+public:
+  int maxProfit(int k, vector<int> &prices) {
+    int n = prices.size();
+    if (n == 0)
+      return 0;
+
+    for (int i = 0; i <= k; i++) {
+      int minPrice = prices[0];
+      for (int j = 0; j < n; j++) {
+        if (i == 0 || j == 0) {
+          dp[i][j] = 0;
+        } else {
+          minPrice = min(minPrice, prices[j] - dp[i - 1][j - 1]);
+          dp[i][j] = max(dp[i][j - 1], prices[j] - minPrice);
+        }
+      }
+    }
+    return dp[k][n - 1];
+  }
+};
+#+end_src
+
+** DONE Find all pairs on integer array whose sum is equal to K :array:@done:
+CLOSED: [2021-06-20 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-all-pairs-on-integer-array-whose-sum-is-equal-to-k
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/count-pairs-with-given-sum5022/1
+
+#+begin_src cpp
+class Solution {
+public:
+  int getPairsCount(int arr[], int n, int k) {
+    map<int, int> mp;
+
+    for (int i = 0; i < n; i++)
+      mp[arr[i]]++;
+
+    int ctr = 0;
+
+    for (int i = 0; i < n; i++) {
+      ctr += mp[k - arr[i]];
+
+      if (k - arr[i] == arr[i])
+        ctr--;
+    }
+
+    return ctr / 2;
+  }
+};
+#+end_src
 
 ** TODO Find common elements in 3 sorted arrays :array:
 :PROPERTIES:
@@ -508,12 +739,36 @@ public:
 };
 #+end_src
 
-** TODO Given an array of size N and a number K, find all elements that appear more than N/K times :array:
+** DONE Given an array of size N and a number K, find all elements that appear more than N/K times :array:@done:
+CLOSED: [2021-06-23 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: given-an-array-of-size-n-and-a-number-k-find-all-elements-that-appear-more-than-n-k-times
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/given-an-array-of-of-size-n-finds-all-the-elements-that-appear-more-than-nk-times/
+
+GfG has a O(nk) time, O(k - 1) space solution, something about tetris
+#+begin_src cpp
+class Solution {
+public:
+  int countOccurence(int arr[], int n, int k) {
+    map<int, int> freq;
+
+    for (int i = 0; i < n; i++) {
+      freq[arr[i]]++;
+    }
+
+    int ctr = 0;
+
+    for (auto it : freq) {
+      if (it.second > n / k)
+        ctr++;
+    }
+
+    return ctr;
+  }
+};
+#+end_src
 
 ** TODO Find whether an array is a subset of another array :array:
 :PROPERTIES:
@@ -522,12 +777,80 @@ https://www.geeksforgeeks.org/given-an-array-of-of-size-n-finds-all-the-elements
 :END:
 https://practice.geeksforgeeks.org/problems/array-subset-of-another-array/0
 
-** TODO Find the triplet that sum to a given value :array:
+** DONE Find the triplet that sum to a given value :array:@done:
+CLOSED: [2021-06-24 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-triplet-that-sum-to-a-given-value
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/triplet-sum-in-array/0
+
+#+begin_src cpp
+class Solution {
+public:
+  bool find3Numbers(int A[], int n, int X) {
+    sort(A, A + n);
+    for (int i = 0; i < n - 2; i++) {
+      int l = i + 1, r = n - 1;
+
+      while (l < r) {
+        int sum = A[i] + A[l] + A[r];
+        if (sum == X)
+          return true;
+        else if (sum < X) {
+          l++;
+        } else {
+          r--;
+        }
+      }
+    }
+    return false;
+  }
+};
+#+end_src
+
+*** When =X = 0=
+https://leetcode.com/problems/3sum/
+2 pointer, avoid duplicates since =vector<vector<int>>= returned
+#+begin_src cpp
+class Solution {
+public:
+  vector<vector<int>> threeSum(vector<int> &nums) {
+    vector<vector<int>> ans;
+
+    sort(nums.begin(), nums.end());
+
+    int n = nums.size();
+    for (int i = 0; i < n - 2; i++) {
+      if (i == 0 || nums[i] != nums[i - 1]) {
+        int l = i + 1, r = n - 1;
+
+        while (l < r) {
+          if (nums[l] + nums[r] + nums[i] == 0) {
+            vector<int> triplet = {nums[l], nums[r], nums[i]};
+            ans.push_back(triplet);
+
+            while (l < r && nums[l] == nums[l + 1]) {
+              l++;
+            }
+            while (l < r && nums[r] == nums[r - 1]) {
+              r--;
+            }
+
+            l++;
+            r--;
+          } else if (nums[l] + nums[r] + nums[i] > 0) {
+            r--;
+          } else {
+            l++;
+          }
+        }
+      }
+    }
+    return ans;
+  }
+};
+#+end_src
 
 ** DONE Trapping rain water :@done:array:
 :PROPERTIES:
@@ -622,12 +945,36 @@ https://practice.geeksforgeeks.org/problems/three-way-partitioning/1
 :END:
 https://practice.geeksforgeeks.org/problems/minimum-swaps-required-to-bring-all-elements-less-than-or-equal-to-k-together/0
 
-** TODO Minimum number of operations required to make an array palindrome :array:
+** DONE Minimum number of merge operations required to make an array palindrome :array:@done:
+CLOSED: [2021-06-24 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-number-of-operations-required-to-make-an-array-palindrome
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-https://practice.geeksforgeeks.org/problems/palindromic-array/0
+https://www.geeksforgeeks.org/find-minimum-number-of-merge-operations-to-make-an-array-palindrome/
+
+#+begin_src cpp
+int findMinOps(int arr[], int n) {
+  int ans = 0;
+
+  for (int i = 0, j = n - 1; i <= j;) {
+    if (arr[i] == arr[j]) {
+      i++;
+      j--;
+    } else if (arr[i] > arr[j]) {
+      j--;
+      arr[j] += arr[j + 1];
+      ans++;
+    } else {
+      i++;
+      arr[i] += arr[i - 1];
+      ans++;
+    }
+  }
+
+  return ans;
+}
+#+end_src
 
 ** TODO Median of 2 sorted arrays of equal size :array:
 :PROPERTIES:
@@ -1531,12 +1878,35 @@ vector<int> find(int arr[], int n, int x) {
 }
 #+end_src
 
-** TODO Find a fixed point (value equal to index) in a given array :search_sort:
+** DONE Find a fixed point (value equal to index) in a given array :search_sort:@done:
+CLOSED: [2021-06-20 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-a-fixed-point--value-equal-to-index--in-a-given-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/value-equal-to-index-value1330/1
+
+GfG testcases are incorrect, we can only use binay search on a sorted array
+#+begin_src cpp
+class Solution {
+  vector<int> v;
+
+public:
+  vector<int> valueEqualToIndex(int arr[], int n) {
+    int low = 0, high = n - 1;
+    while (low <= high) {
+      int mid = (low + high) / 2; // low + (high - low)/2;
+      if (mid == arr[mid + 1])
+        v.push_back(mid);
+      if (mid > arr[mid + 1])
+        low = mid + 1;
+      else
+        high = mid - 1;
+    }
+    return v;
+  }
+};
+#+end_src
 
 ** TODO Search in a rotated sorted array :search_sort:
 :PROPERTIES:
@@ -1566,9 +1936,9 @@ https://practice.geeksforgeeks.org/problems/middle-of-three2926/1
 :END:
 https://www.geeksforgeeks.org/optimum-location-point-minimize-total-distance/
 
-** DONE Find the repeating and the missing :@done:search_sort:
+** DONE Find missing and repeating :@done:search_sort:
 :PROPERTIES:
-:EXPORT_FILE_NAME: find-the-repeating-and-the-missing
+:EXPORT_FILE_NAME: find-missing-and-repeating
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
@@ -1904,12 +2274,24 @@ https://www.spoj.com/problems/EKO/
 :END:
 https://www.geeksforgeeks.org/weighted-job-scheduling-log-n-time/
 
-** TODO Missing number in AP :search_sort:
+** DONE Missing number in AP :search_sort:@done:
+CLOSED: [2021-06-21 Mon]
 :PROPERTIES:
 :EXPORT_FILE_NAME: missing-number-in-ap
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/arithmetic-number/0
+
+#+begin_src cpp
+class Solution {
+public:
+  int inSequence(int A, int B, int C) {
+    // B = A + (n - 1)C
+    // (B - A) / C + 1 = n;
+    return (B == A + ((B - A) / C) * C);
+  }
+};
+#+end_src
 
 ** TODO Smallest number with atleast N trailing zeroes in factorial :search_sort:
 :PROPERTIES:
@@ -2337,11 +2719,14 @@ https://www.geeksforgeeks.org/reverse-doubly-linked-list-groups-given-size/
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 
-** TODO Why is quicksort preferred for arrays while merge sort for linked lists? :ll:
+** DONE Why is quicksort preferred for arrays while merge sort for linked lists? :ll:@done:
+CLOSED: [2021-06-23 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: why-is-quicksort-preferred-for-arrays-while-merge-sort-for-linked-lists
 :EXPORT_HUGO_WEIGHT: auto
 :END:
+
+Quicksort is also one of the efficient algorithms with the average time complexity of O(nlogn). But the worst-case time complexity is O(n^2). Also, variations of the quick sort like randomized quicksort are not efficient for the linked list because unlike arrays, random access in the linked list is not possible in O(1) time. If we sort the linked list using quicksort, we would end up using the head as a pivot element which may not be efficient in all scenarios.
 
 ** TODO Flatten a linked list :ll:
 :PROPERTIES:
@@ -2467,24 +2852,29 @@ public:
 :END:
 https://practice.geeksforgeeks.org/problems/diameter-of-binary-tree/1
 
+Leetcode expects diamater of tree to be number of edges, ∴ return =re   s - 1=
+
 #+begin_src cpp
 class Solution {
-  int d;
+  int diam(TreeNode *root, int &res) {
+    if (root == nullptr)
+      return 0;
+
+    int ld = diam(root->left, res);
+    int rd = diam(root->right, res);
+
+    int edgeH = max(ld, rd) + 1;
+    int currD = ld + rd + 1;
+    int currMax = max(edgeH, currD);
+    res = max(res, currMax);
+    return edgeH;
+  }
 
 public:
   int diameterOfBinaryTree(TreeNode *root) {
-    d = 0;
-    diam(root);
-    return d;
-  }
-
-  int diam(TreeNode *root) {
-    if (root == nullptr)
-      return 0;
-    int ld = diam(root->left);
-    int rd = diam(root->right);
-    d = max(d, ld + rd);
-    return max(ld, rd) + 1;
+    int res = INT_MIN;
+    diam(root, res);
+    return res - 1;
   }
 };
 #+end_src
@@ -3886,34 +4276,39 @@ requires the commented outer =visited= loop.
 
 #+begin_src cpp
 class Solution {
-public:
-  vector<int> bfsOfGraph(int V, vector<int> adj[]) {
-    vector<bool> visited(V, false);
-    vector<int> v;
-    deque<int> q;
+  vector<int> bfsTraversal;
 
-    // for (int i = 0; i < V; i++) {
-    // if (!visited[i]) {
-    int i = 0;
+  void bfs(int i, vector<bool> &visited, vector<int> adj[]) {
+    queue<int> q;
     visited[i] = true;
-    q.push_back(i);
-
-    vector<int>::iterator it;
+    q.push(i);
 
     while (!q.empty()) {
       int node = q.front();
-      q.pop_front();
-      v.push_back(node);
+      q.pop();
+      bfsTraversal.push_back(node);
 
-      for (it = (adj[node]).begin(); it != (adj[node]).end(); ++it)
-        if (!visited[*it]) {
-          visited[*it] = true;
-          q.push_back(*it);
+      for (int it : adj[node]) {
+        if (!visited[it]) {
+          visited[it] = true;
+          q.push(it);
         }
+      }
     }
+  }
+
+public:
+  vector<int> bfsOfGraph(int V, vector<int> adj[]) {
+    vector<bool> visited(V, false);
+
+    // for (int i = 0; i < V; i++) {
+      // if (!visited[i]) {
+        int i = 0;
+        bfs(i, visited, adj);
+      // }
     // }
-    // }
-    return v;
+
+    return bfsTraversal;
   }
 };
 #+end_src
@@ -3925,15 +4320,18 @@ public:
 :END:
 https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1
 
+*** Recursive
 #+begin_src cpp
 class Solution {
-  void dfs(int i, vector<int> &ans, vector<bool> &visited, vector<int> adj[]) {
+  vector<int> dfsTraversal;
+
+  void dfsHelper(int i, vector<bool> &visited, vector<int> adj[]) {
     visited[i] = true;
-    ans.push_back(i);
+    dfsTraversal.push_back(i);
 
     for (vector<int>::iterator it = adj[i].begin(); it != adj[i].end(); it++) {
       if (!visited[*it]) {
-        dfs(*it, ans, visited, adj);
+        dfs(*it, visited, adj);
       }
     }
   }
@@ -3941,22 +4339,100 @@ class Solution {
 public:
   vector<int> dfsOfGraph(int V, vector<int> adj[]) {
     vector<bool> visited(V, false);
-    vector<int> ans;
     for (int i = 0; i < V; i++) {
       if (!visited[i]) {
-        dfs(i, ans, visited, adj);
+        dfsHelper(i, visited, adj);
       }
-      return ans;
     }
-  };
+
+    return dfsTraversal;
+  }
+};
 #+end_src
 
-** TODO Detect cycle in directed graph using BFS/DFS :graph:
+*** Iterative
+#+begin_src cpp
+class Solution {
+  vector<int> dfsTraversal;
+
+  void dfsHelper(int i, vector<bool> &visited, vector<int> adj[]) {
+    stack<int> st;
+    visited[i] = true;
+    st.push(i);
+
+    while (!st.empty()) {
+      int node = st.top();
+      st.pop();
+      dfsTraversal.push_back(node);
+
+      for (int it : adj[node]) {
+        if (!visited[it]) {
+          visited[it] = true;
+          st.push(it);
+        }
+      }
+    }
+  }
+
+public:
+  vector<int> dfsOfGraph(int V, vector<int> adj[]) {
+    vector<bool> visited(V, false);
+
+    for (int i = 0; i < V; i++) {
+      if (!visited[i]) {
+        dfsHelper(i, visited, adj);
+      }
+    }
+
+    return dfsTraversal;
+  }
+};
+#+end_src
+
+** DONE Detect cycle in directed graph using BFS/DFS :graph:@done:
+CLOSED: [2021-06-22 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: detect-cycle-in-directed-graph-using-bfs-dfs
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+*** Using DFS
+#+begin_src cpp
+class Solution {
+  bool dfsHelper(int i, vector<bool> &visited, vector<bool> &visitedDirected,
+                 vector<int> adj[]) {
+    visited[i] = true;
+    visitedDirected[i] = true;
+
+    for (int it : adj[i]) {
+      if (!visited[it]) {
+        if (dfsHelper(it, visited, visitedDirected, adj)) {
+          return true;
+        }
+      } else if (visitedDirected[it]) {
+        return true;
+      }
+    }
+    visitedDirected[i] = false;
+    return false;
+  }
+
+public:
+  bool isCyclic(int V, vector<int> adj[]) {
+    vector<bool> visited(V, false);
+    vector<bool> visitedDirected(V, false);
+
+    for (int i = 0; i < V; i++) {
+      if (!visited[i]) {
+        if (dfsHelper(i, visited, visitedDirected, adj)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+};
+#+end_src
 
 ** TODO Detect cycle in undirected graph using BFS/DFS :graph:
 :PROPERTIES:
@@ -3972,9 +4448,9 @@ https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/
 :END:
 https://practice.geeksforgeeks.org/problems/steps-by-knight/0
 
-** TODO Flood fill algo :graph:
+** TODO Flood fill algorithm :graph:
 :PROPERTIES:
-:EXPORT_FILE_NAME: flood-fill-algo
+:EXPORT_FILE_NAME: flood-fill-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/flood-fill/
@@ -4000,19 +4476,21 @@ https://leetcode.com/problems/number-of-operations-to-make-network-connected/
 :END:
 https://leetcode.com/problems/word-ladder/
 
-** TODO Dijkstra algo :graph:
+** TODO Dijkstra algorithm :graph:
 :PROPERTIES:
-:EXPORT_FILE_NAME: dijkstra-algo
+:EXPORT_FILE_NAME: dijkstra-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
 
-** TODO Implement topological sort :graph:
+** STRT Implement topological sort :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-topological-sort
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/topological-sort/1
+
+Topological sort is only valid for a Directed Acyclic Graph
 
 ** TODO Minimum time taken by each job to be completed given by a directed acyclic graph :graph:
 :PROPERTIES:
@@ -4112,12 +4590,93 @@ https://www.geeksforgeeks.org/bridge-in-a-graph/
 :END:
 https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
 
-** TODO Check if graph is bipartite :graph:
+** DONE Check if graph is bipartite :graph:@done:
+CLOSED: [2021-06-21 Mon]
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-graph-is-bipartite
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/bipartite-graph/
+
+Color the graph by BFS traversal, =colors= maintains track of visited nodes.
+
+=colors[it] = 1 - colors[node]= is the fun alternator part
+
+*** Using BFS
+#+begin_src cpp
+class Solution {
+  bool bfsHelper(int i, vector<int> &colors, vector<int> adj[]) {
+    queue<int> q;
+    colors[i] = 1;
+    q.push(i);
+
+    while (!q.empty()) {
+      int node = q.front();
+      q.pop();
+
+      for (int it : adj[node]) {
+        if (colors[it] == -1) {
+          colors[it] = 1 - colors[node];
+          q.push(it);
+        } else if (colors[it] == colors[node]) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+public:
+  bool isBipartite(int V, vector<int> adj[]) {
+    vector<int> colors(V, -1);
+
+    for (int i = 0; i < V; i++) {
+      if (colors[i] == -1) {
+        if (!bfsHelper(i, colors, adj))
+          return false;
+      }
+    }
+    return true;
+  }
+};
+#+end_src
+
+*** Using DFS
+#+begin_src cpp
+class Solution {
+  bool dfsHelper(int i, vector<int> &colors, vector<int> adj[]) {
+    if (colors[i] == -1) {
+      colors[i] = 1;
+    }
+
+    for (int it : adj[i]) {
+      if (colors[it] == -1) {
+        colors[it] = 1 - colors[i];
+
+        if (!dfsHelper(it, colors, adj)) {
+          return false;
+        }
+      } else if (colors[it] == colors[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+public:
+  bool isBipartite(int V, vector<int> adj[]) {
+    vector<int> colors(V, -1);
+
+    for (int i = 0; i < V; i++) {
+      if (colors[i] == -1) {
+        if (!dfsHelper(i, colors, adj))
+          return false;
+      }
+    }
+    return true;
+  }
+};
+#+end_src
 
 ** TODO Detect negative cycle in a graph :graph:
 :PROPERTIES:
@@ -4161,9 +4720,9 @@ https://www.hackerearth.com/practice/algorithms/graphs/topological-sort/practice
 :END:
 https://www.geeksforgeeks.org/water-jug-problem-using-bfs/
 
-** TODO Minimum edges to reverse o make path from source to destination :graph:
+** TODO Minimum edges to reverse to make path from source to destination :graph:
 :PROPERTIES:
-:EXPORT_FILE_NAME: minimum-edges-to-reverse-o-make-path-from-source-to-destination
+:EXPORT_FILE_NAME: minimum-edges-to-reverse-to-make-path-from-source-to-destination
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/minimum-edges-reverse-make-path-source-destination/

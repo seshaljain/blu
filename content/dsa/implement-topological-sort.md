@@ -7,3 +7,5 @@ weight = 2321
 +++
 
 <https://practice.geeksforgeeks.org/problems/topological-sort/1>
+
+Topological sort is only valid for a Directed Acyclic Graph

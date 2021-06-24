@@ -1,5 +1,5 @@
 +++
-title = "Minimum edges to reverse o make path from source to destination"
+title = "Minimum edges to reverse to make path from source to destination"
 author = ["Seshal Jain"]
 tags = ["graph"]
 draft = false

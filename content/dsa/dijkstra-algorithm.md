@@ -1,5 +1,5 @@
 +++
-title = "Dijkstra algo"
+title = "Dijkstra algorithm"
 author = ["Seshal Jain"]
 tags = ["graph"]
 draft = false

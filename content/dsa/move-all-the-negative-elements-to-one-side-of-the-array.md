@@ -11,10 +11,10 @@ weight = 2006
 
 Cases:
 
-1.  negative negative: i+=1
-2.  positive negative: swap, i++, j--
-3.  negative positive: j--
-4.  positive positive: i++, j--
+1.  negative negative: i++
+2.  positive positive: j--
+3.  negative positive: i++, j--
+4.  positive negative: swap, i++, j--
 
 <!--listend-->
 
@@ -25,13 +25,13 @@ void shiftall(int arr[], int n) {
   while (i <= j) {
     if (arr[i] < 0 && arr[j] < 0) {
       i++;
-    } else if (arr[i] > 0 && arr[j] < 0) {
-      swap(arr[i], arr[j]);
+    } else if (arr[i] > 0 && arr[j] > 0) {
+      j--;
+    } else if (arr[i] < 0 && arr[j] > 0) {
       i++;
       j--;
-    } else if (arr[i] > 0 && arr[j] > 0)
-      j--;
-    else {
+    } else {
+      swap(arr[i], arr[j]);
       i++;
       j--;
     }

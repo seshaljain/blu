@@ -14,34 +14,39 @@ requires the commented outer `visited` loop.
 
 ```cpp
 class Solution {
-public:
-  vector<int> bfsOfGraph(int V, vector<int> adj[]) {
-    vector<bool> visited(V, false);
-    vector<int> v;
-    deque<int> q;
+  vector<int> bfsTraversal;
 
-    // for (int i = 0; i < V; i++) {
-    // if (!visited[i]) {
-    int i = 0;
+  void bfs(int i, vector<bool> &visited, vector<int> adj[]) {
+    queue<int> q;
     visited[i] = true;
-    q.push_back(i);
-
-    vector<int>::iterator it;
+    q.push(i);
 
     while (!q.empty()) {
       int node = q.front();
-      q.pop_front();
-      v.push_back(node);
+      q.pop();
+      bfsTraversal.push_back(node);
 
-      for (it = (adj[node]).begin(); it != (adj[node]).end(); ++it)
-        if (!visited[*it]) {
-          visited[*it] = true;
-          q.push_back(*it);
+      for (int it : adj[node]) {
+        if (!visited[it]) {
+          visited[it] = true;
+          q.push(it);
         }
+      }
     }
+  }
+
+public:
+  vector<int> bfsOfGraph(int V, vector<int> adj[]) {
+    vector<bool> visited(V, false);
+
+    // for (int i = 0; i < V; i++) {
+      // if (!visited[i]) {
+        int i = 0;
+        bfs(i, visited, adj);
+      // }
     // }
-    // }
-    return v;
+
+    return bfsTraversal;
   }
 };
 ```

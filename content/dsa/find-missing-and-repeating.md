@@ -1,5 +1,5 @@
 +++
-title = "Find the repeating and the missing"
+title = "Find missing and repeating"
 author = ["Seshal Jain"]
 tags = ["search-sort"]
 categories = ["done"]

@@ -1,5 +1,5 @@
 +++
-title = "Flood fill algo"
+title = "Flood fill algorithm"
 author = ["Seshal Jain"]
 tags = ["graph"]
 draft = false
