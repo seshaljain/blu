@@ -10,7 +10,7 @@ weight = 2313
 
 <https://www.geeksforgeeks.org/detect-cycle-in-a-graph/>
 
-## Using DFS {#using-dfs}
+## DFS {#dfs}
 
 ```cpp
 class Solution {

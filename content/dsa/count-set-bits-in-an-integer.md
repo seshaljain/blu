@@ -4,7 +4,7 @@ author = ["Seshal Jain"]
 tags = ["bit"]
 categories = ["done"]
 draft = false
-weight = 2407
+weight = 2406
 +++
 
 <https://practice.geeksforgeeks.org/problems/set-bits0143/1>

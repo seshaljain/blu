@@ -19,4 +19,6 @@ void reverseArray(int arr[], int start, int end) {
     end--;
   }
 }
+
+// reverseArray(arr, 0, n - 1);
 ```

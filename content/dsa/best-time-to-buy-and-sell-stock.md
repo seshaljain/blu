@@ -13,7 +13,8 @@ weight = 2016
 
 One pass, just need to check the lowest valley/highest peak (and their difference)
 
-This problem reduces to maximum difference between two elements
+This problem reduces to maximum difference between two elements when larger
+element must come after smaller element
 
 ```cpp
 class Solution {
@@ -28,6 +29,35 @@ public:
     }
 
     return maxProfit;
+  }
+};
+```
+
+## Maximum profit by buying and selling a share at most twice {#maximum-profit-by-buying-and-selling-a-share-at-most-twice}
+
+<https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/>
+
+```cpp
+class Solution {
+public:
+  int maxProfit(vector<int> &prices) {
+    int n = prices.size();
+
+    vector<int> profit(n, 0);
+
+    int maxPrice = prices[n - 1];
+    for (int i = n - 2; i >= 0; i--) {
+      maxPrice = max(maxPrice, prices[i]);
+      profit[i] = max(profit[i + 1], maxPrice - prices[i]);
+    }
+
+    int minPrice = prices[0];
+    for (int i = 1; i < n; i++) {
+      minPrice = min(minPrice, prices[i]);
+      profit[i] = max(profit[i - 1], profit[i] + (prices[i] - minPrice));
+    }
+
+    return profit[n - 1];
   }
 };
 ```

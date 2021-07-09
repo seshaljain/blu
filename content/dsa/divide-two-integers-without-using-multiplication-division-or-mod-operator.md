@@ -3,7 +3,7 @@ title = "Divide two integers without using multiplication, division or mod opera
 author = ["Seshal Jain"]
 tags = ["bit"]
 draft = false
-weight = 2414
+weight = 2413
 +++
 
 <https://www.geeksforgeeks.org/divide-two-integers-without-using-multiplication-division-mod-operator/>

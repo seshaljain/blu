@@ -6,4 +6,4 @@ draft = false
 weight = 2019
 +++
 
-<https://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-O(1)>-extra-space/
+<https://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-o1-extra-space/>

@@ -1,5 +1,5 @@
 +++
-title = "Minimum step by knight"
+title = "Minimum steps by knight"
 author = ["Seshal Jain"]
 tags = ["graph"]
 draft = false

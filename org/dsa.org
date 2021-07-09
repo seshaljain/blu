@@ -553,7 +553,8 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 *** Only 1 transaction is allowed
 One pass, just need to check the lowest valley/highest peak (and their difference)
 
-This problem reduces to maximum difference between two elements
+This problem reduces to maximum difference between two elements when larger
+element must come after smaller element
 #+begin_src cpp
 class Solution {
 public:
@@ -567,6 +568,34 @@ public:
     }
 
     return maxProfit;
+  }
+};
+#+end_src
+
+*** [#A] Maximum profit by buying and selling a share at most twice
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
+
+#+begin_src cpp
+class Solution {
+public:
+  int maxProfit(vector<int> &prices) {
+    int n = prices.size();
+
+    vector<int> profit(n, 0);
+
+    int maxPrice = prices[n - 1];
+    for (int i = n - 2; i >= 0; i--) {
+      maxPrice = max(maxPrice, prices[i]);
+      profit[i] = max(profit[i + 1], maxPrice - prices[i]);
+    }
+
+    int minPrice = prices[0];
+    for (int i = 1; i < n; i++) {
+      minPrice = min(minPrice, prices[i]);
+      profit[i] = max(profit[i - 1], profit[i] + (prices[i] - minPrice));
+    }
+
+    return profit[n - 1];
   }
 };
 #+end_src
@@ -642,7 +671,7 @@ https://practice.geeksforgeeks.org/problems/common-elements1132/1
 :EXPORT_FILE_NAME: rearrange-the-array-in-alternating-positive-and-negative-items-with-o--1--extra-space
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-https://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-O(1)-extra-space/
+https://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-o1-extra-space/
 
 ** DONE Find if there is any subarray with sum equal to 0 :@done:array:
 :PROPERTIES:
@@ -770,12 +799,42 @@ public:
 };
 #+end_src
 
-** TODO Find whether an array is a subset of another array :array:
+** DONE Find whether an array is a subset of another array :array:@done:
+CLOSED: [2021-07-06 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-whether-an-array-is-a-subset-of-another-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/array-subset-of-another-array/0
+
+Can also insert into set twice, and check if size is the same.
+
+#+begin_src cpp
+string isSubset(int arr1[], int arr2[], int m, int n) {
+  int i = 0, j = 0;
+
+  if (m < n)
+    return "No";
+
+  sort(arr1, arr1 + m);
+  sort(arr2, arr2 + n);
+
+  while (i < n && j < m) {
+    if (arr1[j] < arr2[i])
+      j++;
+    else if (arr1[j] == arr2[i]) {
+      j++;
+      i++;
+    }
+
+    else if (arr1[j] > arr2[i])
+      return "No";
+  }
+
+  return (i < n) ? "No" : "Yes";
+}
+#+end_src
+
 
 ** DONE Find the triplet that sum to a given value :array:@done:
 CLOSED: [2021-06-24 Thu]
@@ -2455,12 +2514,53 @@ public:
 };
 #+end_src
 
-** STRT Delete loop in a linked list :ll:@done:
+** DONE Delete loop in a linked list :ll:@done:
+CLOSED: [2021-06-29 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: delete-loop-in-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/remove-loop-in-linked-list/1
+
+#+begin_src cpp
+class Solution {
+public:
+  void removeLoop(Node *head) {
+    Node *hare = head, *tor = head;
+
+    while (hare != nullptr && hare->next != nullptr && tor != nullptr) {
+      tor = tor->next;
+      hare = hare->next->next;
+
+      if (hare == tor) {
+        Node *ptr1 = tor, *ptr2 = tor;
+        unsigned int k = 1;
+        while (ptr1->next != ptr2) {
+          ptr1 = ptr1->next;
+          k++;
+        }
+
+        ptr1 = head;
+        ptr2 = head;
+
+        while (k--)
+          ptr2 = ptr2->next;
+
+        while (ptr2 != ptr1) {
+          ptr1 = ptr1->next;
+          ptr2 = ptr2->next;
+        }
+
+        while (ptr2->next != ptr1)
+          ptr2 = ptr2->next;
+
+        ptr2->next = nullptr;
+      }
+    }
+  }
+};
+#+end_src
+
 
 ** DONE Find the starting point of the loop :ll:@done:
 CLOSED: [2021-06-18 Fri]
@@ -2594,12 +2694,62 @@ void moveToFront(Node **head) {
 }
 #+end_src
 
-** TODO Add 1 to a number represented as a linked list :ll:
+** DONE Add 1 to a number represented as a linked list :ll:@done:
+CLOSED: [2021-06-29 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: add-1-to-a-number-represented-as-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-linked-list/1
+
+#+begin_src cpp
+class Solution {
+  Node *reverse(Node *head) {
+    Node *prev = nullptr;
+    Node *current = head;
+    Node *next;
+    while (current != nullptr) {
+      next = current->next;
+      current->next = prev;
+      prev = current;
+      current = next;
+    }
+    return prev;
+  }
+
+  Node *addOneUtil(Node *head) {
+    Node *ans = head;
+    Node *temp, *prev = nullptr;
+
+    int carry = 1, sum = 0;
+
+    while (head != nullptr) {
+      sum = carry + head->data;
+      carry = (sum >= 10) ? 1 : 0;
+
+      sum = sum % 10;
+      head->data = sum;
+
+      temp = head;
+      head = head->next;
+    }
+
+    if (carry > 0)
+      temp->next = new Node(carry);
+
+    return ans;
+  }
+
+public:
+  Node *addOne(Node *head) {
+    head = reverse(head);
+
+    head = addOneUtil(head);
+
+    return reverse(head);
+  }
+};
+#+end_src
 
 ** TODO Add two numbers represented by linked lists :ll:
 :PROPERTIES:
@@ -2608,19 +2758,60 @@ https://practice.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-lin
 :END:
 https://practice.geeksforgeeks.org/problems/add-two-numbers-represented-by-linked-lists/1
 
-** TODO Intersection of two sorted linked list :ll:
+** DONE Intersection of two sorted linked list :ll:@done:
+CLOSED: [2021-07-01 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: intersection-of-two-sorted-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/intersection-of-two-sorted-linked-lists/1
 
-** TODO Intersection point of two linked lists :ll:
+#+begin_src cpp
+class Solution {
+public:
+  ListNode *rotateRight(ListNode *head, int k) {
+    ListNode *curr = head, *tmp = head;
+    int len = 0;
+
+    if (head == nullptr) {
+      return head;
+    }
+
+    while (tmp != nullptr) {
+      tmp = tmp->next;
+      len++;
+    }
+
+    k %= len;
+
+    tmp = head;
+
+    while (k--) {
+      while (tmp->next != nullptr) {
+        curr = tmp;
+        tmp = tmp->next;
+      }
+
+      tmp->next = head;
+      curr->next = nullptr;
+      head = tmp;
+    }
+    return head;
+  }
+};
+#+end_src
+
+** DONE Intersection point of two linked lists :ll:@done:
+CLOSED: [2021-06-30 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: intersection-point-of-two-linked-lists
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-https://practice.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/1
+https://leetcode.com/problems/intersection-of-two-linked-lists/
+
+#+begin_src cpp
+
+#+end_src
 
 ** TODO [#A] Merge sort for linked lists :ll:
 :PROPERTIES:
@@ -3036,19 +3227,63 @@ void postorderIterative(Node *root) {
 }
 #+end_src
 
-** TODO Left view of a tree :bt:
-:PROPERTIES:
-:EXPORT_FILE_NAME: left-view-of-a-tree
-:EXPORT_HUGO_WEIGHT: auto
-:END:
-https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1
-
-** TODO Right view of tree :bt:
+** DONE Left view of a tree :bt:@done:
+CLOSED: [2021-06-26 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: right-view-of-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-https://practice.geeksforgeeks.org/problems/right-view-of-binary-tree/1
+https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1
+
+#+begin_src cpp
+void leftViewUtil(Node *root, vector<int> &v, int lvl) {
+  if (root == nullptr)
+    return;
+
+  if (lvl >= v.size()) {
+    v.push_back(root->data);
+  }
+
+  leftViewUtil(root->left, v, lvl + 1);
+  leftViewUtil(root->right, v, lvl + 1);
+}
+
+vector<int> leftView(Node *root) {
+  vector<int> v;
+  leftViewUtil(root, v, 0);
+  return v;
+}
+#+end_src
+
+** DONE Left view of a tree :bt:@done:
+CLOSED: [2021-06-26 Sat]
+:PROPERTIES:
+:EXPORT_FILE_NAME: left-view-of-a-tree
+:EXPORT_HUGO_WEIGHT: auto
+:END:
+https://leetcode.com/problems/binary-tree-right-side-view/
+
+#+begin_src cpp
+class Solution {
+  vector<int> v;
+  void leftView(TreeNode *root, int lvl) {
+    if (root == nullptr)
+      return;
+
+    if (lvl >= v.size())
+      v.push_back(root->val);
+
+    leftView(root->right, lvl + 1);
+    leftView(root->left, lvl + 1);
+  }
+
+public:
+  vector<int> rightSideView(TreeNode *root) {
+    leftView(root, 0);
+    return v;
+  }
+};
+#+end_src
 
 ** TODO Top view of a tree :bt:
 :PROPERTIES:
@@ -3754,14 +3989,22 @@ https://www.geeksforgeeks.org/queue-set-1introduction-and-array-implementation/
 :END:
 https://practice.geeksforgeeks.org/problems/implement-two-stacks-in-an-array/1
 
-void twoStacks::push2(int x) {
+#+begin_src cpp
+void twoStacks ::push1(int x) {
+  if (abs(top1 - top2) >= 1) {
+    top1++;
+    arr[top1] = x;
+  }
+}
+
+void twoStacks ::push2(int x) {
   if (abs(top1 - top2) >= 1) {
     top2--;
     arr[top2] = x;
   }
 }
 
-int twoStacks::pop1() {
+int twoStacks ::pop1() {
   int x = -1;
   if (top1 >= 0) {
     x = arr[top1];
@@ -3770,7 +4013,7 @@ int twoStacks::pop1() {
   return x;
 }
 
-int twoStacks::pop2() {
+int twoStacks ::pop2() {
   int x = -1;
   if (top2 < size) {
     x = arr[top2];
@@ -3794,12 +4037,34 @@ https://www.geeksforgeeks.org/design-a-stack-with-find-middle-operation/
 :END:
 https://www.geeksforgeeks.org/efficiently-implement-k-stacks-single-array/
 
-** TODO Reverse a string using stack :st_q:
+** DONE Reverse a string using stack :st_q:@done:
+CLOSED: [2021-07-08 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-a-string-using-stack
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/reverse-a-string-using-stack/1
+
+#+begin_src cpp
+char *reverse(char *S, int len) {
+  stack<char> st;
+
+  for (int i = 0; i < len; i++) {
+    st.push(S[i]);
+  }
+
+  char *rev = new char(len + 1);
+
+  int i = 0;
+  while (!st.empty()) {
+    rev[i++] = st.top();
+    st.pop();
+  }
+  rev[i] = '\0';
+
+  return rev;
+}
+#+end_src
 
 ** TODO Design a stack that supports getmin() in O(1) time and O(1) extra space :st_q:
 :PROPERTIES:
@@ -4396,7 +4661,8 @@ CLOSED: [2021-06-22 Tue]
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
-*** Using DFS
+
+*** DFS
 #+begin_src cpp
 class Solution {
   bool dfsHelper(int i, vector<bool> &visited, vector<bool> &visitedDirected,
@@ -4434,16 +4700,92 @@ public:
 };
 #+end_src
 
-** TODO Detect cycle in undirected graph using BFS/DFS :graph:
+** DONE Detect cycle in undirected graph using BFS/DFS :graph:@done:
+CLOSED: [2021-07-02 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: detect-cycle-in-undirected-graph-using-bfs-dfs
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
+*** DFS
+#+begin_src cpp
+class Solution {
+  bool dfsHelper(int i, int p, vector<bool> &visited, vector<int> adj[]) {
+    visited[i] = true;
 
-** TODO Minimum step by knight :graph:
+    for (auto it : adj[i]) {
+      if (visited[it] == false) {
+        if (dfsHelper(it, i, visited, adj)) {
+          return true;
+        }
+      } else if (it != p) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+public:
+  bool isCycle(int V, vector<int> adj[]) {
+    vector<bool> visited(V, false);
+
+    for (int i = 0; i < V; i++) {
+      if (!visited[i]) {
+        if (dfsHelper(i, -1, visited, adj)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+};
+#+end_src
+
+*** BFS
+#+begin_src cpp
+class Solution {
+  bool bfsHelper(int i, vector<bool> &visited, vector<int> adj[]) {
+    visited[i] = true;
+    queue<pair<int, int>> q;
+    q.push({i, -1});
+
+    while (!q.empty()) {
+      int node = q.front().first;
+      int parent = q.front().second;
+      q.pop();
+
+      for (auto it : adj[node]) {
+        if (!visited[it]) {
+          visited[it] = true;
+          q.push({it, node});
+        } else if (it != parent) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+public:
+  bool isCycle(int V, vector<int> adj[]) {
+    vector<bool> visited(V, false);
+
+    for (int i = 0; i < V; i++) {
+      if (!visited[i]) {
+        if (bfsHelper(i, visited, adj)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+};
+#+end_src
+
+** TODO Minimum steps by knight :graph:
 :PROPERTIES:
-:EXPORT_FILE_NAME: minimum-step-by-knight
+:EXPORT_FILE_NAME: minimum-steps-by-knight
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/steps-by-knight/0
@@ -4483,7 +4825,8 @@ https://leetcode.com/problems/word-ladder/
 :END:
 https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
 
-** STRT Implement topological sort :graph:
+** DONE Implement topological sort :graph:@done:
+CLOSED: [2021-07-03 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-topological-sort
 :EXPORT_HUGO_WEIGHT: auto
@@ -4491,6 +4834,44 @@ https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
 https://practice.geeksforgeeks.org/problems/topological-sort/1
 
 Topological sort is only valid for a Directed Acyclic Graph
+
+#+begin_src cpp
+class Solution {
+  stack<int> st;
+  void dfsHelper(int i, vector<bool> &visited, vector<int> adj[]) {
+    visited[i] = true;
+
+    for (auto it : adj[i]) {
+      if (!visited[it]) {
+        visited[it] = true;
+        dfsHelper(it, visited, adj);
+      }
+    }
+
+    st.push(i);
+  }
+
+public:
+  vector<int> topoSort(int V, vector<int> adj[]) {
+    vector<bool> visited(V, false);
+
+    for (int i = 0; i < V; i++) {
+      if (!visited[i]) {
+        dfsHelper(i, visited, adj);
+      }
+    }
+
+    vector<int> topoOrder;
+
+    while (!st.empty()) {
+      topoOrder.push_back(st.top());
+      st.pop();
+    }
+
+    return topoOrder;
+  }
+};
+#+end_src
 
 ** TODO Minimum time taken by each job to be completed given by a directed acyclic graph :graph:
 :PROPERTIES:
@@ -5315,13 +5696,6 @@ https://www.geeksforgeeks.org/coin-game-winner-every-player-three-choices/
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/count-derangements-permutation-such-that-no-element-appears-in-its-original-position/
-
-** TODO [#A] Maximum profit by buying and selling a share at most twice :array:dp:
-:PROPERTIES:
-:EXPORT_FILE_NAME: maximum-profit-by-buying-and-selling-a-share-at-most-twice
-:EXPORT_HUGO_WEIGHT: auto
-:END:
-https://www.geeksforgeeks.org/maximum-profit-by-buying-and-selling-a-share-at-most-twice/
 
 ** TODO Optimal strategy for a game :dp:
 :PROPERTIES:
