@@ -10,7 +10,7 @@ weight = 2313
 
 <https://www.geeksforgeeks.org/detect-cycle-in-a-graph/>
 
-## DFS {#dfs}
+## Using DFS {#using-dfs}
 
 ```cpp
 class Solution {
@@ -45,6 +45,49 @@ public:
       }
     }
     return false;
+  }
+};
+```
+
+## Using BFS {#using-bfs}
+
+```cpp
+class Solution {
+public:
+  bool isCyclic(int V, vector<int> adj[]) {
+    vector<int> inDegree(V, 0);
+    queue<int> q;
+
+    for (int i = 0; i < V; i++) {
+      for (auto it : adj[i]) {
+        inDegree[it]++;
+      }
+    }
+
+    for (int i = 0; i < V; i++) {
+      if (inDegree[i] == 0) {
+        q.push(i);
+      }
+    }
+
+    int ctr = 0;
+
+    while (!q.empty()) {
+      int node = q.front();
+      q.pop();
+      ctr++;
+
+      for (auto it : adj[node]) {
+        inDegree[it]--;
+        if (inDegree[it] == 0) {
+          q.push(it);
+        }
+      }
+    }
+
+    if (ctr == V)
+      return false;
+    return true;
   }
 };
 ```

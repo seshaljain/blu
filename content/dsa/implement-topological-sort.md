@@ -1,7 +1,7 @@
 +++
 title = "Implement topological sort"
 author = ["Seshal Jain"]
-date = 2021-07-03T00:00:00+05:30
+date = 2021-07-13T00:00:00+05:30
 tags = ["graph"]
 categories = ["done"]
 draft = false
@@ -11,6 +11,8 @@ weight = 2321
 <https://practice.geeksforgeeks.org/problems/topological-sort/1>
 
 Topological sort is only valid for a Directed Acyclic Graph
+
+## Using DFS {#using-dfs}
 
 ```cpp
 class Solution {
@@ -46,6 +48,45 @@ public:
     }
 
     return topoOrder;
+  }
+};
+```
+
+## Using BFS {#using-bfs}
+
+```cpp
+class Solution {
+public:
+  vector<int> topoSort(int V, vector<int> adj[]) {
+    vector<int> inDegree(V, 0);
+    queue<int> q;
+    vector<int> res;
+
+    for (int i = 0; i < V; i++) {
+      for (auto it : adj[i]) {
+        inDegree[it]++;
+      }
+    }
+
+    for (int i = 0; i < V; i++) {
+      if (inDegree[i] == 0) {
+        q.push(i);
+      }
+    }
+
+    while (!q.empty()) {
+      int node = q.front();
+      q.pop();
+      res.push_back(node);
+      for (auto it : adj[node]) {
+        inDegree[it]--;
+        if (inDegree[it] == 0) {
+          q.push(it);
+        }
+      }
+    }
+
+    return res;
   }
 };
 ```
