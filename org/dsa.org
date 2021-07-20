@@ -659,12 +659,40 @@ public:
 };
 #+end_src
 
-** TODO Find common elements in 3 sorted arrays :array:
+** DONE Find common elements in 3 sorted arrays :array:@done:
+CLOSED: [2021-07-17 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-common-elements-in-3-sorted-arrays
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/common-elements1132/1
+
+#+begin_src cpp
+class Solution {
+public:
+  vector<int> common_element(vector<int> v1, vector<int> v2) {
+    vector<int> v;
+    sort(v1.begin(), v1.end());
+    sort(v2.begin(), v2.end());
+
+    int i = 0, j = 0;
+    int n1 = v1.size(), n2 = v2.size();
+    while (i < n1 && j < n2) {
+      if (v1[i] == v2[j]) {
+        v.push_back(v1[i]);
+        i++;
+        j++;
+      } else if (v1[i] < v2[j]) {
+        i++;
+      } else {
+        j++;
+      }
+    }
+
+    return v;
+  }
+};
+#+end_src
 
 ** TODO Rearrange the array in alternating positive and negative items with O(1) extra space :array:
 :PROPERTIES:
@@ -960,7 +988,6 @@ public:
 https://practice.geeksforgeeks.org/problems/chocolate-distribution-problem/0
 
 Make window in sorted array, check for minimum
-
 #+begin_src cpp
 class Solution {
 public:
@@ -2022,12 +2049,38 @@ public:
 };
 #+end_src
 
-** TODO Search in a rotated sorted array :search_sort:
+** DONE Search in a rotated sorted array :search_sort:@done:
+CLOSED: [2021-07-20 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: search-in-a-rotated-sorted-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+#+begin_src cpp
+class Solution {
+public:
+  int findMin(int arr[], int n) {
+    int low = 0, high = n - 1;
+
+    while (low <= high) {
+      int mid = (low + high) / 2;
+      int next = (mid + 1) % n;
+      int prev = (mid + n - 1) % n;
+
+      if (arr[mid] <= arr[next] && arr[mid] <= arr[prev]) {
+        return arr[mid];
+      } else if (arr[mid] < arr[n - 1]) {
+        high = mid - 1;
+      } else {
+        low = mid + 1;
+      }
+    }
+
+    return -1;
+  }
+};
+#+end_src
 
 ** TODO Square root of an integer :search_sort:
 :PROPERTIES:
@@ -2090,7 +2143,6 @@ public:
 https://practice.geeksforgeeks.org/problems/majority-element/0
 
 Moore's voting algorithm
-
 #+begin_src cpp
 class Solution {
 public:
@@ -2789,12 +2841,65 @@ public:
 };
 #+end_src
 
-** TODO Add two numbers represented by linked lists :ll:
+** DONE Add two numbers represented by linked lists :ll:@done:
+CLOSED: [2021-07-20 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: add-two-numbers-represented-by-linked-lists
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/add-two-numbers-represented-by-linked-lists/1
+
+#+begin_src cpp
+class Solution {
+  Node *reverse(Node *head) {
+    Node *prev = nullptr, *curr = head, *next = nullptr;
+
+    while (curr != nullptr) {
+      next = curr->next;
+      curr->next = prev;
+      prev = curr;
+      curr = next;
+    }
+
+    return prev;
+  }
+
+public:
+  Node *addTwoLists(struct Node *first, struct Node *second) {
+    first = reverse(first);
+    second = reverse(second);
+
+    int c = 0, sum = 0;
+    Node *start = nullptr, *end = nullptr;
+
+    while (first != nullptr || second != nullptr) {
+      int a = (first != nullptr) ? first->data : 0;
+      int b = (second != nullptr) ? second->data : 0;
+
+      sum = c + (a + b);
+      c = (sum >= 10) ? 1 : 0;
+      sum = sum % 10;
+
+      if (start == nullptr) {
+        start = new Node(sum);
+        end = start;
+      } else {
+        end->next = new Node(sum);
+        end = end->next;
+      }
+      if (first != nullptr)
+        first = first->next;
+      if (second != nullptr)
+        second = second->next;
+    }
+
+    if (c > 0)
+      end->next = new Node(c);
+    start = reverse(start);
+    return start;
+  }
+};
+#+end_src
 
 ** DONE Intersection of two sorted linked list :ll:@done:
 CLOSED: [2021-07-01 Thu]
@@ -2805,46 +2910,71 @@ CLOSED: [2021-07-01 Thu]
 https://practice.geeksforgeeks.org/problems/intersection-of-two-sorted-linked-lists/1
 
 #+begin_src cpp
-class Solution {
-public:
-  ListNode *rotateRight(ListNode *head, int k) {
-    ListNode *curr = head, *tmp = head;
-    int len = 0;
-
-    if (head == nullptr) {
-      return head;
-    }
-
-    while (tmp != nullptr) {
-      tmp = tmp->next;
-      len++;
-    }
-
-    k %= len;
-
-    tmp = head;
-
-    while (k--) {
-      while (tmp->next != nullptr) {
-        curr = tmp;
-        tmp = tmp->next;
+Node *findIntersection(Node *head1, Node *head2) {
+  Node *a = head1;
+  Node *b = head2;
+  Node *head = NULL;
+  Node *ptr;
+  while (a && b) {
+    if (a->data == b->data) {
+      if (head == NULL) {
+        Node *tmp = new Node(a->data);
+        head = tmp;
+        ptr = head;
+      } else {
+        Node *tmp = new Node(a->data);
+        ptr->next = tmp;
+        ptr = ptr->next;
       }
-
-      tmp->next = head;
-      curr->next = nullptr;
-      head = tmp;
+      a = a->next;
+      b = b->next;
+    } else if (a->data < b->data) {
+      a = a->next;
+    } else {
+      b = b->next;
     }
-    return head;
   }
-};
+  return head;
+}
 #+end_src
 
-** TODO Intersection point of two linked lists :ll:
+** DONE Intersection point of two linked lists :ll:@done:
+CLOSED: [2021-07-20 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: intersection-point-of-two-linked-lists
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/intersection-of-two-linked-lists/
+
+#+begin_src cpp
+class Solution {
+public:
+  ListNode *getIntersectionNode(ListNode *A, ListNode *B) {
+    if (A == NULL || B == NULL) {
+      return NULL;
+    }
+
+    ListNode *a = A;
+    ListNode *b = B;
+
+    while (a != b) {
+      if (a == NULL) {
+        a = B;
+      }
+      if (b == NULL) {
+        b = A;
+      }
+      if (a == b) {
+        break;
+      } else {
+        a = a->next;
+        b = b->next;
+      }
+    }
+    return a;
+  }
+};
+#+end_src
 
 ** TODO [#A] Merge sort for linked lists :ll:
 :PROPERTIES:
@@ -3235,10 +3365,7 @@ https://practice.geeksforgeeks.org/problems/first-non-repeating-character-in-a-s
 :END:
 https://practice.geeksforgeeks.org/problems/level-order-traversal/1
 
-1. root
-2. left
-3. right
-
+BFS
 #+begin_src cpp
 class Solution {
 private:
@@ -3296,7 +3423,7 @@ public:
 :END:
 https://practice.geeksforgeeks.org/problems/diameter-of-binary-tree/1
 
-Leetcode expects diamater of tree to be number of edges, ∴ return =re   s - 1=
+Leetcode expects diamater of tree to be number of edges, ∴ return =res - 1=
 
 #+begin_src cpp
 class Solution {
@@ -3323,12 +3450,36 @@ public:
 };
 #+end_src
 
-** TODO Mirror of a tree :bt:
+** DONE Mirror of a tree :bt:@done:
+CLOSED: [2021-07-18 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: mirror-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-https://www.geeksforgeeks.org/create-a-mirror-tree-from-the-given-binary-tree/
+https://leetcode.com/problems/invert-binary-tree/
+
+#+begin_src cpp
+class Solution {
+  void swapNode(TreeNode *root) {
+    if (root == nullptr) {
+      return;
+    }
+
+    swapNode(root->left);
+    swapNode(root->right);
+
+    TreeNode *temp = root->left;
+    root->left = root->right;
+    root->right = temp;
+  }
+
+public:
+  TreeNode *invertTree(TreeNode *root) {
+    swapNode(root);
+    return root;
+  }
+};
+#+end_src
 
 ** DONE Inorder traversal of a tree :@done:bt:
 :PROPERTIES:
@@ -3480,10 +3631,39 @@ void postorderIterative(Node *root) {
 }
 #+end_src
 
-** DONE Left view of a tree :bt:@done:
+** DONE Right view of a tree :bt:@done:
 CLOSED: [2021-06-26 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: right-view-of-tree
+:EXPORT_HUGO_WEIGHT: auto
+:END:
+https://leetcode.com/problems/binary-tree-right-side-view/
+
+#+begin_src cpp
+class Solution {
+  vector<int> v;
+  void rightViewUtil(TreeNode *root, int lvl) {
+    if (root == nullptr)
+      return;
+    if (v.size() <= lvl)
+      v.push_back(root->val);
+
+    rightViewUtil(root->right, lvl + 1);
+    rightViewUtil(root->left, lvl + 1);
+  }
+
+public:
+  vector<int> rightSideView(TreeNode *root) {
+    rightViewUtil(root, 0);
+    return v;
+  }
+};
+#+end_src
+
+** DONE Left view of a tree :bt:@done:
+CLOSED: [2021-06-26 Sat]
+:PROPERTIES:
+:EXPORT_FILE_NAME: left-view-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1
@@ -3493,7 +3673,7 @@ void leftViewUtil(Node *root, vector<int> &v, int lvl) {
   if (root == nullptr)
     return;
 
-  if (lvl >= v.size()) {
+  if (v.size() <= lvl) {
     v.push_back(root->data);
   }
 
@@ -3506,36 +3686,6 @@ vector<int> leftView(Node *root) {
   leftViewUtil(root, v, 0);
   return v;
 }
-#+end_src
-
-** DONE Left view of a tree :bt:@done:
-CLOSED: [2021-06-26 Sat]
-:PROPERTIES:
-:EXPORT_FILE_NAME: left-view-of-a-tree
-:EXPORT_HUGO_WEIGHT: auto
-:END:
-https://leetcode.com/problems/binary-tree-right-side-view/
-
-#+begin_src cpp
-class Solution {
-  vector<int> v;
-  void leftView(TreeNode *root, int lvl) {
-    if (root == nullptr)
-      return;
-
-    if (lvl >= v.size())
-      v.push_back(root->val);
-
-    leftView(root->right, lvl + 1);
-    leftView(root->left, lvl + 1);
-  }
-
-public:
-  vector<int> rightSideView(TreeNode *root) {
-    leftView(root, 0);
-    return v;
-  }
-};
 #+end_src
 
 ** TODO Top view of a tree :bt:
@@ -3559,12 +3709,40 @@ https://practice.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1
 :END:
 https://practice.geeksforgeeks.org/problems/zigzag-tree-traversal/1
 
-** TODO Check if a tree is balanced :bt:
+** DONE Check if a tree is balanced :bt:@done:
+CLOSED: [2021-07-20 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-a-tree-is-balanced
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/check-for-balanced-tree/1
+
+#+begin_src cpp
+bool balancedUtil(Node *root, int &height) {
+  int lh = 0, rh = 0;
+
+  if (root == nullptr) {
+    height = 0;
+    return 1;
+  }
+
+  int l = balancedUtil(root->left, lh);
+  int r = balancedUtil(root->right, rh);
+
+  height = max(lh, rh) + 1;
+
+  if (abs(lh - rh) > 1)
+    return 0;
+
+  else
+    return l && r;
+}
+
+bool isBalanced(Node *root) {
+  int height = 0;
+  return balancedUtil(root, height);
+}
+#+end_src
 
 ** TODO Diagonal traversal of a binary tree :bt:
 :PROPERTIES:
@@ -3678,12 +3856,37 @@ https://www.geeksforgeeks.org/maximum-sum-nodes-binary-tree-no-two-adjacent/
 :END:
 https://www.geeksforgeeks.org/print-k-sum-paths-binary-tree/
 
-** TODO Find LCA in a binary tree :bt:
+** DONE Find LCA in a binary tree :bt:@done:
+CLOSED: [2021-07-18 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-lca-in-a-binary-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-binary-tree/1
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+
+#+begin_src cpp
+class Solution {
+public:
+  TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
+    if (root == nullptr) {
+      return root;
+    }
+
+    if (root == p || root == q) {
+      return root;
+    }
+
+    TreeNode *lt = lowestCommonAncestor(root->left, p, q);
+    TreeNode *rt = lowestCommonAncestor(root->right, p, q);
+
+    if (lt && rt) {
+      return root;
+    } else {
+      return lt ? lt : rt;
+    }
+  }
+};
+#+end_src
 
 ** TODO Find distance between 2 nodes in a binary tree :bt:
 :PROPERTIES:
@@ -3713,12 +3916,30 @@ https://practice.geeksforgeeks.org/problems/duplicate-subtrees/1
 :END:
 https://practice.geeksforgeeks.org/problems/check-if-tree-is-isomorphic/1
 
-** TODO Find a value in a BST :bst:
+** DONE Find a value in a BST :bst:@done:
+CLOSED: [2021-07-20 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-a-value-in-a-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+https://leetcode.com/problems/search-in-a-binary-search-tree/
+
+#+begin_src cpp
+class Solution {
+public:
+  TreeNode *searchBST(TreeNode *root, int val) {
+    if (root == nullptr)
+      return nullptr;
+
+    if (root->val == val)
+      return root;
+    else if (val < root->val)
+      return searchBST(root->left, val);
+    else
+      return searchBST(root->right, val);
+  }
+};
+#+end_src
 
 ** TODO Deletion of a node in a BST :bst:
 :PROPERTIES:
@@ -3727,12 +3948,24 @@ https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
 :END:
 https://leetcode.com/problems/delete-node-in-a-bst/
 
-** TODO Find min and max value in a BST :bst:
+** DONE Find min and max value in a BST :bst:@done:
+CLOSED: [2021-07-20 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-min-and-max-value-in-a-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/minimum-element-in-bst/1
+
+#+begin_src cpp
+int minValue(Node *node) {
+  Node *current = node;
+
+  while (current->left != nullptr) {
+    current = current->left;
+  }
+  return (current->data);
+}
+#+end_src
 
 ** TODO Find inorder successor and inorder predecessor in a BST :bst:
 :PROPERTIES:
@@ -3741,12 +3974,35 @@ https://practice.geeksforgeeks.org/problems/minimum-element-in-bst/1
 :END:
 https://practice.geeksforgeeks.org/problems/predecessor-and-successor/1
 
-** TODO Check if a tree is a BST :bst:
+** DONE Check if a tree is a BST :bst:@done:
+CLOSED: [2021-07-20 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-a-tree-is-a-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-https://practice.geeksforgeeks.org/problems/check-for-bst/1
+https://leetcode.com/problems/validate-binary-search-tree/
+
+#+begin_src cpp
+class Solution {
+  bool isValidBSTUtil(TreeNode *root, long l, long r) {
+    if (!root) {
+      return true;
+    }
+
+    if (root->val <= l || root->val >= r) {
+      return false;
+    }
+
+    return isValidBSTUtil(root->left, l, root->val) &&
+           isValidBSTUtil(root->right, root->val, r);
+  }
+
+public:
+  bool isValidBST(TreeNode *root) {
+    return isValidBSTUtil(root, LONG_MIN, LONG_MAX);
+  }
+};
+#+end_src
 
 ** TODO Populate inorder successor of all nodes :bst:
 :PROPERTIES:
@@ -3755,12 +4011,36 @@ https://practice.geeksforgeeks.org/problems/check-for-bst/1
 :END:
 https://practice.geeksforgeeks.org/problems/populate-inorder-successor-for-all-nodes/1
 
-** TODO Find lca of 2 nodes in a BST :bst:
+** DONE Find LCA in a BST :bst:@done:
+CLOSED: [2021-07-18 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-lca-of-2-nodes-in-a-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1
+
+#+begin_src cpp
+class Solution {
+public:
+  TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
+    if (root == nullptr)
+      return root;
+
+    if (root == p || root == q)
+      return root;
+
+    int rootVal = root->val, pVal = p->val, qVal = q->val;
+
+    if (rootVal < pVal && rootVal < qVal) {
+      return lowestCommonAncestor(root->right, p, q);
+    } else if (rootVal > pVal && rootVal > qVal) {
+      return lowestCommonAncestor(root->left, p, q);
+    } else {
+      return root;
+    }
+  }
+};
+#+end_src
 
 ** TODO Construct BST from preorder traversal :bst:
 :PROPERTIES:
@@ -3927,12 +4207,47 @@ public:
 };
 #+end_src
 
-** TODO Find minimum number of coins :greedy:
+** DONE Find minimum number of coins :greedy:@done:
+CLOSED: [2021-07-17 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-minimum-number-of-coins
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/coin-piles/0
+
+#+begin_src cpp
+class Solution {
+public:
+  int coinChange(vector<int> &coins, int amount) {
+    int n = coins.size();
+    int dp[n + 1][amount + 1];
+
+    for (int i = 0; i <= n; i++) {
+      for (int j = 0; j <= amount; j++) {
+        if (j == 0) {
+          dp[i][j] = 0;
+        }
+        if (i == 0) {
+          dp[i][j] = INT_MAX - 1;
+        }
+      }
+    }
+
+    dp[0][0] = 0;
+
+    for (int i = 1; i <= n; i++)
+      for (int j = 1; j <= amount; j++) {
+        if (coins[i - 1] <= j) {
+          dp[i][j] = min(dp[i - 1][j], 1 + dp[i][j - coins[i - 1]]);
+        } else {
+          dp[i][j] = dp[i - 1][j];
+        }
+      }
+
+    return dp[n][amount] == INT_MAX - 1 ? -1 : dp[n][amount];
+  }
+};
+#+end_src
 
 ** TODO Maximum trains for which stoppage can be provided :greedy:
 :PROPERTIES:
@@ -4640,18 +4955,28 @@ CLOSED: [2021-06-19 Sat]
 :END:
 https://practice.geeksforgeeks.org/problems/k-largest-elements4206/1
 
+Make heap of size =k=, then insert remaining only if greater
+Minheap for k largest, maxheap for k smallest
 #+begin_src cpp
 class Solution {
 public:
   vector<int> kLargest(int arr[], int n, int k) {
-    priority_queue<int> pq(arr, arr + n);
+    priority_queue<int, vector<int>, greater<int>> pq(arr, arr + k);
 
     vector<int> res;
+    for (int i = k; i < n; i++) {
+      if (arr[i] > pq.top()) {
+        pq.pop();
+        pq.push(arr[i]);
+      }
+    }
 
-    while (k--) {
+    while (!pq.empty()) {
       res.push_back(pq.top());
       pq.pop();
     }
+
+    reverse(res.begin(), res.end());
 
     return res;
   }
@@ -4747,12 +5072,37 @@ https://practice.geeksforgeeks.org/problems/find-median-in-a-stream/0
 :END:
 https://practice.geeksforgeeks.org/problems/is-binary-tree-heap/1
 
-** TODO Connect N ropes with minimum cost :heap:greedy:
+** DONE Connect N ropes with minimum cost :heap:greedy:@done:
+CLOSED: [2021-07-18 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: connect-n-ropes-with-minimum-cost
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/minimum-cost-of-ropes/0
+
+#+begin_src cpp
+class Solution {
+public:
+  long long minCost(long long arr[], long long n) {
+    priority_queue<long long, vector<long long>, greater<long long>> pq(
+        arr, arr + n);
+
+    long long cost = 0;
+
+    while (pq.size() > 1) {
+      long long t1 = pq.top();
+      pq.pop();
+      long long t2 = pq.top();
+      pq.pop();
+
+      cost += t1 + t2;
+      pq.push(t1 + t2);
+    }
+
+    return cost;
+  }
+};
+#+end_src
 
 ** TODO Convert BST to min heap :heap:
 :PROPERTIES:
@@ -5079,12 +5429,61 @@ public:
 };
 #+end_src
 
-** TODO Minimum steps by knight :graph:
+** DONE Minimum steps by knight :graph:@done:
+CLOSED: [2021-07-17 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-steps-by-knight
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/steps-by-knight/0
+
+#+begin_src cpp
+class pos {
+public:
+  int x, y, dist;
+
+  pos(int x, int y, int dist) : x(x), y(y), dist(dist) {}
+};
+
+class Solution {
+  bool isInside(int x, int y, int N) {
+    return (x >= 1 and x <= N and y >= 1 and y <= N);
+  }
+
+public:
+  int minStepToReachTarget(vector<int> &KnightPos, vector<int> &TargetPos,
+                           int N) {
+    vector<pair<int, int>> dir = {
+        {-2, -1}, {-1, -2}, {1, -2}, {2, -1}, {-2, 1}, {-1, 2}, {1, 2}, {2, 1},
+    };
+
+    bool visited[N + 1][N + 1] = {0};
+    queue<pos> q;
+
+    q.push(pos(KnightPos[0], KnightPos[1], 0));
+    visited[KnightPos[0]][KnightPos[1]] = true;
+
+    while (!q.empty()) {
+      pos currPos = q.front();
+      q.pop();
+
+      if (currPos.x == TargetPos[0] and currPos.y == TargetPos[1]) {
+        return currPos.dist;
+      }
+      for (int i = 0; i < 8; i++) {
+        int x = currPos.x + dir[i].first;
+        int y = currPos.y + dir[i].second;
+
+        if (isInside(x, y, N) and !visited[x][y]) {
+          q.push(pos(x, y, currPos.dist + 1));
+          visited[x][y] = true;
+        }
+      }
+    }
+  }
+};
+#+end_src
+
 
 ** TODO Flood fill algorithm :graph:
 :PROPERTIES:
@@ -5233,12 +5632,16 @@ public:
 };
 #+end_src
 
-** TODO Minimum time taken by each job to be completed given by a directed acyclic graph :graph:
+** DONE Minimum time taken by each job to be completed given by a directed acyclic graph :graph:
+CLOSED: [2021-07-18 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-time-taken-by-each-job-to-be-completed-given-by-a-directed-acyclic-graph
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/minimum-time-taken-by-each-job-to-be-completed-given-by-a-directed-acyclic-graph/
+
+Simply implement Kahn's algorithm with a =jobs= array adding 1 to each layer of
+the topo traversal
 
 ** TODO Find whether it is possible to finish all tasks from given dependencies :graph:
 :PROPERTIES:

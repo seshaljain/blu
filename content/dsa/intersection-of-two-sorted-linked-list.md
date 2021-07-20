@@ -11,36 +11,30 @@ weight = 2129
 <https://practice.geeksforgeeks.org/problems/intersection-of-two-sorted-linked-lists/1>
 
 ```cpp
-class Solution {
-public:
-  ListNode *rotateRight(ListNode *head, int k) {
-    ListNode *curr = head, *tmp = head;
-    int len = 0;
-
-    if (head == nullptr) {
-      return head;
-    }
-
-    while (tmp != nullptr) {
-      tmp = tmp->next;
-      len++;
-    }
-
-    k %= len;
-
-    tmp = head;
-
-    while (k--) {
-      while (tmp->next != nullptr) {
-        curr = tmp;
-        tmp = tmp->next;
+Node *findIntersection(Node *head1, Node *head2) {
+  Node *a = head1;
+  Node *b = head2;
+  Node *head = NULL;
+  Node *ptr;
+  while (a && b) {
+    if (a->data == b->data) {
+      if (head == NULL) {
+        Node *tmp = new Node(a->data);
+        head = tmp;
+        ptr = head;
+      } else {
+        Node *tmp = new Node(a->data);
+        ptr->next = tmp;
+        ptr = ptr->next;
       }
-
-      tmp->next = head;
-      curr->next = nullptr;
-      head = tmp;
+      a = a->next;
+      b = b->next;
+    } else if (a->data < b->data) {
+      a = a->next;
+    } else {
+      b = b->next;
     }
-    return head;
   }
-};
+  return head;
+}
 ```

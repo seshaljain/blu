@@ -9,7 +9,7 @@ weight = 2157
 
 <https://practice.geeksforgeeks.org/problems/diameter-of-binary-tree/1>
 
-Leetcode expects diamater of tree to be number of edges, ∴ return `re s - 1`
+Leetcode expects diamater of tree to be number of edges, ∴ return `res - 1`
 
 ```cpp
 class Solution {

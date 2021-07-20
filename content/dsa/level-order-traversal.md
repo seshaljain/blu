@@ -9,11 +9,7 @@ weight = 2154
 
 <https://practice.geeksforgeeks.org/problems/level-order-traversal/1>
 
-1.  root
-2.  left
-3.  right
-
-<!--listend-->
+BFS
 
 ```cpp
 class Solution {
