@@ -1,13 +1,14 @@
 #+title: DSA Mastersheet
 #+bind: org-done-keywords ("TODO" "STRT" "DONE")
 
-* Questions
+* Questions [41/413]
 ** DSA Mastersheet
 :PROPERTIES:
 :EXPORT_FILE_NAME: _index
 :END:
 
 ** DONE Reverse an array :@done:array:
+CLOSED: [2022-06-11 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-an-array
 :EXPORT_HUGO_WEIGHT: auto
@@ -28,7 +29,7 @@ void reverseArray(int arr[], int start, int end) {
 // reverseArray(arr, 0, n - 1);
 #+end_src
 
-** DONE Find the maximum and minimum element in an array :array:@done:
+** TODO Find the maximum and minimum element in an array :array:@done:
 CLOSED: [2021-06-16 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-maximum-and-minimum-element-in-an-array
@@ -78,7 +79,7 @@ struct Pair getMinMax(int arr[], int low, int high) {
 // struct Pair minmax = getMinMax(arr, 0, N - 1);
 #+end_src
 
-** DONE Find the Kth max and min element in an array :array:heap:@done:
+** TODO Find the Kth max and min element in an array :array:heap:@done:
 CLOSED: [2021-06-16 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-kth-max-and-min-element-in-an-array
@@ -110,6 +111,7 @@ public:
 #+end_src
 
 ** DONE Sort an array of 0s, 1s and 2s :@done:array:
+CLOSED: [2022-07-03 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: sort-an-array-of-0s-1s-and-2s
 :EXPORT_HUGO_WEIGHT: auto
@@ -137,7 +139,7 @@ public:
 };
 #+end_src
 
-** DONE Move all the negative elements to one side of the array :@done:array:
+** TODO Move all the negative elements to one side of the array :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: move-all-the-negative-elements-to-one-side-of-the-array
 :EXPORT_HUGO_WEIGHT: auto
@@ -171,7 +173,7 @@ void shiftall(int arr[], int n) {
 }
 #+end_src
 
-** DONE Find the union and intersection of the two sorted arrays :array:@done:
+** TODO Find the union and intersection of the two sorted arrays :array:@done:
 CLOSED: [2021-06-20 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-union-and-intersection-of-the-two-sorted-arrays
@@ -266,7 +268,7 @@ public:
 };
 #+end_src
 
-** DONE Cyclically rotate an array by one :@done:array:
+** TODO Cyclically rotate an array by one :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: cyclically-rotate-an-array-by-one
 :EXPORT_HUGO_WEIGHT: auto
@@ -289,7 +291,7 @@ void rotate(int arr[], int n) {
 }
 #+end_src
 
-** DONE [#A] Minimise the maximum difference between heights :@done:array:
+** TODO [#A] Minimise the maximum difference between heights :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimise-the-maximum-difference-between-heights
 :EXPORT_HUGO_WEIGHT: auto
@@ -315,7 +317,7 @@ public:
 };
 #+end_src
 
-** DONE Minimum number of jumps to reach end of an array :@done:array:
+** TODO Minimum number of jumps to reach end of an array :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-number-of-jumps-to-reach-end-of-an-array
 :EXPORT_HUGO_WEIGHT: auto
@@ -325,28 +327,28 @@ https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps/0
 #+begin_src cpp
 class Solution {
 public:
-  int minJumps(int arr[], int n) {
-    int maxReachable = arr[0], jumps = 1, steps = arr[0];
+    int minJumps(int arr[], int n) {
+        int jumps = 0;
+        int currJumpEnd = 0;
+        int maxReachableIndex = 0;
 
-    for (int i = 1; i < n; i++) {
-      if (i == n - 1)
-        return jumps;
-      maxReachable = max(maxReachable, i + arr[i]);
-      steps--;
-      if (steps == 0) {
-        if (i >= maxReachable)
-          return -1;
-        jumps++;
-        steps = maxReachable - i;
-      }
-      if (steps < 0)
+        for (int i = 0; i < n; i++) {
+            if (i == n - 1)
+                return (currJumpEnd >= n - 1) ? jumps : -1;
+
+            maxReachableIndex = max(maxReachableIndex, i + arr[i]);
+            if (i == currJumpEnd) {
+                jumps++;
+                currJumpEnd = maxReachableIndex;
+            }
+        }
+
         return -1;
     }
-  }
 };
 #+end_src
 
-** DONE Find the duplicate in an array of N+1 integers :@done:array:
+** TODO Find the duplicate in an array of N+1 integers :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-duplicate-in-an-array-of-n-plus-1-integers
 :EXPORT_HUGO_WEIGHT: auto
@@ -378,6 +380,7 @@ public:
 #+end_src
 
 ** DONE [#A] Kadane's algorithm :@done:array:dp:
+CLOSED: [2022-06-24 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: kadane-s-algorithm
 :EXPORT_HUGO_WEIGHT: auto
@@ -406,7 +409,7 @@ public:
 };
 #+end_src
 
-** DONE Merge intervals :array:@done:
+** TODO Merge intervals :array:@done:
 CLOSED: [2021-06-20 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: merge-intervals
@@ -441,7 +444,7 @@ public:
 #+end_src
 
 ** DONE Next permutation :array:@done:
-CLOSED: [2021-06-19 Sat]
+CLOSED: [2022-07-03 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: next-permutation
 :EXPORT_HUGO_WEIGHT: auto
@@ -476,7 +479,7 @@ public:
 };
 #+end_src
 
-** DONE Count inversion :array:search_sort:@done:
+** TODO Count inversion :array:search_sort:@done:
 CLOSED: [2021-06-24 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-inversion
@@ -543,7 +546,7 @@ public:
 };
 #+end_src
 
-** DONE [#A] Best time to buy and sell stock :@done:array:
+** TODO [#A] Best time to buy and sell stock :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: best-time-to-buy-and-sell-stock
 :EXPORT_HUGO_WEIGHT: auto
@@ -628,7 +631,7 @@ public:
 };
 #+end_src
 
-** DONE Find all pairs on integer array whose sum is equal to K :array:@done:
+** TODO Find all pairs on integer array whose sum is equal to K :array:@done:
 CLOSED: [2021-06-20 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-all-pairs-on-integer-array-whose-sum-is-equal-to-k
@@ -659,7 +662,7 @@ public:
 };
 #+end_src
 
-** DONE Find common elements in 3 sorted arrays :array:@done:
+** TODO Find common elements in 3 sorted arrays :array:@done:
 CLOSED: [2021-07-17 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-common-elements-in-3-sorted-arrays
@@ -702,6 +705,7 @@ public:
 https://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-o1-extra-space/
 
 ** DONE Find if there is any subarray with sum equal to 0 :@done:array:
+CLOSED: [2022-06-24 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-if-there-is-any-subarray-with-sum-equal-to-0
 :EXPORT_HUGO_WEIGHT: auto
@@ -736,7 +740,7 @@ public:
 https://practice.geeksforgeeks.org/problems/factorials-of-large-numbers/0
 
 ** DONE Find maximum product subarray :array:@done:
-CLOSED: [2021-06-16 Wed]
+CLOSED: [2022-06-24 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-maximum-product-subarray
 :EXPORT_HUGO_WEIGHT: auto
@@ -765,7 +769,7 @@ public:
 #+end_src
 
 ** DONE Find longest consecutive subsequence :array:@done:
-CLOSED: [2021-06-16 Wed]
+CLOSED: [2022-06-24 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-longest-consecutive-subsequence
 :EXPORT_HUGO_WEIGHT: auto
@@ -796,7 +800,7 @@ public:
 };
 #+end_src
 
-** DONE Given an array of size N and a number K, find all elements that appear more than N/K times :array:@done:
+** TODO Given an array of size N and a number K, find all elements that appear more than N/K times :array:@done:
 CLOSED: [2021-06-23 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: given-an-array-of-size-n-and-a-number-k-find-all-elements-that-appear-more-than-n-k-times
@@ -827,7 +831,7 @@ public:
 };
 #+end_src
 
-** DONE Find whether an array is a subset of another array :array:@done:
+** TODO Find whether an array is a subset of another array :array:@done:
 CLOSED: [2021-07-06 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-whether-an-array-is-a-subset-of-another-array
@@ -863,8 +867,7 @@ string isSubset(int arr1[], int arr2[], int m, int n) {
 }
 #+end_src
 
-
-** DONE Find the triplet that sum to a given value :array:@done:
+** TODO Find the triplet that sum to a given value :array:@done:
 CLOSED: [2021-06-24 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-triplet-that-sum-to-a-given-value
@@ -939,7 +942,7 @@ public:
 };
 #+end_src
 
-** DONE Trapping rain water :@done:array:
+** TODO Trapping rain water :@done:array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: trapping-rain-water
 :EXPORT_HUGO_WEIGHT: auto
@@ -980,7 +983,7 @@ public:
 };
 #+end_src
 
-** DONE Chocolate distribution :@done:array:greedy:
+** TODO Chocolate distribution :@done:array:greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: chocolate-distribution
 :EXPORT_HUGO_WEIGHT: auto
@@ -1031,7 +1034,7 @@ https://practice.geeksforgeeks.org/problems/three-way-partitioning/1
 :END:
 https://practice.geeksforgeeks.org/problems/minimum-swaps-required-to-bring-all-elements-less-than-or-equal-to-k-together/0
 
-** DONE Minimum number of merge operations required to make an array palindrome :array:@done:
+** TODO Minimum number of merge operations required to make an array palindrome :array:@done:
 CLOSED: [2021-06-24 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-number-of-operations-required-to-make-an-array-palindrome
@@ -1083,7 +1086,7 @@ https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/
 :END:
 https://practice.geeksforgeeks.org/problems/spirally-traversing-a-matrix/0
 
-** DONE Search an element in a matrix :@done:matrix:
+** TODO Search an element in a matrix :@done:matrix:
 :PROPERTIES:
 :EXPORT_FILE_NAME: search-an-element-in-a-matrix
 :EXPORT_HUGO_WEIGHT: auto
@@ -1174,29 +1177,7 @@ https://practice.geeksforgeeks.org/problems/kth-element-in-matrix/1
 :END:
 https://www.geeksforgeeks.org/common-elements-in-all-rows-of-a-given-matrix/
 
-** DONE Reverse a string :@done:string:
-:PROPERTIES:
-:EXPORT_FILE_NAME: reverse-a-string
-:EXPORT_HUGO_WEIGHT: auto
-:END:
-https://leetcode.com/problems/reverse-string/
-
-#+begin_src cpp
-class Solution {
-public:
-  void reverseString(vector<char> &s) {
-    int n = s.size();
-
-    for (int i = 0; i < n / 2; i++) {
-      char tmp = s[i];
-      s[i] = s[n - i - 1];
-      s[n - i - 1] = tmp;
-    }
-  }
-};
-#+end_src
-
-** DONE Check whether a string is palindrome :@done:string:
+** TODO Check whether a string is palindrome :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-whether-a-string-is-palindrome
 :EXPORT_HUGO_WEIGHT: auto
@@ -1219,14 +1200,14 @@ public:
 };
 #+end_src
 
-** DONE Find duplicate characters in a string :string:@done:
+** TODO Find duplicate characters in a string :string:@done:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-duplicate-characters-in-a-string
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/
 
-** DONE Why are strings immutable in Java? :@done:string:
+** TODO Why are strings immutable in Java? :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: why-are-strings-immutable-in-java
 :EXPORT_HUGO_WEIGHT: auto
@@ -1234,7 +1215,7 @@ https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/
 
 Java uses string literals mostly for memory security. Better alter copies of strings than alter main references in memory.
 
-** DONE Check whether one string is a rotation of another :@done:string:
+** TODO Check whether one string is a rotation of another :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-whether-one-string-is-a-rotation-of-another
 :EXPORT_HUGO_WEIGHT: auto
@@ -1251,7 +1232,7 @@ bool areRotations(string str1, string str2) {
 }
 #+end_src
 
-** DONE Check whether a string is a valid shuffle of two strings :@done:string:
+** TODO Check whether a string is a valid shuffle of two strings :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-whether-a-string-is-a-valid-shuffle-of-two-strings
 :EXPORT_HUGO_WEIGHT: auto
@@ -1286,7 +1267,7 @@ bool shuffleCheck(string first, string second, string result) {
 }
 #+end_src
 
-** DONE Count and say :@done:string:
+** TODO Count and say :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-and-say
 :EXPORT_HUGO_WEIGHT: auto
@@ -1319,7 +1300,7 @@ public:
 };
 #+end_src
 
-** DONE Find the longest palindrome in a string :string:@done:
+** TODO Find the longest palindrome in a string :string:@done:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-longest-palindrome-in-a-string
 :EXPORT_HUGO_WEIGHT: auto
@@ -1364,7 +1345,7 @@ public:
 };
 #+end_src
 
-** DONE Print all subsequences of a string :string:
+** TODO Print all subsequences of a string :string:
 CLOSED: [2021-06-17 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: print-all-subsequences-of-a-string
@@ -1386,7 +1367,7 @@ void printSubsequence(string input, string output) {
 // printSubsequence(input, "");
 #+end_src
 
-** DONE Split the binary string into two substring with equal 0s and 1s :string:@done:
+** TODO Split the binary string into two substring with equal 0s and 1s :string:@done:
 CLOSED: [2021-06-17 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: split-the-binary-string-into-two-substring-with-equal-0s-and-1s
@@ -1427,7 +1408,7 @@ int maxSubStr(string str) {
 :END:
 https://practice.geeksforgeeks.org/problems/word-wrap/0
 
-** DONE [#A] Edit distance :string:dp:@done:
+** TODO [#A] Edit distance :string:dp:@done:
 CLOSED: [2021-06-17 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: edit-distance
@@ -1480,6 +1461,7 @@ class Solution {
 https://practice.geeksforgeeks.org/problems/next-permutation/0
 
 ** DONE [#A] Balanced parenthesis :@done:string:st_q:
+CLOSED: [2022-06-28 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: balanced-parenthesis
 :EXPORT_HUGO_WEIGHT: auto
@@ -1538,14 +1520,21 @@ https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/
 :END:
 https://practice.geeksforgeeks.org/problems/longest-prefix-suffix2527/1
 
-** DONE Convert a sentence into its equivalent mobile numeric keypad sequence :string:@done:
+** TODO Bayer Moore algorithm :string:
+:PROPERTIES:
+:EXPORT_FILE_NAME: boyer-moore-algorithm-for-pattern-searching
+:EXPORT_HUGO_WEIGHT: auto
+:END:
+https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/
+
+** TODO Convert a sentence into its equivalent mobile numeric keypad sequence :string:@done:
 :PROPERTIES:
 :EXPORT_FILE_NAME: convert-a-sentence-into-its-equivalent-mobile-numeric-keypad-sequence
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/convert-sentence-equivalent-mobile-numeric-keypad-sequence/
 
-** DONE Minimum number of bracket reversals needed to make an expression balanced :@done:string:
+** TODO Minimum number of bracket reversals needed to make an expression balanced :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-number-of-bracket-reversals-needed-to-make-an-expression-balanced
 :EXPORT_HUGO_WEIGHT: auto
@@ -1596,7 +1585,7 @@ int countRev(string s) {
 :END:
 https://practice.geeksforgeeks.org/problems/count-palindromic-subsequences/1
 
-** DONE Count of number of given string in 2D character array :string:@done:
+** TODO Count of number of given string in 2D character array :string:@done:
 CLOSED: [2021-07-15 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-of-number-of-given-string-in-2d-character-array
@@ -1657,20 +1646,12 @@ public:
 };
 #+end_src
 
-
 ** TODO Search a word in a 2D grid of characters :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: search-a-word-in-a-2d-grid-of-characters
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/find-the-string-in-grid/0
-
-** TODO Boyer Moore algorithm for pattern searching :string:
-:PROPERTIES:
-:EXPORT_FILE_NAME: boyer-moore-algorithm-for-pattern-searching
-:EXPORT_HUGO_WEIGHT: auto
-:END:
-https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/
 
 ** TODO Converting roman numerals to decimal :string:
 :PROPERTIES:
@@ -1679,7 +1660,7 @@ https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/
 :END:
 https://practice.geeksforgeeks.org/problems/roman-number-to-integer/0
 
-** DONE Longest common prefix :string:@done:
+** TODO Longest common prefix :string:@done:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-common-prefix
 :EXPORT_HUGO_WEIGHT: auto
@@ -1723,7 +1704,7 @@ public:
 };
 #+end_src
 
-** DONE Number of flips to make binary string alternate :@done:string:
+** TODO Number of flips to make binary string alternate :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: number-of-flips-to-make-binary-string-alternate
 :EXPORT_HUGO_WEIGHT: auto
@@ -1752,7 +1733,7 @@ int minFlips(string S) {
 }
 #+end_src
 
-** DONE Find the second most repeated word in string :@done:string:
+** TODO Find the second most repeated word in string :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-second-most-repeated-word-in-string
 :EXPORT_HUGO_WEIGHT: auto
@@ -1839,7 +1820,7 @@ https://practice.geeksforgeeks.org/problems/k-anagrams-1/0
 :END:
 https://practice.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string/0
 
-** DONE Recursively remove all adjacent duplicates :@done:string:
+** TODO Recursively remove all adjacent duplicates :@done:string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: recursively-remove-all-adjacent-duplicates
 :EXPORT_HUGO_WEIGHT: auto
@@ -1882,7 +1863,7 @@ https://practice.geeksforgeeks.org/problems/wildcard-string-matching/0
 :END:
 https://www.geeksforgeeks.org/function-to-find-number-of-customers-who-could-not-get-a-computer/
 
-** DONE Transform one string to another using minimum number of given operation :string:@done:
+** TODO Transform one string to another using minimum number of given operation :string:@done:
 CLOSED: [2021-06-17 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: transform-one-string-to-another-using-minimum-number-of-given-operation
@@ -1955,6 +1936,7 @@ https://practice.geeksforgeeks.org/problems/isomorphic-strings/0
 https://www.geeksforgeeks.org/recursively-print-all-sentences-that-can-be-formed-from-list-of-word-lists/
 
 ** DONE Find first and last positions of an element in a sorted array :@done:search_sort:
+CLOSED: [2022-06-24 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-first-and-last-positions-of-an-element-in-a-sorted-array
 :EXPORT_HUGO_WEIGHT: auto
@@ -2019,7 +2001,7 @@ vector<int> find(int arr[], int n, int x) {
 }
 #+end_src
 
-** DONE Find a fixed point (value equal to index) in a given array :search_sort:@done:
+** TODO Find a fixed point (value equal to index) in a given array :search_sort:@done:
 CLOSED: [2021-06-20 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-a-fixed-point--value-equal-to-index--in-a-given-array
@@ -2027,7 +2009,7 @@ CLOSED: [2021-06-20 Sun]
 :END:
 https://practice.geeksforgeeks.org/problems/value-equal-to-index-value1330/1
 
-GfG testcases are incorrect, we can only use binay search on a sorted array
+GfG testcases are incorrect, we can only use binary search on a sorted array
 #+begin_src cpp
 class Solution {
   vector<int> v;
@@ -2049,7 +2031,7 @@ public:
 };
 #+end_src
 
-** DONE Search in a rotated sorted array :search_sort:@done:
+** TODO Search in a rotated sorted array :search_sort:@done:
 CLOSED: [2021-07-20 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: search-in-a-rotated-sorted-array
@@ -2103,7 +2085,7 @@ https://practice.geeksforgeeks.org/problems/middle-of-three2926/1
 :END:
 https://www.geeksforgeeks.org/optimum-location-point-minimize-total-distance/
 
-** DONE Find missing and repeating :@done:search_sort:
+** TODO Find missing and repeating :@done:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-missing-and-repeating
 :EXPORT_HUGO_WEIGHT: auto
@@ -2136,6 +2118,7 @@ public:
 #+end_src
 
 ** DONE Find majority element :@done:search_sort:
+CLOSED: [2022-06-24 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-majority-element
 :EXPORT_HUGO_WEIGHT: auto
@@ -2165,7 +2148,7 @@ public:
 };
 #+end_src
 
-** DONE Searching in an array where adjacent differ by at most K :@done:search_sort:
+** TODO Searching in an array where adjacent differ by at most K :@done:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: searching-in-an-array-where-adjacent-differ-by-at-most-k
 :EXPORT_HUGO_WEIGHT: auto
@@ -2215,7 +2198,7 @@ https://practice.geeksforgeeks.org/problems/stickler-theif/0
 :END:
 https://practice.geeksforgeeks.org/problems/count-triplets-with-sum-smaller-than-x5549/1
 
-** DONE Merge 2 sorted arrays :@done:array:search_sort:
+** TODO Merge 2 sorted arrays :@done:array:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: merge-2-sorted-arrays
 :EXPORT_HUGO_WEIGHT: auto
@@ -2256,7 +2239,7 @@ https://practice.geeksforgeeks.org/problems/zero-sum-subarrays/0
 :END:
 https://practice.geeksforgeeks.org/problems/product-array-puzzle/0
 
-** DONE Sort array according to count of set bits :@done:search_sort:
+** TODO Sort array according to count of set bits :@done:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: sort-array-according-to-count-of-set-bits
 :EXPORT_HUGO_WEIGHT: auto
@@ -2306,7 +2289,7 @@ https://www.hackerearth.com/practice/algorithms/searching/binary-search/practice
 :END:
 https://www.hackerearth.com/practice/algorithms/searching/binary-search/practice-problems/algorithm/rasta-and-kheshtak/
 
-** DONE Kth smallest number again :@done:search_sort:
+** TODO Kth smallest number again :@done:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: kth-smallest-number-again
 :EXPORT_HUGO_WEIGHT: auto
@@ -2382,7 +2365,7 @@ https://practice.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array/0
 :END:
 https://www.spoj.com/problems/AGGRCOW/
 
-** DONE Book allocation aka Painter's Partition :@done:search_sort:
+** TODO Book allocation aka Painter's Partition :@done:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: book-allocation-aka-painter-s-partition
 :EXPORT_HUGO_WEIGHT: auto
@@ -2441,7 +2424,7 @@ https://www.spoj.com/problems/EKO/
 https://www.geeksforgeeks.org/weighted-job-scheduling-log-n-time/
 
 ** DONE Missing number in AP :search_sort:@done:
-CLOSED: [2021-06-21 Mon]
+CLOSED: [2022-06-26 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: missing-number-in-ap
 :EXPORT_HUGO_WEIGHT: auto
@@ -2502,6 +2485,7 @@ https://www.geeksforgeeks.org/in-place-merge-sort/
 https://www.baeldung.com/java-sorting-arrays-with-repeated-entries
 
 ** DONE Reverse a linked list :@done:ll:
+CLOSED: [2022-06-11 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
@@ -2529,7 +2513,7 @@ public:
 };
 #+end_src
 
-** DONE Reverse a linked list in group of given size :ll:@done:
+** TODO Reverse a linked list in group of given size :ll:@done:
 CLOSED: [2021-06-18 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-a-linked-list-in-group-of-given-size
@@ -2573,7 +2557,7 @@ public:
 #+end_src
 
 ** DONE Detect loop in a linked list :ll:@done:
-CLOSED: [2021-06-18 Fri]
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: detect-loop-in-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
@@ -2606,7 +2590,7 @@ public:
 #+end_src
 
 ** DONE Delete loop in a linked list :ll:@done:
-CLOSED: [2021-06-29 Tue]
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: delete-loop-in-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
@@ -2653,7 +2637,7 @@ public:
 #+end_src
 
 ** DONE Find the starting point of the loop :ll:@done:
-CLOSED: [2021-06-18 Fri]
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-starting-point-of-the-loop
 :EXPORT_HUGO_WEIGHT: auto
@@ -2696,7 +2680,7 @@ public:
 #+end_src
 
 ** DONE Remove duplicates in a sorted linked list :ll:@done:
-CLOSED: [2021-06-18 Fri]
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: remove-duplicates-in-a-sorted-linked-list
 :EXPORT_HUGO_WEIGHT: auto
@@ -2728,7 +2712,7 @@ public:
 #+end_src
 
 ** DONE Remove duplicates in a unsorted linked list :ll:@done:
-CLOSED: [2021-06-18 Fri]
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: remove-duplicates-in-a-unsorted-linked-list
 :EXPORT_HUGO_WEIGHT: auto
@@ -2759,6 +2743,7 @@ public:
 #+end_src
 
 ** DONE Move the last element to front in a linked list :ll:@done:
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: move-the-last-element-to-front-in-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
@@ -2785,7 +2770,7 @@ void moveToFront(Node **head) {
 #+end_src
 
 ** DONE Add 1 to a number represented as a linked list :ll:@done:
-CLOSED: [2021-06-29 Tue]
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: add-1-to-a-number-represented-as-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
@@ -2794,55 +2779,57 @@ https://practice.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-lin
 
 #+begin_src cpp
 class Solution {
-  Node *reverse(Node *head) {
-    Node *prev = nullptr;
-    Node *current = head;
-    Node *next;
+  Node* reverseLL(Node* head) {
+    Node* prev = nullptr;
+    Node* current = head;
+    Node* next;
+
     while (current != nullptr) {
       next = current->next;
       current->next = prev;
       prev = current;
       current = next;
     }
+
     return prev;
   }
 
-  Node *addOneUtil(Node *head) {
-    Node *ans = head;
-    Node *temp, *prev = nullptr;
+  Node *addOneUtil(Node* head) {
+    Node* curr = head;
+    Node* tmp = nullptr;
 
     int carry = 1, sum = 0;
 
-    while (head != nullptr) {
-      sum = carry + head->data;
+    while (curr != nullptr) {
+      sum = carry + curr->data;
       carry = (sum >= 10) ? 1 : 0;
 
       sum = sum % 10;
-      head->data = sum;
+      curr->data = sum;
 
-      temp = head;
-      head = head->next;
+      tmp = curr;
+      curr = curr->next;
     }
 
     if (carry > 0)
-      temp->next = new Node(carry);
+      tmp->next = new Node(carry);
 
-    return ans;
+    return head;
   }
 
 public:
   Node *addOne(Node *head) {
-    head = reverse(head);
+    head = reverseLL(head);
 
     head = addOneUtil(head);
 
-    return reverse(head);
+    return reverseLL(head);
   }
 };
 #+end_src
 
 ** DONE Add two numbers represented by linked lists :ll:@done:
-CLOSED: [2021-07-20 Tue]
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: add-two-numbers-represented-by-linked-lists
 :EXPORT_HUGO_WEIGHT: auto
@@ -2901,7 +2888,7 @@ public:
 };
 #+end_src
 
-** DONE Intersection of two sorted linked list :ll:@done:
+** TODO Intersection of two sorted linked list :ll:@done:
 CLOSED: [2021-07-01 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: intersection-of-two-sorted-linked-list
@@ -2938,7 +2925,7 @@ Node *findIntersection(Node *head1, Node *head2) {
 }
 #+end_src
 
-** DONE Intersection point of two linked lists :ll:@done:
+** TODO Intersection point of two linked lists :ll:@done:
 CLOSED: [2021-07-20 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: intersection-point-of-two-linked-lists
@@ -2991,7 +2978,7 @@ https://practice.geeksforgeeks.org/problems/sort-a-linked-list/1
 https://practice.geeksforgeeks.org/problems/quick-sort-on-linked-list/1
 
 ** DONE Find the middle element of a linked list :ll:@done:
-CLOSED: [2021-07-11 Sun]
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-middle-element-of-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
@@ -3016,7 +3003,7 @@ public:
 #+end_src
 
 ** DONE Check if a linked list is a circular linked list :ll:@done:
-CLOSED: [2021-07-11 Sun]
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-a-linked-list-is-a-circular-linked-list
 :EXPORT_HUGO_WEIGHT: auto
@@ -3042,20 +3029,50 @@ bool isCircular(Node *head) {
 }
 #+end_src
 
-** TODO Split a circular linked list into two halves :ll:
+** DONE Split a circular linked list into two halves :ll:
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: split-a-circular-linked-list-into-two-halves
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/split-a-circular-linked-list-into-two-halves/1
 
+#+begin_src cpp
+void splitList(Node *head, Node **head1_ref, Node **head2_ref)
+{
+    if (head == nullptr) return;
+
+    Node *fast = head, *slow = head;
+
+    while (fast->next != head && fast->next->next != head) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    if (fast->next->next == head) {
+        fast = fast->next;
+    }
+
+    *head1_ref = head;
+
+    if (head->next != head) {
+        *head2_ref = slow->next;
+    }
+
+    fast->next = slow->next;
+    slow->next = head;
+}
+#+end_src
+
 ** DONE Check whether the singly linked list is a palindrome :ll:@done:
-CLOSED: [2021-07-13 Tue]
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-whether-the-singly-linked-list-is-a-palindrome
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1
+
+Reverse second half of linked list, compare, then revert.
 
 #+begin_src cpp
 class Solution {
@@ -3121,7 +3138,7 @@ public:
 :END:
 https://www.geeksforgeeks.org/deletion-circular-linked-list/
 
-** DONE Reverse a doubly linked list :ll:@done:
+** TODO Reverse a doubly linked list :ll:@done:
 CLOSED: [2021-07-14 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-a-doubly-linked-list
@@ -3183,13 +3200,15 @@ https://www.geeksforgeeks.org/rotate-doubly-linked-list-n-nodes/
 :END:
 https://www.geeksforgeeks.org/reverse-doubly-linked-list-groups-given-size/
 
-** TODO Can we reverse a linked list in less than O(n)? :ll:
+** DONE Can we reverse a linked list in less than O(n)? :ll:
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: can-we-reverse-a-linked-list-in-less-than-o--n
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 
-** DONE Why is quicksort preferred for arrays while merge sort for linked lists? :ll:@done:
+No for SLL, yes for DLL.
+** TODO Why is quicksort preferred for arrays while merge sort for linked lists? :ll:@done:
 CLOSED: [2021-06-23 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: why-is-quicksort-preferred-for-arrays-while-merge-sort-for-linked-lists
@@ -3198,7 +3217,7 @@ CLOSED: [2021-06-23 Wed]
 
 Quicksort is also one of the efficient algorithms with the average time complexity of O(nlogn). But the worst-case time complexity is O(n^2). Also, variations of the quick sort like randomized quicksort are not efficient for the linked list because unlike arrays, random access in the linked list is not possible in O(1) time. If we sort the linked list using quicksort, we would end up using the head as a pivot element which may not be efficient in all scenarios.
 
-** DONE Flatten a linked list :ll:@done:
+** TODO Flatten a linked list :ll:@done:
 CLOSED: [2021-07-14 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: flatten-a-linked-list
@@ -3249,7 +3268,7 @@ Node *flatten(Node *root) {
 :END:
 https://practice.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1
 
-** DONE Clone a linked list with next and random pointer :ll:@done:
+** TODO Clone a linked list with next and random pointer :ll:@done:
 CLOSED: [2021-07-14 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: clone-a-linked-list-with-next-and-random-pointer
@@ -3359,6 +3378,7 @@ https://practice.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/1
 https://practice.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream/0
 
 ** DONE Level order traversal :@done:bt:
+CLOSED: [2022-06-21 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: level-order-traversal
 :EXPORT_HUGO_WEIGHT: auto
@@ -3398,6 +3418,7 @@ public:
 https://practice.geeksforgeeks.org/problems/reverse-level-order-traversal/1
 
 ** DONE Height of a tree :@done:bt:
+CLOSED: [2022-06-21 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: height-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
@@ -3417,41 +3438,39 @@ public:
 #+end_src
 
 ** DONE Diameter of a tree :@done:bt:
+CLOSED: [2022-06-21 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: diameter-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-https://practice.geeksforgeeks.org/problems/diameter-of-binary-tree/1
-
+https://leetcode.com/problems/diameter-of-binary-tree/
 Leetcode expects diamater of tree to be number of edges, ∴ return =res - 1=
 
 #+begin_src cpp
 class Solution {
-  int diam(TreeNode *root, int &res) {
-    if (root == nullptr)
-      return 0;
-
-    int ld = diam(root->left, res);
-    int rd = diam(root->right, res);
-
-    int edgeH = max(ld, rd) + 1;
-    int currD = ld + rd + 1;
-    int currMax = max(edgeH, currD);
-    res = max(res, currMax);
-    return edgeH;
-  }
-
+    int diameter = 0;
 public:
-  int diameterOfBinaryTree(TreeNode *root) {
-    int res = INT_MIN;
-    diam(root, res);
-    return res - 1;
-  }
+    int diameterOfBinaryTree(TreeNode* root) {
+        diam(root);
+        return diameter - 1;
+    }
+
+    int diam(TreeNode* root) {
+        if(root == nullptr) return 0;
+
+        int ld = diam(root->left);
+        int rd = diam(root->right);
+
+        int childD = max(ld, rd) + 1;
+        int currD = ld + rd + 1;
+        diameter = max({diameter, childD, currD});
+        return childD;
+    }
 };
 #+end_src
 
 ** DONE Mirror of a tree :bt:@done:
-CLOSED: [2021-07-18 Sun]
+CLOSED: [2022-06-24 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: mirror-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
@@ -3481,7 +3500,7 @@ public:
 };
 #+end_src
 
-** DONE Inorder traversal of a tree :@done:bt:
+** HOLD Inorder traversal of a tree :@done:bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: inorder-traversal-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
@@ -3527,7 +3546,7 @@ void inorderIterative(Node *root) {
 }
 #+end_src
 
-** DONE Preorder traversal of a tree :@done:bt:
+** HOLD Preorder traversal of a tree :@done:bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: preorder-traversal-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
@@ -3577,7 +3596,7 @@ void preorderIterative(Node *root) {
 }
 #+end_src
 
-** DONE Postorder traversal of a tree :@done:bt:
+** HOLD Postorder traversal of a tree :@done:bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: postorder-traversal-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
@@ -3632,7 +3651,7 @@ void postorderIterative(Node *root) {
 #+end_src
 
 ** DONE Right view of a tree :bt:@done:
-CLOSED: [2021-06-26 Sat]
+CLOSED: [2022-06-24 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: right-view-of-tree
 :EXPORT_HUGO_WEIGHT: auto
@@ -3661,7 +3680,7 @@ public:
 #+end_src
 
 ** DONE Left view of a tree :bt:@done:
-CLOSED: [2021-06-26 Sat]
+CLOSED: [2022-06-24 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: left-view-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
@@ -3709,7 +3728,7 @@ https://practice.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1
 :END:
 https://practice.geeksforgeeks.org/problems/zigzag-tree-traversal/1
 
-** DONE Check if a tree is balanced :bt:@done:
+** TODO Check if a tree is balanced :bt:@done:
 CLOSED: [2021-07-20 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-a-tree-is-balanced
@@ -3772,12 +3791,35 @@ https://www.geeksforgeeks.org/construct-binary-tree-string-bracket-representatio
 :END:
 https://practice.geeksforgeeks.org/problems/binary-tree-to-dll/1
 
-** TODO Convert binary tree into sum tree :bt:
+** DONE Convert binary tree into sum tree :bt:
+CLOSED: [2022-06-24 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: convert-binary-tree-into-sum-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/transform-to-sum-tree/1
+
+#+begin_src cpp
+class Solution {
+  int sumUtil(Node *node) {
+    if (node == nullptr)
+      return 0;
+
+    int tmp = node->data;
+
+    int leftSum = sumUtil(node->left);
+    int rightSum = sumUtil(node->right);
+
+    node->data = leftSum + rightSum;
+    return node->data + tmp;
+  }
+
+public:
+  void toSumTree(Node *node) {
+    sumUtil(node);
+  }
+};
+#+end_src
 
 ** TODO Construct binary tree from inorder and preorder traversal :bt:
 :PROPERTIES:
@@ -3793,12 +3835,38 @@ https://practice.geeksforgeeks.org/problems/construct-tree-1/1
 :END:
 https://www.geeksforgeeks.org/minimum-swap-required-convert-binary-tree-binary-search-tree/
 
-** TODO Check if binary tree is sum tree :bt:
+** DONE Check if binary tree is sum tree :bt:
+CLOSED: [2022-06-24 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-binary-tree-is-sum-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/sum-tree/1
+
+#+begin_src cpp
+class Solution
+{
+    int sumUtil(Node *root) {
+        if (root == nullptr) return 0;
+
+        return sumUtil(root->left) + sumUtil(root->right) + root->data;
+    }
+
+    public:
+    bool isSumTree(Node* root)
+    {
+        if (root == nullptr ||
+            (root->left == nullptr && root->right == nullptr)) {
+            return true;
+        }
+
+        if (root->data == sumUtil(root->left) + sumUtil(root->right)
+            && isSumTree(root->left) && isSumTree(root->right)) {
+            return true;
+        }
+    }
+};
+#+end_src
 
 ** TODO Check if all leaf nodes are at same level :bt:
 :PROPERTIES:
@@ -3856,7 +3924,7 @@ https://www.geeksforgeeks.org/maximum-sum-nodes-binary-tree-no-two-adjacent/
 :END:
 https://www.geeksforgeeks.org/print-k-sum-paths-binary-tree/
 
-** DONE Find LCA in a binary tree :bt:@done:
+** TODO Find LCA in a binary tree :bt:@done:
 CLOSED: [2021-07-18 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-lca-in-a-binary-tree
@@ -3917,7 +3985,7 @@ https://practice.geeksforgeeks.org/problems/duplicate-subtrees/1
 https://practice.geeksforgeeks.org/problems/check-if-tree-is-isomorphic/1
 
 ** DONE Find a value in a BST :bst:@done:
-CLOSED: [2021-07-20 Tue]
+CLOSED: [2022-06-28 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-a-value-in-a-bst
 :EXPORT_HUGO_WEIGHT: auto
@@ -3941,15 +4009,8 @@ public:
 };
 #+end_src
 
-** TODO Deletion of a node in a BST :bst:
-:PROPERTIES:
-:EXPORT_FILE_NAME: deletion-of-a-node-in-a-bst
-:EXPORT_HUGO_WEIGHT: auto
-:END:
-https://leetcode.com/problems/delete-node-in-a-bst/
-
 ** DONE Find min and max value in a BST :bst:@done:
-CLOSED: [2021-07-20 Tue]
+CLOSED: [2022-06-28 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-min-and-max-value-in-a-bst
 :EXPORT_HUGO_WEIGHT: auto
@@ -3957,25 +4018,89 @@ CLOSED: [2021-07-20 Tue]
 https://practice.geeksforgeeks.org/problems/minimum-element-in-bst/1
 
 #+begin_src cpp
-int minValue(Node *node) {
-  Node *current = node;
+int minValue(Node* root) {
+    if (root == nullptr) return -1;
 
-  while (current->left != nullptr) {
-    current = current->left;
-  }
-  return (current->data);
+    if  (root->left == nullptr) return root->data;
+
+    return minValue(root->left);
 }
 #+end_src
 
-** TODO Find inorder successor and inorder predecessor in a BST :bst:
+** DONE Find inorder successor and inorder predecessor in a BST :bst:
+CLOSED: [2022-06-28 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-inorder-successor-and-inorder-predecessor-in-a-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/predecessor-and-successor/1
 
+#+begin_src cpp
+void findPreSuc(Node* root, Node*& pre, Node*& suc, int key) {
+    if (root == nullptr) return;
+
+    if (root->key > key) {
+        suc = root;
+        findPreSuc(root->left, pre, suc, key);
+    } else if (root->key < key) {
+        pre = root;
+        findPreSuc(root->right, pre, suc, key);
+    } else {
+        if (root->left != nullptr) {
+            Node *tmp = root->left;
+            while (tmp->right != nullptr) tmp = tmp->right;
+            pre = tmp;
+        }
+        if (root->right != nullptr) {
+            Node *tmp = root->right;
+            while (tmp->left != nullptr) tmp = tmp->left;
+            suc = tmp;
+        }
+    }
+}
+#+end_src
+
+** DONE Deletion of a node in a BST :bst:
+CLOSED: [2022-06-28 Tue]
+:PROPERTIES:
+:EXPORT_FILE_NAME: deletion-of-a-node-in-a-bst
+:EXPORT_HUGO_WEIGHT: auto
+:END:
+https://leetcode.com/problems/delete-node-in-a-bst/
+
+#+begin_src cpp
+class Solution {
+    TreeNode *findSuccessor(TreeNode *root){
+        if (root->left == nullptr) return root;
+
+        return findSuccessor(root->left);
+    }
+    public:
+    TreeNode *deleteNode(TreeNode *root, int key) {
+        if(root == nullptr) return root;
+
+        if(root->val > key) {
+            root->left = deleteNode(root->left, key);
+        } else if(root->val < key){
+            root->right = deleteNode(root->right, key);
+        } else {
+            if (root->left == nullptr && root->right == nullptr) {
+                return nullptr;
+            }
+            if (root->left == nullptr) return root->right;
+            else if (root->right == nullptr) return root->left;
+
+            TreeNode* successor = findSuccessor(root->right);
+            root->val = successor->val;
+            root->right = deleteNode(root->right, successor->val);
+        }
+        return root;
+    }
+};
+#+end_src
+
 ** DONE Check if a tree is a BST :bst:@done:
-CLOSED: [2021-07-20 Tue]
+CLOSED: [2022-06-28 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-a-tree-is-a-bst
 :EXPORT_HUGO_WEIGHT: auto
@@ -3985,7 +4110,7 @@ https://leetcode.com/problems/validate-binary-search-tree/
 #+begin_src cpp
 class Solution {
   bool isValidBSTUtil(TreeNode *root, long l, long r) {
-    if (!root) {
+    if (root == nullptr) {
       return true;
     }
 
@@ -4011,7 +4136,7 @@ public:
 :END:
 https://practice.geeksforgeeks.org/problems/populate-inorder-successor-for-all-nodes/1
 
-** DONE Find LCA in a BST :bst:@done:
+** TODO Find LCA in a BST :bst:@done:
 CLOSED: [2021-07-18 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-lca-of-2-nodes-in-a-bst
@@ -4175,7 +4300,7 @@ https://practice.geeksforgeeks.org/problems/huffman-encoding/0
 :END:
 https://practice.geeksforgeeks.org/problems/water-connection-problem/0
 
-** DONE Fractional knapsack :@done:greedy:
+** TODO Fractional knapsack :@done:greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: fractional-knapsack
 :EXPORT_HUGO_WEIGHT: auto
@@ -4207,7 +4332,7 @@ public:
 };
 #+end_src
 
-** DONE Find minimum number of coins :greedy:@done:
+** TODO Find minimum number of coins :greedy:@done:
 CLOSED: [2021-07-17 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-minimum-number-of-coins
@@ -4536,21 +4661,21 @@ https://practice.geeksforgeeks.org/problems/partition-array-to-k-subsets/1
 :END:
 https://www.geeksforgeeks.org/find-the-k-th-permutation-sequence-of-first-n-natural-numbers/
 
-** DONE Implement stack from scratch :@done:st_q:
+** TODO Implement stack from scratch :@done:st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-stack-from-scratch
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.tutorialspoint.com/javaexamples/data_stack.htm
 
-** DONE Implement queue from scratch :@done:st_q:
+** TODO Implement queue from scratch :@done:st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-queue-from-scratch
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/queue-set-1introduction-and-array-implementation/
 
-** DONE Implement 2 stack in an array :@done:st_q:
+** TODO Implement 2 stack in an array :@done:st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-2-stack-in-an-array
 :EXPORT_HUGO_WEIGHT: auto
@@ -4605,7 +4730,7 @@ https://www.geeksforgeeks.org/design-a-stack-with-find-middle-operation/
 :END:
 https://www.geeksforgeeks.org/efficiently-implement-k-stacks-single-array/
 
-** DONE Reverse a string using stack :st_q:@done:
+** TODO Reverse a string using stack :st_q:@done:
 CLOSED: [2021-07-08 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-a-string-using-stack
@@ -4844,7 +4969,7 @@ https://practice.geeksforgeeks.org/problems/game-with-string/0
 :END:
 https://www.geeksforgeeks.org/next-smaller-element/
 
-** DONE Implement a maxheap/minheap :heap:@done:
+** TODO Implement a maxheap/minheap :heap:@done:
 CLOSED: [2021-06-19 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-a-maxheap-minheap
@@ -4948,7 +5073,7 @@ https://www.geeksforgeeks.org/heap-sort/
 https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/
 
 ** DONE Kth largest element in an array :heap:@done:
-CLOSED: [2021-06-19 Sat]
+CLOSED: [2022-07-02 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: kth-largest-element-in-an-array
 :EXPORT_HUGO_WEIGHT: auto
@@ -4983,7 +5108,7 @@ public:
 };
 #+end_src
 
-** DONE [#A] Merge K sorted arrays :heap:@done:
+** TODO [#A] Merge K sorted arrays :heap:@done:
 :PROPERTIES:
 :EXPORT_FILE_NAME: merge-k-sorted-arrays
 :EXPORT_HUGO_WEIGHT: auto
@@ -5072,7 +5197,7 @@ https://practice.geeksforgeeks.org/problems/find-median-in-a-stream/0
 :END:
 https://practice.geeksforgeeks.org/problems/is-binary-tree-heap/1
 
-** DONE Connect N ropes with minimum cost :heap:greedy:@done:
+** TODO Connect N ropes with minimum cost :heap:greedy:@done:
 CLOSED: [2021-07-18 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: connect-n-ropes-with-minimum-cost
@@ -5133,6 +5258,7 @@ https://practice.geeksforgeeks.org/problems/minimum-sum4058/1
 https://1drv.ms/t/s!AqTOHFO77CqEiRua06v1PATyiFg5
 
 ** DONE Implement BFS :graph:@done:
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-bfs
 :EXPORT_HUGO_WEIGHT: auto
@@ -5182,6 +5308,7 @@ public:
 #+end_src
 
 ** DONE Implement DFS :graph:@done:
+CLOSED: [2022-06-23 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-dfs
 :EXPORT_HUGO_WEIGHT: auto
@@ -5257,7 +5384,7 @@ public:
 };
 #+end_src
 
-** DONE Detect cycle in directed graph using BFS/DFS :graph:@done:
+** TODO Detect cycle in directed graph using BFS/DFS :graph:@done:
 CLOSED: [2021-06-22 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: detect-cycle-in-directed-graph-using-bfs-dfs
@@ -5346,7 +5473,7 @@ public:
 #+end_src
 
 
-** DONE Detect cycle in undirected graph using BFS/DFS :graph:@done:
+** TODO Detect cycle in undirected graph using BFS/DFS :graph:@done:
 CLOSED: [2021-07-02 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: detect-cycle-in-undirected-graph-using-bfs-dfs
@@ -5429,7 +5556,7 @@ public:
 };
 #+end_src
 
-** DONE Minimum steps by knight :graph:@done:
+** TODO Minimum steps by knight :graph:@done:
 CLOSED: [2021-07-17 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-steps-by-knight
@@ -5483,7 +5610,6 @@ public:
   }
 };
 #+end_src
-
 
 ** TODO Flood fill algorithm :graph:
 :PROPERTIES:
@@ -5545,7 +5671,7 @@ vector<int> minDist(int src, int V, vector<int> adj[]) {
 }
 #+end_src
 
-** DONE Implement topological sort :graph:@done:
+** TODO Implement topological sort :graph:@done:
 CLOSED: [2021-07-13 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-topological-sort
@@ -5632,7 +5758,7 @@ public:
 };
 #+end_src
 
-** DONE Minimum time taken by each job to be completed given by a directed acyclic graph :graph:
+** TODO Minimum time taken by each job to be completed given by a directed acyclic graph :graph:
 CLOSED: [2021-07-18 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-time-taken-by-each-job-to-be-completed-given-by-a-directed-acyclic-graph
@@ -5664,7 +5790,7 @@ https://practice.geeksforgeeks.org/problems/find-the-number-of-islands/1
 :END:
 https://practice.geeksforgeeks.org/problems/alien-dictionary/1
 
-** TODO Implement Kruksal's algorithm :graph:
+** TODO Implement Kruskal's algorithm :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-kruksal-s-algorithm
 :EXPORT_HUGO_WEIGHT: auto
@@ -5734,7 +5860,7 @@ https://www.geeksforgeeks.org/bridge-in-a-graph/
 :END:
 https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
 
-** DONE Check if graph is bipartite :graph:@done:
+** TODO Check if graph is bipartite :graph:@done:
 CLOSED: [2021-06-21 Mon]
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-graph-is-bipartite
@@ -5941,7 +6067,7 @@ https://practice.geeksforgeeks.org/problems/phone-directory/0
 :END:
 https://practice.geeksforgeeks.org/problems/unique-rows-in-boolean-matrix/1
 
-** DONE Coin change :@done:dp:
+** TODO Coin change :@done:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: coin-change
 :EXPORT_HUGO_WEIGHT: auto
@@ -5979,13 +6105,14 @@ public:
 };
 #+end_src
 
-** DONE Knapsack :@done:dp:
+** TODO Knapsack :@done:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: knapsack
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem/0
 
+Iterative
 #+begin_src cpp
 class Solution {
   int dp[1005][1005];
@@ -6007,6 +6134,11 @@ public:
     return dp[n][W];
   }
 };
+#+end_src
+
+Recursion
+#+begin_src cpp
+
 #+end_src
 
 ** TODO Binomial coefficient :dp:
@@ -6065,7 +6197,7 @@ https://www.geeksforgeeks.org/gold-mine-problem/
 :END:
 https://www.geeksforgeeks.org/assembly-line-scheduling-dp-34/
 
-** DONE Painting the fence :dp:@done:
+** TODO Painting the fence :dp:@done:
 CLOSED: [2021-07-14 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: painting-the-fence
@@ -6095,7 +6227,7 @@ public:
 #+end_src
 
 
-** DONE Maximize the cut segments :@done:dp:
+** TODO Maximize the cut segments :@done:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximize-the-cut-segments
 :EXPORT_HUGO_WEIGHT: auto
@@ -6128,7 +6260,7 @@ public:
 };
 #+end_src
 
-** DONE Longest common subsequence :@done:string:dp:
+** TODO Longest common subsequence :@done:string:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-common-subsequence
 :EXPORT_HUGO_WEIGHT: auto
@@ -6186,7 +6318,7 @@ public:
 }
 #+end_src
 
-** DONE Longest repeated subsequence :@done:string:dp:
+** TODO Longest repeated subsequence :@done:string:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-repeated-subsequence
 :EXPORT_HUGO_WEIGHT: auto
@@ -6218,7 +6350,7 @@ public:
 };
 #+end_src
 
-** DONE Longest increasing subsequence :dp:@done:
+** TODO Longest increasing subsequence :dp:@done:
 CLOSED: [2021-07-15 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-increasing-subsequence
@@ -6339,7 +6471,7 @@ https://practice.geeksforgeeks.org/problems/minimum-cost-to-fill-given-weight-in
 :END:
 https://www.geeksforgeeks.org/minimum-removals-array-make-max-min-k/
 
-** DONE Longest common substring :@done:dp:
+** TODO Longest common substring :@done:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-common-substring
 :EXPORT_HUGO_WEIGHT: auto
@@ -6392,7 +6524,7 @@ https://practice.geeksforgeeks.org/problems/bbt-counter/0
 :END:
 https://www.geeksforgeeks.org/smallest-sum-contiguous-subarray/
 
-** DONE Unbounded knapsack :@done:dp:
+** TODO Unbounded knapsack :@done:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: unbounded-knapsack
 :EXPORT_HUGO_WEIGHT: auto
@@ -6431,7 +6563,7 @@ public:
 :END:
 https://www.geeksforgeeks.org/largest-independent-set-problem-dp-26/
 
-** DONE Longest palindromic subsequence :@done:dp:
+** TODO Longest palindromic subsequence :@done:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-palindromic-subsequence
 :EXPORT_HUGO_WEIGHT: auto
@@ -6576,7 +6708,7 @@ https://practice.geeksforgeeks.org/problems/interleaved-strings/1
 :END:
 https://leetcode.com/problems/maximum-length-of-pair-chain/
 
-** DONE Count set bits in an integer :@done:bit:
+** TODO Count set bits in an integer :@done:bit:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-set-bits-in-an-integer
 :EXPORT_HUGO_WEIGHT: auto
