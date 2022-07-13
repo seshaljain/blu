@@ -5,11 +5,11 @@
   "main": "README.md",
   "scripts": {
     "dev:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit --watch",
-    "dev:hugo": "hugo server -DF",
+    "dev:hugo": "$(npm bin)/hugo server -DF",
     "dev": "npm run dev:css & npm run dev:hugo",
     "prod:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit",
-    "prod:hugo": "hugo -D --gc --minify",
-    "prod": "npm run prod:css & npm run prod:hugo",
+    "prod:hugo": "$(npm bin)/hugo -D --gc --minify",
+    "prod": "npm run prod:css && npm run prod:hugo",
     "prettier": "npx prettier --write layouts"
   },
   "repository": {
@@ -21,10 +21,14 @@
   "bugs": {
     "url": "https://github.com/seshaljain/blu/issues"
   },
+  "hugo-bin": {
+    "buildTags": "extended"
+  },
   "homepage": "https://github.com/seshaljain/blu#readme",
   "devDependencies": {
     "@tailwindcss/typography": "0.5.4",
     "autoprefixer": "10.4.7",
+    "hugo-bin": "^0.89.0",
     "postcss": "8.4.14",
     "prettier": "2.7.1",
     "prettier-plugin-go-template": "0.0.13",
