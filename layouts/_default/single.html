@@ -1,101 +1,87 @@
 {{ define "main" }}
-  {{ $isntDefault := not (or (eq (trim $.Site.Params.contentTypeName " ") "posts") (eq (trim $.Site.Params.contentTypeName " ") "")) }}
-  {{ $contentTypeName := cond $isntDefault (string $.Site.Params.contentTypeName) "posts" }}
-
-  <div class="post">
-    <h1 class="post-title">{{ .Title | markdownify }}</h1>
-    <div class="post-meta">
-      {{ if .Date | default nil }}
-        <span class="post-date">
-          {{ .Date.Format ($.Site.Params.DateFormatSingle | default "2006-01-02") }}
-        </span>
-
-        {{ if eq .Type $contentTypeName }}
-          {{ if $.Site.Params.LastModDisplay }}
-            {{ partial "lastmod.html" . }}
+  <header class="bg-teal-50 pt-16 pb-4">
+    <div class="center-block">
+      <h1 class="text-5xl font-semibold">
+        <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
+      </h1>
+      <p class="text-2xl mt-2">
+        {{ with .Description }}
+          {{ . | emojify }}
+        {{ else }}
+          {{ if .Truncated }}
+            {{ .Summary | emojify }}
           {{ end }}
         {{ end }}
-
-        {{ with .Params.Author }}
-          {{ $author_type := (printf "%T" .) }}
-          {{ $author_is_slice := (eq "[]string" $author_type) }}
-          <span class="post-author">— {{ if $author_is_slice -}}{{ delimit . ", " }}{{ else }}{{ . }}{{ end }}</span>
-          {{ else }}
-          <span class="post-author">— {{ .Site.Params.Author }}</span>
-        {{ end }}
+      </p>
+      {{ if .Params.tags }}
+        <ul class="inline-flex flex-wrap space-x-2 text-teal-800">
+          {{ range .Params.tags }}
+            <li><a href="{{ (urlize (printf " tags/%s" . )) | absURL }}/">#{{ . }}</a></li>
+          {{ end }}
+        </ul>
       {{ end }}
+    </div>
+  </header>
 
-      {{ if $.Site.Params.ShowReadingTime }}
-        <span class="post-read-time"
-          >— {{ .ReadingTime }} {{ $.Site.Params.MinuteReadingTime | default "min read" }}</span
+  <article class="center-block prose prose-lg">
+    <div>
+      <p class="border-l-2 border-yellow-400 pl-2">
+        {{- if .Date }}
+          {{ .Date.Format ($.Site.Params.DateFormatList | default "2006-01-02") }}
+          <span class="text-yellow-400">&middot</span>
+        {{ end -}}
+        {{ .ReadingTime }} min read
+      </p>
+      <div>
+        {{ if .Params.Cover }}
+          <figure>
+            {{ if .Params.UseRelativeCover }}
+              <img
+                src="{{ (printf "%s%s" .Permalink .Params.Cover ) }}"
+                alt="{{ .Params.CoverAlt | plainify | default .Title }}"
+              />
+            {{ else }}
+              <img
+                src="{{ .Params.Cover | absURL }}"
+                alt="{{ .Params.CoverAlt | plainify | default .Title }}"
+              />
+            {{ end }}
+
+            {{ if .Params.CoverCaption }}
+              <figcaption>{{ .Params.CoverCaption | markdownify }}</figcaption>
+            {{ end }}
+          </figure>
+        {{ end }}
+
+        {{ if or .Params.Toc $.Site.Params.Toc }}
+          <h2>Table of Contents</h2>
+          <aside>{{ .TableOfContents }}</aside>
+        {{ end }}
+        {{ .Content | emojify }}
+      </div>
+    </div>
+  </article>
+  {{ if or .NextInSection .PrevInSection }}
+    <div class="center-block text-center mb-16">
+      {{ if .NextInSection }}
+        <a
+          class="text-xl inline-block m-2 border-yellow-400 border-2 hover:bg-yellow-50 p-1"
+          href="{{ .NextInSection.Permalink }}"
         >
+          <span class="text-yellow-400 font-bold">←</span>
+          <span>{{ .NextInSection.Title }}</span>
+        </a>
+        <br />
+      {{ end }}
+      {{ if .PrevInSection }}
+        <a
+          class="text-xl inline-block m-2 border-teal-400 border-2 hover:bg-teal-50 p-1"
+          href="{{ .PrevInSection.Permalink }}"
+        >
+          <span>{{ .PrevInSection.Title }}</span>
+          <span class="text-teal-400 font-bold">→</span>
+        </a>
       {{ end }}
     </div>
-
-    {{ if .Params.tags }}
-      <span class="post-tags">
-        {{ range .Params.tags }}
-          <a href="{{ (urlize (printf "tags/%s" . )) | absURL }}/">#{{ . }}</a>&nbsp;
-        {{ end }}
-      </span>
-    {{ end }}
-
-    {{ if .Params.Cover }}
-      <figure class="post-cover">
-        {{ if .Params.UseRelativeCover }}
-          <img
-            src="{{ (printf "%s%s" .Permalink .Params.Cover ) }}"
-            alt="{{ .Params.CoverAlt | plainify | default .Title }}"
-          />
-          {{ else }}
-          <img
-            src="{{ .Params.Cover | absURL }}"
-            alt="{{ .Params.CoverAlt | plainify | default .Title }}"
-          />
-        {{ end }}
-
-        {{ if .Params.CoverCaption }}
-          <figcaption class="center">{{ .Params.CoverCaption | markdownify }}</figcaption>
-        {{ end }}
-      </figure>
-    {{ end }}
-
-    <div class="post-content">
-      {{ if or .Params.Toc $.Site.Params.Toc }}
-        <h2>Table of Contents</h2>
-        <aside class="table-of-contents">{{ .TableOfContents }}</aside>
-      {{ end }}
-      {{ .Content | emojify }}
-    </div>
-    {{ if eq .Type $.Site.Params.contentTypeName }}
-      {{ if or .NextInSection .PrevInSection }}
-        <div class="pagination">
-          <div class="pagination__title">
-            <span class="pagination__title-h"
-              >{{ $.Site.Params.ReadOtherPosts | default "Read other posts" }}</span
-            >
-            <hr />
-          </div>
-          <div class="pagination__buttons">
-            {{ if .NextInSection }}
-              <span class="button previous">
-                <a href="{{ .NextInSection.Permalink }}">
-                  <span class="button__icon">←</span>
-                  <span class="button__text">{{ .NextInSection.Title }}</span>
-                </a>
-              </span>
-            {{ end }}
-            {{ if .PrevInSection }}
-              <span class="button next">
-                <a href="{{ .PrevInSection.Permalink }}">
-                  <span class="button__text">{{ .PrevInSection.Title }}</span>
-                  <span class="button__icon">→</span>
-                </a>
-              </span>
-            {{ end }}
-          </div>
-        </div>
-      {{ end }}
-    {{ end }}
-  </div>
+  {{ end }}
 {{ end }}

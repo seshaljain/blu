@@ -1,19 +1,17 @@
-<header class="header">
-  <span class="header__inner">
-    {{ partial "logo.html" . }}
-    <span class="header__right">
-      {{ if len $.Site.Menus }}
-        {{ partial "menu.html" . }}
-        <span class="menu-trigger">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-          </svg>
-        </span>
-      {{ end }}
-      <span class="theme-toggle">
-        {{ partial "theme-icon.html" . }}
+<header
+  class="{{ if .Page.IsHome -}}
+    absolute w-full top-0
+  {{- end }} border-yellow-400 border-b-2 bg-teal-50"
+>
+  <div class="flex flex-col justify-between items-center py-2 md:flex-row center-block">
+    <div class="inline-flex items-center">
+      <span class="w-4 h-auto stroke-yellow-400 stroke-[6]">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="16">
+          <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+        </svg>
       </span>
-    </span>
-  </span>
+      <a href="/" class="ml-1 text-xl font-semibold text-teal-600">{{ .Site.Title }}</a>
+    </div>
+    {{ partial "menu.html" . }}
+  </div>
 </header>

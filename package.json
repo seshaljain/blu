@@ -1,32 +1,33 @@
 {
-  "name": "hello-friend",
-  "version": "2.1.0",
-  "main": "index.js",
-  "author": "Radosław Kozieł <@panr> <radoslaw.koziel@gmail.com>",
-  "license": "MIT",
+  "name": "archgaelix",
+  "version": "1.0.0",
+  "description": "seshaljain's devblog",
+  "main": "README.md",
   "scripts": {
-    "dev": "hugo server",
-    "build": "hugo"
+    "dev:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit --watch",
+    "dev:hugo": "hugo server -DF",
+    "dev": "npm run dev:css & npm run dev:hugo",
+    "prod:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit",
+    "prod:hugo": "hugo -D --gc --minify",
+    "prod": "npm run prod:css & npm run prod:hugo",
+    "prettier": "npx prettier --write layouts"
   },
-  "browserslist": [
-    "last 2 versions",
-    ">1%",
-    "not dead"
-  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seshaljain/blu.git"
+  },
+  "author": "Seshal Jain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seshaljain/blu/issues"
+  },
+  "homepage": "https://github.com/seshaljain/blu#readme",
   "devDependencies": {
-    "browserslist": "^4.0.1",
-    "cssnano": "^4.1.8",
-    "postcss": "^7.0.0",
-    "postcss-browser-reporter": "^0.6.0",
-    "postcss-cli": "^7.1.2",
-    "postcss-import": "^12.0.1",
-    "postcss-loader": "^3.0.0",
-    "postcss-mixins": "^6.2.1",
-    "postcss-nested": "^4.2.3",
-    "postcss-preset-env": "^6.7.0",
-    "postcss-reporter": "^6.0.1",
-    "postcss-url": "^8.0.0",
-    "prettier": "^2.1.1",
-    "prettier-plugin-go-template": "^0.0.9"
+    "@tailwindcss/typography": "0.5.4",
+    "autoprefixer": "10.4.7",
+    "postcss": "8.4.14",
+    "prettier": "2.7.1",
+    "prettier-plugin-go-template": "0.0.13",
+    "tailwindcss": "3.1.6"
   }
 }

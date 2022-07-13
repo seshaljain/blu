@@ -1,30 +1,21 @@
 <!DOCTYPE html>
-<html lang="{{ $.Site.Language }}">
+<html lang="{{ $.Site.LanguageCode }}">
   <head>
-    {{- block "title" . }}
+    {{ partial "head.html" . }}
+    {{ block "title" . -}}
       <title>
-        {{ if .IsHome }}{{ $.Site.Title }}{{ with $.Site.Params.Description }} —
-        {{ . }}{{ end }}{{ else }}{{ .Title }} ::
-        {{ $.Site.Title }}{{ end }}
+        {{- if .IsHome }}
+          {{ $.Site.Title }}{{ with $.Site.Params.Description }}— {{ . }}{{ end }}
+        {{ else }}
+          {{ .Title }} ::
+          {{ $.Site.Title }}
+        {{ end -}}
       </title>
     {{ end -}}
-    {{ partial "head.html" . }}
   </head>
-  <body class="{{ if ne $.Site.Params.defaultTheme "light" -}} dark-theme {{- end -}}">
-    <div class="container">
-      {{ partial "header.html" . }}
 
-      <div class="content">
-        {{ block "main" . }} {{ end }}
-      </div>
-
-      {{ block "footer" . }}
-        {{ partial "footer.html" . }}
-      {{ end }}
-    </div>
-
-    {{ if $.Site.GoogleAnalytics }}
-      {{ template "_internal/google_analytics.html" . }}
-    {{ end }}
+  <body class="bg-teal-50/50">
+    {{ partial "header.html" . }}
+    {{ block "main" . }}{{ end }}
   </body>
 </html>
