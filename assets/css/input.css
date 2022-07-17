@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    @apply text-teal-900;
+  }
+}
+
 @layer components {
   .center-block {
-    @apply mx-auto p-4 max-w-4xl;
+    @apply mx-auto p-8 max-w-4xl;
   }
 }
