@@ -3,9 +3,8 @@
 :PROPERTIES:
 :EXPORT_FILE_NAME: _index
 :END:
-** Week 1
-*** DONE Two Sum :array:hashing:easy:
-CLOSED: [2022-07-12 Tue]
+
+** TODO Two Sum :array:hashing:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: two-sum
@@ -13,7 +12,7 @@ CLOSED: [2022-07-12 Tue]
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 15
 :END:
 https://leetcode.com/problems/two-sum
-*** TODO Valid Parentheses :stack:easy:
+** TODO Valid Parentheses :stack:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: valid-parentheses
@@ -21,7 +20,7 @@ https://leetcode.com/problems/two-sum
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/valid-parentheses
-*** TODO Merge Two Sorted Lists :ll:easy:
+** TODO Merge Two Sorted Lists :ll:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: merge-two-sorted-lists
@@ -29,7 +28,7 @@ https://leetcode.com/problems/valid-parentheses
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/merge-two-sorted-lists
-*** TODO Best Time to Buy and Sell Stock :array:easy:
+** TODO Best Time to Buy and Sell Stock :array:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: best-time-to-buy-and-sell-stock
@@ -37,7 +36,7 @@ https://leetcode.com/problems/merge-two-sorted-lists
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock
-*** TODO Valid Palindrome :string:palindrome:easy:
+** TODO Valid Palindrome :string:palindrome:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: valid-palindrome
@@ -45,7 +44,7 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 15
 :END:
 https://leetcode.com/problems/valid-palindrome
-*** TODO Invert Binary Tree :bt:easy:
+** TODO Invert Binary Tree :bt:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: invert-binary-tree
@@ -53,7 +52,7 @@ https://leetcode.com/problems/valid-palindrome
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 15
 :END:
 https://leetcode.com/problems/invert-binary-tree
-*** TODO Valid Anagram :string:anagram:easy:
+** TODO Valid Anagram :string:anagram:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: valid-anagram
@@ -61,7 +60,7 @@ https://leetcode.com/problems/invert-binary-tree
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 15
 :END:
 https://leetcode.com/problems/valid-anagram
-*** TODO Binary Search :binarysearch:easy:
+** TODO Binary Search :binarysearch:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: binarysearch
@@ -69,7 +68,7 @@ https://leetcode.com/problems/valid-anagram
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 15
 :END:
 https://leetcode.com/problems/binarysearch
-*** TODO Flood Fill :graph:matrix:dfs:easy:
+** TODO Flood Fill :graph:matrix:dfs:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: flood-fill
@@ -77,7 +76,7 @@ https://leetcode.com/problems/binarysearch
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/flood-fill
-*** TODO Maximum Subarray :dp:easy:
+** TODO Maximum Subarray :dp:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: maximum-subarray
@@ -85,7 +84,7 @@ https://leetcode.com/problems/flood-fill
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/maximum-subarray
-*** TODO Lowest Common Ancestor of a Binary Search Tree :bst:easy:
+** TODO Lowest Common Ancestor of a Binary Search Tree :bst:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: lowest-common-ancestor-of-a-bst
@@ -93,7 +92,7 @@ https://leetcode.com/problems/maximum-subarray
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/lowest-common-ancestor-of-a-bst
-*** TODO Balanced Binary Tree :bt:easy:
+** TODO Balanced Binary Tree :bt:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: balanced-binary-tree
@@ -101,7 +100,7 @@ https://leetcode.com/problems/lowest-common-ancestor-of-a-bst
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 15
 :END:
 https://leetcode.com/problems/balanced-binary-tree
-*** TODO Linked List Cycle :ll:twopointers:easy:
+** TODO Linked List Cycle :ll:twopointers:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: linked-list-cycle
@@ -109,8 +108,7 @@ https://leetcode.com/problems/balanced-binary-tree
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/linked-list-cycle
-** Week 2
-*** TODO Implement Queue using Stacks :stack:easy:
+** TODO Implement Queue using Stacks :stack:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: implement-queue-using-stacks
@@ -118,7 +116,7 @@ https://leetcode.com/problems/linked-list-cycle
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/implement-queue-using-stacks
-*** TODO First Bad Version :binarysearch:easy:
+** TODO First Bad Version :binarysearch:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: first-bad-version
@@ -126,7 +124,7 @@ https://leetcode.com/problems/implement-queue-using-stacks
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/first-bad-version
-*** TODO Ransom Note :hashtable:easy:
+** TODO Ransom Note :hashtable:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: ransom-note
@@ -134,7 +132,7 @@ https://leetcode.com/problems/first-bad-version
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 15
 :END:
 https://leetcode.com/problems/ransom-note
-*** TODO Climbing Stairs :dp:easy:
+** TODO Climbing Stairs :dp:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: climbing-stairs
@@ -142,7 +140,7 @@ https://leetcode.com/problems/ransom-note
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/climbing-stairs
-*** TODO Longest Palindrome :string:palindrome:easy:
+** TODO Longest Palindrome :string:palindrome:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: longest-palindrome
@@ -150,7 +148,7 @@ https://leetcode.com/problems/climbing-stairs
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/longest-palindrome
-*** TODO Reverse Linked List :ll:easy:
+** TODO Reverse Linked List :ll:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: reverse-linked-list
@@ -158,7 +156,7 @@ https://leetcode.com/problems/longest-palindrome
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/reverse-linked-list
-*** TODO Majority Element :array:sorting:easy:
+** TODO Majority Element :array:sorting:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: majority-element
@@ -166,7 +164,7 @@ https://leetcode.com/problems/reverse-linked-list
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/majority-element
-*** TODO Add Binary :binary:easy:
+** TODO Add Binary :binary:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: add-binary
@@ -174,7 +172,7 @@ https://leetcode.com/problems/majority-element
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 15
 :END:
 https://leetcode.com/problems/add-binary
-*** TODO Diameter of Binary Tree :bt:easy:
+** TODO Diameter of Binary Tree :bt:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: diameter-of-binary-tree
@@ -182,7 +180,7 @@ https://leetcode.com/problems/add-binary
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/diameter-of-binary-tree
-*** TODO Middle of the Linked List :ll:twopointers:easy:
+** TODO Middle of the Linked List :ll:twopointers:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: middle-of-the-linked-list
@@ -190,7 +188,7 @@ https://leetcode.com/problems/diameter-of-binary-tree
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/middle-of-the-linked-list
-*** TODO Maximum Depth of Binary Tree :bt:easy:
+** TODO Maximum Depth of Binary Tree :bt:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: maximum-depth-of-binary-tree
@@ -198,7 +196,7 @@ https://leetcode.com/problems/middle-of-the-linked-list
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 15
 :END:
 https://leetcode.com/problems/maximum-depth-of-binary-tree
-*** TODO Contains Duplicate :array:hashtable:sorting:easy:
+** TODO Contains Duplicate :array:hashtable:sorting:easy:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: contains-duplicate
@@ -206,8 +204,7 @@ https://leetcode.com/problems/maximum-depth-of-binary-tree
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 15
 :END:
 https://leetcode.com/problems/contains-duplicate
-** Week 3
-*** TODO Min Stack :stack:medium:
+** TODO Min Stack :stack:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: min-stack
@@ -215,7 +212,7 @@ https://leetcode.com/problems/contains-duplicate
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/min-stack
-*** TODO Insert Interval :array:interval:medium:
+** TODO Insert Interval :array:interval:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: insert-interval
@@ -223,7 +220,7 @@ https://leetcode.com/problems/min-stack
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 25
 :END:
 https://leetcode.com/problems/insert-interval
-*** TODO 01 Matrix :graph:dfs:medium:
+** TODO 01 Matrix :graph:dfs:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: 01-matrix
@@ -231,7 +228,7 @@ https://leetcode.com/problems/insert-interval
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/01-matrix
-*** TODO K Closest Points to Origin :heap:geometry:medium:
+** TODO K Closest Points to Origin :heap:geometry:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: k-closest-points-to-origin
@@ -239,7 +236,7 @@ https://leetcode.com/problems/01-matrix
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/k-closest-points-to-origin
-*** TODO Longest Substring Without Repeating Characters :string:slidingwindow:medium:
+** TODO Longest Substring Without Repeating Characters :string:slidingwindow:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: longest-substring-without-repeating-characters
@@ -247,7 +244,7 @@ https://leetcode.com/problems/k-closest-points-to-origin
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/longest-substring-without-repeating-characters
-*** TODO 3Sum :array:twopointers:medium:
+** TODO 3Sum :array:twopointers:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: 3sum
@@ -255,7 +252,7 @@ https://leetcode.com/problems/longest-substring-without-repeating-characters
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/3sum
-*** TODO Binary Tree Level Order Traversal :bt:medium:
+** TODO Binary Tree Level Order Traversal :bt:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: binary-tree-level-order-traversal
@@ -263,7 +260,7 @@ https://leetcode.com/problems/3sum
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/binary-tree-level-order-traversal
-*** TODO Clone Graph :graph:dfs:medium:
+** TODO Clone Graph :graph:dfs:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: clone-graph
@@ -271,7 +268,7 @@ https://leetcode.com/problems/binary-tree-level-order-traversal
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 25
 :END:
 https://leetcode.com/problems/clone-graph
-*** TODO Evaluate Reverse Polish Notation :stack:medium:
+** TODO Evaluate Reverse Polish Notation :stack:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: evaluate-reverse-polish-notation
@@ -279,8 +276,7 @@ https://leetcode.com/problems/clone-graph
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/evaluate-reverse-polish-notation
-** Week 4
-*** TODO Course Schedule :graph:toposort:medium:
+** TODO Course Schedule :graph:toposort:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: course-schedule
@@ -288,7 +284,7 @@ https://leetcode.com/problems/evaluate-reverse-polish-notation
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/course-schedule
-*** TODO Implement Trie (Prefix Tree) :trie:medium:
+** TODO Implement Trie (Prefix Tree) :trie:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: implement-trie-prefix-tree
@@ -296,7 +292,7 @@ https://leetcode.com/problems/course-schedule
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 35
 :END:
 https://leetcode.com/problems/implement-trie-prefix-tree
-*** TODO Coin Change :dp:medium:
+** TODO Coin Change :dp:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: coin-change
@@ -304,7 +300,7 @@ https://leetcode.com/problems/implement-trie-prefix-tree
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 25
 :END:
 https://leetcode.com/problems/coin-change
-*** TODO Product of Array Except Self :array:prefixsum:medium:
+** TODO Product of Array Except Self :array:prefixsum:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: product-of-array-except-self
@@ -312,7 +308,7 @@ https://leetcode.com/problems/coin-change
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/product-of-array-except-self
-*** TODO Validate Binary Search Tree :bst:medium:
+** TODO Validate Binary Search Tree :bst:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: validate-bst
@@ -320,7 +316,7 @@ https://leetcode.com/problems/product-of-array-except-self
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/validate-bst
-*** TODO Number of Islands :graph:dfs:medium:
+** TODO Number of Islands :graph:dfs:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: number-of-islands
@@ -328,7 +324,7 @@ https://leetcode.com/problems/validate-bst
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 25
 :END:
 https://leetcode.com/problems/number-of-islands
-*** TODO Rotting Oranges :graph:dfs:medium:
+** TODO Rotting Oranges :graph:dfs:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: rotting-oranges
@@ -336,7 +332,7 @@ https://leetcode.com/problems/number-of-islands
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/rotting-oranges
-*** TODO Search in Rotated Sorted Array :binarysearch:medium:
+** TODO Search in Rotated Sorted Array :binarysearch:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: search-in-rotated-sorted-array
@@ -344,8 +340,7 @@ https://leetcode.com/problems/rotting-oranges
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/search-in-rotated-sorted-array
-** Week 5
-*** TODO Combination Sum :array:backtracking:medium:
+** TODO Combination Sum :array:backtracking:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: combination-sum
@@ -353,7 +348,7 @@ https://leetcode.com/problems/search-in-rotated-sorted-array
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/combination-sum
-*** TODO Permutations :recursion:backtracking:medium:
+** TODO Permutations :recursion:backtracking:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: permutations
@@ -361,7 +356,7 @@ https://leetcode.com/problems/combination-sum
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/permutations
-*** TODO Merge Intervals :array:interval:medium:
+** TODO Merge Intervals :array:interval:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: merge-intervals
@@ -369,7 +364,7 @@ https://leetcode.com/problems/permutations
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/merge-intervals
-*** TODO Lowest Common Ancestor of a Binary Tree :bt:medium:
+** TODO Lowest Common Ancestor of a Binary Tree :bt:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: lowest-common-ancestor-of-a-binary-tree
@@ -377,7 +372,7 @@ https://leetcode.com/problems/merge-intervals
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 25
 :END:
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree
-*** TODO Time Based Key-Value Store :binarysearch:medium:
+** TODO Time Based Key-Value Store :binarysearch:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: time-based-key-value-store
@@ -385,7 +380,7 @@ https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 35
 :END:
 https://leetcode.com/problems/time-based-key-value-store
-*** TODO Accounts Merge :graph:dfs:unionfind:medium:
+** TODO Accounts Merge :graph:dfs:unionfind:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: accounts-merge
@@ -393,7 +388,7 @@ https://leetcode.com/problems/time-based-key-value-store
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/accounts-merge
-*** TODO Sort Colors :array:twopointers:medium:
+** TODO Sort Colors :array:twopointers:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: sort-colors
@@ -401,7 +396,7 @@ https://leetcode.com/problems/accounts-merge
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 25
 :END:
 https://leetcode.com/problems/sort-colors
-*** TODO Word Break :trie:medium:
+** TODO Word Break :trie:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: word-break
@@ -409,8 +404,7 @@ https://leetcode.com/problems/sort-colors
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/word-break
-** Week 6
-*** TODO Partition Equal Subset Sum :dp:medium:
+** TODO Partition Equal Subset Sum :dp:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: partition-equal-subset-sum
@@ -418,7 +412,7 @@ https://leetcode.com/problems/word-break
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/partition-equal-subset-sum
-*** TODO String to Integer (atoi) :string:medium:
+** TODO String to Integer (atoi) :string:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: string-to-integer-atoi
@@ -426,7 +420,7 @@ https://leetcode.com/problems/partition-equal-subset-sum
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 25
 :END:
 https://leetcode.com/problems/string-to-integer-atoi
-*** TODO Spiral Matrix :matrix:medium:
+** TODO Spiral Matrix :matrix:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: spiral-matrix
@@ -434,7 +428,7 @@ https://leetcode.com/problems/string-to-integer-atoi
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 25
 :END:
 https://leetcode.com/problems/spiral-matrix
-*** TODO Subsets :recursion:backtracking:medium:
+** TODO Subsets :recursion:backtracking:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: subsets
@@ -442,7 +436,7 @@ https://leetcode.com/problems/spiral-matrix
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/subsets
-*** TODO Binary Tree Right Side View :bt:medium:
+** TODO Binary Tree Right Side View :bt:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: binary-tree-right-side-view
@@ -450,7 +444,7 @@ https://leetcode.com/problems/subsets
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/binary-tree-right-side-view
-*** TODO Longest Palindromic Substring :string:palindrome:twopointer:dp:medium:
+** TODO Longest Palindromic Substring :string:palindrome:twopointer:dp:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: longest-palindromic-substring
@@ -458,7 +452,7 @@ https://leetcode.com/problems/binary-tree-right-side-view
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 25
 :END:
 https://leetcode.com/problems/longest-palindromic-substring
-*** TODO Unique Paths :dp:medium:
+** TODO Unique Paths :dp:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: unique-paths
@@ -466,7 +460,7 @@ https://leetcode.com/problems/longest-palindromic-substring
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 20
 :END:
 https://leetcode.com/problems/unique-paths
-*** TODO Construct Binary Tree from Preorder and Inorder Traversal :bt:medium:
+** TODO Construct Binary Tree from Preorder and Inorder Traversal :bt:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: construct-binary-tree-from-preorder-and-inorder-traversal
@@ -474,7 +468,7 @@ https://leetcode.com/problems/unique-paths
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 25
 :END:
 https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal
-*** TODO Container With Most Water :array:greedy:twopointers:medium:
+** TODO Container With Most Water :array:greedy:twopointers:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: container-with-most-water
@@ -482,8 +476,7 @@ https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-tr
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 35
 :END:
 https://leetcode.com/problems/container-with-most-water
-** Week 7
-*** TODO Letter Combinations of a Phone Number :recursion:backtracking:medium:
+** TODO Letter Combinations of a Phone Number :recursion:backtracking:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: letter-combinations-of-a-phone-number
@@ -491,7 +484,7 @@ https://leetcode.com/problems/container-with-most-water
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/letter-combinations-of-a-phone-number
-*** TODO Word Search :graph:backtracking:medium:
+** TODO Word Search :graph:backtracking:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: word-search
@@ -499,7 +492,7 @@ https://leetcode.com/problems/letter-combinations-of-a-phone-number
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/word-search
-*** TODO Find All Anagrams in a String :string:anagram:medium:
+** TODO Find All Anagrams in a String :string:anagram:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: find-all-anagrams-in-a-string
@@ -507,7 +500,7 @@ https://leetcode.com/problems/word-search
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/find-all-anagrams-in-a-string
-*** TODO Minimum Height Trees :graph:toposort:medium:
+** TODO Minimum Height Trees :graph:toposort:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: minimum-height-trees
@@ -515,7 +508,7 @@ https://leetcode.com/problems/find-all-anagrams-in-a-string
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/minimum-height-trees
-*** TODO Task Scheduler :heap:medium:
+** TODO Task Scheduler :heap:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: task-scheduler
@@ -523,7 +516,7 @@ https://leetcode.com/problems/minimum-height-trees
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 35
 :END:
 https://leetcode.com/problems/task-scheduler
-*** TODO LRU Cache :ll:hashtable:medium:
+** TODO LRU Cache :ll:hashtable:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: lru-cache
@@ -531,7 +524,7 @@ https://leetcode.com/problems/task-scheduler
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/lru-cache
-*** TODO Kth Smallest Element in a BST :bst:medium:
+** TODO Kth Smallest Element in a BST :bst:medium:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: kth-smallest-element-in-a-bst
@@ -539,7 +532,7 @@ https://leetcode.com/problems/lru-cache
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 25
 :END:
 https://leetcode.com/problems/kth-smallest-element-in-a-bst
-*** TODO Minimum Window Substring :string:slidingwindow:hard:
+** TODO Minimum Window Substring :string:slidingwindow:hard:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: minimum-window-substring
@@ -547,8 +540,7 @@ https://leetcode.com/problems/kth-smallest-element-in-a-bst
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/minimum-window-substring
-** Week 8
-*** TODO Serialize and Deserialize Binary Tree :bt:hard:
+** TODO Serialize and Deserialize Binary Tree :bt:hard:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: serialize-and-deserialize-binary-tree
@@ -556,7 +548,7 @@ https://leetcode.com/problems/minimum-window-substring
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 40
 :END:
 https://leetcode.com/problems/serialize-and-deserialize-binary-tree
-*** TODO Trapping Rain Water :stack:monotonicstack:hard:
+** TODO Trapping Rain Water :stack:monotonicstack:hard:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: trapping-rain-water
@@ -564,7 +556,7 @@ https://leetcode.com/problems/serialize-and-deserialize-binary-tree
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 35
 :END:
 https://leetcode.com/problems/trapping-rain-water
-*** TODO Find Median from Data Stream :heap:hard:
+** TODO Find Median from Data Stream :heap:hard:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: find-median-from-data-stream
@@ -572,7 +564,7 @@ https://leetcode.com/problems/trapping-rain-water
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/find-median-from-data-stream
-*** TODO Word Ladder :graph:dfs:hard:
+** TODO Word Ladder :graph:dfs:hard:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: word-ladder
@@ -580,7 +572,7 @@ https://leetcode.com/problems/find-median-from-data-stream
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 45
 :END:
 https://leetcode.com/problems/word-ladder
-*** TODO Basic Calculator :stack:parsing:hard:
+** TODO Basic Calculator :stack:parsing:hard:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: basic-calculator
@@ -588,7 +580,7 @@ https://leetcode.com/problems/word-ladder
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 40
 :END:
 https://leetcode.com/problems/basic-calculator
-*** TODO Maximum Profit in Job Scheduling :binarysearch:dp:hard:
+** TODO Maximum Profit in Job Scheduling :binarysearch:dp:hard:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: maximum-profit-in-job-scheduling
@@ -596,7 +588,7 @@ https://leetcode.com/problems/basic-calculator
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 45
 :END:
 https://leetcode.com/problems/maximum-profit-in-job-scheduling
-*** TODO Merge k Sorted Lists :heap:hard:
+** TODO Merge k Sorted Lists :heap:hard:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: merge-k-sorted-lists
@@ -604,9 +596,7 @@ https://leetcode.com/problems/maximum-profit-in-job-scheduling
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :duration 30
 :END:
 https://leetcode.com/problems/merge-k-sorted-lists
-*** TODO Largest Rectangle in Histogram :stack:hard:
-routines:
-monotonicstack
+** TODO Largest Rectangle in Histogram :stack:monoticstack:hard:
 :PROPERTIES:
 :EXPORT_HUGO_WEIGHT: auto
 :EXPORT_FILE_NAME: largest-rectangle-in-histogram

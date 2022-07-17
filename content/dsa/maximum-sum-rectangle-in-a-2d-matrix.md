@@ -1,9 +1,0 @@
-+++
-title = "Maximum sum rectangle in a 2D matrix"
-author = ["Seshal Jain"]
-tags = ["dp"]
-draft = false
-weight = 2402
-+++
-
-<https://practice.geeksforgeeks.org/problems/maximum-sum-rectangle/0>
