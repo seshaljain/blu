@@ -36,7 +36,7 @@ paginate = 5
       [[languages.en.menu.main]]
         identifier = "archive"
         name = "Archive"
-        url = "/archive"
+        url = "/blog"
         weight = 2
       [[languages.en.menu.main]]
         identifier = "dsa"
