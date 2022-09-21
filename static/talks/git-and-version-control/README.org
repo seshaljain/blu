@@ -60,6 +60,8 @@ make sure to enable
 - CRLF Normalization
 - MinTTY
 
+* चलिए शुरू करते हैं
+बिना किसी...
 ** configure Git
 ~git~ associates your name and email with every change you make
 
@@ -73,9 +75,7 @@ $ git config --global user.name "Your Name"
 $ git config --global user.email "youremail@domain.com"
 #+END_SRC
 
-* चलिए शुरू करते हैं
-बिना किसी...
-*** make a new repo
+** make a new repo
 [[./img/git-innit.jpeg]]
 
 #+REVEAL: split
@@ -84,14 +84,13 @@ step by step:
 2. ~cd [folder_name]~
 3. ~git init~
 
-#+REVEAL: split
-**** repository "repo"
+*** repository "repo"
 a folder containing your code
 
 every git repo contains a ~.git~ folder \\
 it stores *all* of your changes, don't mess with it (manually)
 
-*** use an existing repo
+** use an existing repo
 #+BEGIN_SRC shell
 $ git clone [path]
 #+END_SRC
@@ -129,6 +128,8 @@ tells you the status of your repository
 *can tell you what to do next
 
 *** a few important terms
+#+ATTR_REVEAL: :frag t
+- *untracked*: new files, known to git but not *tracked*
 #+ATTR_REVEAL: :frag t
 - *staging*: collect related changes, put them on a *stage*
 #+ATTR_REVEAL: :frag t
@@ -213,19 +214,6 @@ nothing to commit, working tree clean
 
 *more parts coming soon!
 
-** some useful commands
-*** git rm --cached [file]
-unstages [file]
-
-*** git checkout [file]
-removes unstaged changes
-
-*** git checkout .
-removes *ALL* unstaged changes
-
-*** how to do *X* in Git?
-https://stackoverflow.com/search?q=how+to+do+X+in+Git
-
 * when & what to commit
 #+ATTR_REVEAL: :frag roll-in
 ~git~ is only as good as your /commits/
@@ -250,14 +238,21 @@ commits are checkpoints, you can revert them
 
 #+REVEAL: split
 *good commit history*:
-- Implement navbar component \\
-  (contains changes including navbar styling and structure)
+#+BEGIN_SRC
+Update Navbar component
+
+fixes #42
+- add border-radius
+- fix bug around mobile view
+#+END_SRC
 
 *bad commit history (and commit messages)*:
+#+BEGIN_SRC
 - navbar
 - sorry
 - navbar styles
 - typo
+#+END_SRC
 
 #+ATTR_REVEAL: :frag roll-in
 *bad commits clutter up your git history
@@ -303,7 +298,9 @@ b. interact through the site itself (via a browser)
 ** connect your local repo to the remote repo
 inside your local repo
 
-~git remote add origin [copied_url_path]~
+#+BEGIN_SRC shell
+$ git remote add origin [copied_url_path]
+#+END_SRC
 
 *** OR
 copy the contents of your local repo to the cloned repo
@@ -339,6 +336,9 @@ $ git push -u [remote] [branch]
 5. ~$ git commit -m "Meaningful commit message"~
 6. Repeat
 7. ~$ git push~
+
+** how to do *X* in Git?
+https://stackoverflow.com/search?q=how+to+do+X+in+Git
 
 * Branching and Merging
 #+REVEAL: split
@@ -451,3 +451,4 @@ ergo, MeRgE CoNFliCts - Git asks you which change to keep
 </div>
 >>>>>>> iss53:index.html
 #+END_SRC
+
