@@ -36,11 +36,6 @@ dateFormatList = "January 02, 2006"
     name = "Archive"
     url = "/blog"
     weight = 2
-  [[menu.main]]
-    identifier = "talks"
-    name = "Git & VC Slides"
-    url = "/talks/git-and-version-control/"
-    weight = 3
 
 [markup]
   [markup.goldmark]
