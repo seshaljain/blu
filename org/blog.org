@@ -92,7 +92,7 @@ On Ubuntu, installing Emacs is as simple as
 
 This should install Emacs 26.3 as of writing. Go on, launch your Emacs!
 
-{{< figure src="/img/emacs.png" caption="Emacs 26.3 Fresh Install" >}}
+#+hugo: {{< figure src="/img/emacs.png" caption="Emacs 26.3 Fresh Install" >}}
 
 *** TeX Setup
 I use [[https://yihui.org/tinytex][TinyTeX]] because of its small
@@ -168,7 +168,7 @@ PDF!\\
 *Protip:* You can open PDFs in Emacs too! Simple use C-x C-f on a PDF
 file.
 
-{{< figure src="/img/pdf-plain.png" caption="PDF Reader in Emacs" >}}
+#+hugo: {{< figure src="/img/pdf-plain.png" caption="PDF Reader in Emacs" >}}
 
 This is pretty awesome, but you can do even better! =Minted= adds syntax
 highlighting functionality to the =SRC= blocks on LaTeX export.
@@ -232,7 +232,7 @@ is a special file which is launched at Emacs startup.
 Congratulations, you now have a build process to generate beautiful
 assignments via LaTeX!
 
-{{< figure src="/img/pdf-color.png" caption="Syntax highlighted PDF" >}}
+#+hugo: {{< figure src="/img/pdf-color.png" caption="Syntax highlighted PDF" >}}
 *** tl;dr
 - Org Mode in Emacs supports LaTeX export natively, but requires the TeX
   binaries to be installed and accessible on PATH
@@ -240,7 +240,7 @@ assignments via LaTeX!
   LaTeX exports
 - Emacs can render PDFs natively
 
-{{< endline >}}
+#+hugo: {{< endline >}}
 
 ** Org Custom LaTeX Classes :emacs:latex:org:
 :PROPERTIES:
@@ -395,9 +395,9 @@ You can check out the entire Org file
 Now you only have to export this Org file. Run C-c C-e l p to generate a
 PDF from your Org file 🎉
 
-{{< figure src="/img/org-latex-output.png" caption="The generated PDF. Isn't it pretty?" >}}
+#+hugo: {{< figure src="/img/org-latex-output.png" caption="The generated PDF. Isn't it pretty?" >}}
 
-{{< endline >}}
+#+hugo: {{< endline >}}
 
 ** Stream Youtube Playlists via VLC :scripting:
 :PROPERTIES:
@@ -589,7 +589,7 @@ item from the item number indicator.
 
 It is not quite production ready, but hey, it works!
 
-{{< endline >}}
+#+hugo: {{< endline >}}
 
 [fn:1] Looking up Emacs resources. Honest!
 
@@ -646,4 +646,27 @@ href="javascript:if(navigator.clipboard)%7Bvar%20e%3D%22%22%3Bwindow.getSelectio
 Select some text, and click the bookmarklet, and SPOngebOB cAse TexT
 Will BE coPiED tO YOur CliPboArD 😎.
 
-{{< endline >}}
+#+hugo: {{< endline >}}
+** Git and Version Control :talk:git:
+:PROPERTIES:
+:EXPORT_DATE: <2022-09-22 Thu>
+:EXPORT_FILE_NAME: git-and-version-control
+:EXPORT_DESCRIPTION: a session on Git
+:END:
+
+tldr; find the slides [[https://seshaljain.github.io/git-and-version-control/][here]]
+
+Today, I took a session on Git and Version Control for Vision, the technical society of Maulana Azad National Institute of Technology, Bhopal.
+
+I wrote the slides back in [[https://github.com/Vision-NITB/git-and-version-control/commit/cf68d4727aabc3de6b37c75a46912e2afc2732c6][March 2021]], but never took the session because of online classes and Covid-19. Hackoverflow, our internal Hacktoberfest for the college community is right around the corner, so I decided to use these slides for a session on Git, Github & Open Source.
+
+Initially I had planned on hosting the slides natively on the blog itself, but since it is an independent project it feels better to use Github Pages on a separate repository for hosting them.
+
+I used Reveal.js with Org because it has cool effects, and Org allows for export to a variety of formats (LaTeX Beamer presentations too :smirk:)
+
+#+hugo: {{< figure src="/img/gavc-1.jpg" >}}
+#+hugo: {{< figure src="/img/gavc-2.jpg" caption="Didn't expect so many attendees, but it all worked out in the end" >}}
+
+You can find the slides [[https://seshaljain.github.io/git-and-version-control/][here]].
+
+#+hugo: {{< endline >}}
