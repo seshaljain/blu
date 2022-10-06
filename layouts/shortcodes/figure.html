@@ -1,16 +1,16 @@
 {{ if .Get "src" }}
-  <figure class="{{ with .Get "position" }}{{ . }}{{ else -}}left{{- end }}">
+  <figure>
     <img
       src="{{ .Get "src" | safeURL }}"
       {{ with .Get "alt" }}alt="{{ . | plainify }}"{{ end }}
-      {{ with .Get "style" }}style="{{ . | safeCSS }}"{{ end }}
+      class="mx-auto w-full"
     />
     {{ if .Get "caption" }}
       <figcaption
         class="{{ with .Get "captionPosition" }}
           {{ . }}
         {{ else -}}
-          center
+          text-center
         {{- end }}"
         {{ with .Get "captionStyle" }}style="{{ . | safeCSS }}"{{ end }}
       >
