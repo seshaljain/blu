@@ -1,180 +1,49 @@
 #+title: DSA Mastersheet
 #+bind: org-done-keywords ("TODO" "STRT" "DONE")
-
-* Questions [60/413]
+* Questions [0/413]
 ** DSA Mastersheet
 :PROPERTIES:
 :EXPORT_FILE_NAME: _index
 :END:
-
-** DONE Reverse an array :@done:array:
-CLOSED: [2022-06-11 Sat]
+** TODO Reverse an array :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-an-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/write-a-program-to-reverse-an-array-or-string/
-
-#+begin_src cpp
-void reverseArray(int arr[], int start, int end) {
-  while (start < end) {
-    int temp = arr[start];
-    arr[start] = arr[end];
-    arr[end] = temp;
-    start++;
-    end--;
-  }
-}
-
-// reverseArray(arr, 0, n - 1);
-#+end_src
-
 ** TODO Find the maximum and minimum element in an array :array:
-CLOSED: [2021-06-16 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-maximum-and-minimum-element-in-an-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
-
 Divide and conquer
-
-#+begin_src cpp
-struct Pair {
-  int min;
-  int max;
-};
-
-struct Pair getMinMax(int arr[], int low, int high) {
-  struct Pair minmax, mml, mmr;
-  int mid;
-
-  if (low == high) {
-    minmax.max = arr[low];
-    minmax.min = arr[low];
-    return minmax;
-  }
-
-  if (high - low == 1) {
-    if (arr[low] > arr[high]) {
-      minmax.max = arr[low];
-      minmax.min = arr[high];
-    } else {
-      minmax.max = arr[high];
-      minmax.min = arr[low];
-    }
-    return minmax;
-  }
-
-  mid = low + (high - low) / 2;
-  mml = getMinMax(arr, low, mid);
-  mmr = getMinMax(arr, mid + 1, high);
-
-  minmax.min = min(mml.min, mmr.min);
-  minmax.max = max(mml.max, mmr.max);
-
-  return minmax;
-}
-
-// struct Pair minmax = getMinMax(arr, 0, N - 1);
-#+end_src
-
 ** TODO Find the Kth max and min element in an array :array:heap:
-CLOSED: [2021-06-16 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-kth-max-and-min-element-in-an-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/kth-smallest-element/0
-
 1. Make priority queue of size =k=, insert first =k= elements from the array
 2. For the remaining elements, pop and insert into pq if element is smaller than top
-
-#+begin_src cpp
-class Solution {
-public:
-  int kthSmallest(int arr[], int l, int r, int k) {
-    priority_queue<int, vector<int>> pq(arr, arr + k);
-
-    int n = r - l + 1;
-
-    for (int i = k; i < n; i++) {
-      if (arr[i] < pq.top()) {
-        pq.pop();
-        pq.push(arr[i]);
-      }
-    }
-
-    return pq.top();
-  }
-};
-#+end_src
-
-** DONE Sort an array of 0s, 1s and 2s :@done:array:
-CLOSED: [2022-07-03 Sun]
+** TODO Sort an array of 0s, 1s and 2s :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: sort-an-array-of-0s-1s-and-2s
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/sort-an-array-of-0s-1s-and-2s/0
-
-#+begin_src cpp
-class Solution {
-public:
-  void sort012(int arr[], int n) {
-    int low = 0, mid = 0, high = n - 1;
-    while (mid <= high) {
-      if (arr[mid] == 0) {
-        swap(arr[mid], arr[low]);
-        low++;
-        mid++;
-      } else if (arr[mid] == 1) {
-        mid++;
-      } else {
-        swap(arr[mid], arr[high]);
-        high--;
-      }
-    }
-  }
-};
-#+end_src
-
 ** TODO Move all the negative elements to one side of the array :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: move-all-the-negative-elements-to-one-side-of-the-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/move-negative-numbers-beginning-positive-end-constant-extra-space/
-
 Cases:
 1. negative negative: i++
 2. positive positive: j--
 3. negative positive: i++, j--
 4. positive negative: swap, i++, j--
-
-#+begin_src cpp
-void shiftall(int arr[], int n) {
-  int i = 0, j = n - 1;
-
-  while (i <= j) {
-    if (arr[i] < 0 && arr[j] < 0) {
-      i++;
-    } else if (arr[i] > 0 && arr[j] > 0) {
-      j--;
-    } else if (arr[i] < 0 && arr[j] > 0) {
-      i++;
-      j--;
-    } else {
-      swap(arr[i], arr[j]);
-      i++;
-      j--;
-    }
-  }
-}
-#+end_src
-
 ** TODO Find the union and intersection of the two sorted arrays :array:
-CLOSED: [2021-06-20 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-union-and-intersection-of-the-two-sorted-arrays
 :EXPORT_HUGO_WEIGHT: auto
@@ -182,1251 +51,326 @@ CLOSED: [2021-06-20 Sun]
 https://practice.geeksforgeeks.org/problems/union-of-two-arrays/0
 *** Union
 Does not handle duplicates
-
-#+begin_src cpp
-class Solution {
-public:
-  int doUnion(int a[], int n, int b[], int m) {
-    int i = 0, j = 0;
-    sort(a, a + n);
-    sort(b, b + m);
-    vector<int> v;
-    while (i < n && j < m) {
-      if (a[i] < b[j]) {
-        v.push_back(a[i]);
-        i++;
-      } else if (a[i] > b[j]) {
-        v.push_back(b[j]);
-        j++;
-      } else {
-        v.push_back(a[i]);
-        // or
-        // v.push_back(b[j]);
-        i++;
-        j++;
-      }
-    }
-
-    while (i < n)
-      v.push_back(a[i++]);
-
-    while (j < m)
-      v.push_back(b[j++]);
-
-    return v.size();
-  }
-};
-#+end_src
-
 Handles duplicates
-
-#+begin_src cpp
-class Solution{
-    public:
-    int doUnion(int a[], int n, int b[], int m)  {
-        set<int> st;
-        for (int i = 0; i < n; i++) {
-            st.insert(a[i]);
-        }
-
-        for (int i = 0; i < m; i++) {
-            st.insert(b[i]);
-        }
-
-        return st.size();
-    }
-};
-#+end_src
-
 *** Intersection
 https://leetcode.com/problems/intersection-of-two-arrays/
-#+begin_src cpp
-class Solution {
-public:
-  vector<int> intersection(vector<int> &nums1, vector<int> &nums2) {
-    int i = 0, j = 0;
-    int n = nums1.size(), m = nums2.size();
-    sort(nums1.begin(), nums1.end());
-    sort(nums2.begin(), nums2.end());
-
-    set<int> st;
-    while (i < n && j < m) {
-      if (nums1[i] < nums2[j]) {
-        i++;
-      } else if (nums1[i] > nums2[j]) {
-        j++;
-      } else {
-        st.insert(nums1[i]);
-        // or
-        // v.push_back(b[j]);
-        i++;
-        j++;
-      }
-    }
-    return vector<int>(st.begin(), st.end());
-  }
-};
-#+end_src
-
 ** TODO Cyclically rotate an array by one :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: cyclically-rotate-an-array-by-one
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/cyclically-rotate-an-array-by-one/0
-
 Also works for rotation by N elements
-
-#+begin_src cpp
-void reverseArr(int arr[], int r) {
-  for (int i = 0; i < r / 2; i++) {
-    int tmp = arr[i];
-    arr[i] = arr[r - i - 1];
-    arr[r - i - 1] = tmp;
-  }
-}
-void rotate(int arr[], int n) {
-  reverseArr(arr, n - 1);
-  reverseArr(arr, n);
-}
-#+end_src
-
 ** TODO [#A] Minimise the maximum difference between heights :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimise-the-maximum-difference-between-heights
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/minimize-the-heights3351/1
-
-#+begin_src cpp
-class Solution {
-public:
-  int getMinDiff(int arr[], int n, int k) {
-    sort(arr, arr + n);
-    int minEle, maxEle;
-    int result = arr[n - 1] - arr[0];
-
-    for (int i = 1; i <= n - 1; i++) {
-      maxEle = max(arr[i - 1] + k, arr[n - 1] - k);
-      minEle = min(arr[0] + k, arr[i] - k);
-
-      result = min(result, maxEle - minEle);
-    }
-    return result;
-  }
-};
-#+end_src
-
 ** TODO Minimum number of jumps to reach end of an array :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-number-of-jumps-to-reach-end-of-an-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps/0
-
-#+begin_src cpp
-class Solution {
-public:
-    int minJumps(int arr[], int n) {
-        int jumps = 0;
-        int currJumpEnd = 0;
-        int maxReachableIndex = 0;
-
-        for (int i = 0; i < n; i++) {
-            if (i == n - 1)
-                return (currJumpEnd >= n - 1) ? jumps : -1;
-
-            maxReachableIndex = max(maxReachableIndex, i + arr[i]);
-            if (i == currJumpEnd) {
-                jumps++;
-                currJumpEnd = maxReachableIndex;
-            }
-        }
-
-        return -1;
-    }
-};
-#+end_src
-
 ** TODO Find the duplicate in an array of N+1 integers :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-duplicate-in-an-array-of-n-plus-1-integers
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/find-the-duplicate-number/
-
 Floyd's tortoise & hare algorithm
-
-#+begin_src cpp
-class Solution {
-public:
-  int findDuplicate(vector<int> &nums) {
-    int slow = nums[0], fast = nums[0];
-
-    do {
-      slow = nums[slow];
-      fast = nums[nums[fast]];
-    } while (slow != fast);
-
-    fast = nums[0];
-    while (slow != fast) {
-      fast = nums[fast];
-      slow = nums[slow];
-    }
-
-    return fast;
-  }
-};
-#+end_src
-
-** DONE [#A] Kadane's algorithm :@done:array:dp:
-CLOSED: [2022-06-24 Fri]
+** TODO [#A] Kadane's algorithm :array:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: kadane-s-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/kadanes-algorithm/0
-
 DP without array
-
-#+begin_src cpp
-class Solution {
-public:
-  int maxSubarraySum(int arr[], int n) {
-
-    int sum = INT_MIN, currSum = 0, i = 0;
-
-    while (i < n) {
-      currSum += arr[i];
-      sum = max(sum, currSum);
-
-      if (currSum < 0)
-        currSum = 0;
-      i++;
-    }
-    return sum;
-  }
-};
-#+end_src
-
 ** TODO Merge intervals :array:
-CLOSED: [2021-06-20 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: merge-intervals
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/merge-intervals/
-
-#+begin_src cpp
-class Solution {
-public:
-  vector<vector<int>> merge(vector<vector<int>> &intervals) {
-    vector<vector<int>> mergedIntervals;
-
-    if (intervals.empty())
-      return mergedIntervals;
-
-    vector<int> currInt = intervals[0];
-
-    for (auto it : intervals) {
-      if (it[0] <= currInt[1]) {
-        currInt[1] = max(it[1], currInt[1]);
-      } else {
-        mergedIntervals.push_back(currInt);
-        currInt = it;
-      }
-    }
-    mergedIntervals.push_back(currInt);
-
-    return mergedIntervals;
-  }
-};
-#+end_src
-
-** DONE Next permutation :@done:array:
-CLOSED: [2022-07-03 Sun]
+** TODO Next permutation :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: next-permutation
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/next-permutation/
-
 1. Find non-increasing sequence from right
 2. Find just greater number from right
 3. Swap them
 4. Reverse from =i= to end
-
-#+begin_src cpp
-class Solution {
-public:
-  void nextPermutation(vector<int> &nums) {
-    int i = nums.size() - 2;
-
-    while (i >= 0 && nums[i + 1] <= nums[i]) {
-      i--;
-    }
-
-    if (i >= 0) {
-      int j = nums.size() - 1;
-      while (j >= 0 && nums[j] <= nums[i]) {
-        j--;
-      }
-      swap(nums[i], nums[j]);
-    }
-
-    reverse(nums.begin() + i + 1, nums.end());
-  }
-};
-#+end_src
-
 ** TODO Count inversion :array:search_sort:
-CLOSED: [2021-06-24 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-inversion
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/inversion-of-array/0
-
 Identical to merge sort, just need to add the number of inversions when =arr[i]
 > arr[j]= (adding =mid - i + 1= is enough, because after sorting all elements to
 the right will automatically be inversion pairs)
-#+begin_src cpp
-class Solution {
-  long long merge(long long arr[], long long temp[], long long left,
-                  long long right) {
-    long long mid = left + (right - left) / 2;
-    long long invCount = 0;
-
-    long long i = left, j = mid + 1, k = left;
-
-    while (i <= mid && j <= right) {
-      if (arr[i] <= arr[j]) {
-        temp[k++] = arr[i++];
-      } else {
-        temp[k++] = arr[j++];
-        invCount += mid - i + 1;
-      }
-    }
-
-    while (i <= mid) {
-      temp[k++] = arr[i++];
-    }
-    while (j <= right) {
-      temp[k++] = arr[j++];
-    }
-    for (i = left; i <= right; i++) {
-      arr[i] = temp[i];
-    }
-    return invCount;
-  }
-
-  long long _mergeSort(long long arr[], long long temp[], long long left,
-                       long long right) {
-    long long mid, invCount = 0;
-
-    if (left < right) {
-      mid = left + (right - left) / 2;
-
-      invCount += _mergeSort(arr, temp, left, mid);
-      invCount += _mergeSort(arr, temp, mid + 1, right);
-
-      invCount += merge(arr, temp, left, right);
-    }
-
-    return invCount;
-  }
-
-public:
-  long long inversionCount(long long arr[], long long N) {
-    long long temp[N];
-    long long invCount = _mergeSort(arr, temp, 0, N - 1);
-
-    return invCount;
-  }
-};
-#+end_src
-
-** DONE [#A] Best time to buy and sell stock :array:@done:
-CLOSED: [2022-07-05 Tue]
+** TODO [#A] Best time to buy and sell stock :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: best-time-to-buy-and-sell-stock
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
-
-*** DONE Only 1 transaction is allowed
-CLOSED: [2022-07-05 Tue]
+*** TODO Only 1 transaction is allowed
 One pass, just need to check the lowest valley/highest peak (and their difference)
-
 This problem reduces to maximum difference between two elements when larger
 element must come after smaller element
-#+begin_src cpp
-class Solution {
-public:
-  int maxProfit(vector<int> &prices) {
-    int n = prices.size();
-    int minPrice = INT_MAX, maxProfit = 0;
-
-    for (int i = 0; i < n; i++) {
-      minPrice = min(minPrice, prices[i]);
-      maxProfit = max(maxProfit, prices[i] - minPrice);
-    }
-
-    return maxProfit;
-  }
-};
-#+end_src
-
-*** DONE [#A] Maximum profit by buying and selling a share at most twice
-CLOSED: [2022-07-05 Tue]
+*** TODO [#A] Maximum profit by buying and selling a share at most twice
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
-
-#+begin_src cpp
-class Solution {
-public:
-  int maxProfit(vector<int> &prices) {
-    int n = prices.size();
-
-    vector<int> profit(n, 0);
-
-    int maxPrice = prices[n - 1];
-    for (int i = n - 2; i >= 0; i--) {
-      maxPrice = max(maxPrice, prices[i]);
-      profit[i] = max(profit[i + 1], maxPrice - prices[i]);
-    }
-
-    int minPrice = prices[0];
-    for (int i = 1; i < n; i++) {
-      minPrice = min(minPrice, prices[i]);
-      profit[i] = max(profit[i - 1], profit[i] + (prices[i] - minPrice));
-    }
-
-    return profit[n - 1];
-  }
-};
-#+end_src
-
-*** DONE Any number of transactions are allowed
-CLOSED: [2022-07-05 Tue]
+*** TODO Any number of transactions are allowed
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
-#+begin_src cpp
-class Solution {
-  int dp[1005][1005];
-
-public:
-  int maxProfit(int k, vector<int> &prices) {
-    int n = prices.size();
-    if (n == 0)
-      return 0;
-
-    for (int i = 0; i <= k; i++) {
-      int minPrice = prices[0];
-      for (int j = 0; j < n; j++) {
-        if (i == 0 || j == 0) {
-          dp[i][j] = 0;
-        } else {
-          minPrice = min(minPrice, prices[j] - dp[i - 1][j - 1]);
-          dp[i][j] = max(dp[i][j - 1], prices[j] - minPrice);
-        }
-      }
-    }
-    return dp[k][n - 1];
-  }
-};
-#+end_src
-
 ** TODO Find all pairs on integer array whose sum is equal to K :array:
-CLOSED: [2021-06-20 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-all-pairs-on-integer-array-whose-sum-is-equal-to-k
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/count-pairs-with-given-sum5022/1
-
-#+begin_src cpp
-class Solution {
-public:
-  int getPairsCount(int arr[], int n, int k) {
-    map<int, int> mp;
-
-    for (int i = 0; i < n; i++)
-      mp[arr[i]]++;
-
-    int ctr = 0;
-
-    for (int i = 0; i < n; i++) {
-      ctr += mp[k - arr[i]];
-
-      if (k - arr[i] == arr[i])
-        ctr--;
-    }
-
-    return ctr / 2;
-  }
-};
-#+end_src
-
 ** TODO Find common elements in 3 sorted arrays :array:
-CLOSED: [2021-07-17 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-common-elements-in-3-sorted-arrays
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/common-elements1132/1
-
-#+begin_src cpp
-class Solution {
-public:
-  vector<int> common_element(vector<int> v1, vector<int> v2) {
-    vector<int> v;
-    sort(v1.begin(), v1.end());
-    sort(v2.begin(), v2.end());
-
-    int i = 0, j = 0;
-    int n1 = v1.size(), n2 = v2.size();
-    while (i < n1 && j < n2) {
-      if (v1[i] == v2[j]) {
-        v.push_back(v1[i]);
-        i++;
-        j++;
-      } else if (v1[i] < v2[j]) {
-        i++;
-      } else {
-        j++;
-      }
-    }
-
-    return v;
-  }
-};
-#+end_src
-
 ** TODO Rearrange the array in alternating positive and negative items with O(1) extra space :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rearrange-the-array-in-alternating-positive-and-negative-items-with-o--1--extra-space
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-o1-extra-space/
-
-** DONE Find if there is any subarray with sum equal to 0 :@done:array:
-CLOSED: [2022-06-24 Fri]
+** TODO Find if there is any subarray with sum equal to 0 :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-if-there-is-any-subarray-with-sum-equal-to-0
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/subarray-with-0-sum/0
-
-#+begin_src cpp
-class Solution {
-public:
-  bool subArrayExists(int arr[], int n) {
-    int pSum[n];
-    partial_sum(arr, arr + n, pSum);
-
-    set<int> st;
-
-    for (int i = 0; i < n; i++) {
-      if (pSum[i] == 0 || st.find(pSum[i]) != st.end())
-        return true;
-      st.insert(pSum[i]);
-    }
-
-    return false;
-  }
-};
-#+end_src
-
 ** TODO Find factorial of a large number :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-factorial-of-a-large-number
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/factorials-of-large-numbers/0
-
-** DONE Find maximum product subarray :@done:array:
-CLOSED: [2022-06-24 Fri]
+** TODO Find maximum product subarray :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-maximum-product-subarray
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/maximum-product-subarray3604/1
-
-#+begin_src cpp
-class Solution {
-public:
-  int maxProduct(vector<int> &nums) {
-    int n = nums.size();
-    int maxP = nums[0], currMaxP = nums[0], currMinP = nums[0],
-        prevMinP = nums[0], prevMaxP = nums[0];
-
-    for (int i = 1; i < n; i++) {
-      currMinP = min({prevMinP * nums[i], prevMaxP * nums[i], nums[i]});
-      currMaxP = max({prevMinP * nums[i], prevMaxP * nums[i], nums[i]});
-      maxP = max(maxP, currMaxP);
-      prevMinP = currMinP;
-      prevMaxP = currMaxP;
-    }
-
-    return maxP;
-  }
-};
-#+end_src
-
-** DONE Find longest consecutive subsequence :@done:array:
-CLOSED: [2022-06-24 Fri]
+** TODO Find longest consecutive subsequence :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-longest-consecutive-subsequence
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/longest-consecutive-sequence/submissions/
-
-#+begin_src cpp
-class Solution {
-public:
-  int longestConsecutive(vector<int> &nums) {
-    set<int> st(nums.begin(), nums.end());
-    int maxLength = 0;
-
-    for (auto it : st) {
-      if (st.find(it - 1) == st.end()) {
-        int currentNum = it;
-        int currLength = 1;
-        while (st.find(currentNum + 1) != st.end()) {
-          currentNum += 1;
-          currLength += 1;
-        }
-
-        maxLength = max(maxLength, currLength);
-      }
-    }
-    return maxLength;
-  }
-};
-#+end_src
-
 ** TODO Given an array of size N and a number K, find all elements that appear more than N/K times :array:
-CLOSED: [2021-06-23 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: given-an-array-of-size-n-and-a-number-k-find-all-elements-that-appear-more-than-n-k-times
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/given-an-array-of-of-size-n-finds-all-the-elements-that-appear-more-than-nk-times/
-
 GfG has a O(nk) time, O(k - 1) space solution, something about tetris
-#+begin_src cpp
-class Solution {
-public:
-  int countOccurence(int arr[], int n, int k) {
-    map<int, int> freq;
-
-    for (int i = 0; i < n; i++) {
-      freq[arr[i]]++;
-    }
-
-    int ctr = 0;
-
-    for (auto it : freq) {
-      if (it.second > n / k)
-        ctr++;
-    }
-
-    return ctr;
-  }
-};
-#+end_src
-
 ** TODO Find whether an array is a subset of another array :array:
-CLOSED: [2021-07-06 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-whether-an-array-is-a-subset-of-another-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/array-subset-of-another-array/0
-
 Can also insert into set twice, and check if size is the same.
-
-#+begin_src cpp
-string isSubset(int arr1[], int arr2[], int m, int n) {
-  int i = 0, j = 0;
-
-  if (m < n)
-    return "No";
-
-  sort(arr1, arr1 + m);
-  sort(arr2, arr2 + n);
-
-  while (i < n && j < m) {
-    if (arr1[j] < arr2[i])
-      j++;
-    else if (arr1[j] == arr2[i]) {
-      j++;
-      i++;
-    }
-
-    else if (arr1[j] > arr2[i])
-      return "No";
-  }
-
-  return (i < n) ? "No" : "Yes";
-}
-#+end_src
-
 ** TODO Find the triplet that sum to a given value :array:
-CLOSED: [2021-06-24 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-triplet-that-sum-to-a-given-value
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/triplet-sum-in-array/0
-
-#+begin_src cpp
-class Solution {
-public:
-  bool find3Numbers(int A[], int n, int X) {
-    sort(A, A + n);
-    for (int i = 0; i < n - 2; i++) {
-      int l = i + 1, r = n - 1;
-
-      while (l < r) {
-        int sum = A[i] + A[l] + A[r];
-        if (sum == X)
-          return true;
-        else if (sum < X) {
-          l++;
-        } else {
-          r--;
-        }
-      }
-    }
-    return false;
-  }
-};
-#+end_src
-
 *** When =X = 0=
 https://leetcode.com/problems/3sum/
 2 pointer, avoid duplicates since =vector<vector<int>>= returned
-#+begin_src cpp
-class Solution {
-public:
-  vector<vector<int>> threeSum(vector<int> &nums) {
-    vector<vector<int>> ans;
-
-    sort(nums.begin(), nums.end());
-
-    int n = nums.size();
-    for (int i = 0; i < n - 2; i++) {
-      if (i == 0 || nums[i] != nums[i - 1]) {
-        int l = i + 1, r = n - 1;
-
-        while (l < r) {
-          if (nums[l] + nums[r] + nums[i] == 0) {
-            vector<int> triplet = {nums[l], nums[r], nums[i]};
-            ans.push_back(triplet);
-
-            while (l < r && nums[l] == nums[l + 1]) {
-              l++;
-            }
-            while (l < r && nums[r] == nums[r - 1]) {
-              r--;
-            }
-
-            l++;
-            r--;
-          } else if (nums[l] + nums[r] + nums[i] > 0) {
-            r--;
-          } else {
-            l++;
-          }
-        }
-      }
-    }
-    return ans;
-  }
-};
-#+end_src
-
 ** TODO Trapping rain water :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: trapping-rain-water
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/trapping-rain-water/0
-
 Find lMax, rMax
 ans += min(lMax, rMax) - currHeight
-
-#+begin_src cpp
-class Solution {
-public:
-  int trap(vector<int> &height) {
-    if (height.empty())
-      return 0;
-
-    int n = height.size();
-    vector<pair<int, int>> maxHeights(n);
-
-    maxHeights[0].first = height[0];
-    maxHeights[n - 1].second = height[n - 1];
-
-    for (int i = 1; i < n; i++) {
-      maxHeights[i].first = max(height[i], maxHeights[i - 1].first);
-    }
-    for (int i = n - 2; i >= 0; i--) {
-      maxHeights[i].second = max(height[i], maxHeights[i + 1].second);
-    }
-
-    int rain = 0;
-
-    for (int i = 0; i < n; i++) {
-      rain += min(maxHeights[i].first, maxHeights[i].second) - height[i];
-    }
-
-    return rain;
-  }
-};
-#+end_src
-
 ** TODO Chocolate distribution :array:greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: chocolate-distribution
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/chocolate-distribution-problem/0
-
 Make window in sorted array, check for minimum
-#+begin_src cpp
-class Solution {
-public:
-  long long findMinDiff(vector<long long> a, long long n, long long m) {
-    if (m == 0 || n == 0)
-      return 0;
-
-    if (n < m)
-      return -1;
-
-    sort(a.begin(), a.end());
-    long long ans = LLONG_MAX;
-
-    for (long long i = 0; i + m - 1 < n; i++) {
-      ans = min(ans, a[i + m - 1] - a[i]);
-    }
-
-    return ans;
-  }
-};
-#+end_src
-
 ** TODO Smallest subarray with sum greater than a given value :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: smallest-subarray-with-sum-greater-than-a-given-value
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/smallest-subarray-with-sum-greater-than-x/0
-
 ** TODO Three way partitioning of an array around a given value :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: three-way-partitioning-of-an-array-around-a-given-value
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/three-way-partitioning/1
-
 ** TODO Minimum swaps required to bring elements <= K together :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-swaps-required-to-bring-elements-k-together
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/minimum-swaps-required-to-bring-all-elements-less-than-or-equal-to-k-together/0
-
 ** TODO Minimum number of merge operations required to make an array palindrome :array:
-CLOSED: [2021-06-24 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-number-of-operations-required-to-make-an-array-palindrome
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-minimum-number-of-merge-operations-to-make-an-array-palindrome/
-
-#+begin_src cpp
-int findMinOps(int arr[], int n) {
-  int ans = 0;
-
-  for (int i = 0, j = n - 1; i <= j;) {
-    if (arr[i] == arr[j]) {
-      i++;
-      j--;
-    } else if (arr[i] > arr[j]) {
-      j--;
-      arr[j] += arr[j + 1];
-      ans++;
-    } else {
-      i++;
-      arr[i] += arr[i - 1];
-      ans++;
-    }
-  }
-
-  return ans;
-}
-#+end_src
-
 ** TODO Median of 2 sorted arrays of equal size :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: median-of-2-sorted-arrays-of-equal-size
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/find-the-median0527/1
-
 ** TODO Median of 2 sorted arrays of different size :array:
 :PROPERTIES:
 :EXPORT_FILE_NAME: median-of-2-sorted-arrays-of-different-size
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/
-
 ** TODO Spiral traversal on a matrix :matrix:
 :PROPERTIES:
 :EXPORT_FILE_NAME: spiral-traversal-on-a-matrix
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/spirally-traversing-a-matrix/0
-
 ** TODO Search an element in a matrix :matrix:
 :PROPERTIES:
 :EXPORT_FILE_NAME: search-an-element-in-a-matrix
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/search-a-2d-matrix/
-
 Altered binary search
-
-#+begin_src cpp
-class Solution {
-public:
-  bool searchMatrix(vector<vector<int>> &matrix, int target) {
-    int n = matrix.size();
-    int m = matrix[0].size();
-    int l = 0, r = n * m - 1;
-
-    while (l <= r) {
-      int mid = (l + r) / 2;
-      int N = mid / m;
-      int M = mid % m;
-
-      if (target == matrix[N][M])
-        return true;
-      else if (target < matrix[N][M])
-        r = mid - 1;
-      else
-        l = mid + 1;
-    }
-
-    return false;
-  }
-};
-#+end_src
-
 ** TODO Find median in a row wise sorted matrix :matrix:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-median-in-a-row-wise-sorted-matrix
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1
-
 ** TODO Find row with maximum number of 1s :matrix:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-row-with-maximum-number-of-1s
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/row-with-max-1s0023/1
-
 ** TODO Print elements in sorted order using row-column wise sorted matrix :matrix:
 :PROPERTIES:
 :EXPORT_FILE_NAME: print-elements-in-sorted-order-using-row-column-wise-sorted-matrix
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/sorted-matrix/0
-
 ** TODO Maximum size rectangle :matrix:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-size-rectangle
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/max-rectangle/1
-
 ** TODO Find a specific pair in matrix :matrix:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-a-specific-pair-in-matrix
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-a-specific-pair-in-matrix/
-
 ** TODO Rotate matrix by 90 degrees :matrix:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rotate-matrix-by-90-degrees
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/rotate-a-matrix-by-90-degree-in-clockwise-direction-without-using-any-extra-space/
-
 ** TODO Kth smallest element in a row-column wise sorted matrix :matrix:
 :PROPERTIES:
 :EXPORT_FILE_NAME: kth-smallest-element-in-a-row-column-wise-sorted-matrix
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/kth-element-in-matrix/1
-
 ** TODO Common elements in all rows of a given matrix :matrix:
 :PROPERTIES:
 :EXPORT_FILE_NAME: common-elements-in-all-rows-of-a-given-matrix
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/common-elements-in-all-rows-of-a-given-matrix/
-
-** DONE Check whether a string is palindrome :string:
-CLOSED: [2022-07-06 Wed]
+** TODO Check whether a string is palindrome :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-whether-a-string-is-palindrome
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/palindrome-string0817/1
-
-#+begin_src cpp
-class Solution {
-public:
-  int isPlaindrome(string S) {
-    int n = S.size();
-
-    for (int i = 0; i < n / 2; i++) {
-      if (S[i] != S[n - i - 1])
-        return false;
-    }
-
-    return true;
-  }
-};
-#+end_src
-
-** DONE Find duplicate characters in a string :string:
-CLOSED: [2022-07-06 Wed]
+** TODO Find duplicate characters in a string :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-duplicate-characters-in-a-string
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/
-
 Set/map basic usecase
-
-** DONE Why are strings immutable in Java? :string:
-CLOSED: [2022-07-06 Wed]
+** TODO Why are strings immutable in Java? :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: why-are-strings-immutable-in-java
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-
 Java uses string literals mostly for memory security. Better alter copies of strings than alter main references in memory.
-
-** DONE Check whether one string is a rotation of another :string:
-CLOSED: [2022-07-06 Wed]
+** TODO Check whether one string is a rotation of another :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-whether-one-string-is-a-rotation-of-another
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/a-program-to-check-if-strings-are-rotations-of-each-other/
-
-#+begin_src cpp
-bool areRotations(string str1, string str2) {
-  if (str1.length() != str2.length())
-    return false;
-
-  string temp = str1 + str1;
-  return (temp.find(str2) != string::npos);
-}
-#+end_src
-
-** DONE Check whether a string is a valid shuffle of two strings :string:
-CLOSED: [2022-07-06 Wed]
+** TODO Check whether a string is a valid shuffle of two strings :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-whether-a-string-is-a-valid-shuffle-of-two-strings
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.programiz.com/java-programming/examples/check-valid-shuffle-of-strings
-
-#+begin_src cpp
-bool shuffleCheck(string first, string second, string result) {
-  if (first.size() + second.size() != result.size()) {
-    return false;
-  }
-
-  int i = 0, j = 0, k = 0;
-
-  while (k != result.size()) {
-    if (i < first.size() && first[i] == result[i])
-      i++;
-    else if (j < second.size() && second[j] == result[k])
-      j++;
-    else {
-      return false;
-    }
-
-    k++;
-  }
-
-  if (i < first.size() || j < second.size()) {
-    return false;
-  }
-
-  return true;
-}
-#+end_src
-
 ** TODO Count and say :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-and-say
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/count-and-say/
-
-#+begin_src cpp
-class Solution {
-public:
-  string countAndSay(int n) {
-    if (n == 1)
-      return "1";
-
-    string cur = "";
-    string prev = countAndSay(n - 1);
-    int count = 0;
-
-    for (int i = 0; i < prev.size(); i++) {
-      count++;
-
-      if (i == prev.size() - 1 || prev[i] != prev[i + 1]) {
-        cur += to_string(count);
-        cur += prev[i];
-        count = 0;
-      }
-    }
-
-    return cur;
-  }
-};
-#+end_src
-
 ** TODO Find the longest palindrome in a string :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-longest-palindrome-in-a-string
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/longest-palindromic-substring/
-
 Expand from center, check for even and odd palindromes
-#+begin_src cpp
-class Solution {
-public:
-  string longestPalindrome(string s) {
-    if (s.size() < 1)
-      return "";
-    int start = 0;
-    int l = s.size();
-    int maxLength = 1;
-
-    for (int i = 0; i < l; i++) {
-      // Odd
-      int low = i - 1, high = i;
-      while (low >= 0 && high < l && s[low] == s[high]) {
-        if (high - low + 1 > maxLength) {
-          start = low;
-          maxLength = high - low + 1;
-        }
-        low--;
-        high++;
-      }
-      // Even
-      low = i - 1, high = i + 1;
-      while (low >= 0 && high < l && s[low] == s[high]) {
-        if (high - low + 1 > maxLength) {
-          start = low;
-          maxLength = high - low + 1;
-        }
-        low--;
-        high++;
-      }
-    }
-    return s.substr(start, maxLength);
-  }
-};
-#+end_src
-
-** DONE Print all subsequences of a string :string:
-CLOSED: [2022-07-06 Wed]
+** TODO Print all subsequences of a string :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: print-all-subsequences-of-a-string
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/print-subsequences-string/
-
-#+begin_src cpp
-void printSubsequence(string input, string output) {
-  if (input.empty()) {
-    cout << output << endl;
-    return;
-  }
-
-  printSubsequence(input.substr(1), output + input[0]);
-  printSubsequence(input.substr(1), output);
-}
-
-// printSubsequence(input, "");
-#+end_src
-
 ** TODO Split the binary string into two substring with equal 0s and 1s :string:
-CLOSED: [2021-06-17 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: split-the-binary-string-into-two-substring-with-equal-0s-and-1s
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/split-the-binary-string-into-substrings-with-equal-number-of-0s-and-1s/
-
-#+begin_src cpp
-int maxSubStr(string str) {
-  int n = str.length();
-  int count0 = 0, count1 = 0;
-
-  int cnt = 0;
-  for (int i = 0; i < n; i++) {
-    if (str[i] == '0') {
-      count0++;
-    } else if (str[i] == '1') {
-      count1++;
-    }
-
-    if (count0 == count1) {
-      cnt++;
-    }
-  }
-
-  if (cnt == 0) {
-    return -1;
-  }
-
-  return cnt;
-}
-#+end_src
-
 ** TODO [#A] Word wrap :string:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: word-wrap
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/word-wrap/0
-
-** DONE [#A] Edit distance :string:dp:
-CLOSED: [2022-07-07 Thu]
+** TODO [#A] Edit distance :string:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: edit-distance
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/edit-distance/
-
 #+begin_example
 +---------+-----+
 | replace | del |
@@ -1434,5495 +378,2208 @@ https://leetcode.com/problems/edit-distance/
 | insert  | X   |
 +---------+-----+
 #+end_example
-
-#+begin_src cpp
-class Solution {
- int  dp[505][505];
- public:
-  int minDistance(string word1, string word2) {
-    int m = word1.size();
-    int n = word2.size();
-
-    for (int i = 0; i <= m; i++) {
-      for (int j = 0; j <= n; j++) {
-        if (i == 0)
-          dp[i][j] = j;
-        else if (j == 0)
-          dp[i][j] = i;
-        else if (word1[i - 1] == word2[j - 1])
-          dp[i][j] = dp[i - 1][j - 1];
-        else {
-          int insert = dp[i][j - 1];
-          int del = dp[i - 1][j];
-          int replace = dp[i - 1][j - 1];
-          dp[i][j] = 1 + min({insert, del, replace});
-        }
-      }
-    }
-    return dp[m][n];
-  }
-};
-#+end_src
-
 ** TODO [#A] Find next greater number with same set of digits :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-next-greater-number-with-same-set-of-digits
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/next-permutation/0
-
-** DONE [#A] Balanced parenthesis :@done:string:st_q:
-CLOSED: [2022-06-28 Tue]
+** TODO [#A] Balanced parenthesis :string:st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: balanced-parenthesis
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/parenthesis-checker/0
-
-#+begin_src cpp
-class Solution {
-public:
-  bool ispar(string x) {
-    if (x.size() % 2 != 0)
-      return false;
-
-    stack<char> st;
-
-    for (int i = 0; i < x.size(); i++) {
-      if (x[i] == '}') {
-        if (st.top() == '{')
-          st.pop();
-      }
-      if (x[i] == ']') {
-        if (st.top() == '[')
-          st.pop();
-      }
-      if (x[i] == ')') {
-        if (st.top() == '(')
-          st.pop();
-      } else {
-        st.push(x[i]);
-      }
-    }
-
-    return (st.empty() == true);
-  }
-};
-#+end_src
-
 ** TODO [#A] Word break :string:trie:backtracking:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: word-break
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/word-break/0
-
-** DONE Rabin Karp algorithm :string:
-CLOSED: [2022-07-07 Thu]
+** TODO Rabin Karp algorithm :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rabin-karp-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/
-
-#+begin_src cpp
-// q = INT_MAX
-// to avoid overflow
-
-// #define d 256
-
-void search(string pat, string txt, int q)
-{
-  int M = pat.size();
-  int N = txt.size();
-  int p = 0; // hash value for pattern
-  int t = 0; // hash value for txt
-  int h = 1;
-
-  // h = pow(d, M-1) % q
-  for (int i = 0; i < M - 1; i++)
-    h = (h * d) % q;
-
-  // Calculate the hash value of pattern and first
-  // window of text
-  for (int i = 0; i < M; i++) {
-    p = (d * p + pat[i]) % q;
-    t = (d * t + txt[i]) % q;
-  }
-
-  for (int i = 0; i <= N - M; i++) {
-    if ( p == t ) {
-      int j = 0;
-      while (j < M) {
-        if (txt[i + j] != pat[j]) break;
-        j++;
-      }
-      if (j == M) cout << "Pattern found at index " << i << "\n";
-    }
-
-	// Calculate hash of next index
-    if (i < N - M) {
-      t = (d * (t - txt[i] * h) + txt[i + M]) % q;
-
-      if (t < 0) t = (t + q);
-    }
-  }
-}
-#+end_src
-
-
-** DONE KMP algorithm :string:
-CLOSED: [2022-07-07 Thu]
+** TODO KMP algorithm :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: kmp-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/
-
 Finding longest longest prefix such that it is longest suffix
-
-#+begin_src cpp
-void computeLPSArray(string pat, int lps[])
-{
-  int M = pat.size();
-
-  lps[0] = 0;
-  int i = 1, len = 0;
-
-  while (i < M) {
-    if (pat[i] == pat[len]) {
-      len++;
-      lps[i] = len;
-      i++;
-    } else {
-      if (len != 0) {
-        len = lps[len - 1];
-      } else {
-        lps[i] = 0;
-        i++;
-      }
-    }
-  }
-}
-
-void KMPSearch(string pat, string txt)
-{
-  int M = pat.size();
-  int N = txt.size();
-
-  int lps[M];
-
-  computeLPSArray(pat, lps);
-
-  int i = 0, j = 0;
-
-  while (i < N) {
-    if (pat[j] == txt[i]) {
-      j++;
-      i++;
-    }
-
-    if (j == M) {
-      cout << "Found pattern at index %d " << i - j << "\n";
-      j = lps[j - 1];
-    } else if (i < N && pat[j] != txt[i]) {
-      if (j != 0)
-        j = lps[j - 1];
-      else
-        i++;
-    }
-  }
-}
-#+end_src
-
-
 ** TODO Bayer Moore algorithm :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: boyer-moore-algorithm-for-pattern-searching
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/
-
 ** TODO Convert a sentence into its equivalent mobile numeric keypad sequence :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: convert-a-sentence-into-its-equivalent-mobile-numeric-keypad-sequence
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/convert-sentence-equivalent-mobile-numeric-keypad-sequence/
-
-** DONE Minimum number of bracket reversals needed to make an expression balanced :string:
-CLOSED: [2022-07-07 Thu]
+** TODO Minimum number of bracket reversals needed to make an expression balanced :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-number-of-bracket-reversals-needed-to-make-an-expression-balanced
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/count-the-reversals/0
-
 }{{}}{{{
 Remove all valid pairs, remaining string is like }}}...{{{...
 ans = ceil(lBraces) + ceil(rBraces) in remaining string
-
-#+begin_src cpp
-int countRev(string s) {
-  int n = s.size();
-  if (n % 2 != 0) return -1;
-
-  stack<char> st;
-
-  for (int i = 0; i < n; i++)
-  {
-    if (s[i] == '}' && !st.empty())
-    {
-      if (st.top() == '{')
-        st.pop();
-      else
-        st.push(s[i]);
-    }
-    else
-      st.push(s[i]);
-  }
-
-  int lCount = 0;
-
-  while (!st.empty() && st.top() == '{')
-  {
-    lCount++;
-    st.pop();
-  }
-  int rCount = st.size();
-
-  return (ceil((double)lCount / 2) + ceil((double)rCount / 2));
-}
-#+end_src
-
 ** TODO Count all palindromic subsequence in a given string :string:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-all-palindromic-subsequence-in-a-given-string
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/count-palindromic-subsequences/1
-
 ** TODO Count of number of given string in 2D character array :string:
-CLOSED: [2021-07-15 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-of-number-of-given-string-in-2d-character-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-count-number-given-string-present-2d-character-array/
-
-#+begin_src cpp
-class Solution {
-  bool searchUtil(int r, int c, string &word, vector<pair<int, int>> &dir,
-                  vector<vector<char>> &grid) {
-    int R = grid.size();
-    int C = grid[0].size();
-
-    if (grid[r][c] != word[0]) {
-      return false;
-    }
-
-    int len = word.length();
-
-    for (int i = 0; i < 8; i++) {
-      int k = 1, rd = r + dir[i].first, cd = c + dir[i].second;
-
-      while (k < len) {
-        if (rd >= R || cd >= C || rd < 0 || cd < 0) {
-          break;
-        }
-
-        if (grid[rd][cd] != word[k]) {
-          break;
-        }
-
-        rd += dir[i].first;
-        cd += dir[i].second;
-        k++;
-      }
-
-      if (k == len)
-        return true;
-    }
-    return false;
-  }
-
-public:
-  vector<vector<int>> searchWord(vector<vector<char>> grid, string word) {
-    vector<vector<int>> res;
-    vector<pair<int, int>> dir = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1},
-                                  {0, 1},   {1, -1}, {1, 0},  {1, 1}};
-
-    for (int i = 0; i < grid.size(); i++) {
-      for (int j = 0; j < grid[0].size(); j++) {
-        if (searchUtil(i, j, word, dir, grid))
-          res.push_back({i, j});
-      }
-    }
-    return res;
-  }
-};
-#+end_src
-
 ** TODO Search a word in a 2D grid of characters :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: search-a-word-in-a-2d-grid-of-characters
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/find-the-string-in-grid/0
-
 ** TODO Converting roman numerals to decimal :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: converting-roman-numerals-to-decimal
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/roman-number-to-integer/0
-
-** DONE Longest common prefix :string:
-CLOSED: [2022-07-07 Thu]
+** TODO Longest common prefix :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-common-prefix
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/longest-common-prefix/
-
 Divide and conquer, compare left and right subarrays.
-
-#+begin_src cpp
-class Solution {
-  string lcp(vector<string> &strs, int l, int r) {
-    if (l == r)
-      return strs[l];
-    else {
-      int mid = l + (r - l) / 2;
-      string leftLCP = lcp(strs, l, mid);
-      string rightLCP = lcp(strs, mid + 1, r);
-
-      return commonPrefix(leftLCP, rightLCP);
-    }
-  }
-
-  string commonPrefix(string left, string right) {
-    int l = min(left.length(), right.length());
-
-    int ctr = 0;
-    while (ctr < l && left[ctr] == right[ctr]) {
-      ctr++;
-    }
-
-    return left.substr(0, ctr);
-  }
-
-public:
-  string longestCommonPrefix(vector<string> &strs) {
-    if (strs.empty())
-      return "";
-
-    return lcp(strs, 0, strs.size() - 1);
-  }
-};
-#+end_src
-
 ** TODO Number of flips to make binary string alternate :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: number-of-flips-to-make-binary-string-alternate
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/min-number-of-flips/0
-
-#+begin_src cpp
-int minFlips(string S) {
-  int zeroFlipCount = 0, oneFlipCount = 0;
-  char expected = '0';
-  for (int i = 0; i < S.length(); i++) {
-    if (S[i] != expected)
-      zeroFlipCount++;
-
-    expected = (expected == '0') ? '1' : '0';
-  }
-  expected = '1';
-  for (int i = 0; i < S.length(); i++) {
-    if (S[i] != expected)
-      oneFlipCount++;
-
-    expected = (expected == '1') ? '0' : '1';
-  }
-
-  return min(zeroFlipCount, oneFlipCount);
-}
-#+end_src
-
-** DONE Find the second most repeated word in string :string:
-CLOSED: [2022-07-07 Thu]
+** TODO Find the second most repeated word in string :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-second-most-repeated-word-in-string
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/second-most-repeated-string-in-a-sequence/0
-
-#+begin_src cpp
-class Solution {
-public:
-  string secFrequent(string arr[], int n) {
-    map<string, int> mp;
-
-    for (int i = 0; i < n; i++) {
-      mp[arr[i]]++;
-    }
-
-    int maxFreq = -1, notMaxFreq = -1;
-    string ans = "";
-
-    for (auto it : mp) {
-      if (it.second > maxFreq) {
-        notMaxFreq = maxFreq;
-        maxFreq = it.second;
-      } else if (it.second > notMaxFreq && it.second != maxFreq) {
-        notMaxFreq = it.second;
-      }
-    }
-
-    for (auto it : mp) {
-      if (it.second == notMaxFreq) {
-        return it.first;
-      }
-    }
-  }
-};
-#+end_src
-
 ** TODO Minimum number of swaps for bracket balancing :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-number-of-swaps-for-bracket-balancing
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/minimum-swaps-for-bracket-balancing/0
-
 ** TODO Program to generate all possible valid IP addresses from given string :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: program-to-generate-all-possible-valid-ip-addresses-from-given-string
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/program-generate-possible-valid-ip-addresses-given-string/
-
 ** TODO Find the smallest window that contains all characters of string itself :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-smallest-window-that-contains-all-characters-of-string-itself
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/smallest-distant-window/0
-
 ** TODO Rearrange characters in a string such that no two adjacent are same :string:heap:greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rearrange-characters-in-a-string-such-that-no-two-adjacent-are-same
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/rearrange-characters/0
-
 ** TODO Minimum characters to be added at front to make string palindrome :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-characters-to-be-added-at-front-to-make-string-palindrome
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/minimum-characters-added-front-make-string-palindrome/
-
 ** TODO Given a sequence of words, print all anagrams together :string:trie:greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: given-a-sequence-of-words-print-all-anagrams-together
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/k-anagrams-1/0
-
 ** TODO Find the smallest window in a string containing all characters of another string :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-smallest-window-in-a-string-containing-all-characters-of-another-string
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string/0
-
 ** TODO Recursively remove all adjacent duplicates :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: recursively-remove-all-adjacent-duplicates
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/consecutive-elements/0
-
-#+begin_src cpp
-class Solution {
-public:
-  string removeConsecutiveCharacter(string S) {
-    int n = S.size();
-    string ans = "";
-
-    for (int i = 0; i < n - 1; i++) {
-      ans += S[i];
-      while (S[i] == S[i + 1]) {
-        i++;
-      }
-    }
-
-    if (S[n - 1] != S[n - 2])
-      ans += S[n - 1];
-
-    return ans;
-  }
-};
-#+end_src
-
 ** TODO String matching where one string contains wildcard characters :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: string-matching-where-one-string-contains-wildcard-characters
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/wildcard-string-matching/0
-
 ** TODO Function to find number of customers who could not get a computer :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: function-to-find-number-of-customers-who-could-not-get-a-computer
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/function-to-find-number-of-customers-who-could-not-get-a-computer/
-
 ** TODO Transform one string to another using minimum number of given operation :string:
-CLOSED: [2021-06-17 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: transform-one-string-to-another-using-minimum-number-of-given-operation
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/transform-one-string-to-another-using-minimum-number-of-given-operation/
-
 1. Check relative character frequencies & length of strings
 2. Start from end, increase =res= till character found in B
-
 Doing this because insertion is only allowed in front of A
-
-#+begin_src cpp
-#include <bits/stdc++.h>
-using namespace std;
-
-int minOps(string A, string B) {
-  int n = A.length(), m = B.length();
-
-  if (n != m) return -1;
-
-  map<char, pair<int, int>> mp;
-
-  for (int i = 0; i < n; i++) {
-    mp[A[i]].first++;
-    mp[B[i]].second++;
-  }
-
-  for (auto it : mp) {
-    if (it.second.first != it.second.second) return -1;
-  }
-
-  int res = 0;
-  int i = m - 1, j = n - 1;
-  while (i >= 0) {
-    while (i >= 0 && A[i] != B[j]) {
-      i--;
-      res++;
-    }
-
-    if (i >= 0) {
-      i--;
-      j--;
-    }
-  }
-
-  return res;
-}
-
-int main() {
-  string a, b;
-  cin >> a >> b;
-  cout << minOps(a, b);
-  return 0;
-}
-#+end_src
-
 ** TODO Check if two given strings are isomorphic to each other :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-two-given-strings-are-isomorphic-to-each-other
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/isomorphic-strings/0
-
-** DONE Recursively print all sentences that can be formed from list of word lists :string:
-CLOSED: [2022-07-07 Thu]
+** TODO Recursively print all sentences that can be formed from list of word lists :string:
 :PROPERTIES:
 :EXPORT_FILE_NAME: recursively-print-all-sentences-that-can-be-formed-from-list-of-word-lists
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/recursively-print-all-sentences-that-can-be-formed-from-list-of-word-lists/
-
 DFS on rows
-
-** DONE Find first and last positions of an element in a sorted array :@done:search_sort:
-CLOSED: [2022-06-24 Fri]
+** TODO Find first and last positions of an element in a sorted array :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-first-and-last-positions-of-an-element-in-a-sorted-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/first-and-last-occurrences-of-x/0
-
-#+begin_src cpp
-int firstOccurance(int arr[], int n, int x)
-{
-    int low = 0, high = n - 1, mid = -1;
-
-    int index = -1;
-
-    while (low <= high)
-    {
-        mid = low + (high - low) / 2;
-        if (arr[mid] == x)
-        {
-            index = mid;
-            high = mid - 1;
-        }
-        else if (arr[mid] > x)
-        {
-            high = mid - 1;
-        }
-        else
-        {
-            low = mid + 1;
-        }
-    }
-
-    return index;
-}
-
-int lastOccurance(int arr[], int n, int x)
-{
-    int low = 0, high = n - 1, mid = -1;
-
-    int index = -1;
-
-    while (low <= high) {
-      mid = low + (high - low) / 2;
-      if (arr[mid] == x) {
-        index = mid;
-        low = mid + 1;
-      } else if (arr[mid] > x) {
-        high = mid - 1;
-      } else {
-        low = mid + 1;
-      }
-    }
-
-    return index;
-}
-
-vector<int> find(int arr[], int n, int x) {
-  vector<int> v(2, 0);
-  v[0] = firstOccurance(arr, n, x);
-  v[1] = lastOccurance(arr, n, x);
-
-  return v;
-}
-#+end_src
-
-** DONE Find a fixed point (value equal to index) in a given array :search_sort:
-CLOSED: [2022-07-07 Thu]
+** TODO Find a fixed point (value equal to index) in a given array :search_sort:
 https://practice.geeksforgeeks.org/problems/value-equal-to-index-value1330/1
-
 Simple linear search
-** DONE Search in a rotated sorted array :search_sort:
-CLOSED: [2022-07-07 Thu]
+** TODO Search in a rotated sorted array :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: search-in-a-rotated-sorted-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/search-in-rotated-sorted-array/
-
-#+begin_src cpp
-class Solution {
-public:
-  int findMin(int arr[], int n) {
-    int low = 0, high = n - 1;
-
-    while (low <= high) {
-      int mid = (low + high) / 2;
-      int next = (mid + 1) % n;
-      int prev = (mid + n - 1) % n;
-
-      if (arr[mid] <= arr[next] && arr[mid] <= arr[prev]) {
-        return arr[mid];
-      } else if (arr[mid] < arr[n - 1]) {
-        high = mid - 1;
-      } else {
-        low = mid + 1;
-      }
-    }
-
-    return -1;
-  }
-};
-#+end_src
-
 ** TODO Square root of an integer :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: square-root-of-an-integer
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/count-squares3649/1
-
 ** TODO Maximum and minimum of an array using minimum number of comparisons :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-and-minimum-of-an-array-using-minimum-number-of-comparisons
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/middle-of-three2926/1
-
 ** TODO Optimum location of point to minimize total distance :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: optimum-location-of-point-to-minimize-total-distance
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/optimum-location-point-minimize-total-distance/
-
 ** TODO Find missing and repeating :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-missing-and-repeating
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
-
-#+begin_src cpp
-class Solution {
-public:
-  int *findTwoElement(int *arr, int n) {
-    int *ans = new int(2);
-
-    for (int i = 0; i < n; i++) {
-      int index = abs(arr[i]) - 1;
-      if (arr[index] < 0) {
-        ans[0] = index + 1;
-      }
-      arr[index] = -abs(arr[index]);
-    }
-
-    for (int i = 0; i < n; i++) {
-      if (arr[i] > 0) {
-        ans[1] = i + 1;
-        break;
-      }
-    }
-    return ans;
-  }
-};
-#+end_src
-
-** DONE Find majority element :@done:search_sort:
-CLOSED: [2022-06-24 Fri]
+** TODO Find majority element :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-majority-element
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/majority-element/0
-
 Moore's voting algorithm
-#+begin_src cpp
-class Solution {
-public:
-  int majorityElement(vector<int> &nums) {
-    int major = nums[0], count = 1;
-
-    for (int i = 1; i < nums.size(); i++) {
-      if (major == nums[i]) {
-        count++;
-      } else if (count == 0) {
-        count++;
-        major = nums[i];
-      } else {
-        count--;
-      }
-    }
-
-    return major;
-  }
-};
-#+end_src
-
 ** TODO Searching in an array where adjacent differ by at most K :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: searching-in-an-array-where-adjacent-differ-by-at-most-k
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/searching-array-adjacent-differ-k/
-
-#+begin_src cpp
-int search(int arr[], int n, int x) {
-  int i = 0;
-  while (i < n) {
-    if (arr[i] == x)
-      return i;
-
-    i += max(1, abs(arr[i] - x) / k);
-  }
-
-  cout << "Number not present";
-  return -1;
-}
-#+end_src
-
 ** TODO Find a pair with a given difference :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-a-pair-with-a-given-difference
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/find-pair-given-difference/0
-
 ** TODO Find four elements that sum to a given value :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-four-elements-that-sum-to-a-given-value
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/find-all-four-sum-numbers/0
-
 ** TODO Maximum sum such that no 2 elements are adjacent :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-sum-such-that-no-2-elements-are-adjacent
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/stickler-theif/0
-
 ** TODO Count triplet with sum smaller than a given value :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-triplet-with-sum-smaller-than-a-given-value
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/count-triplets-with-sum-smaller-than-x5549/1
-
 ** TODO Merge 2 sorted arrays :array:search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: merge-2-sorted-arrays
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/merge-two-sorted-arrays5135/1
-
-#+begin_src cpp
-class Solution {
-public:
-  void merge(int arr1[], int arr2[], int n, int m) {
-    int i = 0, j = 0, k = n - 1;
-
-    while (i <= k and j < m) {
-      if (arr1[i] < arr2[j])
-        i++;
-      else {
-        swap(arr2[j++], arr1[k--]);
-      }
-    }
-
-    sort(arr1, arr1 + n);
-    sort(arr2, arr2 + m);
-  }
-};
-#+end_src
-
 ** TODO Print all subarrays with 0 sum :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: print-all-subarrays-with-0-sum
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/zero-sum-subarrays/0
-
 ** TODO Product array puzzle :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: product-array-puzzle
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/product-array-puzzle/0
-
 ** TODO Sort array according to count of set bits :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: sort-array-according-to-count-of-set-bits
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/sort-by-set-bit-count/0
-
-#+begin_src cpp
-class Solution {
-public:
-  int findSetBits(int n) {
-    int bCount = 0;
-
-    while (n != 0) {
-      n &= (n - 1);
-      bCount++;
-    }
-
-    return bCount;
-  }
-
-  void sortBySetBitCount(int arr[], int n) {
-    stable_sort(arr, arr + n, [&](int a, int b) -> bool {
-      return findSetBits(a) > findSetBits(b);
-    });
-  }
-};
-#+end_src
-
 ** TODO Minimum number of swaps required to sort the array :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-number-of-swaps-required-to-sort-the-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/minimum-swaps/1
-
 ** TODO Bishu and soldiers :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: bishu-and-soldiers
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.hackerearth.com/practice/algorithms/searching/binary-search/practice-problems/algorithm/bishu-and-soldiers/
-
 ** TODO Rasta and Kheshtak :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rasta-and-kheshtak
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.hackerearth.com/practice/algorithms/searching/binary-search/practice-problems/algorithm/rasta-and-kheshtak/
-
 ** TODO Kth smallest number again :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: kth-smallest-number-again
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.hackerearth.com/practice/algorithms/searching/binary-search/practice-problems/algorithm/kth-smallest-number-again-2/
-
-#+begin_src cpp
-#include <bits/stdc++.h>
-using namespace std;
-
-void solve() {
-  int n, q;
-  cin >> n >> q;
-  vector<pair<int, int>> v(n);
-  for (auto &it : v)
-    cin >> it.first >> it.second;
-  sort(v.begin(), v.end());
-  int idx = 0;
-  for (int i = 1; i < n; i++) {
-    if (v[idx].second >= v[i].first) {
-      v[idx].second = max(v[idx].second, v[i].second);
-    } else {
-      idx++;
-      v[idx] = v[i];
-    }
-  }
-
-  while (q--) {
-    int k;
-    cin >> k;
-    int ans = -1;
-    for (int i = 0; i <= idx; i++) {
-      if (v[i].second - v[i].first + 1 >= k) {
-        ans = v[i].first + k - 1;
-        break;
-      } else {
-        k -= v[i].second - v[i].first + 1;
-      }
-    }
-
-    cout << ans << "\n";
-  }
-}
-
-signed main() {
-  int t;
-  cin >> t;
-  while (t--) {
-    solve();
-  }
-  return 0;
-}
-#+end_src
-
 ** TODO Find pivot element in a sorted array :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-pivot-element-in-a-sorted-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 http://theoryofprogramming.com/2017/12/16/find-pivot-element-sorted-rotated-array/
-
 ** TODO Kth element of two sorted arrays :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: kth-element-of-two-sorted-arrays
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array/0
-
 ** TODO Aggressive cows :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: aggressive-cows
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.spoj.com/problems/AGGRCOW/
-
 ** TODO Book allocation aka Painter's Partition :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: book-allocation-aka-painter-s-partition
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages/0
-
-#+begin_src cpp
-class Solution {
-public:
-  int findPages(int arr[], int n, int m) {
-    sort(arr, arr + n);
-    int start = *max_element(arr, arr + n), end = accumulate(arr, arr + n, 0);
-    int mid = -1;
-    int res = INT_MAX;
-    while (start <= end) {
-      mid = start + (end - start) / 2;
-      if (isValid(arr, n, m, mid)) {
-        res = mid;
-        end = mid - 1;
-      } else {
-        start = mid + 1;
-      }
-    }
-
-    return res;
-  }
-
-  bool isValid(int arr[], int n, int k, int mx) {
-    int sum = 0, groups = 1;
-
-    for (int i = 0; i < n; i++) {
-      if (sum + arr[i] <= mx) {
-        sum += arr[i];
-      } else {
-        sum = 0;
-        groups++;
-      }
-    }
-    return (groups == k);
-  }
-};
-#+end_src
-
 ** TODO Ekospoj :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: ekospoj
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.spoj.com/problems/EKO/
-
 ** TODO Job scheduling algorithm :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: job-scheduling-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/weighted-job-scheduling-log-n-time/
-
-** DONE Missing number in AP :@done:search_sort:
-CLOSED: [2022-06-26 Sun]
+** TODO Missing number in AP :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: missing-number-in-ap
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/arithmetic-number/0
-
-#+begin_src cpp
-class Solution {
-public:
-  int inSequence(int A, int B, int C) {
-    // B = A + (n - 1)C
-    // (B - A) / C + 1 = n;
-    return (B == A + ((B - A) / C) * C);
-  }
-};
-#+end_src
-
 ** TODO Smallest number with atleast N trailing zeroes in factorial :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: smallest-number-with-atleast-n-trailing-zeroes-in-factorial
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/smallest-factorial-number5929/1
-
 ** TODO Roti Prata :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: roti-prata
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.spoj.com/problems/PRATA/
-
 ** TODO Doublehelix :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: doublehelix
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.spoj.com/problems/ANARC05B/
-
 ** TODO Subset sums :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: subset-sums
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.spoj.com/problems/SUBSUMS/
-
 ** TODO Implement merge-sort in-place :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-merge-sort-in-place
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/in-place-merge-sort/
-
 ** TODO Partitioning and sorting arrays with many repeated entries :search_sort:
 :PROPERTIES:
 :EXPORT_FILE_NAME: partitioning-and-sorting-arrays-with-many-repeated-entries
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.baeldung.com/java-sorting-arrays-with-repeated-entries
-
-** DONE Reverse a linked list :@done:ll:
-CLOSED: [2022-06-11 Sat]
+** TODO Reverse a linked list :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-https://www.geeksforgeeks.org/reverse-a-linked-list/
-
-#+begin_src cpp
-class Solution {
-public:
-  struct Node *reverseList(struct Node *head) {
-    if (head == nullptr)
-      return head;
-
-    Node *prev = nullptr, *next, *curr = head;
-
-    while (curr != nullptr) {
-      next = curr->next;
-      curr->next = prev;
-      prev = curr;
-      curr = next;
-    }
-
-    return prev;
-  }
-};
-#+end_src
+https://leetcode.com/problems/reverse-linked-list/
 
 ** TODO Reverse a linked list in group of given size :ll:
-CLOSED: [2021-06-18 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-a-linked-list-in-group-of-given-size
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/reverse-a-linked-list-in-groups-of-given-size/1
-
-#+begin_src cpp
-class Solution {
-public:
-  struct node *reverse(struct node *head, int k) {
-    stack<node *> st;
-    struct node *curr = head;
-    struct node *prev = nullptr;
-
-    while (curr != nullptr) {
-      int ctr = 0;
-      while (curr != nullptr && ctr < k) {
-        st.push(curr);
-        curr = curr->next;
-        ctr++;
-      }
-
-      while (!st.empty()) {
-        if (prev == nullptr) {
-          prev = st.top();
-          head = prev;
-          st.pop();
-        } else {
-          prev->next = st.top();
-          prev = prev->next;
-          st.pop();
-        }
-      }
-    }
-
-    prev->next = nullptr;
-    return head;
-  }
-};
-#+end_src
-
-** DONE Detect loop in a linked list :@done:ll:
-CLOSED: [2022-06-23 Thu]
+** TODO Detect loop in a linked list :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: detect-loop-in-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/detect-loop-in-linked-list/1
-
 Floyd's tortoise and hare algorithm
-
-#+begin_src cpp
-class Solution {
-public:
-  bool detectLoop(Node *head) {
-    Node *hare = head, *tortoise = head;
-
-    if (head == nullptr || head->next == nullptr)
-      return false;
-
-    while (hare != nullptr && tortoise != nullptr) {
-      tortoise = tortoise->next;
-      hare = hare->next;
-      hare = hare ? hare->next : hare;
-      if (hare == tortoise) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-};
-#+end_src
-
-** DONE Delete loop in a linked list :@done:ll:
-CLOSED: [2022-06-23 Thu]
+** TODO Delete loop in a linked list :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: delete-loop-in-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/remove-loop-in-linked-list/1
-
-#+begin_src cpp
-class Solution {
-public:
-  void removeLoop(Node *head) {
-    Node *hare = head, *tor = head;
-
-    while (hare != nullptr && hare->next != nullptr && tor != nullptr) {
-      tor = tor->next;
-      hare = hare->next->next;
-
-      if (hare == tor) {
-        Node *ptr1 = tor, *ptr2 = tor;
-        unsigned int k = 1;
-        while (ptr1->next != ptr2) {
-          ptr1 = ptr1->next;
-          k++;
-        }
-
-        ptr1 = head;
-        ptr2 = head;
-
-        while (k--)
-          ptr2 = ptr2->next;
-
-        while (ptr2 != ptr1) {
-          ptr1 = ptr1->next;
-          ptr2 = ptr2->next;
-        }
-
-        while (ptr2->next != ptr1)
-          ptr2 = ptr2->next;
-
-        ptr2->next = nullptr;
-      }
-    }
-  }
-};
-#+end_src
-
-** DONE Find the starting point of the loop :@done:ll:
-CLOSED: [2022-06-23 Thu]
+** TODO Find the starting point of the loop :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-starting-point-of-the-loop
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/linked-list-cycle-ii/
-
-#+begin_src cpp
-class Solution {
-public:
-  ListNode *detectCycle(ListNode *head) {
-    if (head == NULL || head->next == NULL)
-      return NULL;
-
-    ListNode *slow = head;
-    ListNode *fast = head;
-    bool isCycle = false;
-
-    while (slow != NULL && fast != NULL) {
-      slow = slow->next;
-      if (fast->next == NULL)
-        return NULL;
-      fast = fast->next->next;
-      if (slow == fast) {
-        isCycle = true;
-        break;
-      }
-    }
-
-    if (!isCycle)
-      return NULL;
-    slow = head;
-    while (slow != fast) {
-      slow = slow->next;
-      fast = fast->next;
-    }
-
-    return slow;
-  }
-};
-#+end_src
-
-** DONE Remove duplicates in a sorted linked list :@done:ll:
-CLOSED: [2022-06-23 Thu]
+** TODO Remove duplicates in a sorted linked list :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: remove-duplicates-in-a-sorted-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/remove-duplicates-from-sorted-list/
-
 Check for last element having duplicate
-
-#+begin_src cpp
-class Solution {
-public:
-  ListNode *deleteDuplicates(ListNode *head) {
-    ListNode *tmp = head, *prev = head;
-
-    while (tmp != nullptr) {
-      if (tmp->val != prev->val) {
-        prev->next = tmp;
-        prev = tmp;
-      }
-      tmp = tmp->next;
-    }
-
-    if (prev != tmp)
-      prev->next = nullptr;
-
-    return head;
-  }
-};
-#+end_src
-
-** DONE Remove duplicates in a unsorted linked list :@done:ll:
-CLOSED: [2022-06-23 Thu]
+** TODO Remove duplicates in a unsorted linked list :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: remove-duplicates-in-a-unsorted-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/remove-duplicates-from-an-unsorted-linked-list/1
-
-#+begin_src cpp
-class Solution {
-public:
-  Node *removeDuplicates(Node *head) {
-    set<int> seen;
-
-    struct Node *curr = head;
-    struct Node *prev = nullptr;
-    while (curr != nullptr) {
-      if (seen.find(curr->data) != seen.end()) {
-        prev->next = curr->next;
-        delete (curr);
-      } else {
-        seen.insert(curr->data);
-        prev = curr;
-      }
-      curr = prev->next;
-    }
-    return head;
-  }
-};
-#+end_src
-
-** DONE Move the last element to front in a linked list :@done:ll:
-CLOSED: [2022-06-23 Thu]
+** TODO Move the last element to front in a linked list :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: move-the-last-element-to-front-in-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/move-last-element-to-front-of-a-given-linked-list/
-
-#+begin_src cpp
-void moveToFront(Node **head) {
-  if (*head == nullptr || (*head)->next == nullptr)
-    return;
-
-  Node *prev = nullptr;
-  Node *tmp = *head;
-
-  while (tmp->next != nullptr) {
-    prev = tmp;
-    tmp = tmp->next;
-  }
-
-  prev->next = nullptr;
-  tmp->next = *head;
-  *head = tmp;
-}
-#+end_src
-
-** DONE Add 1 to a number represented as a linked list :@done:ll:
-CLOSED: [2022-06-23 Thu]
+** TODO Add 1 to a number represented as a linked list :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: add-1-to-a-number-represented-as-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-linked-list/1
-
-#+begin_src cpp
-class Solution {
-  Node* reverseLL(Node* head) {
-    Node* prev = nullptr;
-    Node* current = head;
-    Node* next;
-
-    while (current != nullptr) {
-      next = current->next;
-      current->next = prev;
-      prev = current;
-      current = next;
-    }
-
-    return prev;
-  }
-
-  Node *addOneUtil(Node* head) {
-    Node* curr = head;
-    Node* tmp = nullptr;
-
-    int carry = 1, sum = 0;
-
-    while (curr != nullptr) {
-      sum = carry + curr->data;
-      carry = (sum >= 10) ? 1 : 0;
-
-      sum = sum % 10;
-      curr->data = sum;
-
-      tmp = curr;
-      curr = curr->next;
-    }
-
-    if (carry > 0)
-      tmp->next = new Node(carry);
-
-    return head;
-  }
-
-public:
-  Node *addOne(Node *head) {
-    head = reverseLL(head);
-
-    head = addOneUtil(head);
-
-    return reverseLL(head);
-  }
-};
-#+end_src
-
-** DONE Add two numbers represented by linked lists :@done:ll:
-CLOSED: [2022-06-23 Thu]
+** TODO Add two numbers represented by linked lists :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: add-two-numbers-represented-by-linked-lists
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/add-two-numbers-represented-by-linked-lists/1
-
-#+begin_src cpp
-class Solution {
-  Node *reverse(Node *head) {
-    Node *prev = nullptr, *curr = head, *next = nullptr;
-
-    while (curr != nullptr) {
-      next = curr->next;
-      curr->next = prev;
-      prev = curr;
-      curr = next;
-    }
-
-    return prev;
-  }
-
-public:
-  Node *addTwoLists(struct Node *first, struct Node *second) {
-    first = reverse(first);
-    second = reverse(second);
-
-    int c = 0, sum = 0;
-    Node *start = nullptr, *end = nullptr;
-
-    while (first != nullptr || second != nullptr) {
-      int a = (first != nullptr) ? first->data : 0;
-      int b = (second != nullptr) ? second->data : 0;
-
-      sum = c + (a + b);
-      c = (sum >= 10) ? 1 : 0;
-      sum = sum % 10;
-
-      if (start == nullptr) {
-        start = new Node(sum);
-        end = start;
-      } else {
-        end->next = new Node(sum);
-        end = end->next;
-      }
-      if (first != nullptr)
-        first = first->next;
-      if (second != nullptr)
-        second = second->next;
-    }
-
-    if (c > 0)
-      end->next = new Node(c);
-    start = reverse(start);
-    return start;
-  }
-};
-#+end_src
-
 ** TODO Intersection of two sorted linked list :ll:
-CLOSED: [2021-07-01 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: intersection-of-two-sorted-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/intersection-of-two-sorted-linked-lists/1
-
-#+begin_src cpp
-Node *findIntersection(Node *head1, Node *head2) {
-  Node *a = head1;
-  Node *b = head2;
-  Node *head = NULL;
-  Node *ptr;
-  while (a && b) {
-    if (a->data == b->data) {
-      if (head == NULL) {
-        Node *tmp = new Node(a->data);
-        head = tmp;
-        ptr = head;
-      } else {
-        Node *tmp = new Node(a->data);
-        ptr->next = tmp;
-        ptr = ptr->next;
-      }
-      a = a->next;
-      b = b->next;
-    } else if (a->data < b->data) {
-      a = a->next;
-    } else {
-      b = b->next;
-    }
-  }
-  return head;
-}
-#+end_src
-
 ** TODO Intersection point of two linked lists :ll:
-CLOSED: [2021-07-20 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: intersection-point-of-two-linked-lists
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/intersection-of-two-linked-lists/
-
-#+begin_src cpp
-class Solution {
-public:
-  ListNode *getIntersectionNode(ListNode *A, ListNode *B) {
-    if (A == NULL || B == NULL) {
-      return NULL;
-    }
-
-    ListNode *a = A;
-    ListNode *b = B;
-
-    while (a != b) {
-      if (a == NULL) {
-        a = B;
-      }
-      if (b == NULL) {
-        b = A;
-      }
-      if (a == b) {
-        break;
-      } else {
-        a = a->next;
-        b = b->next;
-      }
-    }
-    return a;
-  }
-};
-#+end_src
-
 ** TODO [#A] Merge sort for linked lists :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: merge-sort-for-linked-lists
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/sort-a-linked-list/1
-
 ** TODO [#A] Quicksort for linked lists :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: quicksort-for-linked-lists
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/quick-sort-on-linked-list/1
-
-** DONE Find the middle element of a linked list :@done:ll:
-CLOSED: [2022-06-23 Thu]
+** TODO Find the middle element of a linked list :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-middle-element-of-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/middle-of-the-linked-list/
-
-#+begin_src cpp
-class Solution {
-public:
-  ListNode *middleNode(ListNode *head) {
-    ListNode *slow = head;
-    ListNode *fast = head;
-
-    while (fast != nullptr && fast->next != nullptr) {
-      slow = slow->next;
-      fast = fast->next->next;
-    }
-
-    return slow;
-  }
-};
-#+end_src
-
-** DONE Check if a linked list is a circular linked list :@done:ll:
-CLOSED: [2022-06-23 Thu]
+** TODO Check if a linked list is a circular linked list :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-a-linked-list-is-a-circular-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/circular-linked-list/1
-
-#+begin_src cpp
-bool isCircular(Node *head) {
-  if (head == nullptr) {
-    return true;
-  }
-
-  Node *curr = head->next;
-
-  while (curr != nullptr) {
-    if (curr == head) {
-      return true;
-    }
-    curr = curr->next;
-  }
-
-  return false;
-}
-#+end_src
-
-** DONE Split a circular linked list into two halves :@done:ll:
-CLOSED: [2022-06-23 Thu]
+** TODO Split a circular linked list into two halves :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: split-a-circular-linked-list-into-two-halves
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/split-a-circular-linked-list-into-two-halves/1
-
-#+begin_src cpp
-void splitList(Node *head, Node **head1_ref, Node **head2_ref)
-{
-    if (head == nullptr) return;
-
-    Node *fast = head, *slow = head;
-
-    while (fast->next != head && fast->next->next != head) {
-        slow = slow->next;
-        fast = fast->next->next;
-    }
-
-    if (fast->next->next == head) {
-        fast = fast->next;
-    }
-
-    *head1_ref = head;
-
-    if (head->next != head) {
-        *head2_ref = slow->next;
-    }
-
-    fast->next = slow->next;
-    slow->next = head;
-}
-#+end_src
-
-** DONE Check whether the singly linked list is a palindrome :@done:ll:
-CLOSED: [2022-06-23 Thu]
+** TODO Check whether the singly linked list is a palindrome :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-whether-the-singly-linked-list-is-a-palindrome
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1
-
 Reverse second half of linked list, compare, then revert.
-
-#+begin_src cpp
-class Solution {
-  Node *reverseLL(Node *head) {
-    Node *curr = head, *prev = nullptr, *next;
-
-    while (curr != nullptr) {
-      next = curr->next;
-      curr->next = prev;
-      prev = curr;
-      curr = next;
-    }
-
-    return prev;
-  }
-
-public:
-  // Function to check whether the list is palindrome.
-  bool isPalindrome(Node *head) {
-    int ctr = 0;
-    Node *slow = head, *fast = head;
-
-    if (head == nullptr || head->next == nullptr) {
-      return true;
-    }
-
-    while (slow != nullptr) {
-      slow = slow->next;
-      ctr++;
-    }
-
-    slow = head;
-
-    while (fast != nullptr) {
-      slow = slow->next;
-      fast = fast->next;
-
-      if (fast != nullptr) {
-        fast = fast->next;
-      }
-    }
-
-    slow = reverseLL(slow);
-    fast = head;
-
-    while (slow != nullptr) {
-      if (fast->data != slow->data) {
-        return false;
-      }
-      slow = slow->next;
-      fast = fast->next;
-    }
-
-    return true;
-  }
-};
-#+end_src
-
 ** TODO Deletion from a circular linked list :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: deletion-from-a-circular-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/deletion-circular-linked-list/
-
 ** TODO Reverse a doubly linked list :ll:
-CLOSED: [2021-07-14 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-a-doubly-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/reverse-a-doubly-linked-list/1
-
-#+begin_src cpp
-Node *reverseDLL(Node *head) {
-  Node *temp = nullptr;
-  Node *curr = head;
-
-  while (curr != nullptr) {
-    temp = curr->prev;
-    curr->prev = curr->next;
-    curr->next = temp;
-    curr = curr->prev;
-  }
-
-  if (temp != nullptr)
-    head = temp->prev;
-
-  return head;
-}
-#+end_src
-
 ** TODO Find pairs with a given sum in a DLL :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-pairs-with-a-given-sum-in-a-dll
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-pairs-given-sum-doubly-linked-list/
-
 ** TODO Count triplets in a sorted DLL whose sum is equal to given value X :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-triplets-in-a-sorted-dll-whose-sum-is-equal-to-given-value-x
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/count-triplets-sorted-doubly-linked-list-whose-sum-equal-given-value-x/
-
 ** TODO [#A] Sort a K sorted doubly linked list :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: sort-a-k-sorted-doubly-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/sort-k-sorted-doubly-linked-list/
-
 ** TODO Rotate DLL by N nodes :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rotate-dll-by-n-nodes
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/rotate-doubly-linked-list-n-nodes/
-
 ** TODO [#A] Rotate a doubly linked list in group of given size :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rotate-a-doubly-linked-list-in-group-of-given-size
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/reverse-doubly-linked-list-groups-given-size/
-
-** DONE Can we reverse a linked list in less than O(n)? :@done:ll:
-CLOSED: [2022-06-23 Thu]
+** TODO Can we reverse a linked list in less than O(n)? :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: can-we-reverse-a-linked-list-in-less-than-o--n
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-
 No for SLL, yes for DLL.
-** DONE Why is quicksort preferred for arrays while merge sort for linked lists? :ll:
-CLOSED: [2022-07-08 Fri]
+** TODO Why is quicksort preferred for arrays while merge sort for linked lists? :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: why-is-quicksort-preferred-for-arrays-while-merge-sort-for-linked-lists
 :EXPORT_HUGO_WEIGHT: auto
 :END:
-
 Quicksort is also one of the efficient algorithms with the average time complexity of O(nlogn). But the worst-case time complexity is O(n^2). Also, variations of the quick sort like randomized quicksort are not efficient for the linked list because unlike arrays, random access in the linked list is not possible in O(1) time. If we sort the linked list using quicksort, we would end up using the head as a pivot element which may not be efficient in all scenarios.
-
 ** TODO Flatten a linked list :ll:
-CLOSED: [2021-07-14 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: flatten-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/flattening-a-linked-list/1
-
-#+begin_src cpp
-Node *merge(Node *a, Node *b) {
-  if (a == nullptr) {
-    return b;
-  }
-  if (b == nullptr) {
-    return a;
-  }
-
-  Node *result = nullptr;
-
-  if (a->data < b->data) {
-    result = a;
-    result->bottom = merge(a->bottom, b);
-  } else {
-    result = b;
-    result->bottom = merge(a, b->bottom);
-  }
-
-  result->next = nullptr;
-  return result;
-}
-
-Node *flatten(Node *root) {
-  if (root == nullptr || root->next == nullptr) {
-    return root;
-  }
-
-  root->next = flatten(root->next);
-  root = merge(root, root->next);
-
-  return root;
-}
-#+end_src
-
 ** TODO Sort a ll of 0s, 1s and 2s :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: sort-a-ll-of-0s-1s-and-2s
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1
-
 ** TODO Clone a linked list with next and random pointer :ll:
-CLOSED: [2021-07-14 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: clone-a-linked-list-with-next-and-random-pointer
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/copy-list-with-random-pointer/
-
 Inefficient
-#+begin_src cpp
-class Solution {
-public:
-  Node *copyRandomList(Node *head) {
-    map<Node *, Node *> mp;
-
-    for (Node *c = head; c != nullptr; c = c->next)
-      mp[c] = new Node(c->val);
-
-    for (Node *c = head; c != nullptr; c = c->next) {
-      mp[c]->next = mp[c->next];
-      mp[c]->random = mp[c->random];
-    }
-
-    return mp[head];
-  }
-};
-#+end_src
-
 Optimised
-#+begin_src cpp
-class Solution {
-public:
-  Node *copyRandomList(Node *head) {
-    Node *iter = head;
-    Node *front = head;
-
-    while (iter != nullptr) {
-      front = iter->next;
-
-      Node *copy = new Node(iter->val);
-      iter->next = copy;
-      copy->next = front;
-
-      iter = front;
-    }
-
-    iter = head;
-    while (iter != nullptr) {
-      if (iter->random != nullptr) {
-        iter->next->random = iter->random->next;
-      }
-      iter = iter->next->next;
-    }
-
-    iter = head;
-    Node *pseudoHead = new Node(0);
-    Node *copy = pseudoHead;
-
-    while (iter != nullptr) {
-      front = iter->next->next;
-
-      copy->next = iter->next;
-
-      iter->next = front;
-
-      copy = copy->next;
-      iter = front;
-    }
-
-    return pseudoHead->next;
-  }
-};
-#+end_src
-
 ** TODO Multiply 2 numbers represented by ll :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: multiply-2-numbers-represented-by-ll
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/multiply-two-linked-lists/1
-
 ** TODO Delete nodes which have a greater value on right side :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: delete-nodes-which-have-a-greater-value-on-right-side
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/delete-nodes-having-greater-value-on-right/1
-
 ** TODO Segregate even and odd nodes in a linked list :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: segregate-even-and-odd-nodes-in-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/segregate-even-and-odd-nodes-in-a-linked-list/0
-
 ** TODO Program for Nth node from the end of a linked list :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: program-for-nth-node-from-the-end-of-a-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/1
-
 ** TODO Find the first non-repeating character from a stream of characters :ll:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-first-non-repeating-character-from-a-stream-of-characters
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream/0
-
-** DONE Level order traversal :@done:bt:
-CLOSED: [2022-06-21 Tue]
+** TODO Level order traversal :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: level-order-traversal
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/level-order-traversal/1
-
 BFS
-#+begin_src cpp
-class Solution {
-private:
-  vector<vector<int>> ret;
-
-public:
-  vector<vector<int>> levelOrder(TreeNode *root) {
-    buildVector(root, 0);
-    return ret;
-  }
-
-  void buildVector(TreeNode *root, int depth) {
-    if (root == NULL)
-      return;
-    if (ret.size() == depth)
-      ret.push_back(vector<int>());
-
-    ret[depth].push_back(root->val);
-    buildVector(root->left, depth + 1);
-    buildVector(root->right, depth + 1);
-  }
-};
-#+end_src
-
 ** TODO Reverse level order traversal :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-level-order-traversal
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/reverse-level-order-traversal/1
-
-** DONE Height of a tree :@done:bt:
-CLOSED: [2022-06-21 Tue]
+** TODO Height of a tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: height-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/height-of-binary-tree/1
-
-#+begin_src cpp
-class Solution {
-public:
-  int maxDepth(TreeNode *root) {
-    if (root == nullptr)
-      return 0;
-
-    return 1 + max(maxDepth(root->left), maxDepth(root->right));
-  }
-};
-#+end_src
-
-** DONE Diameter of a tree :@done:bt:
-CLOSED: [2022-06-21 Tue]
+** TODO Diameter of a tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: diameter-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/diameter-of-binary-tree/
 Leetcode expects diamater of tree to be number of edges, ∴ return =res - 1=
-
-#+begin_src cpp
-class Solution {
-    int diameter = 0;
-public:
-    int diameterOfBinaryTree(TreeNode* root) {
-        diam(root);
-        return diameter - 1;
-    }
-
-    int diam(TreeNode* root) {
-        if(root == nullptr) return 0;
-
-        int ld = diam(root->left);
-        int rd = diam(root->right);
-
-        int childD = max(ld, rd) + 1;
-        int currD = ld + rd + 1;
-        diameter = max({diameter, childD, currD});
-        return childD;
-    }
-};
-#+end_src
-
-** DONE Mirror of a tree :@done:bt:
-CLOSED: [2022-06-24 Fri]
+** TODO Mirror of a tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: mirror-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/invert-binary-tree/
-
-#+begin_src cpp
-class Solution {
-  void swapNode(TreeNode *root) {
-    if (root == nullptr) {
-      return;
-    }
-
-    swapNode(root->left);
-    swapNode(root->right);
-
-    TreeNode *temp = root->left;
-    root->left = root->right;
-    root->right = temp;
-  }
-
-public:
-  TreeNode *invertTree(TreeNode *root) {
-    swapNode(root);
-    return root;
-  }
-};
-#+end_src
-
-** HOLD Inorder traversal of a tree :bt:
+** TODO Inorder traversal of a tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: inorder-traversal-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.techiedelight.com/inorder-tree-traversal-iterative-recursive/
-
 Left, Root, Right
-
 Recursive
-#+begin_src cpp
-void inorder(Node *root) {
-  if (root == nullptr) {
-    return;
-  }
-
-  inorder(root->left);
-
-  cout << root->data << " ";
-
-  inorder(root->right);
-}
-#+end_src
-
 Iterative: use stack
-#+begin_src cpp
-void inorderIterative(Node *root) {
-  stack<Node *> stack;
-
-  Node *curr = root;
-
-  while (!stack.empty() || curr != nullptr) {
-    if (curr != nullptr) {
-      stack.push(curr);
-      curr = curr->left;
-    } else {
-      curr = stack.top();
-      stack.pop();
-      cout << curr->data << " ";
-
-      curr = curr->right;
-    }
-  }
-}
-#+end_src
-
-** HOLD Preorder traversal of a tree :bt:
+** TODO Preorder traversal of a tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: preorder-traversal-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.techiedelight.com/preorder-tree-traversal-iterative-recursive/
-
 Root, Left, Right
-
 Recursive
-#+begin_src cpp
-void preorder(Node *root) {
-  if (root == nullptr) {
-    return;
-  }
-
-  cout << root->data << " ";
-
-  preorder(root->left);
-
-  preorder(root->right);
-}
-#+end_src
-
 Iterative: use stack
-#+begin_src cpp
-void preorderIterative(Node *root) {
-  if (root == nullptr)
-    return;
-
-  stack<Node *> stack;
-  stack.push(root);
-
-  while (!stack.empty()) {
-    Node *curr = stack.top();
-    stack.pop();
-
-    cout << curr->data << " ";
-
-    if (curr->right) {
-      stack.push(curr->right);
-    }
-
-    if (curr->left) {
-      stack.push(curr->left);
-    }
-  }
-}
-#+end_src
-
-** HOLD Postorder traversal of a tree :bt:
+** TODO Postorder traversal of a tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: postorder-traversal-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.techiedelight.com/postorder-tree-traversal-iterative-recursive/
-
 Left, Right, Root
-
 Recursive
-#+begin_src cpp
-void postorder(Node *root) {
-  if (root == nullptr) {
-    return;
-  }
-
-  postorder(root->left);
-
-  postorder(root->right);
-
-  cout << root->data << " ";
-}
-#+end_src
-
 Iterative: use stack
-#+begin_src cpp
-void postorderIterative(Node *root) {
-  stack<Node *> s;
-  s.push(root);
-
-  stack<int> out;
-
-  while (!s.empty()) {
-    Node *curr = s.top();
-    s.pop();
-
-    out.push(curr->data);
-
-    if (curr->left) {
-      s.push(curr->left);
-    }
-
-    if (curr->right) {
-      s.push(curr->right);
-    }
-  }
-
-  while (!out.empty()) {
-    cout << out.top() << " ";
-    out.pop();
-  }
-}
-#+end_src
-
-** DONE Right view of a tree :@done:bt:
-CLOSED: [2022-06-24 Fri]
+** TODO Right view of a tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: right-view-of-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/binary-tree-right-side-view/
-
-#+begin_src cpp
-class Solution {
-  vector<int> v;
-  void rightViewUtil(TreeNode *root, int lvl) {
-    if (root == nullptr)
-      return;
-    if (v.size() <= lvl)
-      v.push_back(root->val);
-
-    rightViewUtil(root->right, lvl + 1);
-    rightViewUtil(root->left, lvl + 1);
-  }
-
-public:
-  vector<int> rightSideView(TreeNode *root) {
-    rightViewUtil(root, 0);
-    return v;
-  }
-};
-#+end_src
-
-** DONE Left view of a tree :@done:bt:
-CLOSED: [2022-06-24 Fri]
+** TODO Left view of a tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: left-view-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1
-
-#+begin_src cpp
-void leftViewUtil(Node *root, vector<int> &v, int lvl) {
-  if (root == nullptr)
-    return;
-
-  if (v.size() <= lvl) {
-    v.push_back(root->data);
-  }
-
-  leftViewUtil(root->left, v, lvl + 1);
-  leftViewUtil(root->right, v, lvl + 1);
-}
-
-vector<int> leftView(Node *root) {
-  vector<int> v;
-  leftViewUtil(root, v, 0);
-  return v;
-}
-#+end_src
-
 ** TODO Top view of a tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: top-view-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/top-view-of-binary-tree/1
-
 ** TODO Bottom view of a tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: bottom-view-of-a-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1
-
 ** TODO Zig-zag traversal of a binary tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: zig-zag-traversal-of-a-binary-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/zigzag-tree-traversal/1
-
 ** TODO Check if a tree is balanced :bt:
-CLOSED: [2021-07-20 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-a-tree-is-balanced
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/check-for-balanced-tree/1
-
-#+begin_src cpp
-bool balancedUtil(Node *root, int &height) {
-  int lh = 0, rh = 0;
-
-  if (root == nullptr) {
-    height = 0;
-    return 1;
-  }
-
-  int l = balancedUtil(root->left, lh);
-  int r = balancedUtil(root->right, rh);
-
-  height = max(lh, rh) + 1;
-
-  if (abs(lh - rh) > 1)
-    return 0;
-
-  else
-    return l && r;
-}
-
-bool isBalanced(Node *root) {
-  int height = 0;
-  return balancedUtil(root, height);
-}
-#+end_src
-
 ** TODO Diagonal traversal of a binary tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: diagonal-traversal-of-a-binary-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/diagonal-traversal-of-binary-tree/
-
 ** TODO Boundary traversal of a binary tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: boundary-traversal-of-a-binary-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1
-
 ** TODO Construct binary tree from string with bracket representation :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: construct-binary-tree-from-string-with-bracket-representation
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/construct-binary-tree-string-bracket-representation/
-
 ** TODO Convert binary tree into doubly linked list :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: convert-binary-tree-into-doubly-linked-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/binary-tree-to-dll/1
-
-** DONE Convert binary tree into sum tree :@done:bt:
-CLOSED: [2022-06-24 Fri]
+** TODO Convert binary tree into sum tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: convert-binary-tree-into-sum-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/transform-to-sum-tree/1
-
-#+begin_src cpp
-class Solution {
-  int sumUtil(Node *node) {
-    if (node == nullptr)
-      return 0;
-
-    int tmp = node->data;
-
-    int leftSum = sumUtil(node->left);
-    int rightSum = sumUtil(node->right);
-
-    node->data = leftSum + rightSum;
-    return node->data + tmp;
-  }
-
-public:
-  void toSumTree(Node *node) {
-    sumUtil(node);
-  }
-};
-#+end_src
-
 ** TODO Construct binary tree from inorder and preorder traversal :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: construct-binary-tree-from-inorder-and-preorder-traversal
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/construct-tree-1/1
-
 ** TODO Find minimum swaps required to convert a binary tree into BST :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-minimum-swaps-required-to-convert-a-binary-tree-into-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/minimum-swap-required-convert-binary-tree-binary-search-tree/
-
-** DONE Check if binary tree is sum tree :@done:bt:
-CLOSED: [2022-06-24 Fri]
+** TODO Check if binary tree is sum tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-binary-tree-is-sum-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/sum-tree/1
-
-#+begin_src cpp
-class Solution
-{
-    int sumUtil(Node *root) {
-        if (root == nullptr) return 0;
-
-        return sumUtil(root->left) + sumUtil(root->right) + root->data;
-    }
-
-    public:
-    bool isSumTree(Node* root)
-    {
-        if (root == nullptr ||
-            (root->left == nullptr && root->right == nullptr)) {
-            return true;
-        }
-
-        if (root->data == sumUtil(root->left) + sumUtil(root->right)
-            && isSumTree(root->left) && isSumTree(root->right)) {
-            return true;
-        }
-    }
-};
-#+end_src
-
 ** TODO Check if all leaf nodes are at same level :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-all-leaf-nodes-are-at-same-level
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/leaf-at-same-level/1
-
 ** TODO [#A] Check if a binary tree contains duplicate subtrees of size 2 or more :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-a-binary-tree-contains-duplicate-subtrees-of-size-2-or-more
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/duplicate-subtree-in-binary-tree/1
-
 ** TODO Check if 2 trees are mirror :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-2-trees-are-mirror
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/check-mirror-in-n-ary-tree/0
-
 ** TODO Sum of nodes on the longest path from root to leaf node :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: sum-of-nodes-on-the-longest-path-from-root-to-leaf-node
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/sum-of-the-longest-bloodline-of-a-tree/1
-
 ** TODO [#A] Check if given graph is tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-given-graph-is-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/check-given-graph-tree/
-
 ** TODO Find largest subtree sum in a tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-largest-subtree-sum-in-a-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-largest-subtree-sum-tree/
-
 ** TODO Maximum sum of nodes in binary tree such that no two are adjacent :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-sum-of-nodes-in-binary-tree-such-that-no-two-are-adjacent
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/maximum-sum-nodes-binary-tree-no-two-adjacent/
-
 ** TODO Print all K sum paths in a binary tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: print-all-k-sum-paths-in-a-binary-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/print-k-sum-paths-binary-tree/
-
 ** TODO Find LCA in a binary tree :bt:
-CLOSED: [2021-07-18 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-lca-in-a-binary-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
-
-#+begin_src cpp
-class Solution {
-public:
-  TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
-    if (root == nullptr) {
-      return root;
-    }
-
-    if (root == p || root == q) {
-      return root;
-    }
-
-    TreeNode *lt = lowestCommonAncestor(root->left, p, q);
-    TreeNode *rt = lowestCommonAncestor(root->right, p, q);
-
-    if (lt && rt) {
-      return root;
-    } else {
-      return lt ? lt : rt;
-    }
-  }
-};
-#+end_src
-
 ** TODO Find distance between 2 nodes in a binary tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-distance-between-2-nodes-in-a-binary-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/min-distance-between-two-given-nodes-of-a-binary-tree/1
-
 ** TODO Kth ancestor of node in a binary tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: kth-ancestor-of-node-in-a-binary-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/kth-ancestor-node-binary-tree-set-2/
-
 ** TODO [#A] Find all duplicate subtrees in a binary tree :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-all-duplicate-subtrees-in-a-binary-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/duplicate-subtrees/1
-
 ** TODO Tree isomorphism :bt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: tree-isomorphism
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/check-if-tree-is-isomorphic/1
-
-** DONE Find a value in a BST :@done:bst:
-CLOSED: [2022-06-28 Tue]
+** TODO Find a value in a BST :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-a-value-in-a-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/search-in-a-binary-search-tree/
-
-#+begin_src cpp
-class Solution {
-public:
-  TreeNode *searchBST(TreeNode *root, int val) {
-    if (root == nullptr)
-      return nullptr;
-
-    if (root->val == val)
-      return root;
-    else if (val < root->val)
-      return searchBST(root->left, val);
-    else
-      return searchBST(root->right, val);
-  }
-};
-#+end_src
-
-** DONE Find min and max value in a BST :@done:bst:
-CLOSED: [2022-06-28 Tue]
+** TODO Find min and max value in a BST :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-min-and-max-value-in-a-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/minimum-element-in-bst/1
-
-#+begin_src cpp
-int minValue(Node* root) {
-    if (root == nullptr) return -1;
-
-    if  (root->left == nullptr) return root->data;
-
-    return minValue(root->left);
-}
-#+end_src
-
-** DONE Find inorder successor and inorder predecessor in a BST :@done:bst:
-CLOSED: [2022-06-28 Tue]
+** TODO Find inorder successor and inorder predecessor in a BST :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-inorder-successor-and-inorder-predecessor-in-a-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/predecessor-and-successor/1
-
-#+begin_src cpp
-void findPreSuc(Node* root, Node*& pre, Node*& suc, int key) {
-    if (root == nullptr) return;
-
-    if (root->key > key) {
-        suc = root;
-        findPreSuc(root->left, pre, suc, key);
-    } else if (root->key < key) {
-        pre = root;
-        findPreSuc(root->right, pre, suc, key);
-    } else {
-        if (root->left != nullptr) {
-            Node *tmp = root->left;
-            while (tmp->right != nullptr) tmp = tmp->right;
-            pre = tmp;
-        }
-        if (root->right != nullptr) {
-            Node *tmp = root->right;
-            while (tmp->left != nullptr) tmp = tmp->left;
-            suc = tmp;
-        }
-    }
-}
-#+end_src
-
-** DONE Deletion of a node in a BST :@done:bst:
-CLOSED: [2022-06-28 Tue]
+** TODO Deletion of a node in a BST :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: deletion-of-a-node-in-a-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/delete-node-in-a-bst/
-
-#+begin_src cpp
-class Solution {
-    TreeNode *findSuccessor(TreeNode *root){
-        if (root->left == nullptr) return root;
-
-        return findSuccessor(root->left);
-    }
-    public:
-    TreeNode *deleteNode(TreeNode *root, int key) {
-        if(root == nullptr) return root;
-
-        if(root->val > key) {
-            root->left = deleteNode(root->left, key);
-        } else if(root->val < key){
-            root->right = deleteNode(root->right, key);
-        } else {
-            if (root->left == nullptr && root->right == nullptr) {
-                return nullptr;
-            }
-            if (root->left == nullptr) return root->right;
-            else if (root->right == nullptr) return root->left;
-
-            TreeNode* successor = findSuccessor(root->right);
-            root->val = successor->val;
-            root->right = deleteNode(root->right, successor->val);
-        }
-        return root;
-    }
-};
-#+end_src
-
-** DONE Check if a tree is a BST :@done:bst:
-CLOSED: [2022-06-28 Tue]
+** TODO Check if a tree is a BST :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-a-tree-is-a-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/validate-binary-search-tree/
-
-#+begin_src cpp
-class Solution {
-  bool isValidBSTUtil(TreeNode *root, long l, long r) {
-    if (root == nullptr) {
-      return true;
-    }
-
-    if (root->val <= l || root->val >= r) {
-      return false;
-    }
-
-    return isValidBSTUtil(root->left, l, root->val) &&
-           isValidBSTUtil(root->right, root->val, r);
-  }
-
-public:
-  bool isValidBST(TreeNode *root) {
-    return isValidBSTUtil(root, LONG_MIN, LONG_MAX);
-  }
-};
-#+end_src
-
 ** TODO Populate inorder successor of all nodes :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: populate-inorder-successor-of-all-nodes
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/populate-inorder-successor-for-all-nodes/1
-
 ** TODO Find LCA in a BST :bst:
-CLOSED: [2021-07-18 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-lca-of-2-nodes-in-a-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1
-
-#+begin_src cpp
-class Solution {
-public:
-  TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
-    if (root == nullptr)
-      return root;
-
-    if (root == p || root == q)
-      return root;
-
-    int rootVal = root->val, pVal = p->val, qVal = q->val;
-
-    if (rootVal < pVal && rootVal < qVal) {
-      return lowestCommonAncestor(root->right, p, q);
-    } else if (rootVal > pVal && rootVal > qVal) {
-      return lowestCommonAncestor(root->left, p, q);
-    } else {
-      return root;
-    }
-  }
-};
-#+end_src
-
 ** TODO Construct BST from preorder traversal :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: construct-bst-from-preorder-traversal
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/
-
 ** TODO Convert binary tree into BST :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: convert-binary-tree-into-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/binary-tree-to-bst/1
-
 ** TODO Convert a normal BST into a balanced BST :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: convert-a-normal-bst-into-a-balanced-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/convert-normal-bst-balanced-bst/
-
 ** TODO [#A] Merge two BST :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: merge-two-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/merge-two-balanced-binary-search-trees/
-
 ** TODO Find Kth largest element in a BST :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-kth-largest-element-in-a-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/1
-
 ** TODO Find Kth smallest element in a BST :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-kth-smallest-element-in-a-bst
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/find-k-th-smallest-element-in-bst/1
-
 ** TODO Count pairs from 2 BST whose sum is equal to given value X :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-pairs-from-2-bst-whose-sum-is-equal-to-given-value-x
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/brothers-from-different-root/1
-
 ** TODO Find the median of BST in O(n) time and O(1) space :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-median-of-bst-in-o--n--time-and-o--1--space
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-median-bst-time-O(1)-space/
-
 ** TODO Count BST nodes that lie in a given range :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-bst-nodes-that-lie-in-a-given-range
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/count-bst-nodes-that-lie-in-a-given-range/1
-
 ** TODO Replace every element with the least greater element on its right :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: replace-every-element-with-the-least-greater-element-on-its-right
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/replace-every-element-with-the-least-greater-element-on-its-right/
-
 ** TODO Given N appointments, find the conflicting appointments :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: given-n-appointments-find-the-conflicting-appointments
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/given-n-appointments-find-conflicting-appointments/
-
 ** TODO Check preorder is valid :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-preorder-is-valid
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/preorder-to-postorder/0
-
 ** TODO Check whether BST contains dead end :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-whether-bst-contains-dead-end
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/check-whether-bst-contains-dead-end/1
-
 ** TODO [#A] Largest BST in a binary tree :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: largest-bst-in-a-binary-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/largest-bst/1
-
 ** TODO Flatten BST to sorted list :bst:
 :PROPERTIES:
 :EXPORT_FILE_NAME: flatten-bst-to-sorted-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/flatten-bst-to-sorted-list-increasing-order/
-
 ** TODO Activity selection :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: activity-selection
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/n-meetings-in-one-room/0
-
-** DONE Job sequencing :greedy:
-CLOSED: [2022-07-09 Sat]
+** TODO Job sequencing :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: job-sequencing
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/job-sequencing-problem/0
-
-#+begin_src cpp
-class Solution
-{
-    vector<pair<int, int> > schedule;
-
-    public:
-    //Function to find the maximum number of meetings that can
-    //be performed in a meeting room.
-    int maxMeetings(int start[], int end[], int n)
-    {
-        for (int i = 0; i < n; i++) {
-            schedule.push_back({end[i], i});
-        }
-
-        sort(schedule.begin(), schedule.end());
-
-        int time_limit = schedule.begin()->first;
-        int meetings = 1;
-
-        for (int i = 0; i < n; i++){
-            if (start[schedule[i].second] > time_limit) {
-                meetings++;
-                time_limit = schedule[i].first;
-            }
-        }
-
-        return meetings;
-    }
-};
-#+end_src
-
-
 ** TODO Huffman coding :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: huffman-coding
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/huffman-encoding/0
-
 ** TODO Water connection :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: water-connection
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/water-connection-problem/0
-
 ** TODO Fractional knapsack :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: fractional-knapsack
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/fractional-knapsack/0
-
-#+begin_src cpp
-class Solution {
-public:
-  double fractionalKnapsack(int W, Item arr[], int n) {
-    sort(arr, arr + n, [](const Item &a, const Item &b) {
-      return ((double)a.value / a.weight) > (double)b.value / b.weight;
-    });
-
-    int currWeight = 0;
-    double cost = 0;
-
-    for (int i = 0; i < n; i++) {
-      if (arr[i].weight + currWeight <= W) {
-        currWeight += arr[i].weight;
-        cost += arr[i].value;
-      } else {
-        cost += (arr[i].value / (double)arr[i].weight) * (W - currWeight);
-        break;
-      }
-    }
-    return cost;
-  }
-};
-#+end_src
-
 ** TODO Find minimum number of coins :greedy:
-CLOSED: [2021-07-17 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-minimum-number-of-coins
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/coin-piles/0
-
-#+begin_src cpp
-class Solution {
-public:
-  int coinChange(vector<int> &coins, int amount) {
-    int n = coins.size();
-    int dp[n + 1][amount + 1];
-
-    for (int i = 0; i <= n; i++) {
-      for (int j = 0; j <= amount; j++) {
-        if (j == 0) {
-          dp[i][j] = 0;
-        }
-        if (i == 0) {
-          dp[i][j] = INT_MAX - 1;
-        }
-      }
-    }
-
-    dp[0][0] = 0;
-
-    for (int i = 1; i <= n; i++)
-      for (int j = 1; j <= amount; j++) {
-        if (coins[i - 1] <= j) {
-          dp[i][j] = min(dp[i - 1][j], 1 + dp[i][j - coins[i - 1]]);
-        } else {
-          dp[i][j] = dp[i - 1][j];
-        }
-      }
-
-    return dp[n][amount] == INT_MAX - 1 ? -1 : dp[n][amount];
-  }
-};
-#+end_src
-
 ** TODO Maximum trains for which stoppage can be provided :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-trains-for-which-stoppage-can-be-provided
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/maximum-trains-stoppage-can-provided/
-
 ** TODO Minimum platforms :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-platforms
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/minimum-platforms/0
-
 ** TODO Buy maximum stocks if I stocks can be bought on Ith day :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: buy-maximum-stocks-if-i-stocks-can-be-bought-on-ith-day
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/buy-maximum-stocks-stocks-can-bought-th-day/
-
 ** TODO Find the minimum and maximum amount to buy all N candies :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-minimum-and-maximum-amount-to-buy-all-n-candies
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/shop-in-candy-store/0
-
 ** TODO Minimum cost to cut a board into squares :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-cost-to-cut-a-board-into-squares
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/minimum-cost-cut-board-squares/
-
 ** TODO Check if it is possible to survive on island :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-it-is-possible-to-survive-on-island
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/survival/
-
 ** TODO Find maximum meetings in one room :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-maximum-meetings-in-one-room
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-maximum-meetings-in-one-room/
-
 ** TODO Maximum product subset of an array :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-product-subset-of-an-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/maximum-product-subset-array/
-
 ** TODO Maximize array sum after K negations :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximize-array-sum-after-k-negations
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/maximize-sum-after-k-negations/0
-
 ** TODO Maximize the sum of arr[i]*i :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximize-the-sum-of-arr-i-i
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/maximize-arrii-of-an-array/0
-
 ** TODO Maximum sum of absolute difference of an array :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-sum-of-absolute-difference-of-an-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/maximum-sum-absolute-difference-array/
-
 ** TODO Maximize sum of consecutive differences in a circular array :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximize-sum-of-consecutive-differences-in-a-circular-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/swap-and-maximize/0
-
 ** TODO Minimum sum of absolute difference of pairs of two arrays :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-sum-of-absolute-difference-of-pairs-of-two-arrays
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/minimum-sum-absolute-difference-pairs-two-arrays/
-
 ** TODO Shortest Job First (SJF) CPU scheduling :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: shortest-job-first--sjf--cpu-scheduling
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/program-for-shortest-job-first-or-sjf-cpu-scheduling-set-1-non-preemptive/
-
 ** TODO Least Recently Used (LRU) page replacement algorithm :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: least-recently-used--lru--page-replacement-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/page-faults-in-lru/0
-
 ** TODO Smallest subset with sum greater than all other elements :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: smallest-subset-with-sum-greater-than-all-other-elements
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/smallest-subset-sum-greater-elements/
-
 ** TODO Defense of a kingdom :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: defense-of-a-kingdom
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.spoj.com/problems/DEFKIN/
-
 ** TODO Die hard :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: die-hard
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.spoj.com/problems/DIEHARD/
-
 ** TODO Wine trading in Gergovia :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: wine-trading-in-gergovia
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.spoj.com/problems/GERGOVIA/
-
 ** TODO Picking up chicks :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: picking-up-chicks
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.spoj.com/problems/GCJ101BB/
-
 ** TODO Chocolate :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: chocolate
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.spoj.com/problems/CHOCOLA/
-
 ** TODO Arranging amplifiers :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: arranging-amplifiers
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.spoj.com/problems/ARRANGE/
-
 ** TODO K centers :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: k-centers
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/k-centers-problem-set-1-greedy-approximate-algorithm/
-
 ** TODO Find smallest number with given number of digits and sum of digits :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-smallest-number-with-given-number-of-digits-and-sum-of-digits
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/smallest-number5829/1
-
 ** TODO Find maximum sum possible equal sum of three stacks :greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-maximum-sum-possible-equal-sum-of-three-stacks
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-maximum-sum-possible-equal-sum-three-stacks/
-
 ** TODO Rat in a maze :graph:backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rat-in-a-maze
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1
-
 ** TODO Printing all solutions to N-queens :backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: printing-all-solutions-to-n-queens
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/printing-solutions-n-queen-problem/
-
 ** TODO Remove invalid parentheses :backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: remove-invalid-parentheses
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/remove-invalid-parentheses/
-
 ** TODO Sudoku solver :backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: sudoku-solver
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/solve-the-sudoku/0
-
 ** TODO M coloring :graph:backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: m-coloring
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/m-coloring-problem/0
-
 ** TODO Print all palindromic partitions of a string :backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: print-all-palindromic-partitions-of-a-string
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/given-a-string-print-all-possible-palindromic-partition/
-
 ** TODO Knight's tour :backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: knight-s-tour
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/the-knights-tour-problem-backtracking-1/
-
 ** TODO Tug of war :backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: tug-of-war
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/tug-of-war/
-
 ** TODO Find shortest safe route in a path with landmines :backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-shortest-safe-route-in-a-path-with-landmines
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-shortest-safe-route-in-a-path-with-landmines/
-
 ** TODO Combination sum :backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: combination-sum
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/combination-sum/0
-
 ** TODO Find maximum number possible by doing atmost K swaps :backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-maximum-number-possible-by-doing-atmost-k-swaps
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/largest-number-in-k-swaps/0
-
 ** TODO Print all permutations of a string :string:backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: print-all-permutations-of-a-string
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/permutations-of-a-given-string/0
-
 ** TODO Longest possible route in a matrix with hurdles :backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-possible-route-in-a-matrix-with-hurdles
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/longest-possible-route-in-a-matrix-with-hurdles/
-
 ** TODO Print all possible paths from top left to bottom right of a MxN matrix :backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: print-all-possible-paths-from-top-left-to-bottom-right-of-a-mxn-matrix
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/print-all-possible-paths-from-top-left-to-bottom-right-of-a-mxn-matrix/
-
 ** TODO Partition a set into K subsets with equal sum :backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: partition-a-set-into-k-subsets-with-equal-sum
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/partition-array-to-k-subsets/1
-
 ** TODO Find the Kth permutation sequence of first N natural numbers :backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-kth-permutation-sequence-of-first-n-natural-numbers
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-the-k-th-permutation-sequence-of-first-n-natural-numbers/
-
 ** TODO Implement stack from scratch :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-stack-from-scratch
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.tutorialspoint.com/javaexamples/data_stack.htm
-
 ** TODO Implement queue from scratch :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-queue-from-scratch
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/queue-set-1introduction-and-array-implementation/
-
 ** TODO Implement 2 stack in an array :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-2-stack-in-an-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/implement-two-stacks-in-an-array/1
-
-#+begin_src cpp
-void twoStacks ::push1(int x) {
-  if (abs(top1 - top2) >= 1) {
-    top1++;
-    arr[top1] = x;
-  }
-}
-
-void twoStacks ::push2(int x) {
-  if (abs(top1 - top2) >= 1) {
-    top2--;
-    arr[top2] = x;
-  }
-}
-
-int twoStacks ::pop1() {
-  int x = -1;
-  if (top1 >= 0) {
-    x = arr[top1];
-    top1--;
-  }
-  return x;
-}
-
-int twoStacks ::pop2() {
-  int x = -1;
-  if (top2 < size) {
-    x = arr[top2];
-    top2++;
-  }
-  return x;
-}
-#+end_src
-
 ** TODO Find the middle element of a stack :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-middle-element-of-a-stack
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/design-a-stack-with-find-middle-operation/
-
 ** TODO Implement N stacks in an array :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-n-stacks-in-an-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/efficiently-implement-k-stacks-single-array/
-
 ** TODO Reverse a string using stack :st_q:
-CLOSED: [2021-07-08 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-a-string-using-stack
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/reverse-a-string-using-stack/1
-
-#+begin_src cpp
-char *reverse(char *S, int len) {
-  stack<char> st;
-
-  for (int i = 0; i < len; i++) {
-    st.push(S[i]);
-  }
-
-  char *rev = new char(len + 1);
-
-  int i = 0;
-  while (!st.empty()) {
-    rev[i++] = st.top();
-    st.pop();
-  }
-  rev[i] = '\0';
-
-  return rev;
-}
-#+end_src
-
 ** TODO Design a stack that supports getmin() in O(1) time and O(1) extra space :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: design-a-stack-that-supports-getmin-in-o--1--time-and-o--1--extra-space
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/special-stack/1
-
 ** TODO Find the next greater element :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-next-greater-element
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/next-larger-element/0
-
 ** TODO Celebrity :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: celebrity
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/the-celebrity-problem/1
-
 ** TODO Arithmetic expression evaluation :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: arithmetic-expression-evaluation
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/arithmetic-expression-evalution/
-
 ** TODO Evaluation of postfix expression :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: evaluation-of-postfix-expression
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/evaluation-of-postfix-expression/0
-
 ** TODO Implement a method to insert an element at its bottom without using any other data structure :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-a-method-to-insert-an-element-at-its-bottom-without-using-any-other-data-structure
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://stackoverflow.com/questions/45130465/inserting-at-the-end-of-stack
-
 ** TODO Reverse a stack using recursion :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-a-stack-using-recursion
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/reverse-a-stack-using-recursion/
-
 ** TODO Sort a stack using recursion :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: sort-a-stack-using-recursion
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/sort-a-stack/1
-
-** DONE Merge overlapping intervals :st_q:@done:
-CLOSED: [2022-07-05 Tue]
+** TODO Merge overlapping intervals :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: merge-overlapping-intervals
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/overlapping-intervals/0
-
 ** TODO Largest rectangular area in histogram :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: largest-rectangular-area-in-histogram
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/maximum-rectangular-area-in-a-histogram/0
-
 ** TODO Length of the longest valid substring :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: length-of-the-longest-valid-substring
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/valid-substring0624/1
-
 ** TODO Expression contains redundant bracket :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: expression-contains-redundant-bracket
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/expression-contains-redundant-bracket-not/
-
 ** TODO Implement stack using queue :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-stack-using-queue
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/stack-using-two-queues/1
-
 ** TODO Implement stack using deque :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-stack-using-deque
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/implement-stack-queue-using-deque/
-
 ** TODO Stack permutations :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: stack-permutations
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/stack-permutations-check-if-an-array-is-stack-permutation-of-other/
-
 ** TODO Implement queue using stack :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-queue-using-stack
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/queue-using-two-stacks/1
-
 ** TODO Implement N queue in an array :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-n-queue-in-an-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/efficiently-implement-k-queues-single-array/
-
 ** TODO Implement a circular queue :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-a-circular-queue
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/circular-queue-set-1-introduction-array-implementation/
-
 ** TODO LRU cache implementation :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: lru-cache-implementation
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/lru-cache/1
-
 ** TODO Reverse a queue using recursion :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-a-queue-using-recursion
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/queue-reversal/1
-
 ** TODO Reverse the first K elements of a queue :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: reverse-the-first-k-elements-of-a-queue
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1
-
 ** TODO Interleave the first half of the queue with second half :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: interleave-the-first-half-of-the-queue-with-second-half
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/interleave-first-half-queue-second-half/
-
 ** TODO Find the first circular tour that visits all petrol pumps :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-first-circular-tour-that-visits-all-petrol-pumps
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/circular-tour/1
-
 ** TODO Minimum time required to rot all oranges :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-time-required-to-rot-all-oranges
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/rotten-oranges/0
-
 ** TODO Distance of nearest cell having 1 in a binary matrix :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: distance-of-nearest-cell-having-1-in-a-binary-matrix
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1/0
-
 ** TODO First negative integer in every window of size K :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: first-negative-integer-in-every-window-of-size-k
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k/0
-
 ** TODO Check if all levels of two trees are anagrams :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-all-levels-of-two-trees-are-anagrams
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/check-if-all-levels-of-two-trees-are-anagrams-or-not/
-
 ** TODO Sum of minimum and maximum elements of all subarrays of size K :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: sum-of-minimum-and-maximum-elements-of-all-subarrays-of-size-k
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/sum-minimum-maximum-elements-subarrays-size-k/
-
 ** TODO Minimum sum of squares of character counts in a given string after removing K characters :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-sum-of-squares-of-character-counts-in-a-given-string-after-removing-k-characters
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/game-with-string/0
-
 ** TODO Next smaller element :st_q:
 :PROPERTIES:
 :EXPORT_FILE_NAME: next-smaller-element
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/next-smaller-element/
-
 ** TODO Implement a maxheap/minheap :heap:
-CLOSED: [2021-06-19 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-a-maxheap-minheap
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/building-heap-from-array/
-
-#+begin_src cpp
-#include <bits/stdc++.h>
-using namespace std;
-
-class Heap {
-  vector<int> v;
-  bool isMinHeap;
-
-  bool compare(int a, int b) { return isMinHeap ? a < b : a > b; }
-
-  void heapify(int i) {
-    int left = 2 * i, right = 2 * i + 1;
-
-    int minIdx = i;
-    if (left < (int)v.size() && compare(v[left], v[minIdx])) {
-      minIdx = left;
-    }
-    if (right < (int)v.size() && compare(v[right], v[minIdx])) {
-      minIdx = right;
-    }
-
-    if (minIdx != i) {
-      swap(v[i], v[minIdx]);
-      heapify(minIdx);
-    }
-  }
-
-public:
-  Heap(bool heapType = true) {
-    isMinHeap = heapType;
-    v.push_back(-1);
-  }
-
-  void push(int data) {
-    v.push_back(data);
-    int idx = v.size() - 1;
-    int parent = idx / 2;
-
-    while (idx > 1 && compare(v[idx], v[parent])) {
-      swap(v[parent], v[idx]);
-      idx = parent;
-      parent = idx / 2;
-    }
-  }
-
-  void pop() {
-    swap(v[1], v.back());
-    v.pop_back();
-
-    heapify(1);
-  }
-
-  bool empty() { return v.size() == 1; }
-
-  int top() {
-    if (!empty()) {
-      return v[1];
-    } else {
-      return -1;
-    }
-  }
-};
-
-int main() {
-  Heap hp;
-  int n;
-  cin >> n;
-
-  while (n--) {
-    int x;
-    cin >> x;
-    hp.push(x);
-  }
-
-  while (!hp.empty()) {
-    cout << hp.top() << "\n";
-    hp.pop();
-  }
-}
-#+end_src
-
 ** TODO Heap sort :heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: heap-sort
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/heap-sort/
-
 ** TODO Maximum of all subarrays of size K :heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-of-all-subarrays-of-size-k
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/
-
-** DONE Kth largest element in an array :@done:heap:
-CLOSED: [2022-07-02 Sat]
+** TODO Kth largest element in an array :heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: kth-largest-element-in-an-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/k-largest-elements4206/1
-
 Make heap of size =k=, then insert remaining only if greater
 Minheap for k largest, maxheap for k smallest
-#+begin_src cpp
-class Solution {
-public:
-  vector<int> kLargest(int arr[], int n, int k) {
-    priority_queue<int, vector<int>, greater<int>> pq(arr, arr + k);
-
-    vector<int> res;
-    for (int i = k; i < n; i++) {
-      if (arr[i] > pq.top()) {
-        pq.pop();
-        pq.push(arr[i]);
-      }
-    }
-
-    while (!pq.empty()) {
-      res.push_back(pq.top());
-      pq.pop();
-    }
-
-    reverse(res.begin(), res.end());
-
-    return res;
-  }
-};
-#+end_src
-
 ** TODO [#A] Merge K sorted arrays :heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: merge-k-sorted-arrays
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/merge-k-sorted-arrays/1
-
-#+begin_src cpp
-class Solution {
-public:
-  vector<int> mergeKArrays(vector<vector<int>> arr, int k) {
-    vector<int> res;
-    vector<int> ptrs(k, 0);
-
-    priority_queue<pair<int, int>, vector<pair<int, int>>,
-                   greater<pair<int, int>>>
-        hp;
-
-    for (int i = 0; i < k; i++) {
-      hp.push({arr[i][0], i});
-    }
-
-    for (int i = 0; i < k * k; i++) {
-      pair<int, int> tmp = hp.top();
-      hp.pop();
-      ptrs[tmp.second]++;
-
-      if (ptrs[tmp.second] < k) {
-        hp.push({arr[tmp.second][ptrs[tmp.second]], tmp.second});
-      } else {
-        hp.push({INT_MAX, tmp.second});
-      }
-
-      res.push_back(tmp.first);
-    }
-    return res;
-  }
-};
-#+end_src
-
 ** TODO Merge 2 binary max heaps :heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: merge-2-binary-max-heaps
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/merge-two-binary-max-heap/0
-
 ** TODO Kth largest sum continuous subarrays :heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: kth-largest-sum-continuous-subarrays
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/k-th-largest-sum-contiguous-subarray/
-
 ** TODO Reorganize strings :heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: reorganize-strings
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/reorganize-string/
-
 ** TODO [#A] Merge K sorted linked lists :ll:heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: merge-k-sorted-linked-lists
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/merge-k-sorted-linked-lists/1
-
 ** TODO Smallest range in K lists :heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: smallest-range-in-k-lists
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/find-smallest-range-containing-elements-from-k-lists/1
-
 ** TODO Median in a stream of integers :heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: median-in-a-stream-of-integers
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/find-median-in-a-stream/0
-
 ** TODO Check if a binary tree is heap :heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-a-binary-tree-is-heap
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/is-binary-tree-heap/1
-
 ** TODO Connect N ropes with minimum cost :heap:greedy:
-CLOSED: [2021-07-18 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: connect-n-ropes-with-minimum-cost
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/minimum-cost-of-ropes/0
-
-#+begin_src cpp
-class Solution {
-public:
-  long long minCost(long long arr[], long long n) {
-    priority_queue<long long, vector<long long>, greater<long long>> pq(
-        arr, arr + n);
-
-    long long cost = 0;
-
-    while (pq.size() > 1) {
-      long long t1 = pq.top();
-      pq.pop();
-      long long t2 = pq.top();
-      pq.pop();
-
-      cost += t1 + t2;
-      pq.push(t1 + t2);
-    }
-
-    return cost;
-  }
-};
-#+end_src
-
 ** TODO Convert BST to min heap :heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: convert-bst-to-min-heap
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/convert-bst-min-heap/
-
 ** TODO Convert min heap to max heap :heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: convert-min-heap-to-max-heap
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/convert-min-heap-to-max-heap/
-
 ** TODO Minimum sum of two numbers formed from digits of an array :heap:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-sum-of-two-numbers-formed-from-digits-of-an-array
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/minimum-sum4058/1
-
-** STRT Create and print a graph :graph:
+** TODO Create and print a graph :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: create-and-print-a-graph
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://1drv.ms/t/s!AqTOHFO77CqEiRua06v1PATyiFg5
-
-** DONE Implement BFS :@done:graph:
-CLOSED: [2022-06-23 Thu]
+** TODO Implement BFS :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-bfs
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1
-
 GfG has incorrect testcases. Always check for multiple components, which
 requires the commented outer =visited= loop.
-
-#+begin_src cpp
-class Solution {
-  vector<int> bfsTraversal;
-
-  void bfs(int i, vector<bool> &visited, vector<int> adj[]) {
-    queue<int> q;
-    visited[i] = true;
-    q.push(i);
-
-    while (!q.empty()) {
-      int node = q.front();
-      q.pop();
-      bfsTraversal.push_back(node);
-
-      for (int it : adj[node]) {
-        if (!visited[it]) {
-          visited[it] = true;
-          q.push(it);
-        }
-      }
-    }
-  }
-
-public:
-  vector<int> bfsOfGraph(int V, vector<int> adj[]) {
-    vector<bool> visited(V, false);
-
-    // for (int i = 0; i < V; i++) {
-      // if (!visited[i]) {
-        int i = 0;
-        bfs(i, visited, adj);
-      // }
-    // }
-
-    return bfsTraversal;
-  }
-};
-#+end_src
-
-** DONE Implement DFS :@done:graph:
-CLOSED: [2022-06-23 Thu]
+** TODO Implement DFS :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-dfs
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1
-
 *** Recursive
-#+begin_src cpp
-class Solution {
-  vector<int> dfsTraversal;
-
-  void dfsHelper(int i, vector<bool> &visited, vector<int> adj[]) {
-    visited[i] = true;
-    dfsTraversal.push_back(i);
-
-    for (vector<int>::iterator it = adj[i].begin(); it != adj[i].end(); it++) {
-      if (!visited[*it]) {
-        dfs(*it, visited, adj);
-      }
-    }
-  }
-
-public:
-  vector<int> dfsOfGraph(int V, vector<int> adj[]) {
-    vector<bool> visited(V, false);
-    for (int i = 0; i < V; i++) {
-      if (!visited[i]) {
-        dfsHelper(i, visited, adj);
-      }
-    }
-
-    return dfsTraversal;
-  }
-};
-#+end_src
-
 *** Iterative
-#+begin_src cpp
-class Solution {
-  vector<int> dfsTraversal;
-
-  void dfsHelper(int i, vector<bool> &visited, vector<int> adj[]) {
-    stack<int> st;
-    visited[i] = true;
-    st.push(i);
-
-    while (!st.empty()) {
-      int node = st.top();
-      st.pop();
-      dfsTraversal.push_back(node);
-
-      for (int it : adj[node]) {
-        if (!visited[it]) {
-          visited[it] = true;
-          st.push(it);
-        }
-      }
-    }
-  }
-
-public:
-  vector<int> dfsOfGraph(int V, vector<int> adj[]) {
-    vector<bool> visited(V, false);
-
-    for (int i = 0; i < V; i++) {
-      if (!visited[i]) {
-        dfsHelper(i, visited, adj);
-      }
-    }
-
-    return dfsTraversal;
-  }
-};
-#+end_src
-
 ** TODO Detect cycle in directed graph using BFS/DFS :graph:
-CLOSED: [2021-06-22 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: detect-cycle-in-directed-graph-using-bfs-dfs
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
-
 *** Using DFS
-#+begin_src cpp
-class Solution {
-  bool dfsHelper(int i, vector<bool> &visited, vector<bool> &visitedDirected,
-                 vector<int> adj[]) {
-    visited[i] = true;
-    visitedDirected[i] = true;
-
-    for (int it : adj[i]) {
-      if (!visited[it]) {
-        if (dfsHelper(it, visited, visitedDirected, adj)) {
-          return true;
-        }
-      } else if (visitedDirected[it]) {
-        return true;
-      }
-    }
-    visitedDirected[i] = false;
-    return false;
-  }
-
-public:
-  bool isCyclic(int V, vector<int> adj[]) {
-    vector<bool> visited(V, false);
-    vector<bool> visitedDirected(V, false);
-
-    for (int i = 0; i < V; i++) {
-      if (!visited[i]) {
-        if (dfsHelper(i, visited, visitedDirected, adj)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-};
-#+end_src
-
 *** Using BFS
-#+begin_src cpp
-class Solution {
-public:
-  bool isCyclic(int V, vector<int> adj[]) {
-    vector<int> inDegree(V, 0);
-    queue<int> q;
-
-    for (int i = 0; i < V; i++) {
-      for (auto it : adj[i]) {
-        inDegree[it]++;
-      }
-    }
-
-    for (int i = 0; i < V; i++) {
-      if (inDegree[i] == 0) {
-        q.push(i);
-      }
-    }
-
-    int ctr = 0;
-
-    while (!q.empty()) {
-      int node = q.front();
-      q.pop();
-      ctr++;
-
-      for (auto it : adj[node]) {
-        inDegree[it]--;
-        if (inDegree[it] == 0) {
-          q.push(it);
-        }
-      }
-    }
-
-    if (ctr == V)
-      return false;
-    return true;
-  }
-};
-#+end_src
-
-
 ** TODO Detect cycle in undirected graph using BFS/DFS :graph:
-CLOSED: [2021-07-02 Fri]
 :PROPERTIES:
 :EXPORT_FILE_NAME: detect-cycle-in-undirected-graph-using-bfs-dfs
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
 *** DFS
-#+begin_src cpp
-class Solution {
-  bool dfsHelper(int i, int p, vector<bool> &visited, vector<int> adj[]) {
-    visited[i] = true;
-
-    for (auto it : adj[i]) {
-      if (visited[it] == false) {
-        if (dfsHelper(it, i, visited, adj)) {
-          return true;
-        }
-      } else if (it != p) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-public:
-  bool isCycle(int V, vector<int> adj[]) {
-    vector<bool> visited(V, false);
-
-    for (int i = 0; i < V; i++) {
-      if (!visited[i]) {
-        if (dfsHelper(i, -1, visited, adj)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-};
-#+end_src
-
 *** BFS
-#+begin_src cpp
-class Solution {
-  bool bfsHelper(int i, vector<bool> &visited, vector<int> adj[]) {
-    visited[i] = true;
-    queue<pair<int, int>> q;
-    q.push({i, -1});
-
-    while (!q.empty()) {
-      int node = q.front().first;
-      int parent = q.front().second;
-      q.pop();
-
-      for (auto it : adj[node]) {
-        if (!visited[it]) {
-          visited[it] = true;
-          q.push({it, node});
-        } else if (it != parent) {
-          return true;
-        }
-      }
-    }
-
-    return false;
-  }
-
-public:
-  bool isCycle(int V, vector<int> adj[]) {
-    vector<bool> visited(V, false);
-
-    for (int i = 0; i < V; i++) {
-      if (!visited[i]) {
-        if (bfsHelper(i, visited, adj)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-};
-#+end_src
-
 ** TODO Minimum steps by knight :graph:
-CLOSED: [2021-07-17 Sat]
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-steps-by-knight
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/steps-by-knight/0
-
-#+begin_src cpp
-class pos {
-public:
-  int x, y, dist;
-
-  pos(int x, int y, int dist) : x(x), y(y), dist(dist) {}
-};
-
-class Solution {
-  bool isInside(int x, int y, int N) {
-    return (x >= 1 and x <= N and y >= 1 and y <= N);
-  }
-
-public:
-  int minStepToReachTarget(vector<int> &KnightPos, vector<int> &TargetPos,
-                           int N) {
-    vector<pair<int, int>> dir = {
-        {-2, -1}, {-1, -2}, {1, -2}, {2, -1}, {-2, 1}, {-1, 2}, {1, 2}, {2, 1},
-    };
-
-    bool visited[N + 1][N + 1] = {0};
-    queue<pos> q;
-
-    q.push(pos(KnightPos[0], KnightPos[1], 0));
-    visited[KnightPos[0]][KnightPos[1]] = true;
-
-    while (!q.empty()) {
-      pos currPos = q.front();
-      q.pop();
-
-      if (currPos.x == TargetPos[0] and currPos.y == TargetPos[1]) {
-        return currPos.dist;
-      }
-      for (int i = 0; i < 8; i++) {
-        int x = currPos.x + dir[i].first;
-        int y = currPos.y + dir[i].second;
-
-        if (isInside(x, y, N) and !visited[x][y]) {
-          q.push(pos(x, y, currPos.dist + 1));
-          visited[x][y] = true;
-        }
-      }
-    }
-  }
-};
-#+end_src
-
 ** TODO Flood fill algorithm :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: flood-fill-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/flood-fill/
-
 ** TODO Clone a graph :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: clone-a-graph
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/clone-graph/
-
 ** TODO Making wired connections :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: making-wired-connections
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/number-of-operations-to-make-network-connected/
-
 ** TODO Word ladder :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: word-ladder
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/word-ladder/
-
-** STRT Dijkstra algorithm :graph:
+** TODO Dijkstra algorithm :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: dijkstra-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
-
 *** Undirected, unweighted graph
-#+begin_src cpp
-vector<int> minDist(int src, int V, vector<int> adj[]) {
-  vector<int> distances(V, INT_MAX);
-  queue<int> q;
-
-  distances[src] = 0;
-  q.push(src);
-
-  while (!q.empty()) {
-    int node = q.front();
-    q.pop();
-
-    for (auto it : adj[node]) {
-      if (distances[node] + 1 > distances[it]) {
-        distances[it] = distances[node] + 1;
-        q.push(it);
-      }
-    }
-  }
-
-  return distances;
-}
-#+end_src
-
 ** TODO Implement topological sort :graph:
-CLOSED: [2021-07-13 Tue]
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-topological-sort
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/topological-sort/1
-
 Topological sort is only valid for a Directed Acyclic Graph
-
 *** Using DFS
-#+begin_src cpp
-class Solution {
-  stack<int> st;
-  void dfsHelper(int i, vector<bool> &visited, vector<int> adj[]) {
-    visited[i] = true;
-
-    for (auto it : adj[i]) {
-      if (!visited[it]) {
-        visited[it] = true;
-        dfsHelper(it, visited, adj);
-      }
-    }
-
-    st.push(i);
-  }
-
-public:
-  vector<int> topoSort(int V, vector<int> adj[]) {
-    vector<bool> visited(V, false);
-
-    for (int i = 0; i < V; i++) {
-      if (!visited[i]) {
-        dfsHelper(i, visited, adj);
-      }
-    }
-
-    vector<int> topoOrder;
-
-    while (!st.empty()) {
-      topoOrder.push_back(st.top());
-      st.pop();
-    }
-
-    return topoOrder;
-  }
-};
-#+end_src
-
 *** Using BFS
-#+begin_src cpp
-class Solution {
-public:
-  vector<int> topoSort(int V, vector<int> adj[]) {
-    vector<int> inDegree(V, 0);
-    queue<int> q;
-    vector<int> res;
-
-    for (int i = 0; i < V; i++) {
-      for (auto it : adj[i]) {
-        inDegree[it]++;
-      }
-    }
-
-    for (int i = 0; i < V; i++) {
-      if (inDegree[i] == 0) {
-        q.push(i);
-      }
-    }
-
-    while (!q.empty()) {
-      int node = q.front();
-      q.pop();
-      res.push_back(node);
-      for (auto it : adj[node]) {
-        inDegree[it]--;
-        if (inDegree[it] == 0) {
-          q.push(it);
-        }
-      }
-    }
-
-    return res;
-  }
-};
-#+end_src
-
 ** TODO Minimum time taken by each job to be completed given by a directed acyclic graph :graph:
-CLOSED: [2021-07-18 Sun]
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-time-taken-by-each-job-to-be-completed-given-by-a-directed-acyclic-graph
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/minimum-time-taken-by-each-job-to-be-completed-given-by-a-directed-acyclic-graph/
-
 Simply implement Kahn's algorithm with a =jobs= array adding 1 to each layer of
 the topo traversal
-
 ** TODO Find whether it is possible to finish all tasks from given dependencies :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-whether-it-is-possible-to-finish-all-tasks-from-given-dependencies
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-whether-it-is-possible-to-finish-all-tasks-or-not-from-given-dependencies/
-
 ** TODO Find the number of islands :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-number-of-islands
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/find-the-number-of-islands/1
-
 ** TODO Given a sorted dictionary of an alien language, find order of characters :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: given-a-sorted-dictionary-of-an-alien-language-find-order-of-characters
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/alien-dictionary/1
-
 ** TODO Implement Kruskal's algorithm :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-kruksal-s-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/
-
 ** TODO Implement Prim's algorithm :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-prim-s-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/prims-minimum-spanning-tree-mst-greedy-algo-5/
-
 ** TODO Total number of spanning tree in a graph :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: total-number-of-spanning-tree-in-a-graph
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/total-number-spanning-trees-graph/
-
 ** TODO Implement Bellman Ford algorithm :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-bellman-ford-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/negative-weight-cycle/0
-
 ** TODO Implement Floyd Warshall algorithm :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-floyd-warshall-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/implementing-floyd-warshall/0
-
 ** TODO Travelling salesman :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: travelling-salesman
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/travelling-salesman-problem-set-1/
-
 ** TODO Graph colouring :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: graph-colouring
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/graph-coloring-applications/
-
 ** TODO Snake and ladders :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: snake-and-ladders
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/snakes-and-ladders/
-
 ** TODO Find bridge in a graph :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-bridge-in-a-graph
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/bridge-in-a-graph/
-
 ** TODO Count strongly connected components (Kosaraju algorithm) :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-strongly-connected-components--kosaraju-algorithm
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
-
 ** TODO Check if graph is bipartite :graph:
-CLOSED: [2021-06-21 Mon]
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-graph-is-bipartite
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/bipartite-graph/
-
 Color the graph by BFS traversal, =colors= maintains track of visited nodes.
-
 =colors[it] = 1 - colors[node]= is the fun alternator part
-
 *** Using BFS
-#+begin_src cpp
-class Solution {
-  bool bfsHelper(int i, vector<int> &colors, vector<int> adj[]) {
-    queue<int> q;
-    colors[i] = 1;
-    q.push(i);
-
-    while (!q.empty()) {
-      int node = q.front();
-      q.pop();
-
-      for (int it : adj[node]) {
-        if (colors[it] == -1) {
-          colors[it] = 1 - colors[node];
-          q.push(it);
-        } else if (colors[it] == colors[node]) {
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-
-public:
-  bool isBipartite(int V, vector<int> adj[]) {
-    vector<int> colors(V, -1);
-
-    for (int i = 0; i < V; i++) {
-      if (colors[i] == -1) {
-        if (!bfsHelper(i, colors, adj))
-          return false;
-      }
-    }
-    return true;
-  }
-};
-#+end_src
-
 *** Using DFS
-#+begin_src cpp
-class Solution {
-  bool dfsHelper(int i, vector<int> &colors, vector<int> adj[]) {
-    if (colors[i] == -1) {
-      colors[i] = 1;
-    }
-
-    for (int it : adj[i]) {
-      if (colors[it] == -1) {
-        colors[it] = 1 - colors[i];
-
-        if (!dfsHelper(it, colors, adj)) {
-          return false;
-        }
-      } else if (colors[it] == colors[i]) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-public:
-  bool isBipartite(int V, vector<int> adj[]) {
-    vector<int> colors(V, -1);
-
-    for (int i = 0; i < V; i++) {
-      if (colors[i] == -1) {
-        if (!dfsHelper(i, colors, adj))
-          return false;
-      }
-    }
-    return true;
-  }
-};
-#+end_src
-
 ** TODO Detect negative cycle in a graph :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: detect-negative-cycle-in-a-graph
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/detect-negative-cycle-graph-bellman-ford/
-
 ** TODO Longest path in a directed acyclic graph :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-path-in-a-directed-acyclic-graph
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-longest-path-directed-acyclic-graph/
-
 ** TODO Journey to the moon :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: journey-to-the-moon
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.hackerrank.com/challenges/journey-to-the-moon/problem
-
 ** TODO Cheapest flights within K stops :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: cheapest-flights-within-k-stops
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/cheapest-flights-within-k-stops/description/
-
 ** TODO Oliver and the game :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: oliver-and-the-game
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.hackerearth.com/practice/algorithms/graphs/topological-sort/practice-problems/algorithm/oliver-and-the-game-3/
-
 ** TODO Water jug using BFS :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: water-jug-using-bfs
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/water-jug-problem-using-bfs/
-
 ** TODO Minimum edges to reverse to make path from source to destination :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-edges-to-reverse-to-make-path-from-source-to-destination
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/minimum-edges-reverse-make-path-source-destination/
-
 ** TODO Paths to travel each nodes using each edge :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: paths-to-travel-each-nodes-using-each-edge
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/paths-travel-nodes-using-edgeseven-bridges-konigsberg/
-
 ** TODO Vertex cover :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: vertex-cover
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/vertex-cover-problem-set-1-introduction-approximate-algorithm-2/
-
 ** TODO Chinese postman or route inspection :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: chinese-postman-or-route-inspection
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/chinese-postman-route-inspection-set-1-introduction/
-
 ** TODO Number of triangles in a directed and undirected graph :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: number-of-triangles-in-a-directed-and-undirected-graph
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/number-of-triangles-in-directed-and-undirected-graphs/
-
 ** TODO Minimise the cashflow in a set of friends :graph:greedy:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimise-the-cashflow-in-a-set-of-friends
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/minimize-cash-flow-among-given-set-friends-borrowed-money/
-
 ** TODO Two clique :graph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: two-clique
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/two-clique-problem-check-graph-can-divided-two-cliques/
-
 ** TODO Construct a trie from scratch :trie:
 :PROPERTIES:
 :EXPORT_FILE_NAME: construct-a-trie-from-scratch
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/trie-insert-and-search/
-
 ** TODO Find shortest unique prefix for every word in a given list :trie:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-shortest-unique-prefix-for-every-word-in-a-given-list
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/find-all-shortest-unique-prefixes-to-represent-each-word-in-a-given-list/
-
 ** TODO Implement a phone directory :trie:
 :PROPERTIES:
 :EXPORT_FILE_NAME: implement-a-phone-directory
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/phone-directory/0
-
 ** TODO Print unique rows in a given boolean matrix :trie:
 :PROPERTIES:
 :EXPORT_FILE_NAME: print-unique-rows-in-a-given-boolean-matrix
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/unique-rows-in-boolean-matrix/1
-
 ** TODO Coin change :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: coin-change
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/coin-change2448/1
-
-#+begin_src cpp
-class Solution {
-  long long dp[1005][1005];
-
-public:
-  long long int count(int S[], int m, int n) {
-    memset(dp, -1, sizeof(dp));
-
-    for (int i = 0; i <= m; i++) {
-      dp[i][0] = 1;
-    }
-
-    for (int j = 1; j <= n; j++) {
-      dp[0][j] = 0;
-    }
-
-    for (int i = 1; i <= m; i++) {
-      for (int j = 1; j <= n; j++) {
-        if (S[i - 1] <= j) {
-          dp[i][j] = dp[i - 1][j] + dp[i][j - S[i - 1]];
-        } else {
-          dp[i][j] = dp[i - 1][j];
-        }
-      }
-    }
-
-    return dp[m][n];
-  }
-};
-#+end_src
-
 ** TODO Knapsack :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: knapsack
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem/0
-
 Iterative
-#+begin_src cpp
-class Solution {
-  int dp[1005][1005];
-
-public:
-  int knapSack(int W, int wt[], int val[], int n) {
-    memset(dp, -1, sizeof(dp));
-
-    for (int i = 0; i <= n; i++) {
-      for (int w = 0; w <= W; w++) {
-        if (i == 0 || w == 0)
-          dp[i][w] = 0;
-        else if (wt[i - 1] <= w)
-          dp[i][w] = max(val[i - 1] + dp[i - 1][w - wt[i - 1]], dp[i - 1][w]);
-        else
-          dp[i][w] = dp[i - 1][w];
-      }
-    }
-    return dp[n][W];
-  }
-};
-#+end_src
-
 Recursion
-#+begin_src cpp
-
-#+end_src
-
 ** TODO Binomial coefficient :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: binomial-coefficient
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/ncr1019/1
-
 ** TODO Permutation coefficient :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: permutation-coefficient
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/permutation-coefficient/
-
 ** TODO Nth catalan number :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: nth-catalan-number
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/program-nth-catalan-number/
-
 ** TODO Matrix chain multiplication :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: matrix-chain-multiplication
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/matrix-chain-multiplication-dp-8/
-
 ** TODO Subset sum aka Partitions :dp:backtracking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: subset-sum-aka-partitions
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/subset-sum-problem2014/1
-
 ** TODO Friends pairing :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: friends-pairing
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/friends-pairing-problem5425/1
-
 ** TODO Gold mine :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: gold-mine
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/gold-mine-problem/
-
 ** TODO Assembly line scheduling :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: assembly-line-scheduling
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/assembly-line-scheduling-dp-34/
-
 ** TODO Painting the fence :dp:
-CLOSED: [2021-07-14 Wed]
 :PROPERTIES:
 :EXPORT_FILE_NAME: painting-the-fence
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/painting-the-fence3727/1
-
-#+begin_src cpp
-class Solution {
-  long long dp[100005];
-
-public:
-  long long countWays(int n, int k) {
-    memset(dp, 0, sizeof(dp));
-    long long mod = 1000000007;
-
-    dp[1] = k;
-    dp[2] = k * k;
-
-    for (int i = 3; i <= n; i++) {
-      dp[i] = ((k - 1) * (dp[i - 1] + dp[i - 2])) % mod;
-    }
-
-    return dp[n];
-  }
-};
-#+end_src
-
-
 ** TODO Maximize the cut segments :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximize-the-cut-segments
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/cutted-segments/0
-
-#+begin_src cpp
-class Solution {
-  int dp[10005];
-  int solve(int x, int a, int b, int c) {
-    if (dp[x] != -1)
-      return dp[x];
-    if (x < min({a, b, c}))
-      return dp[x] = INT_MIN;
-    int n1 = (x >= a) ? solve(x - a, a, b, c) + 1 : INT_MIN;
-    int n2 = (x >= b) ? solve(x - b, a, b, c) + 1 : INT_MIN;
-    int n3 = (x >= c) ? solve(x - c, a, b, c) + 1 : INT_MIN;
-    dp[x] = max({n1, n2, n3});
-    return dp[x];
-  }
-
-public:
-  int maximizeTheCuts(int n, int x, int y, int z) {
-    memset(dp, -1, sizeof(dp));
-
-    dp[0] = 0;
-    solve(n, x, y, z);
-    return max(0, dp[n]);
-  }
-};
-#+end_src
-
 ** TODO Longest common subsequence :string:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-common-subsequence
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/longest-common-subsequence/0
-
 Iterative
-#+begin_src cpp
-class Solution {
-  int dp[1005][1005];
-
-public:
-  int lcs(int x, int y, string s1, string s2) {
-    for (int i = 0; i <= x; i++) {
-      for (int j = 0; j <= y; j++) {
-        if (i == 0 || j == 0) {
-          dp[i][j] = 0;
-        } else if (s1[i - 1] == s2[j - 1]) {
-          dp[i][j] = dp[i - 1][j - 1] + 1;
-        } else {
-          dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
-        }
-      }
-    }
-
-    return dp[x][y];
-  }
-};
-#+end_src
-
 Recursive
-#+begin_src cpp
-class Solution {
-  int dp[1005][1005];
-
-public:
-  int solve(int x, int y, string s, string s2) {
-    if (x == 0 || y == 0) {
-      return dp[x][y] = 0;
-    } else if (dp[x][y] != -1) {
-      return dp[x][y];
-    } else {
-      if (s1[x - 1] == s2[y - 1]) {
-        return 1 + lcs(x - 1, y - 1, s1, s2);
-      } else {
-        return max(lcs(x - 1, y, s1, s2), lcs(x, y - 1, s1, s2));
-      }
-    }
-  }
-  int lcs(int x, int y, string s1, string s2) {
-    memset(dp, -1, sizeof(dp));
-
-    return dp[x][y];
-  }
-}
-#+end_src
-
 ** TODO Longest repeated subsequence :string:dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-repeated-subsequence
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/longest-repeating-subsequence/0
-
-#+begin_src cpp
-class Solution {
-  int dp[505][505];
-
-public:
-  int LongestRepeatingSubsequence(string str) {
-    int n = str.size();
-
-    for (int i = 0; i <= n; i++) {
-      for (int j = 0; j <= n; j++) {
-        if (i == 0 || j == 0) {
-          dp[i][j] = 0;
-        } else if (str[i - 1] == str[j - 1] && i != j) {
-          dp[i][j] = 1 + dp[i - 1][j - 1];
-        } else {
-          dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
-        }
-      }
-    }
-
-    return dp[n][n];
-  }
-};
-#+end_src
-
 ** TODO Longest increasing subsequence :dp:
-CLOSED: [2021-07-15 Thu]
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-increasing-subsequence
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/longest-increasing-subsequence/
-
-#+begin_src cpp
-class Solution {
-public:
-  int lengthOfLIS(vector<int> &nums) {
-    int n = nums.size();
-    vector<int> dp(n, 1);
-    for (int i = 0; i < n; ++i)
-      for (int j = 0; j < i; ++j)
-        if (nums[i] > nums[j] && dp[i] < dp[j] + 1)
-          dp[i] = dp[j] + 1;
-    return *max_element(dp.begin(), dp.end());
-  }
-};
-#+end_src
-
 ** TODO Space optimized solution of LCS :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: space-optimized-solution-of-lcs
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/space-optimized-solution-lcs/
-
 ** TODO LCS of three strings :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: lcs-of-three-strings
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/lcs-of-three-strings/0
-
 ** TODO Maximum sum increasing subsequence :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-sum-increasing-subsequence
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/maximum-sum-increasing-subsequence4749/1
-
 ** TODO Count all subsequences having product less than K :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-all-subsequences-having-product-less-than-k
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/count-subsequences-product-less-k/
-
 ** TODO Longest subsequence such that difference between adjacent is one :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-subsequence-such-that-difference-between-adjacent-is-one
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/longest-subsequence-such-that-difference-between-adjacents-is-one4724/1
-
 ** TODO Maximum subsequence sum such that no three are consecutive :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-subsequence-sum-such-that-no-three-are-consecutive
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/maximum-subsequence-sum-such-that-no-three-are-consecutive/
-
 ** TODO Egg dropping :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: egg-dropping
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/egg-dropping-puzzle/0
-
 ** TODO Maximum length chain of pairs :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-length-chain-of-pairs
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/max-length-chain/1
-
 ** TODO Maximum size square sub-matrix with all 1s :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-size-square-sub-matrix-with-all-1s
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/largest-square-formed-in-a-matrix/0
-
 ** TODO Maximum sum of pairs with specific difference :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-sum-of-pairs-with-specific-difference
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/pairs-with-specific-difference/0
-
 ** TODO Min cost path :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: min-cost-path
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/path-in-matrix3805/1
-
 ** TODO Maximum difference of zeros and ones in binary string :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-difference-of-zeros-and-ones-in-binary-string
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/maximum-difference-of-zeros-and-ones-in-binary-string4111/1
-
 ** TODO Minimum cost to fill given weight in a bag :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-cost-to-fill-given-weight-in-a-bag
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/minimum-cost-to-fill-given-weight-in-a-bag1956/1
-
 ** TODO Minimum removals from array to make max - min <= K :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: minimum-removals-from-array-to-make-max-min-k
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/minimum-removals-array-make-max-min-k/
-
 ** TODO Longest common substring :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-common-substring
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/longest-common-substring/0
-
-#+begin_src cpp
-class Solution {
-  int dp[1005][1005];
-
-public:
-  int longestCommonSubstr(string s1, string s2, int n, int m) {
-    int ans = 0;
-    for (int i = 0; i <= n; i++) {
-      for (int j = 0; j <= m; j++) {
-        if (i == 0 || j == 0) {
-          dp[i][j] = 0;
-        } else if (s1[i - 1] == s2[j - 1]) {
-          dp[i][j] = 1 + dp[i - 1][j - 1];
-          ans = max(ans, dp[i][j]);
-        } else {
-          dp[i][j] = 0;
-        }
-      }
-    }
-
-    return ans;
-  }
-};
-#+end_src
-
 ** TODO Count number of ways to reach a given score in a game :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-number-of-ways-to-reach-a-given-score-in-a-game
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/reach-a-given-score/0
-
 ** TODO Count balanced binary trees of height h :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-balanced-binary-trees-of-height-h
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/bbt-counter/0
-
 ** TODO Smallest sum contiguous subarray :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: smallest-sum-contiguous-subarray
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/smallest-sum-contiguous-subarray/
-
 ** TODO Unbounded knapsack :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: unbounded-knapsack
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1
-
-#+begin_src cpp
-class Solution {
-  int dp[1005][1005];
-
-public:
-  int knapSack(int N, int W, int val[], int wt[]) {
-    memset(dp, -1, sizeof(dp));
-
-    for (int i = 0; i <= N; i++) {
-      for (int j = 0; j <= W; j++) {
-        if (i == 0 || j == 0) {
-          dp[i][j] = 0;
-        } else if (wt[i - 1] <= j) {
-          dp[i][j] = max(dp[i - 1][j], val[i - 1] + dp[i][j - wt[i - 1]]);
-        } else {
-          dp[i][j] = dp[i - 1][j];
-        }
-      }
-    }
-
-    return dp[N][W];
-  }
-};
-#+end_src
-
 ** TODO Largest independent set :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: largest-independent-set
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/largest-independent-set-problem-dp-26/
-
 ** TODO Longest palindromic subsequence :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-palindromic-subsequence
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/longest-palindromic-subsequence/
-
-#+begin_src cpp
-class Solution {
-    int dp[1005][1005];
-public:
-    int longestPalindromeSubseq(string s) {
-        string rev = string(s.rbegin(), s.rend());
-
-        int n = s.size();
-
-        for (int i = 0; i <= n; i++) {
-            for (int j = 0; j <= n; j++) {
-                if (i == 0 || j == 0) {
-                    dp[i][j] = 0;
-                } else if (s[i - 1] == rev[j - 1]) {
-                    dp[i][j] = 1 + dp[i - 1][j - 1];
-                } else {
-                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
-                }
-            }
-        }
-
-        return dp[n][n];
-    }
-};
-#+end_src
-
 ** TODO Longest palindromic substring :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-palindromic-substring
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/longest-palindromic-substring/
-
 ** TODO Longest alternating subsequence :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: longest-alternating-subsequence
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/longest-alternating-subsequence/0
-
 ** TODO Weighted job scheduling :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: weighted-job-scheduling
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/weighted-job-scheduling/
-
 ** TODO Coin game winner where every player has three choices :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: coin-game-winner-where-every-player-has-three-choices
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/coin-game-winner-every-player-three-choices/
-
 ** TODO [#A] Count derangements :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-derangements
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/count-derangements-permutation-such-that-no-element-appears-in-its-original-position/
-
 ** TODO Optimal strategy for a game :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: optimal-strategy-for-a-game
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/optimal-strategy-for-a-game/0
-
 ** TODO Optimal binary search tree :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: optimal-binary-search-tree
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/optimal-binary-search-tree-dp-24/
-
 ** TODO Palindrome partitioning :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: palindrome-partitioning
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/palindromic-patitioning4845/1
-
 ** TODO [#A] Mobile numeric keypad :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: mobile-numeric-keypad
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/mobile-numeric-keypad5456/1
-
 ** TODO Boolean parenthesization :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: boolean-parenthesization
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/boolean-parenthesization/0
-
 ** TODO Largest rectangular sub-matrix whose sum is 0 :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: largest-rectangular-sub-matrix-whose-sum-is-0
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/largest-rectangular-sub-matrix-whose-sum-0/
-
 ** TODO [#A] Largest area rectangular sub-matrix with equal number of 1s and 0s :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: largest-area-rectangular-sub-matrix-with-equal-number-of-1s-and-0s
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/largest-area-rectangular-sub-matrix-equal-number-1s-0s/
-
 ** TODO Maximum sum rectangle in a 2D matrix :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-sum-rectangle-in-a-2d-matrix
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/maximum-sum-rectangle/0
-
 ** TODO Maximum profit by buying and selling a share at most K times :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-profit-by-buying-and-selling-a-share-at-most-k-times
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/maximum-profit4657/1
-
 ** TODO Find if a string is interleaved of two other strings :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-if-a-string-is-interleaved-of-two-other-strings
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/interleaved-strings/1
-
 ** TODO Maximum length of pair chain :dp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: maximum-length-of-pair-chain
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://leetcode.com/problems/maximum-length-of-pair-chain/
-
 ** TODO Count set bits in an integer :bit:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-set-bits-in-an-integer
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/set-bits0143/1
-
-#+begin_src cpp
-class Solution {
-public:
-  int setBits(int N) {
-    int bCount = 0;
-    while (N) {
-      N &= (N - 1);
-      bCount++;
-    }
-
-    return bCount;
-  }
-};
-#+end_src
-
 ** TODO Find the two non-repeating elements in an array of repeating elements :bit:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-the-two-non-repeating-elements-in-an-array-of-repeating-elements
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/finding-the-numbers0215/1
-
 ** TODO Count number of bits to be flipped to convert A to B :bit:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-number-of-bits-to-be-flipped-to-convert-a-to-b
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/bit-difference/0
-
 ** TODO Count total set bits in all numbers from 1 to N :bit:
 :PROPERTIES:
 :EXPORT_FILE_NAME: count-total-set-bits-in-all-numbers-from-1-to-n
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/count-total-set-bits/0
-
 ** TODO Check if a number is a power of 2 :bit:
 :PROPERTIES:
 :EXPORT_FILE_NAME: check-if-a-number-is-a-power-of-2
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/power-of-2/0
-
 ** TODO Find position of the only set bit :bit:
 :PROPERTIES:
 :EXPORT_FILE_NAME: find-position-of-the-only-set-bit
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/find-position-of-set-bit3706/1
-
 ** TODO Copy set bits in a range :bit:
 :PROPERTIES:
 :EXPORT_FILE_NAME: copy-set-bits-in-a-range
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/copy-set-bits-in-a-range/
-
 ** TODO Divide two integers without using multiplication, division or mod operator :bit:
 :PROPERTIES:
 :EXPORT_FILE_NAME: divide-two-integers-without-using-multiplication-division-or-mod-operator
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/divide-two-integers-without-using-multiplication-division-mod-operator/
-
 ** TODO Calculate square of a number without using *, / and pow() :bit:
 :PROPERTIES:
 :EXPORT_FILE_NAME: calculate-square-of-a-number-without-using-and-pow
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://www.geeksforgeeks.org/calculate-square-of-a-number-without-using-and-pow/
-
 ** TODO Power set :bit:
 :PROPERTIES:
 :EXPORT_FILE_NAME: power-set
 :EXPORT_HUGO_WEIGHT: auto
 :END:
 https://practice.geeksforgeeks.org/problems/power-set4302/1
-
 # Local Variables:
 # org-hugo-section: "dsa"
 # org-export-allow-bind-keywords: t
